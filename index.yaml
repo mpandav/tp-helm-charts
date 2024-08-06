@@ -448,6 +448,15 @@ entries:
   o11yservice:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-08-06T12:20:15.717389893Z"
+    description: A helm chart for o11y service
+    digest: fab09d1bac2822d501f001808d303830ac4b66df0599ae3f43537d58629dd240
+    name: o11yservice
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/o11yservice-1.2.28/o11yservice-1.2.28.tgz
+    version: 1.2.28
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-08-05T10:15:17.76485881Z"
     description: A helm chart for o11y service
     digest: 9ae98578a9183456ca6ee40984117b3e04f06c43b664c5f43816980634b82de4
@@ -465,6 +474,46 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/o11yservice-1.2.26/o11yservice-1.2.26.tgz
     version: 1.2.26
   oauth2-proxy:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: securityContext and timeout of the initContainer wait-for-redis configurable via values.
+          links:
+            - name: Github PR
+              url: https://github.com/oauth2-proxy/manifests/pull/159
+    apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-08-06T12:20:15.903002789Z"
+    description: A reverse proxy that provides authentication with Google, Github
+      or other providers
+    digest: 4307b7b0cf363f1f697d6f3d5718eb10a38e8edc7b0c0f43e88ce7a4953c3ad9
+    home: https://oauth2-proxy.github.io/oauth2-proxy/
+    keywords:
+    - kubernetes
+    - oauth
+    - oauth2
+    - authentication
+    - google
+    - github
+    - redis
+    kubeVersion: '>=1.9.0-0'
+    maintainers:
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    - name: tlawrie
+    - email: nicholas.meves@gmail.com
+      name: NickMeves
+    - email: joel.speed@hotmail.co.uk
+      name: JoelSpeed
+    - email: pierluigi.lenoci@gmail.com
+      name: pierluigilenoci
+    name: oauth2-proxy
+    sources:
+    - https://github.com/oauth2-proxy/oauth2-proxy
+    - https://github.com/oauth2-proxy/manifests
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/oauth2-proxy-10.1.008/oauth2-proxy-10.1.008.tgz
+    version: 10.1.008
   - annotations:
       artifacthub.io/changes: |
         - kind: added
@@ -1598,4 +1647,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-08-05T15:04:42.216159555Z"
+generated: "2024-08-06T12:20:16.45870963Z"
