@@ -3,6 +3,15 @@ entries:
   artifactmanager:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-08-06T12:27:50.160418615Z"
+    description: A Helm chart for Artifact Manager
+    digest: a1014fd8c4952423b74947387f9f531c94e6fa6fae69e93dd58d2136d6362010
+    name: artifactmanager
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/artifactmanager-1.2.11/artifactmanager-1.2.11.tgz
+    version: 1.2.11
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-08-05T10:15:16.679134521Z"
     description: A Helm chart for Artifact Manager
     digest: 1f25a19ca8383b1e71de568d798d8b344cb5db036c3d5211d83c0c80eac6e997
@@ -20,6 +29,20 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/artifactmanager-1.2.9/artifactmanager-1.2.9.tgz
     version: 1.2.9
   bwprovisioner:
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-08-06T12:27:50.322852485Z"
+    description: TIBCO Platform Dataplane Capabilty -- BW Provisioner
+    digest: 51696aa725c93d7d1121bfa5ceed54dd7ee040af0c5c930e9fa4c1f480d13a30
+    home: https://github.com/tibco/tp-iapp-bw-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: bwprovisioner
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bwprovisioner-1.2.12/bwprovisioner-1.2.12.tgz
+    version: 1.2.12
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-08-05T15:04:42.21607188Z"
@@ -187,6 +210,33 @@ entries:
   dp-core-infrastructure:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-08-06T12:27:50.502376957Z"
+    dependencies:
+    - condition: tibtunnel.enabled
+      name: tp-tibtunnel
+      repository: ""
+      version: 1.2.*
+    - condition: tp-provisioner-agent.enabled
+      name: tp-provisioner-agent
+      repository: ""
+      version: 1.2.*
+    - condition: config.enabled
+      name: config
+      repository: ""
+      version: 1.0.*
+    - condition: haproxy.enabled
+      name: haproxy
+      repository: ""
+      version: 1.39.0
+    description: A Helm chart for Data Plane Infrastructure
+    digest: 4d31ca17ff918b0e7c6d033baa09ec667a7a4d7a69e80e8bde2b2895bdd90e5e
+    name: dp-core-infrastructure
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-core-infrastructure-1.2.19/dp-core-infrastructure-1.2.19.tgz
+    version: 1.2.19
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-08-05T10:15:17.158748321Z"
     dependencies:
     - condition: tibtunnel.enabled
@@ -336,6 +386,42 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/istio-istiod-1.2.10/istio-istiod-1.2.10.tgz
     version: 1.2.10
   jaeger:
+  - apiVersion: v2
+    appVersion: 1.55.0
+    created: "2024-08-06T12:27:50.698789797Z"
+    dependencies:
+    - condition: provisionDataStore.cassandra
+      name: cassandra
+      repository: https://charts.helm.sh/incubator
+      version: 0.15.3
+    - condition: provisionDataStore.elasticsearch
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: ^7.11.1
+    - condition: provisionDataStore.kafka
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami
+      version: ^19.1.5
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 1.16.0
+    description: A Jaeger Helm chart for Kubernetes
+    digest: 41dc7a28df3c632855c0af1c935c6079c48522a0d9d87ea95219d768e141605c
+    home: https://jaegertracing.io
+    icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
+    keywords:
+    - jaeger
+    - opentracing
+    - tracing
+    - instrumentation
+    kubeVersion: '>= 1.21-0'
+    name: jaeger
+    sources:
+    - https://hub.docker.com/u/jaegertracing/
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/jaeger-0.72.12/jaeger-0.72.12.tgz
+    version: 0.72.12
   - apiVersion: v2
     appVersion: 1.55.0
     created: "2024-08-05T10:15:17.604958203Z"
@@ -595,6 +681,24 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/oauth2-proxy-10.1.006/oauth2-proxy-10.1.006.tgz
     version: 10.1.006
   opentelemetry-collector:
+  - apiVersion: v2
+    appVersion: 0.98.0
+    created: "2024-08-06T12:27:50.852708587Z"
+    description: OpenTelemetry Collector Helm chart for Kubernetes
+    digest: 9d6f43a8765c9211678ed705200dc62dbf1817696d700e6f0454f71e59271508
+    home: https://opentelemetry.io/
+    icon: https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png
+    maintainers:
+    - name: dmitryax
+    - name: TylerHelmuth
+    name: opentelemetry-collector
+    sources:
+    - https://github.com/open-telemetry/opentelemetry-collector
+    - https://github.com/open-telemetry/opentelemetry-collector-contrib
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/opentelemetry-collector-0.89.5/opentelemetry-collector-0.89.5.tgz
+    version: 0.89.5
   - apiVersion: v2
     appVersion: 0.98.0
     created: "2024-08-05T13:17:38.426589273Z"
@@ -1518,6 +1622,18 @@ entries:
   tp-cp-proxy:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-08-06T12:27:51.004739085Z"
+    description: A Helm chart for Control Plane Proxy
+    digest: 8c51d8f04dd8acc26da7fe0669d33955c74fe797ae2b852d0f379c8f1eafeb34
+    keywords:
+    - cp-proxy
+    - data-plane
+    name: tp-cp-proxy
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-proxy-1.2.11/tp-cp-proxy-1.2.11.tgz
+    version: 1.2.11
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-08-05T10:15:18.592205362Z"
     description: A Helm chart for Control Plane Proxy
     digest: c2deefef2c32b9e4005c3b1a099b58de03b924ce4a08d3589d618851c3fb4771
@@ -1631,6 +1747,15 @@ entries:
   tp-dp-monitor-agent:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-08-06T12:27:51.15816202Z"
+    description: A Helm chart for deploying the tp-dp-monitor-agent service
+    digest: 069e94798773eec17f450992ea51c0a8eb24d977b703d1604cff8bcd1bd514f4
+    name: tp-dp-monitor-agent
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.120/tp-dp-monitor-agent-1.2.120.tgz
+    version: 1.2.120
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-08-05T10:15:18.71720024Z"
     description: A Helm chart for deploying the tp-dp-monitor-agent service
     digest: 924c8f3e8ac206bfb2202877a44d22ee3b8b590b27efa9afd9b2b97ae5292578
@@ -1647,4 +1772,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-08-06T12:20:16.45870963Z"
+generated: "2024-08-06T12:27:51.15826426Z"
