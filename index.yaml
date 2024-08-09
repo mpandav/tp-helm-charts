@@ -550,6 +550,42 @@ entries:
   jaeger:
   - apiVersion: v2
     appVersion: 1.55.0
+    created: "2024-08-09T14:08:23.985446453Z"
+    dependencies:
+    - condition: provisionDataStore.cassandra
+      name: cassandra
+      repository: https://charts.helm.sh/incubator
+      version: 0.15.3
+    - condition: provisionDataStore.elasticsearch
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: ^7.11.1
+    - condition: provisionDataStore.kafka
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami
+      version: ^19.1.5
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 1.16.0
+    description: A Jaeger Helm chart for Kubernetes
+    digest: 9ff0d753bd642aaca088f2adc964658ace3ac626cb2851974012a697de991aa7
+    home: https://jaegertracing.io
+    icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
+    keywords:
+    - jaeger
+    - opentracing
+    - tracing
+    - instrumentation
+    kubeVersion: '>= 1.21-0'
+    name: jaeger
+    sources:
+    - https://hub.docker.com/u/jaegertracing/
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/jaeger-0.72.13/jaeger-0.72.13.tgz
+    version: 0.72.13
+  - apiVersion: v2
+    appVersion: 1.55.0
     created: "2024-08-06T12:27:50.698789797Z"
     dependencies:
     - condition: provisionDataStore.cassandra
@@ -694,6 +730,15 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/msg-pulsar-tp-1.2.24/msg-pulsar-tp-1.2.24.tgz
     version: 1.2.24
   o11yservice:
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-08-09T14:08:24.175291162Z"
+    description: A helm chart for o11y service
+    digest: 627967c2d756b1a4e5da878e4e74ea9b68cc395bb0e4d52a7a57fcde8e1ada50
+    name: o11yservice
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/o11yservice-1.2.29/o11yservice-1.2.29.tgz
+    version: 1.2.29
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-08-06T12:20:15.717389893Z"
@@ -1921,6 +1966,15 @@ entries:
   tp-dp-monitor-agent:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-08-09T14:08:24.405903688Z"
+    description: A Helm chart for deploying the tp-dp-monitor-agent service
+    digest: 8327aada282feecb0aaa54425926f75b2db541c7d59a1e3839c504f6e04f625c
+    name: tp-dp-monitor-agent
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.121/tp-dp-monitor-agent-1.2.121.tgz
+    version: 1.2.121
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-08-06T12:27:51.15816202Z"
     description: A Helm chart for deploying the tp-dp-monitor-agent service
     digest: 069e94798773eec17f450992ea51c0a8eb24d977b703d1604cff8bcd1bd514f4
@@ -1946,4 +2000,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-08-08T20:24:44.867842774Z"
+generated: "2024-08-09T14:08:24.406051775Z"
