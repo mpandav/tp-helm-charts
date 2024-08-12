@@ -40,6 +40,20 @@ entries:
   bwprovisioner:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-08-12T07:19:48.526172829Z"
+    description: TIBCO Platform Dataplane Capabilty -- BW Provisioner
+    digest: 2c011c50ef5d48fe5c2cfd72f4a89a2d369d9c2273abd3235cc37fcd238e4333
+    home: https://github.com/tibco/tp-iapp-bw-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: bwprovisioner
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bwprovisioner-1.2.14/bwprovisioner-1.2.14.tgz
+    version: 1.2.14
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-08-09T14:26:34.936502321Z"
     description: TIBCO Platform Dataplane Capabilty -- BW Provisioner
     digest: bba9e5e8bd907a8d37d899591d7c85f97e7076898f69d0470c38d74f2e08f7af
@@ -753,6 +767,15 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/msg-pulsar-tp-1.2.24/msg-pulsar-tp-1.2.24.tgz
     version: 1.2.24
   o11yservice:
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-08-12T07:19:48.656716851Z"
+    description: A helm chart for o11y service
+    digest: 71eb009394256053296b68cffa14ac6c014ae6730ac8e1583046c086bcdcf5c0
+    name: o11yservice
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/o11yservice-1.2.32/o11yservice-1.2.32.tgz
+    version: 1.2.32
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-08-09T14:26:35.050708821Z"
@@ -2016,6 +2039,15 @@ entries:
   tp-dp-monitor-agent:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-08-12T07:19:48.787015846Z"
+    description: A Helm chart for deploying the tp-dp-monitor-agent service
+    digest: f816c21edc7bdfaf204c787700442ba8cc282bb8a8ead9eff9121a32f066ab45
+    name: tp-dp-monitor-agent
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.125/tp-dp-monitor-agent-1.2.125.tgz
+    version: 1.2.125
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-08-09T15:15:24.175959552Z"
     description: A Helm chart for deploying the tp-dp-monitor-agent service
     digest: cb57d0c691c2f1a276c6ca32ca3b7ab8f5a32a346b04b841570d272a9ba5adf6
@@ -2068,4 +2100,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-08-09T15:15:24.176091348Z"
+generated: "2024-08-12T07:19:48.787243604Z"
