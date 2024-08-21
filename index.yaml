@@ -3,6 +3,15 @@ entries:
   artifactmanager:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-08-21T17:12:21.794773706Z"
+    description: A Helm chart for Artifact Manager
+    digest: e5732588a1102d13876c957ea2444a2a9514e6741c1705f41cb44cffb80df5c8
+    name: artifactmanager
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/artifactmanager-1.2.15/artifactmanager-1.2.15.tgz
+    version: 1.2.15
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-08-21T07:34:39.349517708Z"
     description: A Helm chart for Artifact Manager
     digest: 30bb286c5f66bf8f1d17d1370f68c9c4049247a3dbefbc78795d18da13247fbc
@@ -56,6 +65,20 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/artifactmanager-1.2.9/artifactmanager-1.2.9.tgz
     version: 1.2.9
   bwprovisioner:
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-08-21T17:12:21.900638652Z"
+    description: TIBCO Platform Dataplane Capabilty -- BW Provisioner
+    digest: bb2ca9186f638fcf4376914a905286901b3a7bc7ff916933ef8918119812465d
+    home: https://github.com/tibco/tp-iapp-bw-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: bwprovisioner
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bwprovisioner-1.2.17/bwprovisioner-1.2.17.tgz
+    version: 1.2.17
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-08-21T08:23:26.051429583Z"
@@ -291,6 +314,33 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/dp-configure-namespace-1.2.27/dp-configure-namespace-1.2.27.tgz
     version: 1.2.27
   dp-core-infrastructure:
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-08-21T17:12:22.016995735Z"
+    dependencies:
+    - condition: tibtunnel.enabled
+      name: tp-tibtunnel
+      repository: ""
+      version: 1.2.*
+    - condition: tp-provisioner-agent.enabled
+      name: tp-provisioner-agent
+      repository: ""
+      version: 1.2.*
+    - condition: config.enabled
+      name: config
+      repository: ""
+      version: 1.0.*
+    - condition: haproxy.enabled
+      name: haproxy
+      repository: ""
+      version: 1.39.0
+    description: A Helm chart for Data Plane Infrastructure
+    digest: e552f6c46438823706bc8c7a4f6c44d153d61d18f67d92037819f3e7ed2b625d
+    name: dp-core-infrastructure
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-core-infrastructure-1.2.26/dp-core-infrastructure-1.2.26.tgz
+    version: 1.2.26
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-08-08T20:24:44.867704165Z"
@@ -813,6 +863,15 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/msg-pulsar-tp-1.2.24/msg-pulsar-tp-1.2.24.tgz
     version: 1.2.24
   o11yservice:
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-08-21T17:12:22.166140977Z"
+    description: A helm chart for o11y service
+    digest: 80cadcc0e8119901631758595e445ed44467d428e71ece102e483c8374e858e4
+    name: o11yservice
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/o11yservice-1.2.33/o11yservice-1.2.33.tgz
+    version: 1.2.33
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-08-12T07:19:48.656716851Z"
@@ -2226,4 +2285,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-08-21T08:23:26.164095961Z"
+generated: "2024-08-21T17:12:22.16631902Z"
