@@ -344,6 +344,33 @@ entries:
   dp-core-infrastructure:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-09-13T10:43:11.885694437Z"
+    dependencies:
+    - condition: tibtunnel.enabled
+      name: tp-tibtunnel
+      repository: ""
+      version: 1.2.*
+    - condition: tp-provisioner-agent.enabled
+      name: tp-provisioner-agent
+      repository: ""
+      version: 1.2.*
+    - condition: config.enabled
+      name: config
+      repository: ""
+      version: 1.0.*
+    - condition: haproxy.enabled
+      name: haproxy
+      repository: ""
+      version: 1.39.0
+    description: A Helm chart for Data Plane Infrastructure
+    digest: b708887589176d87eab54e5b0b2376db17355157f3eb1a6e099d56b3d86ac33a
+    name: dp-core-infrastructure
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-core-infrastructure-1.2.28/dp-core-infrastructure-1.2.28.tgz
+    version: 1.2.28
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-09-13T10:29:34.897831445Z"
     dependencies:
     - condition: tibtunnel.enabled
@@ -2340,4 +2367,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-09-13T10:29:34.898019344Z"
+generated: "2024-09-13T10:43:11.885821604Z"
