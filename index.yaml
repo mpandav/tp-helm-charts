@@ -76,6 +76,20 @@ entries:
   bwprovisioner:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-09-17T13:22:04.273443072Z"
+    description: TIBCO Platform Dataplane Capabilty -- BW Provisioner
+    digest: f8a30a349ad79d42046ff2256bc9c0bfcada7ced3a8b85d3ccc6002621820d04
+    home: https://github.com/tibco/tp-iapp-bw-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: bwprovisioner
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bwprovisioner-1.2.21/bwprovisioner-1.2.21.tgz
+    version: 1.2.21
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-09-16T08:34:21.546877867Z"
     description: TIBCO Platform Dataplane Capabilty -- BW Provisioner
     digest: 36fc8369d247983da9ff428224eae588f54b947e1a87446fcfa09ed694016d97
@@ -771,6 +785,20 @@ entries:
   flogoprovisioner:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-09-17T13:22:04.491217064Z"
+    description: TIBCO Platform Dataplane Capabilty -- Flogo Provisioner
+    digest: 3d60c1cbc51fe326ec43900bdc35c91167a92a0ccb7bdc219ec5be9674d6fa78
+    home: https://github.com/tibco/tp-iapp-flogo-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: flogoprovisioner
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/flogoprovisioner-1.2.12/flogoprovisioner-1.2.12.tgz
+    version: 1.2.12
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-09-16T08:34:22.173193239Z"
     description: TIBCO Platform Dataplane Capabilty -- Flogo Provisioner
     digest: edbe8c95cc71257700eed2ba317855b31770a6368117f53d3a08a628717a727e
@@ -1170,6 +1198,46 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/o11yservice-1.2.26/o11yservice-1.2.26.tgz
     version: 1.2.26
   oauth2-proxy:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: securityContext and timeout of the initContainer wait-for-redis configurable via values.
+          links:
+            - name: Github PR
+              url: https://github.com/oauth2-proxy/manifests/pull/159
+    apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-09-17T13:22:04.745738882Z"
+    description: A reverse proxy that provides authentication with Google, Github
+      or other providers
+    digest: 619f4e9ff67c02992fa0ead128681fa2522fca31f6b86715cf7e06f2acd396be
+    home: https://oauth2-proxy.github.io/oauth2-proxy/
+    keywords:
+    - kubernetes
+    - oauth
+    - oauth2
+    - authentication
+    - google
+    - github
+    - redis
+    kubeVersion: '>=1.9.0-0'
+    maintainers:
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    - name: tlawrie
+    - email: nicholas.meves@gmail.com
+      name: NickMeves
+    - email: joel.speed@hotmail.co.uk
+      name: JoelSpeed
+    - email: pierluigi.lenoci@gmail.com
+      name: pierluigilenoci
+    name: oauth2-proxy
+    sources:
+    - https://github.com/oauth2-proxy/oauth2-proxy
+    - https://github.com/oauth2-proxy/manifests
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/oauth2-proxy-10.1.012/oauth2-proxy-10.1.012.tgz
+    version: 10.1.012
   - annotations:
       artifacthub.io/changes: |
         - kind: added
@@ -3020,4 +3088,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-09-17T12:54:14.953702555Z"
+generated: "2024-09-17T13:22:04.746040759Z"
