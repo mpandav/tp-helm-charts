@@ -785,6 +785,20 @@ entries:
   flogoprovisioner:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2024-09-20T10:27:02.58691949Z"
+    description: TIBCO Platform Dataplane Capabilty -- Flogo Provisioner
+    digest: 7404b3c069e1ffa4a14265281b540c8c99353e62d47fb9ea86bbabd4aee6ca93
+    home: https://github.com/tibco/tp-iapp-flogo-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: flogoprovisioner
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/flogoprovisioner-1.2.13/flogoprovisioner-1.2.13.tgz
+    version: 1.2.13
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2024-09-17T13:22:04.491217064Z"
     description: TIBCO Platform Dataplane Capabilty -- Flogo Provisioner
     digest: 3d60c1cbc51fe326ec43900bdc35c91167a92a0ccb7bdc219ec5be9674d6fa78
@@ -3208,4 +3222,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-09-20T10:12:52.645328477Z"
+generated: "2024-09-20T10:27:02.587228187Z"
