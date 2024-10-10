@@ -294,6 +294,17 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/dp-bw-adapter-1.3.10/dp-bw-adapter-1.3.10.tgz
     version: 1.3.10
+  dp-bwce-app:
+  - apiVersion: v2
+    appVersion: 1.4.0
+    created: "2024-10-10T12:38:32.388099731Z"
+    description: A Helm chart for BWCE application
+    digest: 1c637fe531faa47e1c0f901365347a1662ad64587f0aeff94cb1e76fc80bc88e
+    name: dp-bwce-app
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-bwce-app-1.4.3/dp-bwce-app-1.4.3.tgz
+    version: 1.4.3
   dp-bwce-mon:
   - apiVersion: v2
     appVersion: 1.3.0
@@ -4353,4 +4364,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-09T09:54:56.280989477Z"
+generated: "2024-10-10T12:38:32.388351202Z"
