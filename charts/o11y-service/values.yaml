@@ -8,6 +8,8 @@
 # Declare variables to be passed into your templates.
 
 global:
+  ingressNoHost:
+    enabled: true
   cp:
     dataplaneId: dp-dp1
     instanceId: defaultinstid
