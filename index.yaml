@@ -1527,6 +1527,15 @@ entries:
   o11yservice:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-16T15:21:18.568086252Z"
+    description: A helm chart for o11y service
+    digest: a7c5a1f0c3288f2e1147023e7aa99b6ebf255fbd1f409434f6fb3af56ebc88e5
+    name: o11yservice
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/o11yservice-1.3.33/o11yservice-1.3.33.tgz
+    version: 1.3.33
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-07T14:36:59.063417157Z"
     description: A helm chart for o11y service
     digest: c2d6c76fbcb060dd50557758b32a63aed4dc073cde216ed12fb69582b2f7b445
@@ -4353,6 +4362,15 @@ entries:
   tp-dp-monitor-agent:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-16T15:21:18.719033479Z"
+    description: A Helm chart for deploying the tp-dp-monitor-agent service
+    digest: 879a30b4479df468674b5a410a03b5f09cd9e9b87c228f5fadd2bcf6dc8f898a
+    name: tp-dp-monitor-agent
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.3.137/tp-dp-monitor-agent-1.3.137.tgz
+    version: 1.3.137
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-07T14:37:04.004804512Z"
     description: A Helm chart for deploying the tp-dp-monitor-agent service
     digest: c5296c8c17d34472d4db06bd9b712b3e8624bbc9c08bfdce98d125becc81b792
@@ -4432,4 +4450,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-14T14:52:40.877305448Z"
+generated: "2024-10-16T15:21:18.719399003Z"
