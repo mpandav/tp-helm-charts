@@ -527,6 +527,33 @@ entries:
   dp-core-infrastructure:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-20T06:23:45.389377738Z"
+    dependencies:
+    - condition: tibtunnel.enabled
+      name: tp-tibtunnel
+      repository: ""
+      version: 1.3.*
+    - condition: tp-provisioner-agent.enabled
+      name: tp-provisioner-agent
+      repository: ""
+      version: 1.3.*
+    - condition: config.enabled
+      name: config
+      repository: ""
+      version: 1.0.*
+    - condition: haproxy.enabled
+      name: haproxy
+      repository: ""
+      version: 1.40.1
+    description: A Helm chart for Data Plane Infrastructure
+    digest: 2590faf9db9707921994be71bb9d6dbffb58b539ab30298fcad447ef75d9eb69
+    name: dp-core-infrastructure
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-core-infrastructure-1.3.17/dp-core-infrastructure-1.3.17.tgz
+    version: 1.3.17
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-14T14:52:40.877030126Z"
     dependencies:
     - condition: tibtunnel.enabled
@@ -1525,6 +1552,15 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/msg-pulsar-tp-1.2.24/msg-pulsar-tp-1.2.24.tgz
     version: 1.2.24
   o11yservice:
+  - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-10-20T06:23:45.527438614Z"
+    description: A helm chart for o11y service
+    digest: 0bbfe5ac0c7b5fadbfd30b67825a404589cc27c33aab696198181e4f2679684c
+    name: o11yservice
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/o11yservice-1.3.34/o11yservice-1.3.34.tgz
+    version: 1.3.34
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-16T15:21:18.568086252Z"
@@ -4362,6 +4398,15 @@ entries:
   tp-dp-monitor-agent:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-20T06:23:45.699235957Z"
+    description: A Helm chart for deploying the tp-dp-monitor-agent service
+    digest: da77d5dc31a6b886795f2121de153a88083696ed9d5025f95dc6100bfb3228ad
+    name: tp-dp-monitor-agent
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.3.138/tp-dp-monitor-agent-1.3.138.tgz
+    version: 1.3.138
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-16T15:21:18.719033479Z"
     description: A Helm chart for deploying the tp-dp-monitor-agent service
     digest: 879a30b4479df468674b5a410a03b5f09cd9e9b87c228f5fadd2bcf6dc8f898a
@@ -4450,4 +4495,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-16T15:21:18.719399003Z"
+generated: "2024-10-20T06:23:45.699662469Z"
