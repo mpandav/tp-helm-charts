@@ -4356,6 +4356,20 @@ entries:
   tp-cp-integration-bw5:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-29T13:13:32.612540071Z"
+    dependencies:
+    - condition: bw5-webserver.enabled
+      name: bw5-webserver
+      repository: ""
+      version: 1.3.*
+    description: TIBCO Platform Control Plane -- BW5 Integration
+    digest: 763fbea958f2bca71f8ad2f0a9b11581924b2135784c3c57c14e65ea3678d2fe
+    name: tp-cp-integration-bw5
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-bw5-1.3.23/tp-cp-integration-bw5-1.3.23.tgz
+    version: 1.3.23
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-07T14:37:02.231303133Z"
     dependencies:
     - condition: bw5-webserver.enabled
@@ -4399,6 +4413,20 @@ entries:
   tp-cp-integration-bw6:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-29T13:13:32.773965588Z"
+    dependencies:
+    - condition: bw6-webserver.enabled
+      name: bw6-webserver
+      repository: ""
+      version: 1.3.*
+    description: TIBCO Platform Control Plane -- BW6 Integration
+    digest: d55f47953f81a587cf60262afc9db8ea0ec81f4d84bfa09de04d5198c4533c08
+    name: tp-cp-integration-bw6
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-bw6-1.3.33/tp-cp-integration-bw6-1.3.33.tgz
+    version: 1.3.33
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-07T14:37:02.413772852Z"
     dependencies:
     - condition: bw6-webserver.enabled
@@ -4412,6 +4440,20 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-bw6-1.3.32/tp-cp-integration-bw6-1.3.32.tgz
     version: 1.3.32
   tp-cp-integration-bwce:
+  - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-10-29T13:13:32.954428455Z"
+    dependencies:
+    - condition: bw-webserver.enabled
+      name: bw-webserver
+      repository: ""
+      version: 1.3.*
+    description: TIBCO Platform Control Plane -- Integration for BWCE
+    digest: fd1574da64cdb97d88876f8de506e1170b69f5cc56e9b812d26d036574da0bbd
+    name: tp-cp-integration-bwce
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-bwce-1.3.20/tp-cp-integration-bwce-1.3.20.tgz
+    version: 1.3.20
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-07T14:37:02.576093462Z"
@@ -4441,6 +4483,20 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-bwce-1.2.21/tp-cp-integration-bwce-1.2.21.tgz
     version: 1.2.21
   tp-cp-integration-common:
+  - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-10-29T13:13:33.150138379Z"
+    dependencies:
+    - condition: fileserver.enabled
+      name: fileserver
+      repository: ""
+      version: 1.3.*
+    description: TIBCO Platform Control Plane -- Integration Common
+    digest: e6ca9ba9e33b67d2f3741a1c96130fb8fac21e8359da47ae4420fd6d1b288f2d
+    name: tp-cp-integration-common
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-common-1.3.6/tp-cp-integration-common-1.3.6.tgz
+    version: 1.3.6
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-07T14:37:02.700621348Z"
@@ -5101,4 +5157,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-29T12:30:18.942178253Z"
+generated: "2024-10-29T13:13:33.150471911Z"
