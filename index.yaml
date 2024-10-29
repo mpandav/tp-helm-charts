@@ -2332,6 +2332,60 @@ entries:
       app.helm.sh/name: platform-base
     apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-29T11:28:12.055825516Z"
+    dependencies:
+    - name: tp-cp-configuration
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-recipes
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-o11y
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-core
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-core-ops
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-core-finops
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-integration.enabled
+      name: tp-cp-integration
+      repository: alias:tibco-platform
+      tags:
+      - integration
+      version: 1.3.*
+    - condition: tp-cp-tibcohub-contrib.enabled
+      name: tp-cp-tibcohub-contrib
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-msg-contrib.enabled
+      name: tp-cp-msg-contrib
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-hawk.enabled
+      name: tp-cp-hawk
+      repository: alias:tibco-platform
+      version: 1.3.*
+    description: TIBCO Platform base chart
+    digest: f23c1f4b0f8061fe847e62389382393dd493c31866be6ac8430e649c428e1cc7
+    keywords:
+    - tibco-platform
+    - platform
+    - base
+    name: platform-base
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/platform-base-1.3.339/platform-base-1.3.339.tgz
+    version: 1.3.339
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: platform-base
+    apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-07T14:36:59.643028493Z"
     dependencies:
     - name: tp-cp-configuration
@@ -3275,6 +3329,52 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-configuration-1.2.17/tp-cp-configuration-1.2.17.tgz
     version: 1.2.17
   tp-cp-core:
+  - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-10-29T11:28:12.246657779Z"
+    dependencies:
+    - condition: admin-webserver.enabled
+      name: admin-webserver
+      repository: ""
+      version: 1.3.*
+    - condition: web-server.enabled
+      name: web-server
+      repository: ""
+      version: 1.3.*
+    - condition: orchestrator.enabled
+      name: orchestrator
+      repository: ""
+      version: 1.3.*
+    - condition: user-subscriptions.enabled
+      name: user-subscriptions
+      repository: ""
+      version: 1.3.*
+    - condition: email-service.enabled
+      name: email-service
+      repository: ""
+      version: 1.3.*
+    - condition: cronjobs.enabled
+      name: cronjobs
+      repository: ""
+      version: 1.3.*
+    - condition: identity-management.enabled
+      name: identity-management
+      repository: ""
+      version: 1.3.*
+    - condition: identity-provider.enabled
+      name: identity-provider
+      repository: ""
+      version: 1.3.*
+    - condition: pengine.enabled
+      name: pengine
+      repository: ""
+      version: 1.3.*
+    description: A Helm chart for -- tp-cp-core
+    digest: 23fb85f182c148a4bde663157896f16f7ef5b555c975371a12ac1ee7d2ca9f83
+    name: tp-cp-core
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-1.3.8267/tp-cp-core-1.3.8267.tgz
+    version: 1.3.8267
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-07T14:37:00.559961559Z"
@@ -4555,4 +4655,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-29T11:07:20.330631016Z"
+generated: "2024-10-29T11:28:12.246920611Z"
