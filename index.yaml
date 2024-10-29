@@ -2657,6 +2657,27 @@ entries:
       app.helm.sh/name: platform-bootstrap
     apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-29T11:41:25.403512446Z"
+    dependencies:
+    - name: tp-cp-bootstrap
+      repository: alias:tibco-platform
+      version: 1.3.37
+    description: TIBCO Platform bootstrap chart
+    digest: e6db2b7e59ccc415a0a02d0f7e85fc4a218f87b26bfc6c7f27b2319144d0bfea
+    keywords:
+    - tibco-platform
+    - platform
+    - bootstrap
+    name: platform-bootstrap
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/platform-bootstrap-1.3.40/platform-bootstrap-1.3.40.tgz
+    version: 1.3.40
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: platform-bootstrap
+    apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-29T11:07:20.330284508Z"
     dependencies:
     - name: tp-cp-bootstrap
@@ -2986,6 +3007,45 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-developer-hub-1.2.11/tibco-developer-hub-1.2.11.tgz
     version: 1.2.11
   tp-cp-bootstrap:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-bootstrap
+    apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-10-29T11:41:25.509781429Z"
+    dependencies:
+    - condition: hybrid-proxy.enabled
+      name: hybrid-proxy
+      repository: ""
+      version: 1.3.*
+    - condition: resource-set-operator.enabled
+      name: resource-set-operator
+      repository: ""
+      version: 1.3.*
+    - condition: router-operator.enabled
+      name: router-operator
+      repository: ""
+      version: 1.3.*
+    - condition: compute-services.enabled
+      name: compute-services
+      repository: ""
+      version: 1.3.*
+    - condition: otel-collector.enabled
+      name: otel-collector
+      repository: ""
+      version: 0.101.*
+    description: TIBCO Platform Control Plane bootstrap chart
+    digest: c394a53373b0f3cf25ec585b040a4c084fa7f3c8fb15a9a611633357ba69ef90
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - bootstrap
+    name: tp-cp-bootstrap
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-bootstrap-1.3.38/tp-cp-bootstrap-1.3.38.tgz
+    version: 1.3.38
   - annotations:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-bootstrap
@@ -4655,4 +4715,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-29T11:28:12.246920611Z"
+generated: "2024-10-29T11:41:25.510016154Z"
