@@ -3412,6 +3412,52 @@ entries:
   tp-cp-core:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-29T11:50:10.801521013Z"
+    dependencies:
+    - condition: admin-webserver.enabled
+      name: admin-webserver
+      repository: ""
+      version: 1.3.*
+    - condition: web-server.enabled
+      name: web-server
+      repository: ""
+      version: 1.3.*
+    - condition: orchestrator.enabled
+      name: orchestrator
+      repository: ""
+      version: 1.3.*
+    - condition: user-subscriptions.enabled
+      name: user-subscriptions
+      repository: ""
+      version: 1.3.*
+    - condition: email-service.enabled
+      name: email-service
+      repository: ""
+      version: 1.3.*
+    - condition: cronjobs.enabled
+      name: cronjobs
+      repository: ""
+      version: 1.3.*
+    - condition: identity-management.enabled
+      name: identity-management
+      repository: ""
+      version: 1.3.*
+    - condition: identity-provider.enabled
+      name: identity-provider
+      repository: ""
+      version: 1.3.*
+    - condition: pengine.enabled
+      name: pengine
+      repository: ""
+      version: 1.3.*
+    description: A Helm chart for -- tp-cp-core
+    digest: 254cd4e89ef1a5843c477a4179ec4eea51dbe02b4ccd6a1482cb2e045f6473e8
+    name: tp-cp-core
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-1.3.8268/tp-cp-core-1.3.8268.tgz
+    version: 1.3.8268
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-29T11:28:12.246657779Z"
     dependencies:
     - condition: admin-webserver.enabled
@@ -4736,4 +4782,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-29T11:42:32.147875778Z"
+generated: "2024-10-29T11:50:10.801831433Z"
