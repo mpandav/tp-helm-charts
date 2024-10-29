@@ -5208,6 +5208,16 @@ entries:
   tp-cp-tibcohub-contrib:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-29T15:48:27.742426059Z"
+    description: A Helm chart for TIBCO Hub CP contribution
+    digest: ff9e0263f6b7be7fe8c079cdab1d03925bef68a754016d44f092ee47a6f5d342
+    name: tp-cp-tibcohub-contrib
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-tibcohub-contrib-1.3.6/tp-cp-tibcohub-contrib-1.3.6.tgz
+    version: 1.3.6
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-07T14:37:03.633035842Z"
     description: A Helm chart for TIBCO Hub CP contribution
     digest: d564159f4b22a9ae73564d78e73c302e2e729c03f7b3ae29d6ecec72c16750b3
@@ -5409,4 +5419,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-29T13:30:38.171584359Z"
+generated: "2024-10-29T15:48:27.74281259Z"
