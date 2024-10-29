@@ -3422,6 +3422,20 @@ entries:
   tp-cp-bwce-utilities:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-29T12:27:26.40504345Z"
+    dependencies:
+    - condition: bwce-utilities.enabled
+      name: bwce-utilities
+      repository: ""
+      version: 1.3.*
+    description: TIBCO Platform Control Plane -- BWCE Utilities
+    digest: 01f460683898452a0d72d1d4188326c46149447804e1675864f4ef7aa20dc7c1
+    name: tp-cp-bwce-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-bwce-utilities-1.3.14/tp-cp-bwce-utilities-1.3.14.tgz
+    version: 1.3.14
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-07T14:37:00.303112406Z"
     dependencies:
     - condition: bwce-utilities.enabled
@@ -4114,6 +4128,51 @@ entries:
       app.helm.sh/name: tp-cp-integration
     apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-29T12:27:26.578788531Z"
+    dependencies:
+    - name: tp-cp-integration-common
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-integration-bwce.enabled
+      name: tp-cp-integration-bwce
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-integration-flogo.enabled
+      name: tp-cp-integration-flogo
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-integration-bw5.enabled
+      name: tp-cp-integration-bw5
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-integration-bw6.enabled
+      name: tp-cp-integration-bw6
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-bwce-utilities.enabled
+      name: tp-cp-bwce-utilities
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-flogo-utilities.enabled
+      name: tp-cp-flogo-utilities
+      repository: alias:tibco-platform
+      version: 1.3.*
+    description: TIBCO Platform Integration chart
+    digest: 402915626553d4fe442588332ac815f99dfdc324ff844b9899ced66e2edfe973
+    keywords:
+    - tibco-platform
+    - platform
+    - integration
+    name: tp-cp-integration
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-1.3.81/tp-cp-integration-1.3.81.tgz
+    version: 1.3.81
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-integration
+    apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-07T14:37:02.063887681Z"
     dependencies:
     - name: tp-cp-integration-common
@@ -4312,6 +4371,20 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-common-1.2.5/tp-cp-integration-common-1.2.5.tgz
     version: 1.2.5
   tp-cp-integration-flogo:
+  - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-10-29T12:27:26.752620545Z"
+    dependencies:
+    - condition: flogo-webserver.enabled
+      name: flogo-webserver
+      repository: ""
+      version: 1.3.*
+    description: TIBCO Platform Control Plane -- Integration for Flogo
+    digest: 45a61e0384fa15dff1bf5145006c1e90099996f4872f0a9bc5fcb7dc71379176
+    name: tp-cp-integration-flogo
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-flogo-1.3.13/tp-cp-integration-flogo-1.3.13.tgz
+    version: 1.3.13
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-07T14:37:02.837792481Z"
@@ -4929,4 +5002,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-29T12:12:36.096374265Z"
+generated: "2024-10-29T12:27:26.753077554Z"
