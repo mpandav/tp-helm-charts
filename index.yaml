@@ -4440,6 +4440,52 @@ entries:
   tp-cp-core:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-30T12:00:54.053834196Z"
+    dependencies:
+    - condition: admin-webserver.enabled
+      name: admin-webserver
+      repository: ""
+      version: 1.3.*
+    - condition: web-server.enabled
+      name: web-server
+      repository: ""
+      version: 1.3.*
+    - condition: orchestrator.enabled
+      name: orchestrator
+      repository: ""
+      version: 1.3.*
+    - condition: user-subscriptions.enabled
+      name: user-subscriptions
+      repository: ""
+      version: 1.3.*
+    - condition: email-service.enabled
+      name: email-service
+      repository: ""
+      version: 1.3.*
+    - condition: cronjobs.enabled
+      name: cronjobs
+      repository: ""
+      version: 1.3.*
+    - condition: identity-management.enabled
+      name: identity-management
+      repository: ""
+      version: 1.3.*
+    - condition: identity-provider.enabled
+      name: identity-provider
+      repository: ""
+      version: 1.3.*
+    - condition: pengine.enabled
+      name: pengine
+      repository: ""
+      version: 1.3.*
+    description: A Helm chart for -- tp-cp-core
+    digest: 18a63a42688838fdd1c783a92ec393303bd494aa712724394c672d40374b9573
+    name: tp-cp-core
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-1.3.8271/tp-cp-core-1.3.8271.tgz
+    version: 1.3.8271
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-30T11:22:29.190138192Z"
     dependencies:
     - condition: admin-webserver.enabled
@@ -4954,6 +5000,20 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-flogo-recipes-1.2.20/tp-cp-flogo-recipes-1.2.20.tgz
     version: 1.2.20
   tp-cp-flogo-utilities:
+  - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-10-30T12:00:54.231969848Z"
+    dependencies:
+    - condition: flogo-utilities.enabled
+      name: flogo-utilities
+      repository: ""
+      version: 1.3.*
+    description: TIBCO Platform Control Plane -- FLOGO Utilities
+    digest: 6918bcadee4be544e46dc4417e3155e5c7fb7ffa68f05350d273b4776ccc400e
+    name: tp-cp-flogo-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-flogo-utilities-1.3.23/tp-cp-flogo-utilities-1.3.23.tgz
+    version: 1.3.23
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-30T11:35:00.819048569Z"
@@ -6598,4 +6658,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-30T11:40:56.927954338Z"
+generated: "2024-10-30T12:00:54.232442478Z"
