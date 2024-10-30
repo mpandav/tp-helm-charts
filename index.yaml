@@ -4136,6 +4136,26 @@ entries:
     version: 1.0.1
   tibco-developer-hub:
   - apiVersion: v2
+    appVersion: 1.3.0-HF1
+    created: "2024-10-30T20:17:32.815125089Z"
+    dependencies:
+    - name: common
+      repository: ""
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: ""
+      version: 11.x.x
+    description: A Helm chart for TIBCO® Developer Hub
+    digest: 05c35e51502eb654eae53685d9e9cafa675ff1f4b6e6059b07e8b226c2b04cc0
+    name: tibco-developer-hub
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-developer-hub-1.3.22/tibco-developer-hub-1.3.22.tgz
+    version: 1.3.22
+  - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-07T14:36:59.906225725Z"
     dependencies:
@@ -4216,6 +4236,45 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-developer-hub-1.2.11/tibco-developer-hub-1.2.11.tgz
     version: 1.2.11
   tp-cp-bootstrap:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-bootstrap
+    apiVersion: v2
+    appVersion: 1.3.0-HF2
+    created: "2024-10-30T20:17:32.923175493Z"
+    dependencies:
+    - condition: hybrid-proxy.enabled
+      name: hybrid-proxy
+      repository: ""
+      version: 1.3.*
+    - condition: resource-set-operator.enabled
+      name: resource-set-operator
+      repository: ""
+      version: 1.3.*
+    - condition: router-operator.enabled
+      name: router-operator
+      repository: ""
+      version: 1.3.*
+    - condition: compute-services.enabled
+      name: compute-services
+      repository: ""
+      version: 1.3.*
+    - condition: otel-collector.enabled
+      name: otel-collector
+      repository: ""
+      version: 0.101.*
+    description: TIBCO Platform Control Plane bootstrap chart
+    digest: 8effa1da1cf1a82846abeeb2d06db21ba4f253e64dd424ebbd5005df1bf9b1fb
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - bootstrap
+    name: tp-cp-bootstrap
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-bootstrap-1.3.39/tp-cp-bootstrap-1.3.39.tgz
+    version: 1.3.39
   - annotations:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-bootstrap
@@ -5070,6 +5129,31 @@ entries:
     version: 1.2.7819
   tp-cp-core-finops:
   - apiVersion: v2
+    appVersion: 1.3.0-HF2
+    created: "2024-10-30T20:17:33.091084095Z"
+    dependencies:
+    - name: monitoring-service
+      repository: ""
+      version: 1.3.*
+    - name: finops-service
+      repository: ""
+      version: 1.3.*
+    - name: finops-prometheus
+      repository: ""
+      version: 1.3.*
+    - name: finops-web-server
+      repository: ""
+      version: 1.3.*
+    - name: finops-otel-collector
+      repository: ""
+      version: 1.3.*
+    description: A Helm chart for -- tp-cp-core-finops
+    digest: 8b0786c11a5f53e268eae0295dcdf96ce66ef4fa147252bae996a53630627e3b
+    name: tp-cp-core-finops
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-finops-1.3.463/tp-cp-core-finops-1.3.463.tgz
+    version: 1.3.463
+  - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-30T10:53:20.668878581Z"
     dependencies:
@@ -5171,6 +5255,15 @@ entries:
     version: 1.2.372
   tp-cp-core-ops:
   - apiVersion: v1
+    appVersion: 1.3.0-HF2
+    created: "2024-10-30T20:17:33.197507121Z"
+    description: TIBCO Platform Control Plane -- Bundle
+    digest: 60798e12b49beff9071ef1e6227d19b2b23b592120fe63f9e77729213d74dde4
+    name: tp-cp-core-ops
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-ops-1.3.8330/tp-cp-core-ops-1.3.8330.tgz
+    version: 1.3.8330
+  - apiVersion: v1
     appVersion: 1.3.0
     created: "2024-10-07T14:37:00.806576075Z"
     description: TIBCO Platform Control Plane -- Bundle
@@ -5213,6 +5306,22 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-eventprocessing-be-1.3.9/tp-cp-eventprocessing-be-1.3.9.tgz
     version: 1.3.9
   tp-cp-flogo-recipes:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-flogo-recipes
+    apiVersion: v2
+    appVersion: 1.3.0-HF1
+    created: "2024-10-30T20:17:33.276580651Z"
+    description: TIBCO Platform Flogo Data Plane recipes
+    digest: 13b441a9ba0d6567e7da80590be0456addabc6b97dd836794dd80240fec9f401
+    keywords:
+    - tibco-platform
+    - control-plane
+    name: tp-cp-flogo-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-flogo-recipes-1.3.30/tp-cp-flogo-recipes-1.3.30.tgz
+    version: 1.3.30
   - annotations:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-flogo-recipes
@@ -5511,6 +5620,24 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-hawk-console-recipes-1.3.26/tp-cp-hawk-console-recipes-1.3.26.tgz
     version: 1.3.26
   tp-cp-infra-recipes:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-infra-recipes
+    apiVersion: v2
+    appVersion: 1.3.0-HF2
+    created: "2024-10-30T20:17:33.355807148Z"
+    description: TIBCO Platform Infrastructure Data Plane recipes
+    digest: 2e0f9593b746c1550dcbc9bb516898e05ee8c1dc16e7b4c80c6207e077f8d019
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - recipes
+    name: tp-cp-infra-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-infra-recipes-1.3.60/tp-cp-infra-recipes-1.3.60.tgz
+    version: 1.3.60
   - annotations:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-infra-recipes
@@ -6469,6 +6596,24 @@ entries:
   tp-cp-msg-contrib:
   - apiVersion: v2
     appVersion: 1.3.0-14
+    created: "2024-10-30T20:17:33.45427972Z"
+    description: TIBCO Platform Control Plane -- Messaging
+    digest: 78e033266d84e3bdc1283adcef97848f0f528acc86bad29e761aad9f78918b1d
+    keywords:
+    - tibco-platform
+    - control-plane
+    - messaging
+    - EMS
+    - Pulsar
+    maintainers:
+    - email: tcm@tibco.com
+      name: TIBCO Cloud Messaging Team
+    name: tp-cp-msg-contrib
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-msg-contrib-1.3.16/tp-cp-msg-contrib-1.3.16.tgz
+    version: 1.3.16
+  - apiVersion: v2
+    appVersion: 1.3.0-14
     created: "2024-10-30T08:42:45.983940126Z"
     description: TIBCO Platform Control Plane -- Messaging
     digest: c35742640d165935a97c457d8bd2babdc7396019031bc7b2fb7d41678f2a1224
@@ -6960,6 +7105,26 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-tibcohub-recipes
     apiVersion: v2
+    appVersion: 1.3.0-HF1
+    created: "2024-10-30T20:17:33.546285229Z"
+    description: TIBCO Developer Hub Data Plane Recipes
+    digest: 0ad4bd5b650a484c9ae9e2eac8a4ede14a0aae0470daa2aecd821eaddf3bf4ef
+    home: https://github.com/tibco/tp-dev-hub.git
+    keywords:
+    - tibco-platform
+    - control-plane
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO CIC Compute Dev Team
+    name: tp-cp-tibcohub-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-tibcohub-recipes-1.3.20/tp-cp-tibcohub-recipes-1.3.20.tgz
+    version: 1.3.20
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-tibcohub-recipes
+    apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-07T14:37:03.755093102Z"
     description: TIBCO Developer Hub Data Plane Recipes
@@ -7128,4 +7293,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-30T13:53:05.170706885Z"
+generated: "2024-10-30T20:17:33.546799128Z"
