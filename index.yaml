@@ -4501,6 +4501,31 @@ entries:
   tp-cp-core-finops:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-30T10:53:20.668878581Z"
+    dependencies:
+    - name: monitoring-service
+      repository: ""
+      version: 1.3.*
+    - name: finops-service
+      repository: ""
+      version: 1.3.*
+    - name: finops-prometheus
+      repository: ""
+      version: 1.3.*
+    - name: finops-web-server
+      repository: ""
+      version: 1.3.*
+    - name: finops-otel-collector
+      repository: ""
+      version: 1.3.*
+    description: A Helm chart for -- tp-cp-core-finops
+    digest: a83b21a959d568ece5cbc9ba29cea1203c7f6b58d886dc06ea1f9d448bc712cb
+    name: tp-cp-core-finops
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-finops-1.3.443/tp-cp-core-finops-1.3.443.tgz
+    version: 1.3.443
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-07T14:37:00.687837485Z"
     dependencies:
     - name: monitoring-service
@@ -6227,4 +6252,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-30T09:53:12.588333752Z"
+generated: "2024-10-30T10:53:20.669287478Z"
