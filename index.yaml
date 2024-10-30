@@ -4841,6 +4841,51 @@ entries:
       app.helm.sh/name: tp-cp-integration
     apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-30T09:50:33.353489431Z"
+    dependencies:
+    - name: tp-cp-integration-common
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-integration-bwce.enabled
+      name: tp-cp-integration-bwce
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-integration-flogo.enabled
+      name: tp-cp-integration-flogo
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-integration-bw5.enabled
+      name: tp-cp-integration-bw5
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-integration-bw6.enabled
+      name: tp-cp-integration-bw6
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-bwce-utilities.enabled
+      name: tp-cp-bwce-utilities
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-flogo-utilities.enabled
+      name: tp-cp-flogo-utilities
+      repository: alias:tibco-platform
+      version: 1.3.*
+    description: TIBCO Platform Integration chart
+    digest: f8615149167b3a98f9c1d01e907e4bd6d06f2733fb3ab1c89475f9ebfa9360dd
+    keywords:
+    - tibco-platform
+    - platform
+    - integration
+    name: tp-cp-integration
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-1.3.88/tp-cp-integration-1.3.88.tgz
+    version: 1.3.88
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-integration
+    apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-29T16:47:03.308432435Z"
     dependencies:
     - name: tp-cp-integration-common
@@ -6128,4 +6173,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-30T09:48:41.282221061Z"
+generated: "2024-10-30T09:50:33.353864033Z"
