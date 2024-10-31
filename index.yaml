@@ -5793,6 +5793,31 @@ entries:
   tp-cp-core-finops:
   - apiVersion: v2
     appVersion: 1.3.0-HF2
+    created: "2024-10-31T16:19:58.804065138Z"
+    dependencies:
+    - name: monitoring-service
+      repository: ""
+      version: 1.3.*
+    - name: finops-service
+      repository: ""
+      version: 1.3.*
+    - name: finops-prometheus
+      repository: ""
+      version: 1.3.*
+    - name: finops-web-server
+      repository: ""
+      version: 1.3.*
+    - name: finops-otel-collector
+      repository: ""
+      version: 1.3.*
+    description: A Helm chart for -- tp-cp-core-finops
+    digest: 729e314031f3bdd02a0f6e3576e210050c5684a6934d8b307520f04735abb8e0
+    name: tp-cp-core-finops
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-finops-1.3.467/tp-cp-core-finops-1.3.467.tgz
+    version: 1.3.467
+  - apiVersion: v2
+    appVersion: 1.3.0-HF2
     created: "2024-10-31T16:05:47.781272183Z"
     dependencies:
     - name: monitoring-service
@@ -6263,6 +6288,31 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-flogo-utilities-1.2.20/tp-cp-flogo-utilities-1.2.20.tgz
     version: 1.2.20
   tp-cp-hawk:
+  - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-10-31T16:19:58.981071562Z"
+    dependencies:
+    - condition: tp-cp-hawk-infra-querynode.enabled
+      name: tp-cp-hawk-infra-querynode
+      repository: ""
+      version: 1.3.*
+    - condition: tp-cp-hawk-infra-prometheus.enabled
+      name: tp-cp-hawk-infra-prometheus
+      repository: ""
+      version: 1.3.*
+    description: TIBCO Platform Control Plane - Hawk Infra Bundle
+    digest: 53159493a425825b23fb8aff8ba2a3d0fec5ccbc552c21aabe7b6c91769e3233
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    keywords:
+    - tibco-platform
+    - control-plane
+    - hawk
+    maintainers:
+    - name: TIBCO Cloud Hawk Team
+    name: tp-cp-hawk
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-hawk-1.3.21/tp-cp-hawk-1.3.21.tgz
+    version: 1.3.21
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-31T13:55:44.575480736Z"
@@ -8236,6 +8286,26 @@ entries:
       app.helm.sh/name: tp-cp-tibcohub-recipes
     apiVersion: v2
     appVersion: 1.3.0-HF1
+    created: "2024-10-31T16:19:59.174803804Z"
+    description: TIBCO Developer Hub Data Plane Recipes
+    digest: 58144ef421641b513ebad271d528744ecd757d048c8751ac43d3adcacf183654
+    home: https://github.com/tibco/tp-dev-hub.git
+    keywords:
+    - tibco-platform
+    - control-plane
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO CIC Compute Dev Team
+    name: tp-cp-tibcohub-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-tibcohub-recipes-1.3.22/tp-cp-tibcohub-recipes-1.3.22.tgz
+    version: 1.3.22
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-tibcohub-recipes
+    apiVersion: v2
+    appVersion: 1.3.0-HF1
     created: "2024-10-31T14:12:17.445377679Z"
     description: TIBCO Developer Hub Data Plane Recipes
     digest: a108534841d665319acb81622c21779cf339ee7cbed7011207f2b68d1b15b333
@@ -8461,4 +8531,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-31T16:08:14.94259457Z"
+generated: "2024-10-31T16:19:59.175318288Z"
