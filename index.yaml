@@ -1158,6 +1158,23 @@ entries:
       app.helm.sh/name: dp-oauth2proxy-recipes
     apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-31T16:49:55.59751797Z"
+    description: TIBCO Platform OAuth2 Proxy Data Plane recipes
+    digest: 756a06fc23b5c4d34df55de75f3364ed4f41fe3b0f3ed5d0b96dc00197c6c23d
+    keywords:
+    - tibco-platform
+    - control-plane
+    - recipes
+    name: dp-oauth2proxy-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-oauth2proxy-recipes-1.3.22/dp-oauth2proxy-recipes-1.3.22.tgz
+    version: 1.3.22
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: dp-oauth2proxy-recipes
+    apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-31T15:45:56.164213875Z"
     description: TIBCO Platform OAuth2 Proxy Data Plane recipes
     digest: feac66fcf2b612eda218382ac8cf6a5a572757dc3f816429d1057d7c0197cc2e
@@ -6231,6 +6248,20 @@ entries:
   tp-cp-flogo-utilities:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-31T16:49:55.789063061Z"
+    dependencies:
+    - condition: flogo-utilities.enabled
+      name: flogo-utilities
+      repository: ""
+      version: 1.3.*
+    description: TIBCO Platform Control Plane -- FLOGO Utilities
+    digest: 5a4c426a460729eb6f053ce266d8236d2c65f24b3e225b683b233ff6daae022b
+    name: tp-cp-flogo-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-flogo-utilities-1.3.26/tp-cp-flogo-utilities-1.3.26.tgz
+    version: 1.3.26
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-30T13:46:18.856183119Z"
     dependencies:
     - condition: flogo-utilities.enabled
@@ -8624,4 +8655,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-31T16:25:00.94746498Z"
+generated: "2024-10-31T16:49:55.789535214Z"
