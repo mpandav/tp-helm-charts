@@ -1158,6 +1158,23 @@ entries:
       app.helm.sh/name: dp-oauth2proxy-recipes
     apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-31T15:45:56.164213875Z"
+    description: TIBCO Platform OAuth2 Proxy Data Plane recipes
+    digest: feac66fcf2b612eda218382ac8cf6a5a572757dc3f816429d1057d7c0197cc2e
+    keywords:
+    - tibco-platform
+    - control-plane
+    - recipes
+    name: dp-oauth2proxy-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-oauth2proxy-recipes-1.3.21/dp-oauth2proxy-recipes-1.3.21.tgz
+    version: 1.3.21
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: dp-oauth2proxy-recipes
+    apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-31T14:12:16.06704345Z"
     description: TIBCO Platform OAuth2 Proxy Data Plane recipes
     digest: a69e996a8b819ff0961e0f264938c85d64f0cd3fdbbe73c02c48abdb7739e0e4
@@ -5161,6 +5178,52 @@ entries:
   tp-cp-core:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-31T15:45:56.367167488Z"
+    dependencies:
+    - condition: admin-webserver.enabled
+      name: admin-webserver
+      repository: ""
+      version: 1.3.*
+    - condition: web-server.enabled
+      name: web-server
+      repository: ""
+      version: 1.3.*
+    - condition: orchestrator.enabled
+      name: orchestrator
+      repository: ""
+      version: 1.3.*
+    - condition: user-subscriptions.enabled
+      name: user-subscriptions
+      repository: ""
+      version: 1.3.*
+    - condition: email-service.enabled
+      name: email-service
+      repository: ""
+      version: 1.3.*
+    - condition: cronjobs.enabled
+      name: cronjobs
+      repository: ""
+      version: 1.3.*
+    - condition: identity-management.enabled
+      name: identity-management
+      repository: ""
+      version: 1.3.*
+    - condition: identity-provider.enabled
+      name: identity-provider
+      repository: ""
+      version: 1.3.*
+    - condition: pengine.enabled
+      name: pengine
+      repository: ""
+      version: 1.3.*
+    description: A Helm chart for -- tp-cp-core
+    digest: 55c1290f23ee350c8c07a6b5349952ae5ebf9932ecbb7a54c4ebf3376cae3a4a
+    name: tp-cp-core
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-1.3.8275/tp-cp-core-1.3.8275.tgz
+    version: 1.3.8275
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-31T13:55:44.257665439Z"
     dependencies:
     - condition: admin-webserver.enabled
@@ -5622,6 +5685,31 @@ entries:
   tp-cp-core-finops:
   - apiVersion: v2
     appVersion: 1.3.0-HF2
+    created: "2024-10-31T15:45:56.558693611Z"
+    dependencies:
+    - name: monitoring-service
+      repository: ""
+      version: 1.3.*
+    - name: finops-service
+      repository: ""
+      version: 1.3.*
+    - name: finops-prometheus
+      repository: ""
+      version: 1.3.*
+    - name: finops-web-server
+      repository: ""
+      version: 1.3.*
+    - name: finops-otel-collector
+      repository: ""
+      version: 1.3.*
+    description: A Helm chart for -- tp-cp-core-finops
+    digest: 5ae21a59acb3cf429c9a178f523918490aa5ee5eb66cea71016b48f6db6c9384
+    name: tp-cp-core-finops
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-finops-1.3.465/tp-cp-core-finops-1.3.465.tgz
+    version: 1.3.465
+  - apiVersion: v2
+    appVersion: 1.3.0-HF2
     created: "2024-10-31T13:55:44.427355953Z"
     dependencies:
     - name: monitoring-service
@@ -5773,6 +5861,15 @@ entries:
   tp-cp-core-ops:
   - apiVersion: v1
     appVersion: 1.3.0-HF2
+    created: "2024-10-31T15:45:56.721038048Z"
+    description: TIBCO Platform Control Plane -- Bundle
+    digest: f16189dc3db9adf29fb85a699c543981a6591df286a0d81c47d0f61ac71bf00b
+    name: tp-cp-core-ops
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-ops-1.3.8331/tp-cp-core-ops-1.3.8331.tgz
+    version: 1.3.8331
+  - apiVersion: v1
+    appVersion: 1.3.0-HF2
     created: "2024-10-30T20:17:33.197507121Z"
     description: TIBCO Platform Control Plane -- Bundle
     digest: 60798e12b49beff9071ef1e6227d19b2b23b592120fe63f9e77729213d74dde4
@@ -5823,6 +5920,22 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-eventprocessing-be-1.3.9/tp-cp-eventprocessing-be-1.3.9.tgz
     version: 1.3.9
   tp-cp-flogo-recipes:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-flogo-recipes
+    apiVersion: v2
+    appVersion: 1.3.0-HF1
+    created: "2024-10-31T15:45:56.897700325Z"
+    description: TIBCO Platform Flogo Data Plane recipes
+    digest: 9637796da4ac5a2541f6635c4dc51b6253ad9065247e69c2d240ca0944cc76b6
+    keywords:
+    - tibco-platform
+    - control-plane
+    name: tp-cp-flogo-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-flogo-recipes-1.3.32/tp-cp-flogo-recipes-1.3.32.tgz
+    version: 1.3.32
   - annotations:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-flogo-recipes
@@ -6143,6 +6256,23 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-hawk-1.2.14/tp-cp-hawk-1.2.14.tgz
     version: 1.2.14
   tp-cp-hawk-console-recipes:
+  - annotations:
+      app.helm.sh/component: tibco-platform-data-plane
+      app.helm.sh/name: tp-cp-hawk-console-recipes
+    apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-10-31T15:45:57.23714385Z"
+    description: TIBCO Platform Hawk Data Plane recipes
+    digest: 2b331580563be78ae13948e88cfeb45ae45a8d80e447f4e640666c264c821c1f
+    keywords:
+    - tibco-platform
+    - infra
+    - recipes
+    name: tp-cp-hawk-console-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-hawk-console-recipes-1.3.29/tp-cp-hawk-console-recipes-1.3.29.tgz
+    version: 1.3.29
   - annotations:
       app.helm.sh/component: tibco-platform-data-plane
       app.helm.sh/name: tp-cp-hawk-console-recipes
@@ -7815,6 +7945,16 @@ entries:
   tp-cp-tibcohub-contrib:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-31T15:45:57.403310047Z"
+    description: A Helm chart for TIBCO Hub CP contribution
+    digest: 6795e3d5adf0a70e603ba9ea40aaaf7b703d8f37afbc340bf1ec772c96f73221
+    name: tp-cp-tibcohub-contrib
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-tibcohub-contrib-1.3.9/tp-cp-tibcohub-contrib-1.3.9.tgz
+    version: 1.3.9
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-30T08:42:46.071328577Z"
     description: A Helm chart for TIBCO Hub CP contribution
     digest: 62f31cd391d4f4abf71cbd24a360e6d608b329c276ce274f0d85a44c5d1a361e
@@ -8104,4 +8244,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-31T14:40:22.802250686Z"
+generated: "2024-10-31T15:45:57.403907956Z"
