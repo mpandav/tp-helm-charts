@@ -2593,6 +2593,60 @@ entries:
       app.helm.sh/name: platform-base
     apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-31T16:01:24.348574314Z"
+    dependencies:
+    - name: tp-cp-configuration
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-recipes
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-o11y
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-core
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-core-ops
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-core-finops
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-integration.enabled
+      name: tp-cp-integration
+      repository: alias:tibco-platform
+      tags:
+      - integration
+      version: 1.3.*
+    - condition: tp-cp-tibcohub-contrib.enabled
+      name: tp-cp-tibcohub-contrib
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-msg-contrib.enabled
+      name: tp-cp-msg-contrib
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - condition: tp-cp-hawk.enabled
+      name: tp-cp-hawk
+      repository: alias:tibco-platform
+      version: 1.3.*
+    description: TIBCO Platform base chart
+    digest: fcaba15e275aa49e93ef6be56778a27085866802f555da9fa7e477922eca6067
+    keywords:
+    - tibco-platform
+    - platform
+    - base
+    name: platform-base
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/platform-base-1.3.364/platform-base-1.3.364.tgz
+    version: 1.3.364
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: platform-base
+    apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-31T14:17:14.061583345Z"
     dependencies:
     - name: tp-cp-configuration
@@ -8328,4 +8382,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-31T15:56:46.369804467Z"
+generated: "2024-10-31T16:01:24.349060096Z"
