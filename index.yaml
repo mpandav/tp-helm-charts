@@ -3,6 +3,15 @@ entries:
   artifactmanager:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-31T09:37:29.473536456Z"
+    description: A Helm chart for Artifact Manager
+    digest: 5b19bbbe65821c6d86955682460e0c0a2fba43c9736a7911ff236d90fa3c4126
+    name: artifactmanager
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/artifactmanager-1.3.5/artifactmanager-1.3.5.tgz
+    version: 1.3.5
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-07T14:36:56.763576267Z"
     description: A Helm chart for Artifact Manager
     digest: 3b4aec3656244b7515bf6c8d7b06b8bba85a501ad4a36fbefbc065931c9ad994
@@ -83,6 +92,20 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/artifactmanager-1.2.9/artifactmanager-1.2.9.tgz
     version: 1.2.9
   bwprovisioner:
+  - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-10-31T09:37:29.620523976Z"
+    description: TIBCO Platform Dataplane Capabilty -- BW Provisioner
+    digest: 3aac1a3ab274fde93726d97b28f25f0c2506b100523680d991647ba778c0c8e4
+    home: https://github.com/tibco/tp-iapp-bw-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: bwprovisioner
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bwprovisioner-1.3.15/bwprovisioner-1.3.15.tgz
+    version: 1.3.15
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-10T15:09:50.209276155Z"
@@ -1606,6 +1629,15 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/msg-pulsar-tp-1.2.24/msg-pulsar-tp-1.2.24.tgz
     version: 1.2.24
   o11yservice:
+  - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-10-31T09:37:29.775199467Z"
+    description: A helm chart for o11y service
+    digest: 5067b0824c202cafc07584d68acaa8d22e896720f1ed163836cd084bd1e7931d
+    name: o11yservice
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/o11yservice-1.3.35/o11yservice-1.3.35.tgz
+    version: 1.3.35
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-20T06:23:45.527438614Z"
@@ -5679,6 +5711,24 @@ entries:
       app.helm.sh/name: tp-cp-infra-recipes
     apiVersion: v2
     appVersion: 1.3.0-HF2
+    created: "2024-10-31T09:37:29.935540166Z"
+    description: TIBCO Platform Infrastructure Data Plane recipes
+    digest: debf68ca6ae3a12ab920d77443b7707a56216e8c133ca05a7263db5f5c961b50
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - recipes
+    name: tp-cp-infra-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-infra-recipes-1.3.61/tp-cp-infra-recipes-1.3.61.tgz
+    version: 1.3.61
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-infra-recipes
+    apiVersion: v2
+    appVersion: 1.3.0-HF2
     created: "2024-10-30T20:17:33.355807148Z"
     description: TIBCO Platform Infrastructure Data Plane recipes
     digest: 2e0f9593b746c1550dcbc9bb516898e05ee8c1dc16e7b4c80c6207e077f8d019
@@ -7250,6 +7300,15 @@ entries:
   tp-dp-monitor-agent:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-31T09:37:30.243741955Z"
+    description: A Helm chart for deploying the tp-dp-monitor-agent service
+    digest: ba20842a5ea0d8b99e4fdddb40f65adcd65867fffdcffd2b265e170f44903c5e
+    name: tp-dp-monitor-agent
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.3.139/tp-dp-monitor-agent-1.3.139.tgz
+    version: 1.3.139
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-20T06:23:45.699235957Z"
     description: A Helm chart for deploying the tp-dp-monitor-agent service
     digest: da77d5dc31a6b886795f2121de153a88083696ed9d5025f95dc6100bfb3228ad
@@ -7347,4 +7406,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-31T09:10:01.002805181Z"
+generated: "2024-10-31T09:37:30.244327254Z"
