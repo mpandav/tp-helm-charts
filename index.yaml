@@ -4197,6 +4197,27 @@ entries:
       app.helm.sh/name: platform-bootstrap
     apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-10-31T14:40:22.80183619Z"
+    dependencies:
+    - name: tp-cp-bootstrap
+      repository: alias:tibco-platform
+      version: 1.3.40
+    description: TIBCO Platform bootstrap chart
+    digest: 4d0dd26ed343191f0e7486c39e4550e6974248c2d50d33360be4587a3d9bb413
+    keywords:
+    - tibco-platform
+    - platform
+    - bootstrap
+    name: platform-bootstrap
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/platform-bootstrap-1.3.42/platform-bootstrap-1.3.42.tgz
+    version: 1.3.42
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: platform-bootstrap
+    apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-10-29T11:42:32.147617084Z"
     dependencies:
     - name: tp-cp-bootstrap
@@ -8083,4 +8104,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-31T14:17:14.062235364Z"
+generated: "2024-10-31T14:40:22.802250686Z"
