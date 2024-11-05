@@ -5864,6 +5864,31 @@ entries:
   tp-cp-core-finops:
   - apiVersion: v2
     appVersion: 1.3.0-HF2
+    created: "2024-11-05T13:50:48.269772125Z"
+    dependencies:
+    - name: monitoring-service
+      repository: ""
+      version: 1.3.*
+    - name: finops-service
+      repository: ""
+      version: 1.3.*
+    - name: finops-prometheus
+      repository: ""
+      version: 1.3.*
+    - name: finops-web-server
+      repository: ""
+      version: 1.3.*
+    - name: finops-otel-collector
+      repository: ""
+      version: 1.3.*
+    description: A Helm chart for -- tp-cp-core-finops
+    digest: c21b4a774a7c0b5c946d6f732c71f7cd6026b4066107d00b3ddb1fb9e04c3a29
+    name: tp-cp-core-finops
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-finops-1.3.468/tp-cp-core-finops-1.3.468.tgz
+    version: 1.3.468
+  - apiVersion: v2
+    appVersion: 1.3.0-HF2
     created: "2024-10-31T16:19:58.804065138Z"
     dependencies:
     - name: monitoring-service
@@ -6373,6 +6398,31 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-flogo-utilities-1.2.20/tp-cp-flogo-utilities-1.2.20.tgz
     version: 1.2.20
   tp-cp-hawk:
+  - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2024-11-05T13:50:48.394938878Z"
+    dependencies:
+    - condition: tp-cp-hawk-infra-querynode.enabled
+      name: tp-cp-hawk-infra-querynode
+      repository: ""
+      version: 1.3.*
+    - condition: tp-cp-hawk-infra-prometheus.enabled
+      name: tp-cp-hawk-infra-prometheus
+      repository: ""
+      version: 1.3.*
+    description: TIBCO Platform Control Plane - Hawk Infra Bundle
+    digest: d3afa051f5ceb0e26d876afc30ef97034a20f4ebeab38d2c251f8adda4aaed29
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    keywords:
+    - tibco-platform
+    - control-plane
+    - hawk
+    maintainers:
+    - name: TIBCO Cloud Hawk Team
+    name: tp-cp-hawk
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-hawk-1.3.22/tp-cp-hawk-1.3.22.tgz
+    version: 1.3.22
   - apiVersion: v2
     appVersion: 1.3.0
     created: "2024-10-31T16:19:58.981071562Z"
@@ -8655,4 +8705,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-10-31T16:49:55.789535214Z"
+generated: "2024-11-05T13:50:48.395524241Z"
