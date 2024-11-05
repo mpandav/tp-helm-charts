@@ -87,7 +87,7 @@ spec:
         ports:
         - containerPort: 7831
           name: server
-        - containerPort: 9831
+        - containerPort: 8831
           name: proxy-server
         - containerPort: 9831
           name: monitor-server

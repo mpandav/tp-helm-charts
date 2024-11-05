@@ -111,4 +111,4 @@ spec:
       volumes:
         - name: store-vol
           persistentVolumeClaim:
-          claimName: {{ include "tp-hawk-infra-querynode.pvc-name" . }}
+            claimName: {{ include "tp-hawk-infra-querynode.pvc-name" . }}
