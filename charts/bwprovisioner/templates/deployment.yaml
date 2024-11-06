@@ -91,7 +91,7 @@ spec:
             - name: CHART_APP_VERSION
               value: {{ .Chart.AppVersion }}
             - name: BWCE_APP_HELMCHART_VERSION
-              value: 1.4.3
+              value: 1.4.4
             - name: BWCE_APP_HELMCHART_REPO_USERNAME
               value: ""
             - name: BWCE_APP_HELMCHART_REPO_PASSWORD
