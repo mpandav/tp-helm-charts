@@ -8370,6 +8370,45 @@ entries:
       app.helm.sh/name: tp-cp-recipes
     apiVersion: v2
     appVersion: 1.3.0
+    created: "2024-11-06T15:03:59.5267836Z"
+    dependencies:
+    - name: tp-cp-infra-recipes
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-bwce-recipes
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-flogo-recipes
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-tibcohub-recipes
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: dp-oauth2proxy-recipes
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-servicemesh-recipes
+      repository: alias:tibco-platform
+      version: 1.3.*
+    - name: tp-cp-hawk-console-recipes
+      repository: alias:tibco-platform
+      version: 1.3.*
+    description: TIBCO Platform recipe chart
+    digest: 1e8b9e2453c306fdf36f301c323c7dab3d497b761cb3abea8773076b380e4253
+    keywords:
+    - tibco-platform
+    - platform
+    - recipes
+    name: tp-cp-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-recipes-1.3.172/tp-cp-recipes-1.3.172.tgz
+    version: 1.3.172
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-recipes
+    apiVersion: v2
+    appVersion: 1.3.0
     created: "2024-11-06T13:35:13.680798554Z"
     dependencies:
     - name: tp-cp-infra-recipes
@@ -9069,4 +9108,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2024-11-06T14:53:43.611820964Z"
+generated: "2024-11-06T15:03:59.527312787Z"
