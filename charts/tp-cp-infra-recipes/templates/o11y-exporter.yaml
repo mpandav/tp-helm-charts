@@ -1322,9 +1322,8 @@ data:
                     enabled: true
                     minReplicas: 1
                     maxReplicas: 3
-                    behavior:
-                      targetCPUUtilizationPercentage: 80
-                      targetMemoryUtilizationPercentage: 80
+                    targetCPUUtilizationPercentage: 80
+                    targetMemoryUtilizationPercentage: 80
                   cmdlineParams:
                     es.version: 7
                     es.create-index-templates: "false"
