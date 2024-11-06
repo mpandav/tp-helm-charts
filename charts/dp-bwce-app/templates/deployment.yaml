@@ -183,6 +183,9 @@ spec:
         ports:
         - containerPort: 2020
           protocol: TCP
+        readinessProbe:
+          tcpSocket:
+            port: 2020
         resources:
           {{- toYaml .Values.fluentBit.resources | nindent 10 }}
         securityContext:
