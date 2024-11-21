@@ -137,6 +137,8 @@ spec:
           value: {{ .Values.global.external.fromAndReplyToEmailAddress | quote }}
         - name: EMAIL_SERVICE_CC_ADDRESS
           value: ""
+        - name: TIBCO_TROPOS_SERVICE_EMAIL
+          value: {{ .Values.global.external.fromAndReplyToEmailAddress | quote }}
         - name: TASKRUNNER_TIME_INTERVAL_FOR_EMAIL_SERVICE
           value: "200"
         - name: TASKRUNNER_TIME_INTERVAL_FOR_AWS_SESEMAIL
