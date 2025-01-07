@@ -79,8 +79,6 @@ spec:
             configMapKeyRef:
               key: REGION
               name: {{ include "tp-cp-core-finops.tp-env-configmap" . }}
-        - name: IAAS_VENDOR
-          value: {{ include "cp-core-configuration.provider-name" . }}
         - name: PSQL_SCRIPTS_LOCATION
           value: /opt/tibco/finops/scripts/postgres
         - name: BASE_SCRIPTS_LOCATION
@@ -198,8 +196,6 @@ spec:
             configMapKeyRef:
               key: REGION
               name: {{ include "tp-cp-core-finops.tp-env-configmap" . }}
-        - name: IAAS_VENDOR
-          value: {{ include "cp-core-configuration.provider-name" . }}
         - name: ENVIRONMENT_TYPE
           value: {{ (.Values.global.external.environment | lower) }}
         - name: PSQL_SCRIPTS_LOCATION
@@ -316,8 +312,6 @@ spec:
             configMapKeyRef:
               key: REGION
               name: {{ include "tp-cp-core-finops.tp-env-configmap" . }}
-        - name: IAAS_VENDOR
-          value: {{ include "cp-core-configuration.provider-name" . }}
         - name: DeleteDBOnUninstall
           value: {{ .Values.finops.deleteDBOnUninstall | quote }}
         - name: PSQL_SCRIPTS_LOCATION
@@ -436,8 +430,6 @@ spec:
             configMapKeyRef:
               key: REGION
               name: {{ include "tp-cp-core-finops.tp-env-configmap" . }}
-        - name: IAAS_VENDOR
-          value: {{ include "cp-core-configuration.provider-name" . }}
         - name: PSQL_SCRIPTS_LOCATION
           value: /opt/tibco/finops/scripts/postgres
         - name: BASE_SCRIPTS_LOCATION
