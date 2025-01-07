@@ -54,7 +54,7 @@ images:
     image:
       name: hawk-querynode
       pullPolicy: IfNotPresent
-      tag: 121
+      tag: 124
 
 # no of replicas
 replicaCount: "1"
