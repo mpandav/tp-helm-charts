@@ -337,10 +337,10 @@ securityContext:
   runAsGroup: {{ int .cp.gid }}
     {{- if ne (int 0) (int .cp.uid) }}
   allowPrivilegeEscalation: false
-  readOnlyRootFilesystem: true
   capabilities:
     drop:
     - ALL
+  readOnlyRootFilesystem: true
   runAsNonRoot: true
     {{- end }}
 {{- end }}

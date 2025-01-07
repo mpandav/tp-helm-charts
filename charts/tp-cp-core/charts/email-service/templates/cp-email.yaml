@@ -59,7 +59,7 @@ spec:
       securityContext:
         {{- toYaml .Values.global.podSecurityContext | nindent 8 }}
       {{- end }}
-      {{- if eq ( include "cp-core-configuration.provider-name" . ) "aws" }}
+      {{- if eq .Values.global.external.emailServerType "ses" }}
       serviceAccountName: {{ include "cp-core-configuration.service-account-name" . }}
       {{- else }}
       automountServiceAccountToken: false
@@ -137,8 +137,6 @@ spec:
           value: {{ .Values.global.external.fromAndReplyToEmailAddress | quote }}
         - name: EMAIL_SERVICE_CC_ADDRESS
           value: ""
-        - name: TIBCO_TROPOS_SERVICE_EMAIL
-          value: {{ .Values.global.external.fromAndReplyToEmailAddress | quote }}
         - name: TASKRUNNER_TIME_INTERVAL_FOR_EMAIL_SERVICE
           value: "200"
         - name: TASKRUNNER_TIME_INTERVAL_FOR_AWS_SESEMAIL
