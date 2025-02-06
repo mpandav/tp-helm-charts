@@ -9,5 +9,5 @@ appVersion: 1.4.0
 description: TIBCO Platform Control Plane -- BE Addon
 dependencies:
   - name: be-webserver
-    version: "1.4.*"
+    version: 1.4.*
     condition: be-webserver.enabled
