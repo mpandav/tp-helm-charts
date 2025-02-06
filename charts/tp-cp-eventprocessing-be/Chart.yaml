@@ -4,7 +4,7 @@
 
 apiVersion: v2
 name: tp-cp-eventprocessing-be
-version: 1.4.8
+version: 1.4.9
 appVersion: 1.4.0
 description: TIBCO Platform Control Plane -- BE Addon
 dependencies:
