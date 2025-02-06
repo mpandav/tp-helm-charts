@@ -32,6 +32,14 @@ o11y-service:
       drop:
         - ALL
 
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 1024Mi
+
 global:
   tibco:
     # The fluentbit configuration section.
@@ -46,13 +54,12 @@ global:
           name: "common-fluentbit"
           registry: ""
           repo: ""
-          tag: 3.1.4
+          tag: 3.2.2
           pullPolicy: IfNotPresent
-        securityContext:
-          runAsNonRoot: false
-          runAsUser: 0
-          allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
-          capabilities:
-            drop:
-              - ALL
+        resources:
+          requests:
+            cpu: 50m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 150Mi

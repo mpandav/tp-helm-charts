@@ -17,8 +17,9 @@ metadata:
     {{- include "tp-dp-monitor-agent.shared.labels.standard" .| nindent 4}}
 spec:
   ingressClassName: {{ tpl .Values.ingress.className . }}
-  rules:           
-  - host: "*.cp1-my.localhost.dataplanes.pro"
+  rules:
+  # Host-based rule for Control Plane traffic using the Data Plane ID
+  - host: "dp-{{ .Values.global.cp.dataplaneId }}.platform.local"
     http:
       paths:
       - pathType: Prefix
@@ -28,7 +29,9 @@ spec:
             name: {{ include "tp-dp-monitor-agent.consts.appName" . }}
             port:
               number: 7831
-  - host: "dp-{{ .Values.global.cp.dataplaneId }}"
+
+  # Host-based rule for traffic from HAProxy (used by tibtunnel)
+  - host: "cpdpproxy"
     http:
       paths:
       - pathType: Prefix
@@ -38,4 +41,5 @@ spec:
             name: {{ include "tp-dp-monitor-agent.consts.appName" . }}
             port:
               number: 7831
+
 {{- end }}

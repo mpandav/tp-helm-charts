@@ -18,7 +18,7 @@ Table of Contents
 * [Control Plane Deployment](#control-plane-deployment)
   * [Configure Route53 records, Certificates](#configure-route53-records-certificates)
   * [Export additional variables required for chart values](#export-additional-variables-required-for-chart-values)
-  * [Install Ingress Controller [OPTIONAL]](#install-ingress-controller-optional)
+  * [Install Additional Ingress Controller [OPTIONAL]](#install-additional-ingress-controller-optional)
     * [Nginx Ingress Controller](#install-nginx-ingress-controller)
   * [Bootstrap Chart values](#bootstrap-chart-values)
 * [Clean-up](#clean-up)
@@ -357,10 +357,46 @@ ingress-nginx:
   enabled: true
   controller:
     config:
+      # refer: https://github.com/kubernetes/ingress-nginx/blob/main/docs/user-guide/nginx-configuration/configmap.md to know more about the following configuration options
+      # to support passing the incoming X-Forwarded-* headers to upstreams
       use-forwarded-headers: "true"
+      # to support large file upload from Control Plane
       proxy-body-size: "150m"
+      # to set the size of the buffer used for reading the first part of the response received
+      proxy-buffer-size: 16k
 EOF
 ```
+
+You can optionally use the same ingress controller for tunnel traffic, as well. To do so, you will need to create another ingress object which sends the traffic to nginx service. This means, the helm chart `dp-config-aws` needs to be re-deployed with different release-name. This is to ensure that the ingress for tunnel domain is created. (The alternative to this is using a load balancer service)
+
+```bash
+helm upgrade --install --wait --timeout 1h --create-namespace \
+  -n ingress-system dp-config-aws-tunnel dp-config-aws \
+  --repo "${TP_TIBCO_HELM_CHART_REPO}" \
+  --labels layer=1 \
+  --version "^1.0.0" -f - <<EOF
+dns:
+  domain: "${TP_TUNNEL_DOMAIN}"
+httpIngress:
+  enabled: true
+  name: nginx-tun
+  backend:
+    serviceName: dp-config-aws-tunnel-ingress-nginx-controller
+  annotations:
+    # keeping the same group.name ensures only one ALB is created
+    alb.ingress.kubernetes.io/group.name: "${TP_DOMAIN}"
+    # this is to support 1.3 TLS for ALB, Please refer AWS doc: https://aws.amazon.com/about-aws/whats-new/2023/03/application-load-balancer-tls-1-3/
+    alb.ingress.kubernetes.io/ssl-policy: "ELBSecurityPolicy-TLS13-1-2-2021-06"
+    external-dns.alpha.kubernetes.io/hostname: "*.${TP_TUNNEL_DOMAIN}"
+    # this will be used for external-dns annotation filter
+    kubernetes.io/ingress.class: alb
+# you don't need to deploy the ingress controller again
+ingress-nginx:
+  enabled: false
+EOF
+```
+
+
 Use the following command to get the ingress class name.
 ```bash
 $ kubectl get ingressclass
@@ -432,6 +468,98 @@ Following values can be stored in a file and passed to the platform-boostrap cha
 ```bash
 cat > aws-bootstrap-values.yaml <(envsubst '${TP_ENABLE_NETWORK_POLICY}, ${TP_CONTAINER_REGISTRY_URL}, ${TP_CONTAINER_REGISTRY_USER}, ${TP_CONTAINER_REGISTRY_PASSWORD}, ${CP_INSTANCE_ID}, ${TP_TUNNEL_DOMAIN}, ${TP_DOMAIN}, ${TP_VPC_CIDR}, ${TP_SERVICE_CIDR}, ${TP_STORAGE_CLASS_EFS}, ${TP_INGRESS_CONTROLLER}, ${TP_DOMAIN_CERT_ARN}, ${TP_TUNNEL_DOMAIN_CERT_ARN}, ${TP_LOGSERVER_ENDPOINT}, ${TP_LOGSERVER_INDEX}, ${TP_LOGSERVER_USERNAME}, ${TP_LOGSERVER_PASSWORD}'  << 'EOF'
 tp-cp-bootstrap:
+  hybrid-proxy:
+    # uncomment the following section (ports and service values), if you want to use a load balancer service for hybrid-proxy
+    # ports:
+    #   api:
+    #     enabled: true
+    #     serviceEnabled: false
+    #     containerPort: 88
+    #     servicePort: 88
+    #     protocol: TCP
+    #     targetPort: api
+    #   tunnel:
+    #     enabled: true
+    #     serviceEnabled: true
+    #     containerPort: 443
+    #     servicePort: 443
+    #     protocol: TCP
+    #     targetPort: tunnel
+    # service:
+    #   type: LoadBalancer
+    #   loadBalancerClass: "service.k8s.aws/nlb"
+    #   allocateLoadBalancerNodePorts: false
+    #   # annotation for load balancer service
+    #   annotations:
+    #     external-dns.alpha.kubernetes.io/hostname: "*.${TP_TUNNEL_DOMAIN}"
+    #     service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "${TP_TUNNEL_DOMAIN_CERT_ARN}"
+    #     service.beta.kubernetes.io/aws-load-balancer-attributes: load_balancing.cross_zone.enabled=false
+    #     service.beta.kubernetes.io/aws-load-balancer-target-group-attributes: preserve_client_ip.enabled=true
+    #     service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    #     service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    #     service.beta.kubernetes.io/aws-load-balancer-type: external
+    #     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+    #     # optional policy to use TLS 1.3, for `nlb`
+    #     service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy: "ELBSecurityPolicy-TLS13-1-2-2021-06"
+    # alternatively, uncomment the following section, if you have deployed additional ingress controller (e.g. nginx) and want to use ingress for hybrid-proxy
+    # ingress:
+    #   enabled: true
+    #   ingressClassName: "${TP_INGRESS_CONTROLLER}"
+    #   # uncomment annotations from following section, as per your requirements
+    #   annotations:
+    #   # annotations for `nginx` ingress class
+    #   # refer: https://github.com/kubernetes/ingress-nginx/blob/main/docs/user-guide/nginx-configuration/annotations.md to know more about the following annotation
+    #   # uncomment the following annotations, if not set globally using controller.config
+    #     nginx.ingress.kubernetes.io/proxy-buffer-size: 16k
+    #     nginx.ingress.kubernetes.io/proxy-body-size: "150m"
+    #   # uncomment following tls section to secure your ingress resource
+    #   tls:
+    #     - hosts:
+    #         - '*.${TP_TUNNEL_DOMAIN}'
+    #      # create a secret containing a TLS private key and certificate, and replace the value for secretName below
+    #      secretName: hybrid-proxy-tls
+    #   hosts:
+    #     - host: '*.${TP_TUNNEL_DOMAIN}'
+    #       paths:
+    #         - path: /
+    #           pathType: Prefix
+    #           port: 105
+  router-operator:
+    ingress:
+      enabled: true
+      ingressClassName: "${TP_INGRESS_CONTROLLER}"
+      #   # uncomment annotations from following section, as per your requirements
+      #   annotations:
+      #   # annotations for `nginx` ingress class
+      #   # refer: https://github.com/kubernetes/ingress-nginx/blob/main/docs/user-guide/nginx-configuration/annotations.md to know more about the following annotation
+      #    # uncomment the following annotations, if not set globally using controller.config
+      #    nginx.ingress.kubernetes.io/proxy-buffer-size: 16k
+      #    nginx.ingress.kubernetes.io/proxy-body-size: "150m"
+      #   # annotation for `alb` ingress class
+      #   external-dns.alpha.kubernetes.io/hostname: "*.${TP_DOMAIN}"
+      #   alb.ingress.kubernetes.io/group.name: "${TP_DOMAIN}"
+      #   alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+      #   alb.ingress.kubernetes.io/backend-protocol: HTTP
+      #   alb.ingress.kubernetes.io/scheme: internet-facing
+      #   alb.ingress.kubernetes.io/success-codes: 200-399
+      #   alb.ingress.kubernetes.io/target-type: ip
+      #   alb.ingress.kubernetes.io/healthcheck-port: '88'
+      #   alb.ingress.kubernetes.io/healthcheck-path: "/health"
+      #   alb.ingress.kubernetes.io/certificate-arn: "${TP_DOMAIN_CERT_ARN}"
+      #   # optional policy to use TLS 1.3, for `alb` ingress class
+      #   alb.ingress.kubernetes.io/ssl-policy: "ELBSecurityPolicy-TLS13-1-2-2021-06"
+      hosts:
+      #   # uncomment following tls section to secure your ingress resource
+      #   tls:
+      #     - hosts:
+      #         - '*.${TP_DOMAIN}'
+      #      # create a secret containing a TLS private key and certificate, and replace the value for secretName below
+      #      secretName: router-tls
+        - host: '*.${TP_DOMAIN}'
+          paths:
+            - path: /
+              pathType: Prefix
+              port: 100
   # uncomment to enable logging
   # otel-collector:
     # enabled: true
@@ -449,27 +577,12 @@ global:
     #   fluentbit:
     #     enabled: true
   external:
-    ingress:
-      ingressClassName: "${TP_INGRESS_CONTROLLER}"
-      # uncomment following value if 'alb' is used as TP_INGRESS_CONTROLLER
-      # certificateArn: "${TP_DOMAIN_CERT_ARN}"
-      annotations: {}
-        # optional policy to use TLS 1.3, if ingress class is `alb`
-        # alb.ingress.kubernetes.io/ssl-policy: "ELBSecurityPolicy-TLS13-1-2-2021-06"
-    aws:
-      tunnelService:
-        loadBalancerClass: "service.k8s.aws/nlb"
-        certificateArn: "${TP_TUNNEL_DOMAIN_CERT_ARN}"
-        annotations: {}
-          # optional policy to use TLS 1.3, for `nlb`
-          # service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy: "ELBSecurityPolicy-TLS13-1-2-2021-06"
     clusterInfo:
       nodeCIDR: "${TP_VPC_CIDR}"
       podCIDR: "${TP_VPC_CIDR}"
       serviceCIDR: "${TP_SERVICE_CIDR}"
     dnsTunnelDomain: "${TP_TUNNEL_DOMAIN}"
     dnsDomain: "${TP_DOMAIN}"
-    provider: "aws"
     storage:
       storageClassName: "${TP_STORAGE_CLASS_EFS}"
         # uncomment following section if logging is enabled

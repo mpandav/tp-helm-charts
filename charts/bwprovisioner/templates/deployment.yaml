@@ -51,7 +51,7 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext.bwprovisioner | nindent 12 }}
           {{- end }}
-          image: {{ include "bwprovisioner.image.registry" .}}{{"/"}}{{ include "bwprovisioner.image.repository" .}}{{"/"}}tp-bw-provisioner:529
+          image: {{ include "bwprovisioner.image.registry" .}}{{"/"}}{{ include "bwprovisioner.image.repository" .}}{{"/"}}tp-bw-provisioner:{{ .Values.global.bwprovisioner.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           livenessProbe:
             httpGet:
@@ -62,8 +62,10 @@ spec:
             failureThreshold: {{ .Values.probes.liveness.failureThreshold }}
             periodSeconds: {{ .Values.probes.liveness.periodSeconds }}
             timeoutSeconds: {{ .Values.probes.liveness.timeoutSeconds }}
+          {{- if .Values.global.cp.enableResourceConstraints }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- end }}
           env:
             {{- range $filename, $content :=  .Values.config }}
             {{- if $content }}
@@ -90,20 +92,6 @@ spec:
               value: {{ .Chart.Version }}
             - name: CHART_APP_VERSION
               value: {{ .Chart.AppVersion }}
-            - name: BWCE_APP_HELMCHART_VERSION
-              value: 1.4.4
-            - name: BWCE_APP_HELMCHART_REPO_USERNAME
-              value: ""
-            - name: BWCE_APP_HELMCHART_REPO_PASSWORD
-              value: ""
-            - name: BWCE_APP_HELMCHART_REPO_TYPE
-              value: git
-            - name: BWCE_APP_HELMCHART_REPO_URL
-              value: https://github.com/mpandav/tp-helm-charts.git
-            - name: BWCE_APP_HELMCHART_REPO_PATH
-              value: charts/dp-bwce-app
-            - name: BWCE_APP_HELMCHART_REPO_BRANCH
-              value: main
             - name: POD_NAMESPACE
               valueFrom:
                 fieldRef:
@@ -147,8 +135,10 @@ spec:
                   key: otel-recvservice-port
                   optional: true
           volumeMounts:
-          - name: tmp
-            mountPath: /tmp
+            - name: logs-share
+              mountPath: /tmp/logs/share
+            - name: tmp-workspace
+              mountPath: /tmp/bw-provisioner/workspace
         {{- if .Values.global.cp.logging.fluentbit.enabled }}
         - name: fluent-bit
           image: {{ include "bwprovisioner.image.registry" .}}{{"/"}}{{ include "bwprovisioner.appinit.image.repository" .}}{{"/"}}common-fluentbit:{{ .Values.global.cp.logging.fluentbit.image.tag }}
@@ -157,9 +147,15 @@ spec:
           securityContext:
             {{- toYaml .Values.global.cp.logging.fluentbit.securityContext | nindent 12 }}
           {{- end }}
+          {{- with .Values.global.cp.logging.fluentbit.probes.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- if .Values.global.cp.enableResourceConstraints }}
           {{- with .Values.global.cp.logging.fluentbit.resources }}
           resources:
             {{- toYaml . | nindent 12 }}
+          {{- end }}
           {{- end }}
           env:
             - name: POD_NAMESPACE
@@ -177,20 +173,34 @@ spec:
             - name: CONTAINER_NAME
               value: {{ .Chart.Name }}
           volumeMounts:
-            - name: podlogs
+            - name: logs-share
               mountPath: /var/log/pods
             - name: fluent-bit-config
               mountPath: /fluent-bit/etc/
         {{- end }}
       volumes:
-        - name: tmp
-          emptyDir: {}
-{{- if .Values.global.cp.logging.fluentbit.enabled }}
-        - name: podlogs
-          hostPath:
-            path: /var/log/pods
-            type: Directory
+        - emptyDir: {}
+          name: tmp-workspace
+        - emptyDir: {}
+          name: logs-share
+        {{- if .Values.global.cp.logging.fluentbit.enabled }}
         - name: fluent-bit-config
           configMap:
             name: {{ include "bwprovisioner.fullname" . }}-fluentbit-config
-{{- end }}
+        {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.topologySpreadConstraints }}
+      topologySpreadConstraints:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

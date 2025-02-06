@@ -22,6 +22,7 @@ global:
       url: reldocker.tibco.com
       repository: "tibco-platform-docker-prod"
     environmentType: "vagrant"
+    enableResourceConstraints: true
     resources:
       storage:
         storageClassName: "standard"
@@ -37,7 +38,7 @@ global:
       fluentbit:
         enabled: true
         image:
-          tag: 3.1.4
+          tag: 3.2.2
         resources:
           requests:
             cpu: 10m
@@ -45,14 +46,6 @@ global:
           limits:
             cpu: 50m
             memory: 30Mi
-        securityContext:
-          runAsNonRoot: false
-          runAsUser: 0
-          allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
-          capabilities:
-            drop:
-            - ALL
 
   artifactmanager:
     serviceAccount: ""
@@ -61,7 +54,7 @@ global:
     image:
       registry: 664529841144.dkr.ecr.us-west-2.amazonaws.com
       name: infra-artifactmanager
-      tag: 73
+      tag: 89
     deploymanager:
       image:
         enabled: false
@@ -115,14 +108,12 @@ podSecurityContext:
     type: RuntimeDefault
 
 securityContext:
-  # This section of the configuration is for the artifact manager.
   # It specifies that privilege escalation is not allowed for security reasons.
   # Additionally, it drops all capabilities, which is a common security practice to minimize potential risks.
-  artifactManager:
-    allowPrivilegeEscalation: false
-    readOnlyRootFilesystem: true
-    capabilities:
-      drop:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
       - ALL
 
 service:
@@ -149,16 +140,16 @@ ingress:
   hostsOverride: false
   className: haproxy
   hosts:
-  - host: ""
-    paths:
-    - path: /
-      pathType: Prefix
+    - host: ""
+      paths:
+        - path: /
+          pathType: Prefix
 
-  #  hosts:
-  #    - host: ""
-  #      paths:
-  #        - path: /tibco/agent/integration/artifactmanager/
-  #          pathType: Prefix
+#  hosts:
+#    - host: ""
+#      paths:
+#        - path: /tibco/agent/integration/artifactmanager/
+#          pathType: Prefix
   # -- Annotations for the ingress object. See documentation for your ingress controller for valid annotations.
   annotations:
     ingress.kubernetes.io/path-rewrite: "/tibco/agent/integration/{{ $.Values.global.cp.instanceId }}/artifactmanager/(.*) /\\1"
@@ -174,20 +165,20 @@ ingress:
 resources:
   requests:
     cpu: 50m
-    memory: 1864Mi
+    memory: 128Mi
   limits:
     cpu: "2"
     memory: 2048Mi
-    # We usually recommend not to specify default resources and to leave this as a conscious
-    # choice for the user. This also increases chances charts run on environments with little
-    # resources, such as Minikube. If you do want to specify resources, uncomment the following
-    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-    # limits:
-    #   cpu: 100m
-    #   memory: 128Mi
-    # requests:
-    #   cpu: 100m
-    #   memory: 128Mi
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
 # resources:
 #  requests:
 #    cpu: 50m
@@ -211,8 +202,18 @@ affinity: {}
 
 probes:
   liveness:
-    initialDelaySeconds: 3
-    failureThreshold: 5
+    initialDelaySeconds: 15
+    failureThreshold: 3
+    periodSeconds: 10
+    timeoutSeconds: 5
+  readiness:
+    initialDelaySeconds: 5
+    failureThreshold: 3
+    periodSeconds: 3
+    timeoutSeconds: 3
+  startup:
+    initialDelaySeconds: 20
+    failureThreshold: 30
     periodSeconds: 5
     timeoutSeconds: 5
 
@@ -230,21 +231,21 @@ extraEnvVarsSecret: ""
 # -- Extra volumeMounts for the integration services container.
 # More info: `kubectl explain deployment.spec.template.spec.containers.volumeMounts`.
 extraVolumeMounts: []
-# - name: example
-#   mountPath: /opt/tibco/example.txt
+  # - name: example
+  #   mountPath: /opt/tibco/example.txt
 #   subPath: example.txt
 
 # -- Extra volumes for the integration services container.
 # More info: `kubectl explain deployment.spec.template.spec.volumes`.
 extraVolumes: []
-# - name: example
-#   persistentVolumeClaim:
+  # - name: example
+  #   persistentVolumeClaim:
 #     claimName: exampleClaim
 
 # -- Additional init containers to add to the automationservices pod.
 extraInitContainers: []
-# - name: dummy-init
-#   image: busybox
+  # - name: dummy-init
+  #   image: busybox
 #   command: ['echo', "hey"]
 
 config:
@@ -272,7 +273,7 @@ volumes:
           storage: 1Gi
 
       accessModes:
-      - ReadWriteOnce
+        - ReadWriteOnce
 
       volumeMode: Filesystem
 
@@ -284,7 +285,7 @@ volumes:
     existingClaim: ""
 
 strategy:
-  #  rollingUpdate:
-  #    maxSurge: 1
-  #  type: RollingUpdate
+#  rollingUpdate:
+#    maxSurge: 1
+#  type: RollingUpdate
   type: Recreate

@@ -4,38 +4,54 @@
 # in the license file that is distributed with this file.
 #
 
-
-{{/* ingress object for cloud or on-premises provider */}}
-{{- if eq .Values.global.external.provider "aws" }}
-apiVersion: networking.k8s.io/v1
+{{ if .Values.ingress.enabled -}}
+{{- $root := . }}
+{{- $ingresses := prepend .Values.ingress.additionalIngresses .Values.ingress }}
+{{- range $ingresses }}
+apiVersion: "networking.k8s.io/v1"
 kind: Ingress
 metadata:
   name: {{ include "router-operator.consts.appName" . }}
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ $root.Release.Namespace }}
   labels:
-    {{- include "router-operator.shared.labels.standard" . | nindent 4 }}
+    {{- include "router-operator.shared.labels.standard" $root | nindent 4 }}
+  {{- if .annotations }}
   annotations:
-    {{- include "router-operator.ingress.annotations" . | nindent 4 }}
-    {{- with .Values.global.external.ingress.annotations }}
-    {{- toYaml . | nindent 4 }}
+    {{- range $key, $value := .annotations }}
+    {{- printf "%s: %s" $key (tpl $value $ | quote) | nindent 4 }}
     {{- end }}
-spec:
-  {{- if .Values.global.external.ingress }}
-  {{- if .Values.global.external.ingress.ingressClassName }}
-  ingressClassName: {{ .Values.global.external.ingress.ingressClassName }}
   {{- end }}
+spec:
+  {{- if .ingressClassName }}
+  ingressClassName: {{ .ingressClassName }}
+  {{- end -}}
+  {{- if .tls }}
+  tls:
+    {{- range .tls }}
+    - hosts:
+        {{- range .hosts }}
+        - {{ tpl . $ | quote }}
+        {{- end }}
+      {{- with .secretName }}
+      secretName: {{ . }}
+      {{- end }}
+    {{- end }}
   {{- end }}
   rules:
-    - host: "*.{{ .Values.global.external.dnsDomain }}"
+    {{- range .hosts }}
+    - host: {{ tpl .host $ | quote }}
       http:
         paths:
-          - path: /
-            pathType: Prefix
+          {{- range .paths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType }}
             backend:
               service:
-                name: {{ include "router-operator.consts.appName" . }}
+                name: {{ include "router-operator.consts.appName" $root }}
                 port:
-                  number: 100
-{{- end }}
-
+                  number: {{ .port }}
+          {{- end }}
+    {{- end }}
 ---
+{{- end }}
+{{- end }}

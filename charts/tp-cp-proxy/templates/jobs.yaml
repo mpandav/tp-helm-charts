@@ -16,7 +16,7 @@ metadata:
     "helm.sh/hook-delete-policy": hook-succeeded,before-hook-creation
 spec:
   backoffLimit: 0
-  ttlSecondsAfterFinished: 18000  #cleanup after 5hr
+  ttlSecondsAfterFinished: 18000 #cleanup after 5hr
   template:
     metadata:
       name: client-credential-creation
@@ -35,13 +35,15 @@ spec:
         - name: post-install-job
           image: {{ include "tp-cp-proxy.image.registry" .}}{{"/"}}{{ include "tp-cp-proxy.image.repository" .}}{{"/"}}{{ .Values.image.name }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.securityContext.cpProxy }}
+          {{- if .Values.securityContext }}
           securityContext:
-            {{- toYaml .Values.securityContext.cpProxy | nindent 12 }}
+            {{- toYaml .Values.securityContext | nindent 12 }}
           {{- end }}
+          {{- if .Values.global.cp.enableResourceConstraints }}
           {{- with .Values.job.resources }}
           resources:
             {{- toYaml . | nindent 12}}
+          {{- end }}
           {{- end }}
           args:
             - configure
@@ -70,8 +72,24 @@ spec:
               value: {{ .noProxy | quote }}
             {{- end }}          
             {{- end }}
+          volumeMounts:
+            - name: logs
+              mountPath: /tmp/logs
+        {{- if .Values.global.cp.cpCertificateSecret }}
+            - name: cp-certs
+              mountPath: /etc/ssl/certs/
+        {{- end }}
       imagePullSecrets:
         - name: {{ .Values.global.cp.containerRegistry.secret }} {{/* optional imagePullSecret for private repo. no op if secret does not exist */}}
+      volumes:
+        - name: logs
+          emptyDir: {}
+      {{- if .Values.global.cp.cpCertificateSecret }}
+        - name: cp-certs
+          secret:
+            defaultMode: 420
+            secretName: {{ .Values.global.cp.cpCertificateSecret }}       
+      {{- end }}
 
 
 ---
@@ -85,10 +103,6 @@ metadata:
     "helm.sh/hook": pre-delete
     "helm.sh/hook-delete-policy": hook-succeeded,before-hook-creation
 spec:
-  {{ if .Values.podSecurityContext }}
-  securityContext:
-    {{- toYaml .Values.podSecurityContext | nindent 8 }}
-  {{- end }}
   ttlSecondsAfterFinished: 18000  #cleanup after 5hr
   backoffLimit: 0
   template:
@@ -99,19 +113,28 @@ spec:
         egress.networking.platform.tibco.com/internet-web: enable
         networking.platform.tibco.com/kubernetes-api: enable
     spec:
+      {{ if .Values.podSecurityContext }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- end }}
       restartPolicy: Never
       serviceAccountName: {{ .Values.global.cp.resources.serviceaccount.serviceAccountName }}
       containers:
         - name: pre-delete-job
-          {{- if .Values.securityContext.cpProxy }}
+          {{- if .Values.securityContext }}
           securityContext:
-            {{- toYaml .Values.securityContext.cpProxy | nindent 12 }}
+            {{- toYaml .Values.securityContext | nindent 12 }}
           {{- end }}
           image: {{ include "tp-cp-proxy.image.registry" .}}{{"/"}}{{ include "tp-cp-proxy.image.repository" .}}{{"/"}}{{ .Values.image.name }}:{{ .Values.image.tag }}
+          volumeMounts:
+            - name: logs
+              mountPath: /tmp/logs
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.global.cp.enableResourceConstraints }}
           {{- with .Values.job.resources }}
           resources:
             {{- toYaml . | nindent 12}}
+          {{- end }}
           {{- end }}
           args:
             - delete
@@ -140,3 +163,6 @@ spec:
             readOnlyRootFilesystem: true
       imagePullSecrets:
         - name: {{ .Values.global.cp.containerRegistry.secret }} {{/* optional imagePullSecret for private repo. no op if secret does not exist */}}
+      volumes:
+        - name: logs
+          emptyDir: {}

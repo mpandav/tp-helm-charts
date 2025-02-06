@@ -91,16 +91,14 @@ spec:
         args:
         - "/opt/tibco/hawk/scripts/init.sh install"
         volumeMounts:
-        - name: tmp
-          mountPath: /tmp
         - name: store-vol
           mountPath: /private/hawk
           subPath: hawk
         - name: secret-volume
           mountPath: /private/hawk/secret-volume
+        - mountPath: /tmp
+          name: tmpfs-1
       volumes:
-        - name: tmp
-          emptyDir: {}
         - name: store-vol
           persistentVolumeClaim:
             claimName: {{ include "tp-hawk-infra.pvc-name" . }}
@@ -112,6 +110,8 @@ spec:
               path: USERNAME
             - key: PASSWORD
               path: PASSWORD
+        - name: tmpfs-1
+          emptyDir: {}
 
 
 
@@ -209,6 +209,8 @@ spec:
           subPath: hawk
         - name: secret-volume
           mountPath: /private/hawk/secret-volume
+        - mountPath: /tmp
+          name: tmpfs-1
       volumes:
         - name: store-vol
           persistentVolumeClaim:
@@ -221,6 +223,8 @@ spec:
               path: USERNAME
             - key: PASSWORD
               path: PASSWORD
+        - name: tmpfs-1
+          emptyDir: {}
 
 
 
@@ -321,11 +325,9 @@ spec:
           subPath: hawk
         - name: secret-volume
           mountPath: /private/hawk/secret-volume
-        - name: tmp
-          mountPath: /tmp
+        - mountPath: /tmp
+          name: tmpfs-1
       volumes:
-        - name: tmp
-          emptyDir: {}
         - name: store-vol
           persistentVolumeClaim:
             claimName: {{ include "tp-hawk-infra.pvc-name" . }}
@@ -337,6 +339,8 @@ spec:
               path: USERNAME
             - key: PASSWORD
               path: PASSWORD
+        - name: tmpfs-1
+          emptyDir: {}
 
 
 ---
@@ -433,6 +437,8 @@ spec:
           subPath: hawk
         - name: secret-volume
           mountPath: /private/hawk/secret-volume
+        - mountPath: /tmp
+          name: tmpfs-1
       volumes:
         - name: store-vol
           persistentVolumeClaim:
@@ -445,6 +451,8 @@ spec:
               path: USERNAME
             - key: PASSWORD
               path: PASSWORD
+        - name: tmpfs-1
+          emptyDir: {}
 
 
 {{- end }}

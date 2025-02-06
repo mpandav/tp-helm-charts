@@ -7,7 +7,7 @@ source:
 tibcoHub:
   image:
     name: "dx-tibco-hub-cp-contrib"
-    tag: 133
+    tag: 161
     pullPolicy: IfNotPresent
 
 containerImageExtractor:
@@ -47,16 +47,31 @@ securityContext:
   capabilities:
     drop:
       - ALL
+      - CAP_NET_RAW
 
 # global values used by the chart. These values gets propagated to sub-charts.
 global:
   tibco:
     enableLogging: true
 
-resources:
-  requests:
-    cpu: 10m
-    memory: 15Mi
-  limits:
-    cpu: 50m
-    memory: 30Mi
+scripts:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 75Mi
+    limits:
+      cpu: 100m
+      memory: 150Mi
+
+probes:
+  startupProbe: {}
+  # enable startup probe only if security policy is blocking you from deployment, otherwise its not recommended to use it
+  #  exec:
+  #    command:
+  #    - touch
+  #    - /tmp/healthy
+  #  initialDelaySeconds: 5
+  #  periodSeconds: 5
+  #  failureThreshold: 5
+  #  successThreshold: 1
+  #  timeoutSeconds: 5

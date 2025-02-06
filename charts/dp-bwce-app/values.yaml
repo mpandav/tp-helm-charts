@@ -9,6 +9,7 @@ dpConfig:
   capabilityInstanceId: ""
   capabilityVersion: ""
   capabilityDefaultNamespace: ""
+  helmRepoAlias: ""
 
 appConfig:
   appId: ""
@@ -45,9 +46,9 @@ image:
   repository: ""
   pullPolicy: IfNotPresent
   appInitImageName: "tp-bwce-app-init"
-  appInitImageTag: "33"
+  appInitImageTag: "41"
   fluentBitImageName: "common-fluentbit"
-  fluentBitImageTag: "3.1.4"
+  fluentBitImageTag: "3.2.2"
   bwceBaseImageName: "tp-bwce-base"
 
 imagePullSecrets: []
@@ -83,57 +84,102 @@ bwapp:
     capabilities:
       drop:
       - ALL
-  resources:
-    limits:
-      cpu: "1"
-      memory: 4Gi
-    requests:
-      cpu: 250m
-      memory: 1Gi
+      - CAP_NET_RAW
+  resources: {}
+  #  limits:
+  #    cpu: "1"
+  #    memory: 4Gi
+  #  requests:
+  #    cpu: 250m
+  #    memory: 1Gi
   # Additional volumeMounts on the output Deployment definition.
   volumeMounts: []
   # - name: foo
   #   mountPath: "/etc/foo"
   #   readOnly: true
-  env: {}
-  #  ENV_NAME: value
+  envs: []
+  # - name: foo
+  #   value: bar
   envFrom:
     configMapRef: []
     #  - "cm1"
     secretRef: []
     #  - "secret1"
+  startupProbe:
+    failureThreshold: 50
+    httpGet:
+      path: /health/startup
+      port: 8090
+      scheme: HTTP
+    periodSeconds: 6
+    successThreshold: 1
+    timeoutSeconds: 5
+  livenessProbe:
+    failureThreshold: 3
+    httpGet:
+      path: /health/liveness
+      port: 8090
+      scheme: HTTP
+    initialDelaySeconds: 10
+    periodSeconds: 6
+    successThreshold: 1
+    timeoutSeconds: 5
+  readinessProbe:
+    failureThreshold: 3
+    httpGet:
+      path: /health/readiness
+      port: 8090
+      scheme: HTTP
+    initialDelaySeconds: 10
+    periodSeconds: 5
+    successThreshold: 1
+    timeoutSeconds: 5
 
 fluentBit:
   enabled: true
   configMapName: "fluentbit-config-otel-bwce"
   securityContext:
-    allowPrivilegeEscalation: false
     capabilities:
       drop:
       - ALL
-    runAsNonRoot: false
-    runAsUser: 0
-  resources:
-    limits:
-      cpu: 100m
-      memory: 100Mi
-    requests:
-      cpu: 10m
-      memory: 10Mi
+      - CAP_NET_RAW
+    readOnlyRootFilesystem: true
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 1000
+  resources: {}
+  #  limits:
+  #    cpu: 100m
+  #    memory: 100Mi
+  #  requests:
+  #    cpu: 10m
+  #    memory: 10Mi
+  livenessProbe:
+    failureThreshold: 3
+    httpGet:
+      path: /api/v1/health
+      port: 2020
+      scheme: HTTP
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
 
 appInit:
   securityContext:
     allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
     capabilities:
       drop:
       - ALL
-  resources:
-    limits:
-      cpu: 100m
-      memory: 100Mi
-    requests:
-      cpu: 10m
-      memory: 10Mi
+      - CAP_NET_RAW
+  resources: {}
+  #  limits:
+  #    cpu: 100m
+  #    memory: 100Mi
+  #  requests:
+  #    cpu: 10m
+  #    memory: 10Mi
 
 service:
   serviceDiscoverable: true
@@ -162,36 +208,6 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-
-startupProbe:
-  failureThreshold: 50
-  httpGet:
-    path: /health/startup
-    port: 8090
-    scheme: HTTP
-  periodSeconds: 6
-  successThreshold: 1
-  timeoutSeconds: 5
-livenessProbe:
-  failureThreshold: 3
-  httpGet:
-    path: /health/liveness
-    port: 8090
-    scheme: HTTP
-  initialDelaySeconds: 10
-  periodSeconds: 6
-  successThreshold: 1
-  timeoutSeconds: 5
-readinessProbe:
-  failureThreshold: 3
-  httpGet:
-    path: /health/readiness
-    port: 8090
-    scheme: HTTP
-  initialDelaySeconds: 10
-  periodSeconds: 5
-  successThreshold: 1
-  timeoutSeconds: 5
 
 autoscaling:
   enabled: false
@@ -229,6 +245,8 @@ tolerations: []
 
 affinity: {}
 
+topologySpreadConstraints: []
+
 appProps: {}
 #  default.substvar:
 #    appprop1: value1
@@ -248,3 +266,12 @@ appSecrets: {}
 
 engineSecrets: {}
 #  test1: value1
+
+# additional Custom Resource Definition(CRD) to be created
+crds: []
+#  - apiVersion: apiextensions.k8s.io/v1
+#    kind: CustomResourceDefinition
+#    metadata:
+#      name: crd1
+#    spec:
+#      group: example.com
