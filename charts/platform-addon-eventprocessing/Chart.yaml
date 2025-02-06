@@ -20,7 +20,7 @@ annotations:
   app.helm.sh/name: platform-addon-eventprocessing
 dependencies:
   - name: tp-cp-eventprocessing-be
-    version: "1.4.8"
+    version: "1.4.9"
     repository: alias:tibco-platform
     condition: tp-cp-eventprocessing-be.enabled
     tags:
