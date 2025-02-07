@@ -3,6 +3,15 @@ entries:
   artifactmanager:
   - apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-02-07T20:38:58.513715077Z"
+    description: A Helm chart for Artifact Manager
+    digest: 4ae0f164638b5cf94ab47ca4dfebb460224712fc383cd32ac8abc10656df0a29
+    name: artifactmanager
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/artifactmanager-1.4.10/artifactmanager-1.4.10.tgz
+    version: 1.4.10
+  - apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-02-06T18:04:10.831500038Z"
     description: A Helm chart for Artifact Manager
     digest: 6d677f79a56556ea450e64082e2dff941ccfd9fcfba1b210358685e0b75451c6
@@ -738,6 +747,33 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/dp-configure-namespace-1.2.27/dp-configure-namespace-1.2.27.tgz
     version: 1.2.27
   dp-core-infrastructure:
+  - apiVersion: v2
+    appVersion: 1.4.0
+    created: "2025-02-07T20:38:58.700926555Z"
+    dependencies:
+    - condition: tibtunnel.enabled
+      name: tp-tibtunnel
+      repository: ""
+      version: 1.4.*
+    - condition: tp-provisioner-agent.enabled
+      name: tp-provisioner-agent
+      repository: ""
+      version: 1.4.*
+    - condition: config.enabled
+      name: config
+      repository: ""
+      version: 1.0.*
+    - condition: haproxy.enabled
+      name: haproxy
+      repository: ""
+      version: 1.43.*
+    description: A Helm chart for Data Plane Infrastructure
+    digest: 82fb55f151cb3d7e2a5f75092afb77d81ffc70d2ecacefbd4433d77ddae8fccd
+    name: dp-core-infrastructure
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-core-infrastructure-1.4.25/dp-core-infrastructure-1.4.25.tgz
+    version: 1.4.25
   - apiVersion: v2
     appVersion: 1.4.0
     created: "2025-02-06T18:04:12.191805282Z"
@@ -1500,6 +1536,20 @@ entries:
   flogoprovisioner:
   - apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-02-07T20:38:58.861197854Z"
+    description: TIBCO Platform Dataplane Capabilty -- Flogo Provisioner
+    digest: 4285f0d0ff6ba34630c45ec38a34c589838ca5d7676f0e7e2e959557b0ff2f14
+    home: https://github.com/tibco/tp-iapp-flogo-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: flogoprovisioner
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/flogoprovisioner-1.4.19/flogoprovisioner-1.4.19.tgz
+    version: 1.4.19
+  - apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-02-06T18:04:12.737210997Z"
     description: TIBCO Platform Dataplane Capabilty -- Flogo Provisioner
     digest: 82b1c8c453ccef89dc603bad6889b0bd377a68b26b03a4d1caa7cb7108d7abf4
@@ -2133,6 +2183,15 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/msg-pulsar-tp-1.2.24/msg-pulsar-tp-1.2.24.tgz
     version: 1.2.24
   o11yservice:
+  - apiVersion: v2
+    appVersion: 1.4.0
+    created: "2025-02-07T20:38:59.039134263Z"
+    description: A helm chart for o11y service
+    digest: bb0b1b500a27ba4c3ee2dae8bb686f41ebe2f1509d08a0da34105f7bec5808f4
+    name: o11yservice
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/o11yservice-1.4.20/o11yservice-1.4.20.tgz
+    version: 1.4.20
   - apiVersion: v2
     appVersion: 1.4.0
     created: "2025-02-06T18:04:13.58745348Z"
@@ -5795,6 +5854,26 @@ entries:
   tibco-developer-hub:
   - apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-02-07T20:38:59.240444492Z"
+    dependencies:
+    - name: common
+      repository: ""
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: ""
+      version: 11.x.x
+    description: A Helm chart for TIBCO® Developer Hub
+    digest: 6c6bdbb2d538836db8ac2dd98aaef2468daf9430647a223957b0eb8e7cfa2205
+    name: tibco-developer-hub
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-developer-hub-1.4.25/tibco-developer-hub-1.4.25.tgz
+    version: 1.4.25
+  - apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-02-06T18:04:14.578949535Z"
     dependencies:
     - name: common
@@ -6460,6 +6539,24 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-bwce-utilities-1.2.11/tp-cp-bwce-utilities-1.2.11.tgz
     version: 1.2.11
   tp-cp-configuration:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-configuration
+    apiVersion: v2
+    appVersion: 1.4.0
+    created: "2025-02-07T20:38:59.447375046Z"
+    description: TIBCO Platform Control Plane Configuration chart
+    digest: 12b2f513ffb8e10a5facf026d529d17875eb33a847690f624a833144ded44c1f
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - configuration
+    name: tp-cp-configuration
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-configuration-1.4.6/tp-cp-configuration-1.4.6.tgz
+    version: 1.4.6
   - annotations:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-configuration
@@ -10704,6 +10801,15 @@ entries:
   tp-dp-monitor-agent:
   - apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-02-07T20:38:59.629825427Z"
+    description: A Helm chart for deploying the tp-dp-monitor-agent service
+    digest: d32d3a1f94c24576be9110b622b3fd301e9e1c834bd5569e1a19f14df7037f94
+    name: tp-dp-monitor-agent
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.4.159/tp-dp-monitor-agent-1.4.159.tgz
+    version: 1.4.159
+  - apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-02-06T18:04:18.990628365Z"
     description: A Helm chart for deploying the tp-dp-monitor-agent service
     digest: 7c3c04a9889e958d8904d701eef9f5954e402dd85fbccd55aa159f1b43f4d0d1
@@ -10828,4 +10934,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-02-06T18:04:18.992798006Z"
+generated: "2025-02-07T20:38:59.630867789Z"
