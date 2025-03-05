@@ -5998,6 +5998,45 @@ entries:
       app.helm.sh/name: tp-cp-bootstrap
     apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-03-05T08:57:00.610360912Z"
+    dependencies:
+    - condition: hybrid-proxy.enabled
+      name: hybrid-proxy
+      repository: ""
+      version: 1.4.*
+    - condition: resource-set-operator.enabled
+      name: resource-set-operator
+      repository: ""
+      version: 1.4.*
+    - condition: router-operator.enabled
+      name: router-operator
+      repository: ""
+      version: 1.4.*
+    - condition: compute-services.enabled
+      name: compute-services
+      repository: ""
+      version: 1.4.*
+    - condition: otel-collector.enabled
+      name: otel-collector
+      repository: ""
+      version: 0.111.*
+    description: TIBCO Platform Control Plane bootstrap chart
+    digest: 0371a7ed41ae56d7d74f042be2a0aa1d9e5003c4b9806310991b0df8b2afd3bb
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - bootstrap
+    name: tp-cp-bootstrap
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-bootstrap-1.4.33/tp-cp-bootstrap-1.4.33.tgz
+    version: 1.4.33
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-bootstrap
+    apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-02-06T18:04:14.726879855Z"
     dependencies:
     - condition: hybrid-proxy.enabled
@@ -10934,4 +10973,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-02-07T20:38:59.630867789Z"
+generated: "2025-03-05T08:57:00.610922993Z"
