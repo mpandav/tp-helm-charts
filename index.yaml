@@ -8069,6 +8069,31 @@ entries:
   tp-cp-hawk:
   - apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-03-07T08:45:13.673345714Z"
+    dependencies:
+    - condition: tp-cp-hawk-infra-querynode.enabled
+      name: tp-cp-hawk-infra-querynode
+      repository: ""
+      version: 1.4.*
+    - condition: tp-cp-hawk-infra-prometheus.enabled
+      name: tp-cp-hawk-infra-prometheus
+      repository: ""
+      version: 1.4.*
+    description: TIBCO Platform Control Plane - Hawk Infra Bundle
+    digest: 9c4cc159489a91e17c5ee7007f7a849234fd8408753939b7eaae7d61e5edbef4
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    keywords:
+    - tibco-platform
+    - control-plane
+    - hawk
+    maintainers:
+    - name: TIBCO Cloud Hawk Team
+    name: tp-cp-hawk
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-hawk-1.4.19/tp-cp-hawk-1.4.19.tgz
+    version: 1.4.19
+  - apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-02-06T18:04:16.266535996Z"
     dependencies:
     - condition: tp-cp-hawk-infra-querynode.enabled
@@ -11102,4 +11127,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-03-07T07:59:44.238618209Z"
+generated: "2025-03-07T08:45:13.673897067Z"
