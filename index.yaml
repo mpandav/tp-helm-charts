@@ -1536,6 +1536,20 @@ entries:
   flogoprovisioner:
   - apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-03-07T07:55:10.288309084Z"
+    description: TIBCO Platform Dataplane Capabilty -- Flogo Provisioner
+    digest: 24ae110734df54a80b940a181f420496ac387d40c2c37673c41a4addd4f40e17
+    home: https://github.com/tibco/tp-iapp-flogo-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: flogoprovisioner
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/flogoprovisioner-1.4.20/flogoprovisioner-1.4.20.tgz
+    version: 1.4.20
+  - apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-02-07T20:38:58.861197854Z"
     description: TIBCO Platform Dataplane Capabilty -- Flogo Provisioner
     digest: 4285f0d0ff6ba34630c45ec38a34c589838ca5d7676f0e7e2e959557b0ff2f14
@@ -10140,6 +10154,42 @@ entries:
       app.helm.sh/name: tp-cp-recipes
     apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-03-07T07:55:10.390482195Z"
+    dependencies:
+    - name: tp-cp-infra-recipes
+      repository: alias:tibco-platform
+      version: 1.4.40
+    - name: tp-cp-bwce-recipes
+      repository: alias:tibco-platform
+      version: 1.4.37
+    - name: tp-cp-flogo-recipes
+      repository: alias:tibco-platform
+      version: 1.4.39
+    - name: tp-cp-tibcohub-recipes
+      repository: alias:tibco-platform
+      version: 1.4.24
+    - name: dp-oauth2proxy-recipes
+      repository: alias:tibco-platform
+      version: 1.4.15
+    - name: tp-cp-hawk-console-recipes
+      repository: alias:tibco-platform
+      version: 1.4.18
+    description: TIBCO Platform recipe chart
+    digest: 657f10b01709982a9a6232fe3c607f57f6b8d54a55106c23a045270722b05db2
+    keywords:
+    - tibco-platform
+    - platform
+    - recipes
+    name: tp-cp-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-recipes-1.4.154/tp-cp-recipes-1.4.154.tgz
+    version: 1.4.154
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-recipes
+    apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-02-06T18:04:18.255371899Z"
     dependencies:
     - name: tp-cp-infra-recipes
@@ -10994,4 +11044,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-03-05T09:28:10.349302351Z"
+generated: "2025-03-07T07:55:10.391072158Z"
