@@ -3217,6 +3217,64 @@ entries:
       app.helm.sh/name: platform-base
     apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-05-05T09:51:15.686763381Z"
+    dependencies:
+    - name: tp-cp-configuration
+      repository: alias:tibco-platform
+      version: 1.4.7
+    - name: tp-cp-recipes
+      repository: alias:tibco-platform
+      version: 1.4.156
+    - name: tp-cp-o11y
+      repository: alias:tibco-platform
+      version: 1.4.14
+    - name: tp-cp-core
+      repository: alias:tibco-platform
+      version: 1.4.8589
+    - name: tp-cp-core-ops
+      repository: alias:tibco-platform
+      version: 1.4.8589
+    - name: tp-cp-core-finops
+      repository: alias:tibco-platform
+      version: 1.4.512
+    - condition: tp-cp-integration.enabled
+      name: tp-cp-integration
+      repository: alias:tibco-platform
+      tags:
+      - integration
+      version: 1.4.62
+    - condition: tp-cp-tibcohub-contrib.enabled
+      name: tp-cp-tibcohub-contrib
+      repository: alias:tibco-platform
+      version: 1.4.5
+    - condition: tp-cp-msg-contrib.enabled
+      name: tp-cp-msg-contrib
+      repository: alias:tibco-platform
+      version: 1.4.20
+    - condition: tp-cp-msg-recipes.enabled
+      name: tp-cp-msg-recipes
+      repository: alias:tibco-platform
+      version: 1.4.20
+    - condition: tp-cp-hawk.enabled
+      name: tp-cp-hawk
+      repository: alias:tibco-platform
+      version: 1.4.19
+    description: TIBCO Platform base chart
+    digest: de9a848145ad996c515045ed7322ea65eae0178f890ccd082a3c734991c3be62
+    keywords:
+    - tibco-platform
+    - platform
+    - base
+    name: platform-base
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/platform-base-1.4.284/platform-base-1.4.284.tgz
+    version: 1.4.284
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: platform-base
+    apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-03-10T15:51:36.308086491Z"
     dependencies:
     - name: tp-cp-configuration
@@ -5713,6 +5771,27 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/platform-base-1.2.125/platform-base-1.2.125.tgz
     version: 1.2.125
   platform-bootstrap:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: platform-bootstrap
+    apiVersion: v2
+    appVersion: 1.4.0
+    created: "2025-05-05T09:51:15.859616066Z"
+    dependencies:
+    - name: tp-cp-bootstrap
+      repository: alias:tibco-platform
+      version: 1.4.34
+    description: TIBCO Platform bootstrap chart
+    digest: 90ae3d4025593a15ffbd73421aed1d1e26d1cd6c5bc533a88a8544503889b472
+    keywords:
+    - tibco-platform
+    - platform
+    - bootstrap
+    name: platform-bootstrap
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/platform-bootstrap-1.4.87/platform-bootstrap-1.4.87.tgz
+    version: 1.4.87
   - annotations:
       app.helm.sh/component: control-plane
       app.helm.sh/name: platform-bootstrap
@@ -11400,4 +11479,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-05-05T09:46:48.635034106Z"
+generated: "2025-05-05T09:51:15.860925021Z"
