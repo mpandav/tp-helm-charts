@@ -6217,6 +6217,45 @@ entries:
       app.helm.sh/name: tp-cp-bootstrap
     apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-05-05T08:54:34.802878365Z"
+    dependencies:
+    - condition: hybrid-proxy.enabled
+      name: hybrid-proxy
+      repository: ""
+      version: 1.4.*
+    - condition: resource-set-operator.enabled
+      name: resource-set-operator
+      repository: ""
+      version: 1.4.*
+    - condition: router-operator.enabled
+      name: router-operator
+      repository: ""
+      version: 1.4.*
+    - condition: compute-services.enabled
+      name: compute-services
+      repository: ""
+      version: 1.4.*
+    - condition: otel-collector.enabled
+      name: otel-collector
+      repository: ""
+      version: 0.111.*
+    description: TIBCO Platform Control Plane bootstrap chart
+    digest: 602682c577cd9109baa69dc73ccf2c5d29c29d6b95392233d8eaa75d433401bd
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - bootstrap
+    name: tp-cp-bootstrap
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-bootstrap-1.4.34/tp-cp-bootstrap-1.4.34.tgz
+    version: 1.4.34
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-bootstrap
+    apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-03-05T08:57:00.610360912Z"
     dependencies:
     - condition: hybrid-proxy.enabled
@@ -8528,6 +8567,24 @@ entries:
       app.helm.sh/name: tp-cp-infra-recipes
     apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-05-05T08:54:34.998110168Z"
+    description: TIBCO Platform Infrastructure Data Plane recipes
+    digest: 0a0e04de7368a5548ce372e8723617122b34f5bb87ac442dc2ce95240e69a09a
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - recipes
+    name: tp-cp-infra-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-infra-recipes-1.4.41/tp-cp-infra-recipes-1.4.41.tgz
+    version: 1.4.41
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-infra-recipes
+    apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-02-06T18:04:16.617908735Z"
     description: TIBCO Platform Infrastructure Data Plane recipes
     digest: dc3bc73edcb10a3732c67c54537e9603476d2c72e75d902d4029585f327ebcf3
@@ -10381,6 +10438,42 @@ entries:
       app.helm.sh/name: tp-cp-recipes
     apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-05-05T08:54:35.135678928Z"
+    dependencies:
+    - name: tp-cp-infra-recipes
+      repository: alias:tibco-platform
+      version: 1.4.40
+    - name: tp-cp-bwce-recipes
+      repository: alias:tibco-platform
+      version: 1.4.37
+    - name: tp-cp-flogo-recipes
+      repository: alias:tibco-platform
+      version: 1.4.39
+    - name: tp-cp-tibcohub-recipes
+      repository: alias:tibco-platform
+      version: 1.4.24
+    - name: dp-oauth2proxy-recipes
+      repository: alias:tibco-platform
+      version: 1.4.15
+    - name: tp-cp-hawk-console-recipes
+      repository: alias:tibco-platform
+      version: 1.4.18
+    description: TIBCO Platform recipe chart
+    digest: ef052db3d69f4bfd73d65c2d8d0a0de7631d3eca06db442f00c3220c5281e84f
+    keywords:
+    - tibco-platform
+    - platform
+    - recipes
+    name: tp-cp-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-recipes-1.4.155/tp-cp-recipes-1.4.155.tgz
+    version: 1.4.155
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-recipes
+    apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-03-07T07:55:10.390482195Z"
     dependencies:
     - name: tp-cp-infra-recipes
@@ -11271,4 +11364,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-03-18T10:44:07.295003356Z"
+generated: "2025-05-05T08:54:35.136372635Z"
