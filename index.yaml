@@ -3217,6 +3217,64 @@ entries:
       app.helm.sh/name: platform-base
     apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-05-05T14:30:14.370366111Z"
+    dependencies:
+    - name: tp-cp-configuration
+      repository: alias:tibco-platform
+      version: 1.4.7
+    - name: tp-cp-recipes
+      repository: alias:tibco-platform
+      version: 1.4.157
+    - name: tp-cp-o11y
+      repository: alias:tibco-platform
+      version: 1.4.14
+    - name: tp-cp-core
+      repository: alias:tibco-platform
+      version: 1.4.8589
+    - name: tp-cp-core-ops
+      repository: alias:tibco-platform
+      version: 1.4.8589
+    - name: tp-cp-core-finops
+      repository: alias:tibco-platform
+      version: 1.4.512
+    - condition: tp-cp-integration.enabled
+      name: tp-cp-integration
+      repository: alias:tibco-platform
+      tags:
+      - integration
+      version: 1.4.62
+    - condition: tp-cp-tibcohub-contrib.enabled
+      name: tp-cp-tibcohub-contrib
+      repository: alias:tibco-platform
+      version: 1.4.5
+    - condition: tp-cp-msg-contrib.enabled
+      name: tp-cp-msg-contrib
+      repository: alias:tibco-platform
+      version: 1.4.20
+    - condition: tp-cp-msg-recipes.enabled
+      name: tp-cp-msg-recipes
+      repository: alias:tibco-platform
+      version: 1.4.20
+    - condition: tp-cp-hawk.enabled
+      name: tp-cp-hawk
+      repository: alias:tibco-platform
+      version: 1.4.19
+    description: TIBCO Platform base chart
+    digest: 82e03c49fbd5666774fb6fb65e1bd9cb1e9abde416d26d693273d3281b4549f6
+    keywords:
+    - tibco-platform
+    - platform
+    - base
+    name: platform-base
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/platform-base-1.4.285/platform-base-1.4.285.tgz
+    version: 1.4.285
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: platform-base
+    apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-05-05T09:51:15.686763381Z"
     dependencies:
     - name: tp-cp-configuration
@@ -11593,4 +11651,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-05-05T14:28:20.431579757Z"
+generated: "2025-05-05T14:30:14.371376863Z"
