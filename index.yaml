@@ -8706,6 +8706,24 @@ entries:
       app.helm.sh/name: tp-cp-infra-recipes
     apiVersion: v2
     appVersion: 1.4.0
+    created: "2025-05-05T14:25:45.797419128Z"
+    description: TIBCO Platform Infrastructure Data Plane recipes
+    digest: 9ecd63262200039c304ad5cd21ffe07c2e839ec51a226ff69f7276834630b603
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - recipes
+    name: tp-cp-infra-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-infra-recipes-1.4.42/tp-cp-infra-recipes-1.4.42.tgz
+    version: 1.4.42
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-infra-recipes
+    apiVersion: v2
+    appVersion: 1.4.0
     created: "2025-05-05T08:54:34.998110168Z"
     description: TIBCO Platform Infrastructure Data Plane recipes
     digest: 0a0e04de7368a5548ce372e8723617122b34f5bb87ac442dc2ce95240e69a09a
@@ -11539,4 +11557,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-05-05T09:58:53.723238048Z"
+generated: "2025-05-05T14:25:45.798102292Z"
