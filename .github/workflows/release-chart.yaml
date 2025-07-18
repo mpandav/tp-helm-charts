@@ -59,7 +59,7 @@ jobs:
             # Skip charts that declare their own dependencies
             if ! grep -q '^[[:space:]]*dependencies:' "$chart_yaml"; then
               echo "Packaging $dir"
-              helm package "$dir" --destination charts/
+              helm package "$dir" --destination .cr-release-packages
             else
               echo "Skipping $dir because it declares dependencies"
             fi
@@ -70,6 +70,7 @@ jobs:
         with:
           skip_existing: true
           packages_with_index: false
+          charts_dir: .cr-release-packages
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
