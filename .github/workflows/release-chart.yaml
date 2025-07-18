@@ -76,6 +76,7 @@ jobs:
 
       - name: Build dependencies for top-level chart
         run: |
+          helm repo update 
           for d in $(find charts/ -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq); do
             echo "Running 'helm dependency build' in $d"
             helm dependency build "$d"
