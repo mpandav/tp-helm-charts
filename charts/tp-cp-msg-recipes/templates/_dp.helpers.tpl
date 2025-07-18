@@ -10,10 +10,9 @@ MSG DP Common Helpers
 */}}
 
 {{- define "msgdp.ghcrImageRepo" -}}"tibco/msg-platform-cicd"{{ end }}
-{{- define "msgdp.jfrogImageRepo" -}}"tibco-platform-local-docker/msg"{{ end }}
+{{- define "msgdp.jfrogImageRepo" -}}"tibco-platform-docker-dev"{{ end }}
 {{- define "msgdp.ecrImageRepo" -}}"msg-platform-cicd"{{ end }}
 {{- define "msgdp.acrImageRepo" -}}"msg-platform-cicd"{{ end }}
-{{- define "msgdp.reldockerImageRepo" -}}"messaging"{{ end }}
 {{- define "msgdp.defaultImageRepo" -}}"messaging"{{ end }}
 
 {{/*
@@ -36,7 +35,6 @@ need.msg.dp.params
   {{- $instanceId := "no-instanceId" -}}
   {{- $fluentbitEnabled := .Values.global.cp.logging.fluentbit.enabled -}}
   {{- $enableClusterScopedPerm := .Values.global.cp.enableClusterScopedPerm -}}
-  {{- $enableResourceConstraints := .Values.global.cp.enableResourceConstraints -}}
   {{- $enableSecurityContext := true -}}
   {{- $enableHaproxy := true -}}
   # These 3 are currently unused!
@@ -61,8 +59,6 @@ need.msg.dp.params
             {{- $repo = include "msgdp.ecrImageRepo" . -}}
           {{- else if contains "azurecr.io" $registry -}}
             {{- $repo = include "msgdp.acrImageRepo" . -}}
-          {{- else if contains "reldocker.tibco.com" $registry -}}
-            {{- $repo = include "msgdp.reldockerImageRepo" . -}}
           {{- else -}}
             {{- $repo = include "msgdp.defaultImageRepo" . -}}
           {{- end -}}
@@ -117,9 +113,6 @@ need.msg.dp.params
       {{- if hasKey .Values.dp "enableClusterScopedPerm" -}}
         {{- $enableClusterScopedPerm = .Values.dp.enableClusterScopedPerm -}}
       {{- end -}}
-      {{- if hasKey .Values.dp "enableResourceConstraints" -}}
-        {{- $enableResourceConstraints = .Values.dp.enableResourceConstraints -}}
-      {{- end -}}
       {{- if hasKey .Values.dp "enableSecurityContext" -}}
         {{- $enableSecurityContext = .Values.dp.enableSecurityContext -}}
       {{- end -}}
@@ -150,7 +143,6 @@ dp:
   chart: {{ printf "%s-%s" .Chart.Name .Chart.Version }}
   fluentbitEnabled: {{ $fluentbitEnabled }}
   enableClusterScopedPerm: {{ $enableClusterScopedPerm }}
-  enableResourceConstraints: {{ $enableResourceConstraints }}
   enableSecurityContext: {{ $enableSecurityContext }}
   enableHaproxy: {{ $enableHaproxy }}
 {{- end }}
@@ -183,7 +175,7 @@ note: tib-msg-stsname will be added directly in statefulset charts, as it needs 
 */}}
 {{- define "msg.dpparams.labels" }}
 tib-dp-release: {{ .dp.release }}
-tib-dp-msgbuild: "1.4.0.20"
+tib-dp-msgbuild: "1.7.0.19"
 tib-dp-chart: {{ .dp.chart }}
 tib-dp-workload-type: "capability-service"
 tib-dp-dataplane-id: "{{ .dp.name }}"
@@ -443,7 +435,6 @@ securityContext:
   capabilities:
     drop:
     - ALL
-    - CAP_NET_RAW
   readOnlyRootFilesystem: true
   runAsNonRoot: true
     {{- end }}
@@ -456,9 +447,7 @@ securityContext:
   capabilities:
     drop:
     - ALL
-    - CAP_NET_RAW
-  # readOnlyRootFilesystem: false
-  readOnlyRootFilesystem: true
+  readOnlyRootFilesystem: false
   runAsNonRoot: true
     {{- end }}
   {{- end }}

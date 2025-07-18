@@ -7,7 +7,7 @@
 
 ## CONTEXT
 
-enableWebHooks: true
+enableWebHooks: false
 
 # You can use topology spread constraints to control how Pods are spread across your cluster among failure-domains such as regions, zones, nodes,
 # and other user-defined topology domains. This can help to achieve high availability as well as efficient resource utilization.
@@ -32,7 +32,7 @@ additionalLabels: {}
 
 image:
   name: infra-router
-  tag: 676-distroless
+  tag: 729-distroless
   pullPolicy: IfNotPresent
 
 ports:
@@ -181,7 +181,7 @@ global:
           name: "common-fluentbit"
           registry: ""
           repo: ""
-          tag: 3.2.2
+          tag: 4.0.3
           pullPolicy: IfNotPresent
         resources:
           requests:

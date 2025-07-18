@@ -72,7 +72,7 @@ alphaConfig:
 
 image:
   name: core-tp-oauth-proxy
-  tag: "v1.4.11"
+  tag: "v1.8.0"
   pullPolicy: "IfNotPresent"
   # appVersion is used by default
 
@@ -159,6 +159,7 @@ serviceAccount:
 
 ingress:
   enabled: true
+  controllerName: nginx
   # className: nginx
   path: /
   # Only used if API capabilities (networking.k8s.io/v1) allow it
@@ -270,7 +271,8 @@ podAnnotations: {}
 
 # hack because PDP-1199 is not being fixed in the upper layer to pass correct properties in the recipe
 podLabels: {
-  egress.networking.platform.tibco.com/internet-web: enable,
+  networking.platform.tibco.com/internet-web-egress: enable,
+  networking.platform.tibco.com/cp-egress: enable,
   networking.platform.tibco.com/kubernetes-api: enable
 }
 
@@ -441,7 +443,7 @@ global:
     # subscriptionId : "sub1"
     instanceId: ""   # CAPABILITY INSTANCE ID
     containerRegistry:
-      url: "reldocker.tibco.com"
+      url: "csgprdusw2reposaas.jfrog.io"
       repository: "tibco-platform-docker-prod"
     #  secret: "abcd"
     capability:
@@ -467,7 +469,7 @@ global:
       alpine:
         image:
           name: core-alpine-curl-jq
-          tag: "1"
+          tag: "6"
 
     # The fluentbit configuration section.
     # It specifies that the fluentbit should not run as a non-root user and the user ID should be 0 (root).
@@ -479,7 +481,7 @@ global:
       fluentbit:
         image:
           name: common-fluentbit
-          tag: "3.2.2"
+          tag: "4.0.3"
         enabled: true
         resources:
           requests:

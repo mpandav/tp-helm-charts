@@ -10,17 +10,17 @@
 resources:
   requests:
     cpu: 200m
-    memory: 1024Mi
+    memory: 2048Mi
   limits:
     cpu: 1000m
-    memory: 3072Mi
+    memory: 2048Mi
 
 # no of replicas
 replicaCount: "1"
 
 image:
   name: hawk-console
-  tag: 30
+  tag: "1.7.0.19"
   pullPolicy: IfNotPresent
 
 nodeSelector:
@@ -43,6 +43,8 @@ global:
     resources:
       storage:
         storageClassName: ""
+      serviceaccount:
+        serviceAccountName: ""
     containerRegistry:
       url: "reldocker.tibco.com"
       secret:
@@ -80,6 +82,7 @@ ingress:
   annotations: {}
   pathPrefix: /tibco/agent/infra/hawkconsole/
   className: "tibco-dp-{{ .Values.global.cp.dataplaneId}}"  # Ex: nginx, haproxy
+  hostName: "dp-{{ .Values.global.cp.dataplaneId}}.platform.local"
 
 hawkconsole:
   hawkData:
@@ -87,6 +90,9 @@ hawkconsole:
     subPath: hawk/hawkconsole
     emsCertSubPath: hawk/emscerts
     pvcStorageSize: 2Gi
+    # Changing this on upgrade is not a legal STS Ugprades
+    # so match the 1.4.0 GA value to avoid breakage.
+    pvcAccessMode: ReadWriteMany
   # The number of successive failed probes before indicating readiness failure.
   readinessFailureThreshold: 10
 
@@ -116,6 +122,21 @@ hawkconsole:
 
   # The number of successive failed probes before indicating lives success.
   livenessSuccessThreshold: 1
+  # Configure Heap size and other java options
+  javaOptions: "-Xms1g -Xmx1g"
+
+  # Configure log level, Accepted values are ERROR, INFO, DEBUG and TRACE
+  # default log mode is INFO
+  log:
+    level: INFO
+
+  # below are the intervals in milliseconds (example as below :30seconds) for each exporter subscription
+  subscription:
+    interval:
+      bw5: 30000
+      be: 30000
+      sys: 30000
+      o11y: 15000
 
 # Pod Security Context configuration
 # This configuration ensures that the pod is run with non-root privileges for enhanced security.
@@ -142,3 +163,14 @@ securityContext:
       drop:
         - CAP_NET_RAW
         - ALL
+
+# Message Gateway additional settings
+msggw:
+  basename: ""
+  image: ""
+dp:
+  pullSecret: ""
+  registry: ""
+  repo: ""
+  pullPolicy: ""
+  serviceAccount: ""

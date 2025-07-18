@@ -1,0 +1,16 @@
+#
+# Copyright © 2023 - 2025. Cloud Software Group, Inc.
+# This file is subject to the license terms contained
+# in the license file that is distributed with this file.
+#
+
+
+global:
+  tibco:
+    dataPlaneId: "abcd"
+    #[optional] Create an image pull secret <dpId> with this creds
+    containerRegistry:
+      url: ""
+      # username: ""
+      # password: ""
+      # email: "tibco-plt@tibco.com"

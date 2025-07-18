@@ -1,5 +1,5 @@
 #
-# Copyright © 2024. Cloud Software Group, Inc.
+# Copyright © 2024-2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 #
@@ -15,7 +15,7 @@ global:
       fluentbit:
         image:
           name: "common-fluentbit"
-          tag: 3.2.2
+          tag: 4.0.3
   # Pod Security Context configuration
   # This configuration ensures that the pod is run with non-root privileges for enhanced security.
   # The user, group, and filesystem group IDs are all set to 1000.
@@ -95,7 +95,17 @@ monitoringcapresources:
       cpu: "80m"
       memory: "20Mi"
 monitoringhomepagemetrics:
-  schedule: "0 * * * *"
+  schedule: "0 * * * *"  # For dev and QA environments, runs once every hour 
+  prodSchedule: "0 * * * *"  # For production environment, runs once every hour  
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "20Mi"
+    limits:
+      cpu: "80m"
+      memory: "20Mi"
+monitoringdataplanesync:
+  schedule: "0 0 * * *" 
   resources:
     requests:
       cpu: "50m"

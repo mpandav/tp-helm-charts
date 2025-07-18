@@ -1,4 +1,4 @@
-# Copyright © 2024. Cloud Software Group, Inc.
+# Copyright © 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 
@@ -39,8 +39,12 @@ spec:
       labels:
         {{- include "dp-bwce-app.labels" . | nindent 8 }}
         {{- include "dp-bwce-app.bwapp.pod.labels" . | nindent 8 }}
-        egress.networking.platform.tibco.com/internet-all: {{ .Values.networkPolicy.internetAll | quote }}
-        egress.networking.platform.tibco.com/internet-web: {{ .Values.networkPolicy.internetWeb | quote }}
+        networking.platform.tibco.com/internet-egress: {{ .Values.networkPolicy.internetAll | quote }}
+        networking.platform.tibco.com/internet-web-egress: {{ .Values.networkPolicy.internetWeb | quote }}
+        networking.platform.tibco.com/msgInfra: {{ .Values.networkPolicy.msgInfra | quote }}
+        networking.platform.tibco.com/database-egress: {{ .Values.networkPolicy.databaseEgress | quote }}
+        networking.platform.tibco.com/proxy-egress: {{ .Values.networkPolicy.proxyEgress | quote }}
+        networking.platform.tibco.com/userApps: {{ .Values.networkPolicy.userApps | quote }}
         {{- if .Values.serviceMesh.enabled }}
         sidecar.istio.io/inject: {{ .Values.serviceMesh.enabled | quote }}
         {{- end }}
@@ -109,7 +113,11 @@ spec:
         - secretRef:
             name: {{ $val }}
         {{- end }}
+        {{- if .Values.appConfig.customBaseImagePath }}
+        image: {{ .Values.appConfig.customBaseImagePath }}:{{ .Values.appConfig.bwceBaseImageTag }}
+        {{- else }}
         image: {{ .Values.image.repository }}{{ .Values.image.bwceBaseImageName }}:{{ .Values.appConfig.bwceBaseImageTag }}
+        {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         startupProbe:
           {{- toYaml .Values.bwapp.startupProbe | nindent 10 }}
@@ -130,10 +138,8 @@ spec:
         volumeMounts:
         - mountPath: /app/artifacts
           name: artifacts-share
-        {{- if .Values.fluentBit.enabled }}
         - mountPath: /app/logs
           name: logs-share
-        {{- end }}
         {{- if .Values.enableTmpVolume }}
         - mountPath: /tmp
           name: tmp
@@ -237,9 +243,9 @@ spec:
       - emptyDir: {}
         name: resources-addons-certs
       {{- end }}
-      {{- if .Values.fluentBit.enabled }}
       - emptyDir: {}
         name: logs-share
+      {{- if .Values.fluentBit.enabled }}
       - configMap:
           name: {{ .Values.fluentBit.configMapName }}
         name: fluentbit-config

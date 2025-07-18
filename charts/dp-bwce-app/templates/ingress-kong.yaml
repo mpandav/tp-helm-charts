@@ -1,4 +1,4 @@
-# Copyright © 2024. Cloud Software Group, Inc.
+# Copyright © 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 
@@ -45,7 +45,11 @@ spec:
             name: {{ include "dp-bwce-app.fullname" $dot }}
             port:
               number: {{ $path.port }}
+        {{- if eq $path.path "/" }}
+        path: {{ $path.path }}(.*)
+        {{- else }}
         path: {{ $path.path }}/(.*)
+        {{- end }}
         pathType: {{ $path.pathType }}
 
 --- 

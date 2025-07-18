@@ -1,22 +1,22 @@
-# Copyright © 2023 - 2024. Cloud Software Group, Inc.
+# Copyright © 2023 - 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 
 replicaCount: "1"
 global:
-  LOG_LEVEL: debug
+  LOG_LEVEL: "info"
   tibco:
     logging:
       fluentbit:
         image:
           name: "common-fluentbit"
-          tag: 3.2.2
+          tag: 4.0.3
   cp:
     dataplaneId: "abcd"
     subscriptionId: "sub1"
     instanceId: "qwerty"
     containerRegistry:
-      url: "reldocker.tibco.com"
+      url: "csgprdusw2reposaas.jfrog.io"
       secret: "test"
     resources:
       serviceaccount:

@@ -24,7 +24,9 @@ spec:
       labels:
         {{- include "o11y-service.shared.labels.standard" . | nindent 8 }}
         networking.platform.tibco.com/kubernetes-api: enable
-        egress.networking.platform.tibco.com/internet-all: enable
+        networking.platform.tibco.com/prometheus: enable
+        networking.platform.tibco.com/logServer-egress: enable
+        networking.platform.tibco.com/internet-egress: enable
     spec:
       terminationGracePeriodSeconds: 30
       imagePullSecrets:
@@ -58,7 +60,13 @@ spec:
                   fieldPath: metadata.namespace
             - name: DATAPLANE_ID
               value: {{ .Values.global.cp.dataplaneId }}
-{{- if eq .Values.global.cp.resources.resourcemapping.O11Y "o11yv3" }}
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: SUBSCRIPTION_ID
+              value: {{ .Values.global.cp.subscriptionId }}
+{{- if and (.Values.global.cp.resources.resourcemapping) (eq .Values.global.cp.resources.resourcemapping.O11Y "o11yv3") }}
             - name: O11y
               value: "o11yV3"
 {{- end }}

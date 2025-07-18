@@ -1,4 +1,4 @@
-# Copyright © 2024. Cloud Software Group, Inc.
+# Copyright © 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 
@@ -12,12 +12,10 @@ global:
     instanceId: defaultinstid
     containerRegistry:
       secret: ""
-      url: reldocker.tibco.com
+      url: ""
       repository: "tibco-platform-docker-prod"
     environmentType: ""
     enableResourceConstraints: true
-    # insecureSkipVerify is true by default because we are calling own services. To be more generally addressed in upcoming release.
-    authInsecureIngressController: true
     resources:
       serviceaccount:
         namespace: ""
@@ -39,7 +37,7 @@ global:
           enabled: true
         enabled: true
         image:
-          tag: 3.2.2
+          tag: 4.0.3
         resources:
           requests:
             cpu: 10m
@@ -219,6 +217,15 @@ config:
   BWCE_APP_HELMCHART_NAME: "dp-bwce-app"
   BWCE_APP_HELMCHART_VERSION: "1.4.2"
   PROVISIONER_AGENT_SERVICE_PORT: "80"
+
+autoDiscovery:
+  enabled: false
+  config:
+    APP_DISCOVERY_LABEL_SELECTOR: ""
+    APP_VERSION_ANNOTATION: "com.tibco.bw/app-version"
+    APP_VERSION_DEFAULT_VALUE: "1.0.0"
+    APP_DISCOVERY_ENGINE_PORT: "8090"
+    APP_ID_PREFIX: "bwce"
 
 publicApi:
   ingress:

@@ -1,5 +1,5 @@
 {{/*
-Copyright © 2023. Cloud Software Group, Inc.
+Copyright © 2025. Cloud Software Group, Inc.
 This file is subject to the license terms contained
 in the license file that is distributed with this file.
 */}}
@@ -43,8 +43,18 @@ app.kubernetes.io/name: {{ include "flogo-utilities.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
+{{/*
+Network Policy labels
+*/}}
+{{- define "flogo-utilities.networkPolicyLabels" -}}
+networking.platform.tibco.com/internet-egress: enable
+networking.platform.tibco.com/cluster-egress: enable
+networking.platform.tibco.com/containerRegistry-egress: enable
+networking.platform.tibco.com/proxy-egress: enable
+{{- end }}
+
 {{- define "flogo-utilities.image.registry" }}
-  {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY" "default" "reldocker.tibco.com" "required" "false" "Release" .Release )}}
+  {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY" "default" "" "required" "false" "Release" .Release )}}
 {{- end }}
 
 {{/* set repository based on the registry url. We will have different repo for each one. */}}
@@ -62,12 +72,10 @@ app.kubernetes.io/instance: {{ .Release.Name }}
   {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY_REPO" "default" "tibco-platform-docker-prod" "required" "false" "Release" .Release )}}
 {{- end -}}
 
-
 {{/* set repository based on the registry url. We will have different repo for each one. */}}
 {{- define "flogo-utilities.plugins.image.repository" -}}
   {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY_REPO" "default" "tibco-platform-docker-prod" "required" "false" "Release" .Release )}}
 {{- end -}}
-
 
 {{/* Control plane environment configuration. This will have shared configuration used across control plane components. */}}
 {{- define "cp-env" -}}
@@ -86,11 +94,12 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 
 {{/* Image pull secret configured for control plane. default value empty */}}
 {{- define "flogo-utilities.container-registry.secret" }}
-{{- if .Values.imagePullSecret }}
-  {{- .Values.imagePullSecret }}
-{{- else }}
   {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY_IMAGE_PULL_SECRET_NAME" "default" "" "required" "false"  "Release" .Release )}}
 {{- end }}
+
+{{/* Image pull custom certificate secret configured for control plane. default value empty */}}
+{{- define "flogo-utilities.container-registry.custom-cert-secret" }}
+  {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY_CERTIFICATE_SECRET" "default" "" "required" "false"  "Release" .Release )}}
 {{- end }}
 
 {{/* Control plane instance Id. default value local */}}
@@ -110,4 +119,16 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{/* Control plane enable or disable resource constraints */}}
 {{- define "flogo-utilities.enableResourceConstraints" -}}
 {{- include "cp-env.get" (dict "key" "CP_ENABLE_RESOURCE_CONSTRAINTS" "default" "false" "required" "false"  "Release" .Release )}}
+{{- end }}
+
+{{- define "flogo-utilities.cp-http-proxy" }}
+  {{- include "cp-env.get" (dict "key" "CP_HTTP_PROXY" "default" "" "required" "false"  "Release" .Release )}}
+{{- end }}
+
+{{- define "flogo-utilities.cp-https-proxy" }}
+  {{- include "cp-env.get" (dict "key" "CP_HTTPS_PROXY" "default" "" "required" "false"  "Release" .Release )}}
+{{- end }}
+
+{{- define "flogo-utilities.cp-no-proxy" }}
+  {{- include "cp-env.get" (dict "key" "CP_NO_PROXY" "default" "" "required" "false"  "Release" .Release )}}
 {{- end }}

@@ -1,5 +1,5 @@
 #
-# Copyright © 2023 - 2024. Cloud Software Group, Inc.
+# Copyright © 2023 - 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 #
@@ -9,8 +9,8 @@ apiVersion: v2
 name: tp-cp-infra-recipes
 description: TIBCO Platform Infrastructure Data Plane recipes
 type: application
-version: 1.4.42
-appVersion: "1.4.0"
+version: 1.8.16
+appVersion: "1.8.0"
 keywords:
   - tibco-platform
   - control-plane

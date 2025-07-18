@@ -12,12 +12,16 @@ metadata:
 data:
   version.json: |
     {
-      "capabilityVersion": "1.4.0",
-      "minCPVersion": "1.1.0",
+      "capabilityVersion": "1.8.0",
+      "minCPVersion": "1.8.0",
       "maxCPVersion": "",
       "releaseDate": {{ .Values.capabilities.tibcohub.releaseDate | quote }},
       "releaseNotes": {{ .Values.capabilities.tibcohub.releaseNotes | quote }},
-      "minVersionRequiredForUpgrade": "1.0.0"
+      "minVersionRequiredForUpgrade": "1.4.0",
+      "minDPVersion": {
+        "dp-core-infrastructure": "1.7.0",
+        "dp-configure-namespace": "1.7.0"
+      }
     }
   package.json: |
     {
@@ -26,7 +30,7 @@ data:
           {
             "name": "postgresql",
             "description": "Postgres Database",
-            "monitoringPriority": "essential"
+            "monitoringPriority": "optional"
           },
           {
             "name": "tibco-developer-hub",
@@ -43,7 +47,7 @@ data:
           {
             "version": [
               1,
-              4,
+              8,
               0
             ],
             "capabilityId": "OAUTH2PROXY",
@@ -53,6 +57,7 @@ data:
         "provisioningRoles": [
           "DEV_OPS"
         ],
+        "serviceUrl": "http://tibco-developer-hub:7007",
         "allowMultipleInstances": false,
         "capabilityResourceDependencies": [
           {
@@ -65,7 +70,15 @@ data:
             "type": "Storage Class",
             "required": true,
             "resourceId": "STORAGE",
-            "resourceType": "PLATFORM"
+            "resourceType": "PLATFORM",
+            "otherResourceIds": [ "DBCONFIG" ]
+          },
+          {
+            "type": "Database Resource",
+            "required": true,
+            "resourceId": "DBCONFIG",
+            "resourceType": "PLATFORM",
+            "otherResourceIds": [ "STORAGE" ]
           }
         ]
       }
@@ -75,7 +88,7 @@ data:
     recipe:
       helmCharts:
       - name: tibco-developer-hub
-        version: 1.4.24
+        version: "1.8.5"
         namespace: ${NAMESPACE}
         repository:
           chartMuseum:
@@ -119,7 +132,7 @@ data:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "tp-cp-tibcohub-recipes.consts.appName" . }}-tibcohub
+  name: {{ include "tp-cp-tibcohub-recipes.consts.appName" . }}-tibcohub-{{ randAlphaNum 4 | lower }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "tp-cp-tibcohub-recipes.labels" . | nindent 4 }}
@@ -158,7 +171,7 @@ spec:
         - name: RECIPE_TARGET_LOCATION
           value: "/private/tsc/config/capabilities/platform"
         - name: RECIPE_RELEASE_VERSION
-          value: "1.4.0"
+          value: "1.8.0"
         - name: SPACE_SEPARATED_UNSUPPORTED_RECIPE_VERSIONS
           value: ""
         - name: OVERWRITE_RECIPE

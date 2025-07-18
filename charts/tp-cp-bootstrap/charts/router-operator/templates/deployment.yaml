@@ -26,7 +26,6 @@ spec:
       labels:
         {{- include "router-operator.shared.labels.standard" . | nindent 8 }}
         networking.platform.tibco.com/kubernetes-api: enable
-        ingress.networking.platform.tibco.com/internet-access: enable
       annotations:
 {{- if .Values.global.tibco.logging.fluentbit.enabled }}
         checksum/config: {{ include (print $.Template.BasePath "/fluentbit-configmap.yaml") . | sha256sum }}
@@ -109,8 +108,6 @@ spec:
           value: "{{ .Values.global.external.clusterInfo.nodeCIDR }},{{ .Values.global.external.clusterInfo.podCIDR }}"
         - name: ENABLE_WEBHOOKS
           value: "{{ .Values.enableWebHooks }}"
-        - name: IS_CIC2_ENV
-          value: "true"
         - name: IS_MULTI_CLUSTER_ENV
           value: "false"
         - name: POD_NAMESPACE

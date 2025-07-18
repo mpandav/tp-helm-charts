@@ -1,5 +1,5 @@
 #
-# Copyright © 2024. Cloud Software Group, Inc.
+# Copyright © 2024-2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 #
@@ -47,9 +47,13 @@ spec:
     metadata:
       labels:
         {{- include "monitoring-service.shared.labels.standard" . | nindent 8 }}
-        egress.networking.platform.tibco.com/cluster-all: enable
-{{- if (include "cp-core-configuration.enableLogging" .) }}
+        networking.platform.tibco.com/cluster-egress: enable
+        networking.platform.tibco.com/internet-egress: enable
+        networking.platform.tibco.com/database-egress: enable
+
       annotations:
+        rollme: {{ randAlphaNum 5 | quote }}
+{{- if (include "cp-core-configuration.enableLogging" .) }}
         checksum/config: {{ include (print $.Template.BasePath "/fluentbit-configmap.yaml") . | sha256sum }}
 {{- end }}
     spec:
@@ -476,7 +480,7 @@ spec:
             securityContext:
               {{- toYaml .Values.global.containerSecurityContext.monitoringCronJob | nindent 14 }}
             {{- end }}
-            image: {{ include "monitoring-service.image.registry" .}}{{"/"}}{{ include "monitoring-service.image.repository" .}}{{"/common-distroless-base-debian-debug:12"}}
+            image: {{ include "monitoring-service.image.registry" .}}{{"/"}}{{ include "monitoring-service.image.repository" .}}{{"/common-distroless-base-debian-debug:12.11"}}
             imagePullPolicy: IfNotPresent
             {{- if (include "tp-cp-core-finops.enableResourceConstraints" .) }}
             resources:
@@ -535,7 +539,7 @@ spec:
             securityContext:
               {{- toYaml .Values.global.containerSecurityContext.monitoringCronJob | nindent 14 }}
             {{- end }}
-            image: {{ include "monitoring-service.image.registry" .}}{{"/"}}{{ include "monitoring-service.image.repository" .}}{{"/common-distroless-base-debian-debug:12"}}
+            image: {{ include "monitoring-service.image.registry" .}}{{"/"}}{{ include "monitoring-service.image.repository" .}}{{"/common-distroless-base-debian-debug:12.11"}}
             imagePullPolicy: IfNotPresent
             {{- if (include "tp-cp-core-finops.enableResourceConstraints" .) }}
             resources:
@@ -569,8 +573,12 @@ metadata:
   labels:
     app.kubernetes.io/name: "tp-cp-monitoring-homepage-cronjob"
 spec:
-  schedule: {{ .Values.monitoringhomepagemetrics.schedule | quote}}
-  concurrencyPolicy: Forbid
+  schedule: |
+    {{- if or (eq (.Values.global.external.environment | lower) "staging") (hasPrefix "prod" (.Values.global.external.environment | lower)) }}
+    {{ .Values.monitoringhomepagemetrics.prodSchedule }}
+    {{- else }}
+    {{ .Values.monitoringhomepagemetrics.schedule }}
+    {{- end }}
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 2
   jobTemplate:
@@ -594,7 +602,7 @@ spec:
             securityContext:
               {{- toYaml .Values.global.containerSecurityContext.monitoringCronJob | nindent 14 }}
             {{- end }}          
-            image: {{ include "monitoring-service.image.registry" .}}{{"/"}}{{ include "monitoring-service.image.repository" .}}{{"/common-distroless-base-debian-debug:12"}}
+            image: {{ include "monitoring-service.image.registry" .}}{{"/"}}{{ include "monitoring-service.image.repository" .}}{{"/common-distroless-base-debian-debug:12.11"}}
             imagePullPolicy: IfNotPresent
             {{- if (include "tp-cp-core-finops.enableResourceConstraints" .) }}
             resources:
@@ -610,6 +618,63 @@ spec:
               - -c
               - >
                   exit_status=$(wget --output-document=/dev/null http://${MONITORING_SERVICE_HOST}':7831/api/v1/triggers/homepageMetrics');
+                  echo $exit_status
+                  
+            env:
+              - name: MONITORING_SERVICE_HOST
+                valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "monitoring-service.tp-finops-dnsdomains-configmap" . }}
+                    key: TP_CP_MONITORING_SERVICE_HOST
+          restartPolicy: OnFailure
+---
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: tp-cp-monitoring-dataplane-sync-cronjob
+  labels:
+    app.kubernetes.io/name: "tp-cp-monitoring-dataplane-sync-cronjob"
+spec:
+  schedule: {{ .Values.monitoringdataplanesync.schedule | quote }}
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: "tp-cp-monitoring-dataplane-sync-cronjob"
+        spec:
+          {{- if .Values.global.podSecurityContext }}
+          securityContext:
+            {{- toYaml .Values.global.podSecurityContext | nindent 12 }}
+          {{- end }}
+          {{- if (include "cp-core-configuration.container-registry.secret" .) }}
+          imagePullSecrets:
+            - name: {{ include "cp-core-configuration.container-registry.secret" . }}
+          {{ end }}
+          containers:
+          - name: dataplane-sync
+            {{- if .Values.global.containerSecurityContext.monitoringCronJob }}
+            securityContext:
+              {{- toYaml .Values.global.containerSecurityContext.monitoringCronJob | nindent 14 }}
+            {{- end }}
+            image: {{ include "monitoring-service.image.registry" .}}{{"/"}}{{ include "monitoring-service.image.repository" .}}{{"/common-distroless-base-debian-debug:12.11"}}
+            imagePullPolicy: IfNotPresent
+            resources:
+              requests:
+                cpu: {{ .Values.monitoringdataplanesync.resources.requests.cpu }}
+                memory: {{ .Values.monitoringdataplanesync.resources.requests.memory }}
+              limits:
+                cpu: {{ .Values.monitoringdataplanesync.resources.limits.cpu }}
+                memory: {{ .Values.monitoringdataplanesync.resources.limits.memory }}
+            command: ['sh']
+            args:
+              - -c
+              - >
+                  exit_status=$(wget --timeout=56 --output-document=/dev/null http://${MONITORING_SERVICE_HOST}':7831/api/v1/dataplaneSync');
                   echo $exit_status
                   
             env:

@@ -1,2 +1,2 @@
-{{- define "finops-web-server.generated.buildNumber" }}216-1.4.0{{end -}}
-{{- define "finops-web-server.generated.buildTimestamp" }}01-13-25_22.05.00_AM{{end -}}
+{{- define "finops-web-server.generated.buildNumber" }}337{{end -}}
+{{- define "finops-web-server.generated.buildTimestamp" }}06-11-25_07.44.41_PM{{end -}}

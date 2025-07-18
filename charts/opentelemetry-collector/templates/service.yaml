@@ -4,6 +4,7 @@
 # in the license file that is distributed with this file.
 #
 
+{{ if .Values.global.cp.svcPod.enabled -}}
 {{ if or (eq (include "opentelemetry-collector.serviceEnabled" .) "true") (.Values.ingress.enabled) }}
 apiVersion: v1
 kind: Service
@@ -45,4 +46,5 @@ spec:
   {{- if and (eq .Values.service.type "LoadBalancer") (.Values.service.externalTrafficPolicy) }}
   externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
   {{- end }}
+{{- end }}
 {{- end }}

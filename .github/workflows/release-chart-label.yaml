@@ -1,0 +1,67 @@
+name: Release Helm Charts by PR Label
+
+on:
+  pull_request:
+    types:
+      - labeled
+    paths:
+      - 'charts/**'
+
+jobs:
+  release:
+    if: ${{ github.event.label.name == 'chart-build' }}
+    permissions:
+      contents: write # to push chart release and create a release (helm/chart-releaser-action)
+      packages: write # needed for ghcr access
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: '3.17.1'
+
+      - name: Add dependency chart repos
+        run: |      
+          helm repo add tibco-platform https://tibcosoftware.github.io/tp-helm-charts/
+
+      - name: Add third party dependency chart repositories
+        run: |
+          for dir in $(find charts/ -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq); do
+            echo "Adding helm repositories in $dir"
+            helm dependency list "$dir" 2>/dev/null | tail -n +2 | head -n -1 | while read -r name version repo _; do
+              if [[ -z "$repo" || "$repo" == "file://"* || "$repo" == "unpacked" ]]; then
+                echo "📁 Skipping local/vendored dependency: $name (repo=$repo)"
+              elif [[ "$repo" =~ ^https?:// ]]; then
+                echo "➕ Adding remote repo: $name -> $repo"
+                helm repo add "$name" "$repo"
+              else
+                echo "⚠️ Unknown or missing repo for $name → Skipping: '$repo'"
+              fi
+            done
+          done
+
+      - name: Build subchart dependencies
+        run: |
+          for d in $(find charts/ -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq); do
+            echo "Running 'helm dependency build' in $d"
+            helm dependency build "$d"
+          done
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.7.0
+        with:
+          skip_existing: true
+          packages_with_index: false
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

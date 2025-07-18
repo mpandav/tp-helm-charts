@@ -85,7 +85,7 @@ Before creating ingress on this EKS cluster, we need to install [external-dns](h
 helm upgrade --install --wait --timeout 1h --create-namespace --reuse-values \
   -n external-dns-system external-dns external-dns \
   --labels layer=0 \
-  --repo "https://kubernetes-sigs.github.io/external-dns" --version "1.13.0" -f - <<EOF
+  --repo "https://kubernetes-sigs.github.io/external-dns" --version "1.15.2" -f - <<EOF
 serviceAccount:
   create: false
   name: external-dns 
@@ -392,32 +392,56 @@ Please use the following command to install Elastic stack
 
 ```bash
 # install eck-operator
-helm upgrade --install --wait --timeout 1h --labels layer=1 --create-namespace -n elastic-system eck-operator eck-operator --repo "https://helm.elastic.co" --version "2.9.0"
+helm upgrade --install --wait --timeout 1h --labels layer=1 --create-namespace -n elastic-system eck-operator eck-operator --repo "https://helm.elastic.co" --version "2.16.0"
 
 # install dp-config-es
 helm upgrade --install --wait --timeout 1h --create-namespace --reuse-values \
   -n elastic-system ${TP_ES_RELEASE_NAME} dp-config-es \
   --labels layer=2 \
-  --repo "${TP_TIBCO_HELM_CHART_REPO}" --version "1.0.17" -f - <<EOF
+  --repo "${TP_TIBCO_HELM_CHART_REPO}" --version "^1.0.0" -f - <<EOF
 domain: ${TP_DOMAIN}
 es:
-  version: "8.9.1"
+  version: "8.17.3"
   ingress:
     ingressClassName: ${TP_INGRESS_CLASS}
     service: ${TP_ES_RELEASE_NAME}-es-http
   storage:
     name: ${TP_STORAGE_CLASS}
+  # following are the default requests and limits for application container, uncomment and change as required
+  # resources:
+  #   requests:
+  #     cpu: "100m"
+  #     memory: "2Gi"
+  #   limits:
+  #     cpu: "1"
+  #     memory: "2Gi"
 kibana:
-  version: "8.9.1"
+  version: "8.17.3"
   ingress:
     ingressClassName: ${TP_INGRESS_CLASS}
     service: ${TP_ES_RELEASE_NAME}-kb-http
+  # following are the default requests and limits for application container, uncomment and change as required
+  # resources:
+  #   requests:
+  #     cpu: "150m"
+  #     memory: "1Gi"
+  #   limits:
+  #     cpu: "1"
+  #     memory: "2Gi"
 apm:
   enabled: true
-  version: "8.9.1"
+  version: "8.17.3"
   ingress:
     ingressClassName: ${TP_INGRESS_CLASS}
     service: ${TP_ES_RELEASE_NAME}-apm-http
+  # following are the default requests and limits for application container, uncomment and change as required
+  # resources:
+  #   requests:
+  #     cpu: "50m"
+  #     memory: "128Mi"
+  #   limits:
+  #     cpu: "250m"
+  #     memory: "512Mi"
 EOF
 ```
 
@@ -549,6 +573,10 @@ export TP_DELETE_CLUSTER=false # default value is "true"
 > so that common resources are not deleted. (e.g. storage class, EFS, EKS Cluster, crossplane role, etc.)
 
 For the tools charts uninstallation, EFS mount and security groups deletion and cluster deletion, we have provided a helper [clean-up](../scripts/clean-up-data-plane.sh).
+
+> [!IMPORTANT]
+> Please make sure the resources to be deleted are in started/scaled-up state (e.g. RDS DB cluster/instance, EKS cluster nodegroups)
+
 ```bash
 ./clean-up-data-plane.sh
 ```

@@ -1,5 +1,5 @@
 {{/*
-Copyright © 2024. Cloud Software Group, Inc.
+Copyright © 2025. Cloud Software Group, Inc.
 This file is subject to the license terms contained
 in the license file that is distributed with this file.
 */}}
@@ -59,7 +59,7 @@ app.kubernetes.io/version: {{ .Chart.AppVersion }}
 */}}
 
 {{- define "flogo-webserver.image.registry" }}
-  {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY" "default" "reldocker.tibco.com" "required" "false" "Release" .Release )}}
+  {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY" "default" "" "required" "false" "Release" .Release )}}
 {{- end }}
 
 

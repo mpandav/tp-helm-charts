@@ -1,4 +1,4 @@
-# Copyright © 2024. Cloud Software Group, Inc.
+# Copyright © 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 #
@@ -22,8 +22,8 @@ spec:
     metadata:
       labels:
         {{- include "flogo-webserver.shared.labels.standard" . | nindent 8 }}
-        egress.networking.platform.tibco.com/internet-all: enable
-        egress.networking.platform.tibco.com/cluster-all: enable
+        networking.platform.tibco.com/internet-egress: enable
+        networking.platform.tibco.com/cluster-egress: enable
       {{- if eq (include "flogo-webserver.cp-logging-fluentbit-enabled" .) "true" }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/fluentbit-configmap.yaml") . | sha256sum }}
@@ -111,6 +111,16 @@ spec:
             configMapKeyRef:
               name: {{ include "tp-control-plane-dnsdomain-configmap" . }}
               key: TP_CP_USER_SUB_HOST
+        - name: TP_CP_ORCH_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: {{ include "tp-control-plane-dnsdomain-configmap" . }}
+              key: TP_CP_ORCH_HOST
+        - name: TP_CP_WEB_SERVER_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: {{ include "tp-control-plane-dnsdomain-configmap" . }}
+              key: TP_CP_WEB_SERVER_HOST
         - name: SYSTEM_INTERNAL_COMPUTE_SERVICE_HOST
           valueFrom:
             configMapKeyRef:
@@ -121,6 +131,12 @@ spec:
             configMapKeyRef:
               name: {{ include "tp-control-plane-dnsdomain-configmap" . }}
               key: SYSTEM_INTERNAL_PROVISIONER_AGENT_HOST
+        - name: DOC_BASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: {{ include "tp-control-plane-dnsdomain-configmap" . }}
+              key: DOC_BASE_URL
+              optional: true
         - name: CP_SUBSCRIPTION_SINGLE_NAMESPACE
           valueFrom:
             configMapKeyRef:

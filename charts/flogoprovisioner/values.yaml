@@ -1,4 +1,4 @@
-# Copyright © 2024. Cloud Software Group, Inc.
+# Copyright © 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 
@@ -12,12 +12,10 @@ global:
     instanceId: defaultinstid
     containerRegistry:
       secret: ""
-      url: reldocker.tibco.com
+      url: ""
       repository: "tibco-platform-docker-prod"
     environmentType: ""
     enableResourceConstraints: true
-    # insecureSkipVerify is true by default because we are calling own services. To be more generally addressed in upcoming release.
-    authInsecureIngressController: true
     resources:
       serviceaccount:
         nameSpace: ""
@@ -39,7 +37,7 @@ global:
         apps:
           enabled: true
         image:
-          tag: 3.2.2
+          tag: 4.0.3
         resources:
           requests:
             cpu: 10m

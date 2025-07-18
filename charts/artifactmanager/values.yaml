@@ -1,5 +1,5 @@
 #
-# Copyright © 2023 - 2024. Cloud Software Group, Inc.
+# Copyright © 2023 - 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 #
@@ -12,20 +12,22 @@ global:
     data:
       SYSTEM_WHERE: "local"
       SYSTEM_WHO: "local"
-      SYSTEM_DOCKER_REGISTRY: "reldocker.tibco.com"
+      SYSTEM_DOCKER_REGISTRY: ""
   cp:
     dataplaneId: dp-dp1
     instanceId: defaultinstid
     namespace: tp-dp-dp1
     containerRegistry:
       secret: ""
-      url: reldocker.tibco.com
+      url: ""
       repository: "tibco-platform-docker-prod"
     environmentType: "vagrant"
     enableResourceConstraints: true
     resources:
       storage:
-        storageClassName: "standard"
+        storageClassName: ""
+      persistentvolumeclaim:
+        existingClaim: ""
       serviceaccount:
         nameSpace: ""
         serviceAccountName: ""
@@ -38,7 +40,7 @@ global:
       fluentbit:
         enabled: true
         image:
-          tag: 3.2.2
+          tag: 4.0.3
         resources:
           requests:
             cpu: 10m
@@ -54,20 +56,7 @@ global:
     image:
       registry: 664529841144.dkr.ecr.us-west-2.amazonaws.com
       name: infra-artifactmanager
-      tag: 89
-    deploymanager:
-      image:
-        enabled: false
-        registry: ""
-        tag: ""
-        resources: {}
-    logging:
-      enabled: true
-      image:
-        registry: "cr.fluentbit.io/fluent/"
-        name: "fluent-bit"
-        tag: "2.2.2"
-        resources: {}
+      tag: 107
 
 replicaCount: 1
 
@@ -108,6 +97,7 @@ podSecurityContext:
     type: RuntimeDefault
 
 securityContext:
+  # This section of the configuration is for the artifact manager.
   # It specifies that privilege escalation is not allowed for security reasons.
   # Additionally, it drops all capabilities, which is a common security practice to minimize potential risks.
   allowPrivilegeEscalation: false

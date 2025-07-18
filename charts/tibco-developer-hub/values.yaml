@@ -16,10 +16,10 @@ global:
   imageRegistry: ""
   # Following parameters which are used in our chart, are passed during provisioning from control plane
   cp:
+    capability:
+      pathPrefix: "/tibco/hub"
     cpCertificateSecret: ""
-    # insecureSkipVerify is true by default because we are calling own services. To be more generally addressed in upcoming release.
-    authInsecureIngressController: true
-    dataplaneId: "abcd"
+    dataplaneId: defaultinstid
     instanceId: ""
     cpHostname: "acme.local.my.cic2.pro"
     enableResourceConstraints: true
@@ -31,15 +31,25 @@ global:
         ingressClassName: nginx
         ingressController: nginx
         annotations: {}
+      storage:
+        storageClassName: ""
+      dbconfig:
+        dbHost: ""
+        dbName: ""
+        dbPort: ""
+        dbUser: ""
+        dbms: rdbms
+        persistenceType: postgres
+        secretDbPassword: ""
     containerRegistry:
       secret: "abcd"
       repository: "tibco-platform-docker-prod"
-      url: "reldocker.tibco.com"
+      url: "csgprduswrepoedge.jfrog.io"
     logging:
       fluentbit:
         image:
           name: common-fluentbit
-          tag: 3.2.2
+          tag: 4.0.3
         enabled: true
         resources:
           requests:
@@ -108,7 +118,7 @@ diagnosticMode:
 ingress:
 
   # -- Enable the creation of the ingress resource
-  enabled: false
+  enabled: true
 
   # -- Name of the IngressClass cluster resource which defines which controller will implement the resource (e.g nginx)
   className: ""
@@ -141,8 +151,7 @@ backstage:
     # -- Backstage image name
     name: dx-tibco-hub
     # -- Backstage image tag (immutable tags are recommended)
-    tag: "694"
-
+    tag: "921"
     # -- Specify a imagePullPolicy.
     # Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
     # <br /> Ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -342,7 +351,7 @@ postgresql:
   enabled: false
   image:
     name: dx-postgresql
-    tag: 14.15.0-debian-12-r6
+    tag: 14.16.0-debian-12-r4
   commonLabels: '{{- include "tibcohub.platform.commonLabels" . -}}'
 
   # -- The authentication details of the Postgres database
@@ -484,7 +493,7 @@ metrics:
 
 fluentbit:
   image:
-    tag: 3.0.2
+    tag: 4.0.3
     pullPolicy: Always
   securityContext:
     runAsNonRoot: false
@@ -513,7 +522,7 @@ autoscaling:
 initContainer:
   image:
     name: dx-postgresql
-    tag: 14.15.0-debian-12-r6
+    tag: 14.16.0-debian-12-r4
     digest: ""
 
 publicApi:

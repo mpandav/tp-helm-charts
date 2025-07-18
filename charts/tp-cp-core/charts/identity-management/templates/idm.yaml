@@ -46,8 +46,9 @@ spec:
     metadata:
       labels:
         {{- include "tp-identity-management.shared.labels.standard" . | nindent 8 }}
-        egress.networking.platform.tibco.com/cluster-all: enable
-        egress.networking.platform.tibco.com/internet-all: enable
+        networking.platform.tibco.com/cluster-egress: enable
+        networking.platform.tibco.com/internet-egress: enable
+        networking.platform.tibco.com/database-egress: enable
 {{- if (include "cp-core-configuration.enableLogging" .) }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/fluentbit-configmap.yaml") . | sha256sum }}
@@ -190,11 +191,11 @@ spec:
             configMapKeyRef:
               name: {{ include "tp-control-plane-dnsdomain-configmap" . }}
               key: TP_CP_IDP_HOST
-        - name: TP_CP_ADMIN_WEB_SERVER_HOST
+        - name: TP_CP_WEB_SERVER_HOST
           valueFrom:
             configMapKeyRef:
               name: {{ include "tp-control-plane-dnsdomain-configmap" . }}
-              key: TP_CP_ADMIN_WEB_SERVER_HOST
+              key: TP_CP_WEB_SERVER_HOST
         - name: TSC_CONFIG_LOCATION
           value: /private/tsc
         - name: TSC_DNS_DOMAIN
@@ -241,10 +242,10 @@ spec:
             configMapKeyRef:
               name: {{ include "tp-control-plane-dnsdomain-configmap" . }}
               key: TP_CP_PERMISSIONS_ENGINE_HOST
-        - name: IDENTITY_MANAGEMENT_ADMIN_WEB_SERVER_JWKS_URI_PATH
-          value: http://$(TP_CP_ADMIN_WEB_SERVER_HOST):3000/admin/public/v1/jwks
+        - name: IDENTITY_MANAGEMENT_CP_WEB_SERVER_JWKS_URI_PATH
+          value: http://$(TP_CP_WEB_SERVER_HOST):3001/admin/public/v1/jwks
         - name: TSC_HOST_MAPPING
-          value: '{"host": "$(TSC_DNS_DOMAIN)", "tenantId": "TSC", "errorUri": "/tsc/error/401", "suspendedUri": "/tsc/error/403", "allowExpiredSubscription": true, "jwksUri": "$(IDENTITY_MANAGEMENT_ADMIN_WEB_SERVER_JWKS_URI_PATH)"}'
+          value: '{"host": "$(TSC_DNS_DOMAIN)", "tenantId": "TSC", "errorUri": "/tsc/error/401", "suspendedUri": "/tsc/error/403", "allowExpiredSubscription": true, "jwksUri": "$(IDENTITY_MANAGEMENT_CP_WEB_SERVER_JWKS_URI_PATH)"}'
         - name: ADMIN_HOST_MAPPING
           value: '{"host": "$(TSC_ADMIN_DNS_DOMAIN)", "tenantId": "ADMIN", "errorUri": "/tsc/error/401", "suspendedUri": "/tsc/error/403", "maxValidityForAccessToken": "8h"}'
         - name: IDENTITY_MANAGEMENT_HOST_MAPPINGS
@@ -833,15 +834,6 @@ spec:
     - listener: virtual
       config: acscallback
       fqdn: ${ALL_INTERNAL_TENANTS_DNS_DOMAINS},${TP_CP_WILDCARD_DNS_DOMAIN}
-      enableRedirects: true
-  - path: /idm/authorize
-    internalPath: /v1/authorize
-    port: 7831
-    protocol: http
-    proxies:
-    - listener: virtual
-      config: empty
-      fqdn: ${TSC_DNS_DOMAIN}
       enableRedirects: true
   - path: /idm/v1/version
     internalPath: /v1/version

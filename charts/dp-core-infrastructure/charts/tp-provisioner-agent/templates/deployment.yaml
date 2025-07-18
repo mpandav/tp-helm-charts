@@ -22,7 +22,8 @@ spec:
       labels:
         {{- include "tp-provisioner-agent.shared.labels.standard" . | nindent 8 }}
         networking.platform.tibco.com/kubernetes-api: enable
-        egress.networking.platform.tibco.com/internet-web: enable
+        networking.platform.tibco.com/internet-web-egress: enable
+        networking.platform.tibco.com/helmRegistry-egress: enable
     spec:
       {{ if .Values.podSecurityContext }}
       securityContext:
@@ -103,6 +104,10 @@ spec:
           initialDelaySeconds: 10
           periodSeconds: 10
         volumeMounts:
+        {{- if .Values.global.tibco.helmRepo.certificateSecret }}
+        - name: cp-certs
+          mountPath: /etc/ssl/certs/
+        {{- end }}
         - name: helm-cache
           mountPath: /tmp
         - name: logs
@@ -191,6 +196,12 @@ spec:
           emptyDir: {}
         - name: logs
           emptyDir: {}
+{{- if .Values.global.tibco.helmRepo.certificateSecret }}
+        - name: cp-certs
+          secret:
+            defaultMode: 420
+            secretName: {{ .Values.global.tibco.helmRepo.certificateSecret }}       
+{{- end }}
 {{- if .Values.global.logging.fluentbit.enabled }}
         - name: db
           emptyDir: {}
@@ -211,6 +222,4 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       imagePullSecrets:
-        {{- if .Values.global.tibco.containerRegistry.username }}{{if .Values.global.tibco.containerRegistry.password }}
         - name: {{ .Values.global.tibco.dataPlaneId }} {{/* optional imagePullSecret for private repo. no op if secret does not exist */}}
-        {{- end }}{{ end }}

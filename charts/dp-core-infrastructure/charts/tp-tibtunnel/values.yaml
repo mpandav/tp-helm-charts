@@ -1,5 +1,5 @@
 #
-# Copyright © 2023 - 2024. Cloud Software Group, Inc.
+# Copyright © 2023 - 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 #
@@ -12,7 +12,7 @@ global:
     dataPlaneId: "abcd"
     subscriptionId: "sub1"
     containerRegistry:
-      url: reldocker.tibco.com
+      url: ""
       repository: "tibco-platform-docker-prod"
 
   logging:
@@ -21,14 +21,14 @@ global:
 
 # tibtunnel cli flags
 connect:
-  debug: true  # Enable debug logging
+  debug: false  # Enable debug logging
   payload: false  # Display payload data in the debug logs. Requires flag 'debug'. WARNING: Payload might contain sensitive data!
   dataChunkSize: ""  # Set the max size(in KB) of data for a single read/write operation, default is 32
   dataAckMode: true  # Enable/disable data ack
-  remoteDebug: true  # Enable debug logging of this tunnel connection inside application (running in TIBCO Cloud)
+  remoteDebug: false  # Enable debug logging of this tunnel connection inside application (running in TIBCO Cloud)
   logFile: ""  # Full path to the output log file. If not specified, the logs will be printed on stdout
 
-  networkCheckUrl: "https://www.google.com"  # Url to check for network connectivity
+  networkCheckUrl: ""  # Url to check for network connectivity
   infiniteRetries: false  # Irrespective of any error, keep trying to discover and connect to establish hybrid connectivity
   url: ""  # Connect Url generated from TIBCO Cloud Control plane
   onPremHost: "cp-proxy"  # service name of on prem host
@@ -49,12 +49,12 @@ resources:
     memory: 256Mi
 
 # no of tibtunnel pods
-replicaCount: "2"
+replicaCount: "1"
 
 image:
   name: infra-tibtunnel
   pullPolicy: IfNotPresent
-  tag: 178
+  tag: 197
 
 nodeSelector:
   kubernetes.io/os: linux
@@ -65,7 +65,7 @@ tolerations: {}
 
 fluentbit:
   image:
-    tag: 3.2.2
+    tag: 4.0.3
     name: common-fluentbit
   # Resources
   # https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/

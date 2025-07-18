@@ -20,7 +20,8 @@ spec:
     metadata:
       labels:
         {{- include "tp-tibtunnel.shared.labels.standard" . | nindent 8 }}
-        egress.networking.platform.tibco.com/internet-web: enable
+        networking.platform.tibco.com/internet-web-egress: enable
+        networking.platform.tibco.com/cp-egress: enable
     spec:
       {{- if .Values.podSecurityContext }}
       securityContext:
@@ -227,9 +228,7 @@ spec:
         {{- end }}
       {{- end }}
       imagePullSecrets:
-        {{- if .Values.global.tibco.containerRegistry.username }}{{if .Values.global.tibco.containerRegistry.password }}
         - name: {{ .Values.global.tibco.dataPlaneId }} {{/* optional imagePullSecret for private repo. no op if secret does not exist */}}
-        {{- end }}{{ end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

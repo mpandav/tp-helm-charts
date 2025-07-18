@@ -1,4 +1,4 @@
-# Copyright © 2024. Cloud Software Group, Inc.
+# Copyright © 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 
@@ -176,10 +176,12 @@ claims:
     # A subset of parameters from https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html are supported
     # Mandatory configuration parameters for Aurora cluster
     mandatoryConfigurationParameters:
+      autoMinorVersionUpgrade: true
       # provide for creating primary / stand-alone cluster
       # databaseName: "postgres"
       dbInstanceClass: "db.t3.medium"
       dbParameterGroupFamily: "aurora-postgresql14"
+      enablePerformanceInsights: false
       engine: "aurora-postgresql"
       engineVersion: "14.11"
       engineMode: "provisioned"
@@ -192,7 +194,6 @@ claims:
     #   allocatedStorage: 20
     #   allowMajorVersionUpgrade: "false"
     #   applyImmediately: "false"
-    #   autoMinorVersionUpgrade: "true"
     #   backupRetentionPeriod: "0"
     #   deletionProtection: "false"
     #   finalDBSnapshotIdentifier: ""
@@ -204,6 +205,7 @@ claims:
     #   allowedIngressConnectionsFrom:
     #     - "10.120.0.0/32"
     #     - "40.120.0.0/32"
+    #   performanceInsightsKmsKeyId: ""
     #   skipFinalSnapshot: "true"
     #   storageEncrypted: "false"
     #   storageType: aurora

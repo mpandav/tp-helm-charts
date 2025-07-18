@@ -1,9 +1,10 @@
 # Copyright © 2023. Cloud Software Group, Inc.
-# This file is subject to the license terms contained
-# in the license file that is distributed with this file.
+  # This file is subject to the license terms contained
+  # in the license file that is distributed with this file.
 
 {{- $installDir := .Values.backstage.installDir -}}
 {{ $cpHostname := (.Values.global.cp).cpHostname | required ".Values.global.cp.cpHostname is required." }}
+{{ $cpCertificateSecretPath:= "/etc/ssl/custom-certs" }}
 ---
 apiVersion: {{ include "common.capabilities.deployment.apiVersion" . }}
 kind: Deployment
@@ -16,7 +17,6 @@ metadata:
     {{- if .Values.commonLabels }}
     {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
     {{- end }}
-    egress.networking.platform.tibco.com/internet-all: enable
   annotations:
     {{- if .Values.commonAnnotations }}
     {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
@@ -30,7 +30,10 @@ spec:
     metadata:
       labels: {{- include "common.labels.standard" . | nindent 8 }}
         app.kubernetes.io/component: backstage
-        egress.networking.platform.tibco.com/internet-all: enable
+        networking.platform.tibco.com/kubernetes-api: enable
+        networking.platform.tibco.com/internet-egress: enable
+        networking.platform.tibco.com/database-egress: enable
+        networking.platform.tibco.com/proxy-egress: enable
         {{- include "tibcohub.platform.commonLabels" . | nindent 8 }}
       annotations:
         checksum/app-config: {{ include "common.tplvalues.render" ( dict "value" .Values.backstage.appConfig "context" $) | sha256sum }}
@@ -91,11 +94,12 @@ spec:
       {{- end }}
       {{- end }}
       {{- end }}
+      {{- if and (.Values.postgresql.enabled) (.Values.global.cp.resources.storage) (.Values.global.cp.resources.storage.storageClassName) }}
       initContainers:
         - name: check-db-ready
           image: {{ include "backstage.image.registry" .}}{{"/"}}{{ include "backstage.image.repository" .}}{{"/"}}{{ .Values.initContainer.image.name }}:{{ .Values.initContainer.image.tag }}
-          command: ['sh', '-c', 
-            'until pg_isready -U {{ .Values.postgresql.auth.username }} -h {{ include "backstage.postgresql.host" . }} -p 5432; 
+          command: ['sh', '-c',
+            'until pg_isready -U {{ .Values.postgresql.auth.username }} -h {{ include "backstage.postgresql.host" . }} -p 5432;
             do echo waiting for database; sleep 2; done;']
           {{- if .Values.global.cp.enableResourceConstraints }}
           {{- if .Values.appInit.resources }}
@@ -107,8 +111,9 @@ spec:
           securityContext:
             {{- toYaml .Values.appInit.securityContext | nindent 12 }}
           {{- end }}
-      {{- if .Values.backstage.initContainers }}      
+      {{- if .Values.backstage.initContainers }}
         {{- include "common.tplvalues.render" ( dict "value" .Values.backstage.initContainers "context" $) | nindent 8 }}
+      {{- end }}
       {{- end }}
       containers:
         - name: backstage-backend
@@ -186,9 +191,15 @@ spec:
           env:
             - name: APP_CONFIG_backend_listen_port
               value: {{ .Values.backstage.containerPorts.backend | quote }}
+            - name: DOC_URL
+              value: "https://docs.tibco.com/go/platform-cp/{{ .Chart.AppVersion }}/doc/html#cshid=developer_hub_overview"
             - name: CP_URL
               value: {{ $cpHostname }}
-            {{- if .Values.postgresql.enabled }}
+            {{- if .Values.global.cp.cpCertificateSecret }}
+            - name: CP_CERTIFICATE_SECRET_PATH
+              value: {{ $cpCertificateSecretPath }}
+            {{- end }}
+            {{- if and (.Values.postgresql.enabled) (.Values.global.cp.resources.storage) (.Values.global.cp.resources.storage.storageClassName) }}
             - name: POSTGRES_HOST
               value: {{ include "backstage.postgresql.host" . }}
             - name: POSTGRES_PORT
@@ -200,6 +211,22 @@ spec:
                 secretKeyRef:
                   name: {{ include "backstage.postgresql.databaseSecretName" . }}
                   key: {{ include "backstage.postgresql.databaseSecretKey" . }}
+            {{- else if .Values.global.cp.resources.dbconfig.dbHost }}
+            - name: PLUGIN_DIVISION_MODE
+              value: schema
+            - name: POSTGRES_DB
+              value: {{ .Values.global.cp.resources.dbconfig.dbName | quote }}
+            - name: POSTGRES_HOST
+              value: {{ .Values.global.cp.resources.dbconfig.dbHost | quote }}
+            - name: POSTGRES_PORT
+              value: {{ .Values.global.cp.resources.dbconfig.dbPort | quote }}
+            - name: POSTGRES_USER
+              value: {{ .Values.global.cp.resources.dbconfig.dbUser | quote }}
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tibco-developer-hub-postgres-secret
+                  key: DB_PWD
             {{- end }}
             {{- if .Values.backstage.extraEnvVars }}
             {{- include "common.tplvalues.render" ( dict "value" .Values.backstage.extraEnvVars "context" $) | nindent 12 }}
@@ -242,7 +269,7 @@ spec:
               mountPath: /tmp
             {{- if .Values.global.cp.cpCertificateSecret }}
             - name: cp-certs
-              mountPath: /etc/ssl/custom-certs
+              mountPath: {{ $cpCertificateSecretPath }}
             {{- end }}
             {{- if (or .Values.backstage.extraAppConfig .Values.backstage.appConfig (and .Values.backstage.extraVolumeMounts .Values.backstage.extraVolumes)) }}
             {{- range .Values.backstage.extraAppConfig }}

@@ -23,6 +23,10 @@ spec:
         {{- include "tp-dp-hawk-console.shared.labels.standard" . | nindent 8 }}
         egress.networking.platform.tibco.com/internet-web: enable
         networking.platform.tibco.com/kubernetes-api: enable
+        networking.platform.tibco.com/cluster-ingress: enable
+        networking.platform.tibco.com/cluster-egress: enable
+        networking.platform.tibco.com/internet-egress: enable
+        networking.platform.tibco.com/hawkInfra: enable
     spec:
       {{ if .Values.podSecurityContext }}
       securityContext:
@@ -37,6 +41,8 @@ spec:
           {{- toYaml .Values.securityContext.dpHawkConsole | nindent 10 }}
         {{- end }}
         env:
+          - name: AUTH_ENABLED
+            value: "true"
           - name: LOAD_CONFIG_FROM_ENV
             value: "true"
           - name: REST_TLS_PROTOCOL
@@ -61,6 +67,14 @@ spec:
             value: /redtail/hawkconsolenode/data
           - name: EMS_CERTS_PATH
             value: /redtail/hawkconsolenode/emscerts
+          - name : SUB_INTERVAL_BE
+            value: {{ .Values.hawkconsole.subscription.interval.be | quote }}
+          - name: SUB_INTERVAL_BW5
+            value: {{ .Values.hawkconsole.subscription.interval.bw5 | quote }}
+          - name: SUB_INTERVAL_SYS
+            value: {{ .Values.hawkconsole.subscription.interval.sys | quote }}
+          - name: SUB_INTERVAL_O11Y
+            value: {{ .Values.hawkconsole.subscription.interval.o11y | quote}}            
           - name: SUBSCRIPTION_ID
             value: {{ .Values.global.cp.subscriptionId }}
           - name: DATAPLANE_ID
@@ -69,8 +83,10 @@ spec:
             value: {{ .Values.global.cp.controlTower.authToken }}
           - name: METRIC_AUTH_TOKEN
             value: {{ .Values.global.cp.controlTower.metricAuthToken }}
+          - name: log_level
+            value: {{ .Values.hawkconsole.log.level }}  
           - name: JAVA_TOOL_OPTIONS
-            value: "-Xms2g -Xmx4g"
+            value: {{ .Values.hawkconsole.javaOptions | quote }}
         {{- if .Values.global.cp.enableResourceConstraints }}
         {{- with .Values.resources }}
         resources:
@@ -160,13 +176,13 @@ spec:
             mountPath: /fluent-bit/etc/
 {{- end }}
       volumes:
+{{- if .Values.global.cp.logging.fluentbit.enabled }}
         - name: podlogs
-          hostPath:
-            path: /var/log/pods
-            type: Directory
+          emptyDir: {}
         - name: config-volume
           configMap:
             name: {{ include "tp-dp-hawk-console.consts.appName" . }}-fluentbit-config
+{{- end }}
         - name: hawkcerts
           secret:
             secretName: {{ include "tp-dp-hawk-console.consts.appName" . }}-certs
@@ -194,7 +210,8 @@ spec:
     - metadata:
         name: {{ .Values.hawkconsole.hawkData.volClaimTemplateName }}
       spec:
-        accessModes: [ "ReadWriteMany" ]
+        accessModes: 
+          - {{ .Values.hawkconsole.hawkData.pvcAccessMode }}
         storageClassName: {{ .Values.global.cp.resources.storage.storageClassName }}
         resources:
           requests:

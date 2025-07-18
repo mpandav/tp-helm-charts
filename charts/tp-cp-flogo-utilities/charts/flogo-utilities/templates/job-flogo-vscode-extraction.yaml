@@ -1,4 +1,4 @@
-# Copyright © 2024. Cloud Software Group, Inc.
+# Copyright © 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 #
@@ -8,25 +8,25 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ include "flogo-utilities.fullname" $dot }}-vscode-extension-extract-{{ randAlphaNum 4 | lower }}
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ $.Release.Namespace }}
   annotations:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-weight": "0"
     "helm.sh/hook-delete-policy": before-hook-creation
   labels:
-    {{- include "flogo-utilities.labels" . | nindent 4 }}
+    {{- include "flogo-utilities.labels" $dot | nindent 4 }}
 spec:
   backoffLimit: 2
   ttlSecondsAfterFinished: 3600
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
+      {{- with $.Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "flogo-utilities.selectorLabels" . | nindent 8 }}
-        egress.networking.platform.tibco.com/internet-web: enable
+        {{- include "flogo-utilities.selectorLabels" $dot | nindent 8 }}
+        {{- include "flogo-utilities.networkPolicyLabels" . | nindent 8 }}
     spec:
       nodeSelector:
         kubernetes.io/os: linux
@@ -69,6 +69,22 @@ spec:
           value: debug
         - name: CLEAN_UP_TARGET_DIRS
           value: "true"
+        {{- if (include "flogo-utilities.cp-no-proxy" $dot ) }}
+        - name: NO_PROXY
+          value: "{{ include "flogo-utilities.cp-no-proxy" $dot }}"
+        {{- end }}
+        {{- if (include "flogo-utilities.cp-http-proxy" $dot ) }}
+        - name: HTTP_PROXY
+          value: "{{ include "flogo-utilities.cp-http-proxy" $dot }}"
+        {{- end }}
+        {{- if (include "flogo-utilities.cp-https-proxy" $dot ) }}
+        - name: HTTPS_PROXY
+          value: "{{ include "flogo-utilities.cp-https-proxy" $dot }}"
+        {{- end }}
+        {{- if (include "flogo-utilities.container-registry.custom-cert-secret" $dot) }}
+        - name: SSL_CERT_DIR
+          value: "/etc/certs/"
+        {{- end }}
         volumeMounts:
         - mountPath: {{ $.Values.toolsMountPath }}
           name: store-vol
@@ -82,6 +98,12 @@ spec:
         - name: container-registry-secret
           mountPath: /tibco/containerregistry
         {{- end }}
+        # mount this secret only if private container registry with custom certs is configured for CP.
+        {{- if (include "flogo-utilities.container-registry.custom-cert-secret" $dot) }}
+        - mountPath: /etc/certs
+          name: container-registry-custom-cert-secret
+          readOnly: true
+        {{- end }}
       {{- end }}
       volumes:
       - name: store-vol
@@ -91,6 +113,12 @@ spec:
         name: tmp-vol
       - emptyDir: {}
         name: kaniko-vol
+      {{- if (include "flogo-utilities.container-registry.custom-cert-secret" $dot) }}
+      - name: container-registry-custom-cert-secret
+        secret:
+          defaultMode: 420 # 0644 in octal
+          secretName: {{ include "flogo-utilities.container-registry.custom-cert-secret" $dot }}
+      {{- end }}
       {{- if (include "flogo-utilities.container-registry.secret" $dot) }}
       - name: container-registry-secret
         secret:

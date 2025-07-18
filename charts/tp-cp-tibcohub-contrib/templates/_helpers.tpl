@@ -72,7 +72,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
   {{- if .Values.image.registry }} 
     {{- .Values.image.registry }}
   {{- else }}
-    {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY" "default" "reldocker.tibco.com" "required" "false" "Release" .Release )}}
+    {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY" "default" "csgprduswrepoedge.jfrog.io" "required" "false" "Release" .Release )}}
   {{- end }}
 {{- end }}
 
@@ -105,6 +105,11 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 {{- end }}
 
+{{/* Image pull custom certificate secret configured for control plane. default value empty */}}
+{{- define "tp-cp-tibcohub-contrib.container-registry.custom-cert-secret" }}
+  {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY_CERTIFICATE_SECRET" "default" "" "required" "false"  "Release" .Release )}}
+{{- end }}
+
 {{/* Control plane instance Id. default value local */}}
 {{- define "tp-cp-tibcohub-contrib.cp-instance-id" }}
   {{- include "cp-env.get" (dict "key" "CP_INSTANCE_ID" "default" "cp1" "required" "false"  "Release" .Release )}}
@@ -113,4 +118,14 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/* Control plane enable or disable resource constraints */}}
 {{- define "tp-cp-tibcohub-contrib.enableResourceConstraints" -}}
 {{- include "cp-env.get" (dict "key" "CP_ENABLE_RESOURCE_CONSTRAINTS" "default" "false" "required" "false"  "Release" .Release )}}
+{{- end }}
+
+{{/*
+Network Policy labels
+*/}}
+{{- define "tp-cp-tibcohub-contrib.networkPolicyLabels" -}}
+networking.platform.tibco.com/internet-egress: enable
+networking.platform.tibco.com/cluster-egress: enable
+networking.platform.tibco.com/containerRegistry-egress: enable
+networking.platform.tibco.com/proxy-egress: enable
 {{- end }}

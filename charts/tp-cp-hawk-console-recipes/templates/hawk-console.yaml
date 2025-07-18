@@ -8,19 +8,23 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "tp-cp-hawk-console-recipes.appName" . }}-hawk-console
+  name: {{ include "tp-cp-hawk-console-recipes.appName" . }}-hawk-console-{{ include "tp-cp-hawk-console-recipes.resourceSuffix" . }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "tp-cp-hawk-console-recipes.labels" . | nindent 4 }}
 data:
   version.json: |
     {
-      "capabilityVersion": "1.4.0",
-      "minCPVersion": "1.3.0",
+      "capabilityVersion": "1.7.0",
+      "minCPVersion": "1.5.0",
       "maxCPVersion": "",
       "releaseDate": {{ .Values.capabilities.hawkConsole.releaseDate | quote }},
       "releaseNotes": {{ .Values.capabilities.hawkConsole.releaseNotes | quote }},
-      "minVersionRequiredForUpgrade": "1.3.0"
+      "minVersionRequiredForUpgrade": "1.4.0",
+      "minDPVersion": {
+         "dp-core-infrastructure": "1.4.0",
+         "dp-configure-namespace": "1.4.0"
+      }
     }
   package.json: |
     {
@@ -29,6 +33,11 @@ data:
           {
             "name": "tp-dp-hawk-console",
             "description": "Hawk Console Service",
+            "monitoringPriority": "essential"
+          },
+          {
+            "name": "tp-msg-gateway",
+            "description": "Messaging CT Gateway Services",
             "monitoringPriority": "essential"
           }
         ],
@@ -45,7 +54,8 @@ data:
       helmCharts:
         - name: tp-dp-hawk-console
           namespace: ${NAMESPACE}
-          version: "1.4.18"
+          # FIXME: ??use: .Values.capabilities.hawkConsole.version ??
+          version: "1.7.19"
           repository:
             chartMuseum:
               host: ${HELM_REPO}
@@ -53,6 +63,7 @@ data:
             - content: |
                 image:
                   tag: {{ .Values.capabilities.hawkConsole.tag | quote }}
+                cpIsSingleNamespace: {{ include "tp-cp-hawk-console-recipes.cp-is-single-namespace" . | quote }}
                 hawkconsole:
                   readinessFailureThreshold: 10
                   readinessInitialDelaySeconds: 12
@@ -78,7 +89,7 @@ data:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "tp-cp-hawk-console-recipes.appName" . }}-hawk-console
+  name: {{ include "tp-cp-hawk-console-recipes.appName" . }}-hawk-console-{{ include "tp-cp-hawk-console-recipes.resourceSuffix" . }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "tp-cp-hawk-console-recipes.labels" . | nindent 4 }}
@@ -112,7 +123,7 @@ spec:
         - name: RECIPE_TARGET_LOCATION
           value: "/private/tsc/config/capabilities/infra"
         - name: RECIPE_RELEASE_VERSION
-          value: "1.4.0"
+          value: "1.7.0"
         - name: SPACE_SEPARATED_UNSUPPORTED_RECIPE_VERSIONS
           value: ""
         - name: OVERWRITE_RECIPE
@@ -133,10 +144,10 @@ spec:
       volumes:
         - name: {{ include "tp-cp-hawk-console-recipes.appName" . }}-hawk-console-volume
           configMap:
-            name: {{ include "tp-cp-hawk-console-recipes.appName" . }}-hawk-console
+            name: {{ include "tp-cp-hawk-console-recipes.appName" . }}-hawk-console-{{ include "tp-cp-hawk-console-recipes.resourceSuffix" . }}
         - name: scripts-config-volume
           configMap:
-            name: {{ include "tp-cp-hawk-console-recipes.appName" . }}-script
+            name: {{ include "tp-cp-hawk-console-recipes.appName" . }}-script-{{ include "tp-cp-hawk-console-recipes.resourceSuffix" . }}
             defaultMode: 0777
         - name: store-vol
           persistentVolumeClaim:

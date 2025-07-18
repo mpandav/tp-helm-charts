@@ -1,4 +1,4 @@
-# Copyright © 2024. Cloud Software Group, Inc.
+# Copyright © 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 #
@@ -25,10 +25,9 @@ spec:
       {{- end }}
       labels:
         {{- include "flogo-utilities.selectorLabels" . | nindent 8 }}
-        egress.networking.platform.tibco.com/internet-all: enable
     spec:
       restartPolicy: Never
-      serviceAccountName: {{ include "flogo-utilities.service-account-name" . }}
+      # serviceAccountName: {{ include "flogo-utilities.service-account-name" . }}
       {{- with $.Values.podSecurityContext }}
       securityContext:
         {{- toYaml $.Values.podSecurityContext | nindent 8 }}

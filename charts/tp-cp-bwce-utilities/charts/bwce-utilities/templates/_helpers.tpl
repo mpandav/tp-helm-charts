@@ -1,5 +1,5 @@
 {{/*
-Copyright © 2024. Cloud Software Group, Inc.
+Copyright © 2025. Cloud Software Group, Inc.
 This file is subject to the license terms contained
 in the license file that is distributed with this file.
 */}}
@@ -43,8 +43,18 @@ app.kubernetes.io/name: {{ include "bwce-utilities.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
+{{/*
+Network Policy labels
+*/}}
+{{- define "bwce-utilities.networkPolicyLabels" -}}
+networking.platform.tibco.com/internet-egress: enable
+networking.platform.tibco.com/cluster-egress: enable
+networking.platform.tibco.com/containerRegistry-egress: enable
+networking.platform.tibco.com/proxy-egress: enable
+{{- end }}
+
 {{- define "bwce-utilities.image.registry" }}
-    {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY" "default" "reldocker.tibco.com" "required" "false" "Release" .Release )}}
+    {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY" "default" "" "required" "false" "Release" .Release )}}
 {{- end }}
 
 {{/* set repository based on the registry url. We will have different repo for each one. */}}
@@ -87,6 +97,11 @@ app.kubernetes.io/instance: {{ .Release.Name }}
   {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY_IMAGE_PULL_SECRET_NAME" "default" "" "required" "false"  "Release" .Release )}}
 {{- end }}
 
+{{/* Image pull custom certificate secret configured for control plane. default value empty */}}
+{{- define "bwce-utilities.container-registry.custom-cert-secret" }}
+  {{- include "cp-env.get" (dict "key" "CP_CONTAINER_REGISTRY_CERTIFICATE_SECRET" "default" "" "required" "false"  "Release" .Release )}}
+{{- end }}
+
 {{/* Control plane instance Id. default value local */}}
 {{- define "bwce-utilities.cp-instance-id" }}
   {{- include "cp-env.get" (dict "key" "CP_INSTANCE_ID" "default" "cp1" "required" "false"  "Release" .Release )}}
@@ -104,4 +119,16 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{/* Control plane enable or disable resource constraints */}}
 {{- define "bwce-utilities.enableResourceConstraints" -}}
 {{- include "cp-env.get" (dict "key" "CP_ENABLE_RESOURCE_CONSTRAINTS" "default" "false" "required" "false"  "Release" .Release )}}
+{{- end }}
+
+{{- define "bwce-utilities.cp-http-proxy" }}
+  {{- include "cp-env.get" (dict "key" "CP_HTTP_PROXY" "default" "" "required" "false"  "Release" .Release )}}
+{{- end }}
+
+{{- define "bwce-utilities.cp-https-proxy" }}
+  {{- include "cp-env.get" (dict "key" "CP_HTTPS_PROXY" "default" "" "required" "false"  "Release" .Release )}}
+{{- end }}
+
+{{- define "bwce-utilities.cp-no-proxy" }}
+  {{- include "cp-env.get" (dict "key" "CP_NO_PROXY" "default" "" "required" "false"  "Release" .Release )}}
 {{- end }}

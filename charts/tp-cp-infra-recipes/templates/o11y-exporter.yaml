@@ -1,5 +1,5 @@
 #
-# Copyright © 2023 - 2024. Cloud Software Group, Inc.
+# Copyright © 2023 - 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 #
@@ -15,12 +15,16 @@ metadata:
 data:
   version.json: |
     {
-      "capabilityVersion": "1.4.0",
+      "capabilityVersion": "1.8.0",
       "minCPVersion": "1.2.0",
       "maxCPVersion": "",
       "releaseDate": {{ .Values.capabilities.o11y.withResources.releaseDate | quote }},
       "releaseNotes": {{ .Values.capabilities.o11y.withResources.releaseNotes | quote }},
-      "minVersionRequiredForUpgrade": "1.2.0"
+      "minVersionRequiredForUpgrade": "1.2.0",
+      "minDPVersion": {
+        "dp-core-infrastructure": "1.4.0",
+        "dp-configure-namespace": "1.4.0"
+      }
     }
   package.json: |
     {
@@ -42,6 +46,11 @@ data:
             "monitoringPriority": "optional"
           },
           {
+            "name": "jaeger-allinone",
+            "description": "jaeger allinone",
+            "monitoringPriority": "optional"
+          },
+          {
             "name": "otel-userapp",
             "description": "otel userapp",
             "monitoringPriority": "essential"
@@ -54,11 +63,6 @@ data:
           {
             "name": "otel-finops",
             "description": "otel finops",
-            "monitoringPriority": "essential"
-          },
-          {
-            "name": "otel-services",
-            "description": "otel services",
             "monitoringPriority": "essential"
           }
         ],
@@ -107,6 +111,29 @@ data:
             createNamespace: false
             dependencyUpdate: true
         - name: opentelemetry-collector
+          namespace: ${NAMESPACE} 
+          releaseName: otel-services
+          version: {{ .Values.capabilities.o11y.default.opentelemetryCollector.version | quote }}
+          repository:
+            chartMuseum:
+              host: ${HELM_REPO}
+          values:
+            - content: |
+                global:
+                  cp:
+                    svcPod:
+                      enabled: false
+                mode: "deployment"
+                fullnameOverride: otel-services
+                serviceAccount:
+                  create: false
+                  annotations: {}
+                  name: ${SERVICE-ACCOUNT}
+          flags:
+            install: true
+            createNamespace: false
+            dependencyUpdate: true
+        - name: opentelemetry-collector
           namespace: ${NAMESPACE}
           releaseName: otel-userapp
           version: {{ .Values.capabilities.o11y.withResources.opentelemetryCollector.version | quote }}
@@ -121,11 +148,14 @@ data:
                       enabled: true
                     serviceTraces:
                       enabled: true
+                    serviceSvcLogs:
+                      enabled: true
                 mode: "deployment"
                 fullnameOverride: otel-userapp
                 podLabels:
                   networking.platform.tibco.com/kubernetes-api: enable
-                  egress.networking.platform.tibco.com/internet-all: enable
+                  networking.platform.tibco.com/logServer-egress: enable
+                  networking.platform.tibco.com/internet-egress: enable
                 resources:
                   requests:
                     cpu: 100m
@@ -173,6 +203,18 @@ data:
                     servicePort: 4318
                     hostPort: 4318
                     protocol: TCP
+                  metrics:
+                    enabled: true
+                    containerPort: 8888
+                    servicePort: 8888
+                    hostPort: 8888
+                    protocol: TCP
+                  prometheus:
+                    enabled: true
+                    containerPort: 4319
+                    servicePort: 4319
+                    hostPort: 4319
+                    protocol: TCP
                 config:
                   receivers:
                     otlp:
@@ -190,7 +232,22 @@ data:
                       check_interval: 5s
                       limit_percentage: 80
                       spike_limit_percentage: 25
+                      limit_mib: 2000
                     batch: {}
+                    filter/userapp:
+                      logs:
+                        include:
+                          match_type: strict
+                          resource_attributes:
+                          - key: workload_type
+                            value: user-app
+                    filter/svc:
+                      logs:
+                        include:
+                          match_type: regexp
+                          resource_attributes:
+                          - key: workload_type
+                            value: infra|capability-service
                     filter/devnull-logs:
                       error_mode: ignore
                       logs:
@@ -365,6 +422,39 @@ data:
                       brokers: ${env:TRACES_EXPORTER_KAFKA_BROKERS}
                       topic: ${env:TRACES_EXPORTER_KAFKA_TOPIC}
                       protocol_version: ${env:TRACES_EXPORTER_KAFKA_PROTOCOL_VERSION}
+                    elasticsearch/svclog:
+                      endpoints:
+                      - ${env:LOGS_EXPORTER_SVC_ES_ENDPOINT}
+                      logs_index: ${env:LOGS_EXPORTER_SVC_ES_INDEX_NAME}
+                      user: ${env:LOGS_EXPORTER_SVC_ES_USERNAME}
+                      password: ${env:LOGS_EXPORTER_SVC_ES_PASSWORD}
+                      retry:
+                        enabled: false
+                      tls:
+                        insecure: false
+                        insecure_skip_verify: true
+                      headers: ${env:headers_logs_expo_services}
+                    otlphttp/service-logs-export:
+                      endpoint: ${env:LOGS_EXPORTER_SVC_OTLP_URL}
+                      tls:
+                        insecure_skip_verify: true
+                    otlp/service-logs-export:
+                      endpoint: ${env:LOGS_EXPORTER_SVC_OTLP_URL}
+                      tls:
+                        insecure: true
+                        insecure_skip_verify: true
+                    kafka/service-logs-export-auth:
+                      brokers: ${env:LOGS_EXPORTER_SVC_KAFKA_BROKERS}
+                      topic: ${env:LOGS_EXPORTER_SVC_KAFKA_TOPIC}
+                      protocol_version: ${env:LOGS_EXPORTER_SVC_KAFKA_PROTOCOL_VERSION}
+                      auth:
+                        plain_text:
+                          username: ${env:LOGS_EXPORTER_SVC_KAFKA_USERNAME}
+                          password: ${env:LOGS_EXPORTER_SVC_KAFKA_PASSWORD}
+                    kafka/service-logs-export:
+                      brokers: ${env:LOGS_EXPORTER_SVC_KAFKA_BROKERS}
+                      topic: ${env:LOGS_EXPORTER_SVC_KAFKA_TOPIC}
+                      protocol_version: ${env:LOGS_EXPORTER_SVC_KAFKA_PROTOCOL_VERSION}
                   extensions:
                     health_check: {}
                   service:
@@ -375,10 +465,14 @@ data:
                     extensions:
                       - health_check
                     pipelines:
-                      logs:
+                      logs/app:
                         receivers: ${env:app_logs_receiver}
                         processors: ${env:app_logs_processor}
                         exporters: ${env:app_logs_exporter}
+                      logs/svc:
+                        exporters: ${env:svc_logs_exporter}
+                        processors: ${env:svc_logs_processor}
+                        receivers: ${env:svc_logs_receiver}
                       traces:
                         receivers: ${env:traces_receiver}
                         processors: ${env:traces_processor}
@@ -401,7 +495,8 @@ data:
                 fullnameOverride: otel-userapp-metrics
                 podLabels:
                   networking.platform.tibco.com/kubernetes-api: enable
-                  egress.networking.platform.tibco.com/internet-all: enable
+                  networking.platform.tibco.com/prometheus: enable
+                  networking.platform.tibco.com/internet-egress: enable
                   prometheus.io/scrape: "true"
                   prometheus.io/path: "metrics"
                   prometheus.io/port: "4319"
@@ -464,8 +559,15 @@ data:
                     servicePort: 4319
                     hostPort: 4319
                     protocol: TCP
+                  prometheus-ext:
+                    enabled: true
+                    containerPort: 4320
+                    servicePort: 4320
+                    hostPort: 4320
+                    protocol: TCP
                 config:
                   receivers:
+                    nop: {}
                     otlp:
                       protocols:
                         grpc:
@@ -484,8 +586,7 @@ data:
                            kubernetes_sd_configs:
                            - role: service
                              namespaces:
-                               names:
-                                 - ${env:app_namespace}
+                               names: ${env:app_namespaces}
                            relabel_configs:
                            - action: keep
                              source_labels: [__meta_kubernetes_service_label_prometheus_io_scrape]
@@ -505,8 +606,7 @@ data:
                            kubernetes_sd_configs:
                            - role: pod
                              namespaces:
-                               names:
-                                 - ${env:app_namespace}
+                               names: ${env:app_namespaces}
                            relabel_configs:
                            - action: keep
                              source_labels: [__meta_kubernetes_pod_label_prometheus_io_scrape]
@@ -526,8 +626,7 @@ data:
                            kubernetes_sd_configs:
                            - role: service
                              namespaces:
-                               names:
-                                 - ${env:app_namespace}
+                               names: ${env:app_namespaces}
                            relabel_configs:
                            - action: keep
                              source_labels: [__meta_kubernetes_service_label_platform_tibco_com_scrape_o11y]
@@ -550,8 +649,7 @@ data:
                            kubernetes_sd_configs:
                            - role: service
                              namespaces:
-                               names:
-                                 - ${env:app_namespace}
+                               names: ${env:app_namespaces}
                            relabel_configs:
                            - action: keep
                              source_labels: [__meta_kubernetes_service_label_prometheus_io_scrape]
@@ -886,6 +984,11 @@ data:
                       enable_open_metrics: true
                       resource_to_telemetry_conversion:
                         enabled: true
+                    prometheus/ext:
+                      endpoint: 0.0.0.0:4320
+                      enable_open_metrics: true
+                      resource_to_telemetry_conversion:
+                        enabled: true
                     otlphttp/metrics-export:
                       endpoint: ${env:METRICS_EXPORTER_OTLP_URL}
                       tls:
@@ -925,6 +1028,9 @@ data:
                         receivers: ${env:metrics_prom_rec}
                         processors: ${env:metrics_prom_proc}
                         exporters: ${env:metrics_prom_exp}
+                      metrics/ext:
+                        receivers: [nop]
+                        exporters: [prometheus/ext]
           flags:
             install: true
             createNamespace: false
@@ -943,7 +1049,8 @@ data:
                 fullnameOverride: otel-finops
                 podLabels:
                   networking.platform.tibco.com/kubernetes-api: enable
-                  egress.networking.platform.tibco.com/internet-all: enable
+                  networking.platform.tibco.com/prometheus: enable
+                  networking.platform.tibco.com/internet-egress: enable
                 serviceAccount:
                   create: false
                   name: ${SERVICE-ACCOUNT}
@@ -979,8 +1086,7 @@ data:
                             kubernetes_sd_configs:
                             - role: service
                               namespaces:
-                                names:
-                                  - ${env:app_namespace}
+                                names: ${env:app_namespaces}
                             relabel_configs:
                             - action: keep
                               source_labels: [__meta_kubernetes_service_label_platform_tibco_com_scrape_finops]
@@ -1006,8 +1112,7 @@ data:
                             kubernetes_sd_configs:
                             - role: pod
                               namespaces:
-                                names:
-                                  - ${env:app_namespace}
+                                names: ${env:app_namespaces}
                             relabel_configs:
                             - action: keep
                               source_labels: [__meta_kubernetes_pod_label_platform_tibco_com_scrape_finops]
@@ -1063,163 +1168,6 @@ data:
             createNamespace: false
             dependencyUpdate: true
             isDevTesting: true
-        - name: opentelemetry-collector
-          namespace: ${NAMESPACE}
-          releaseName: otel-services
-          version: {{ .Values.capabilities.o11y.withResources.opentelemetryCollector.version | quote }}
-          repository:
-            chartMuseum:
-              host: ${HELM_REPO}
-          values:
-            - content: |
-                mode: "deployment"
-                fullnameOverride: otel-services
-                podLabels:
-                  networking.platform.tibco.com/kubernetes-api: enable
-                  egress.networking.platform.tibco.com/internet-all: enable
-                serviceAccount:
-                  create: false
-                  name: ${SERVICE-ACCOUNT}
-                extraEnvsFrom:
-                  - secretRef:
-                      name: o11y-service
-                  - configMapRef:
-                      name: o11y-service
-                ports:
-                  otlp:
-                    enabled: true
-                    containerPort: 4317
-                    servicePort: 4317
-                    hostPort: 4317
-                    protocol: TCP
-                    # nodePort: 30317
-                    appProtocol: grpc
-                  otlp-http:
-                    enabled: true
-                    containerPort: 4318
-                    servicePort: 4318
-                    hostPort: 4318
-                    protocol: TCP
-                  metrics:
-                    enabled: true
-                    containerPort: 8888
-                    servicePort: 8888
-                    hostPort: 8888
-                    protocol: TCP
-                  prometheus:
-                    enabled: true
-                    containerPort: 4319
-                    servicePort: 4319
-                    hostPort: 4319
-                    protocol: TCP
-                config:
-                  receivers:
-                    otlp:
-                      protocols:
-                        grpc:
-                          endpoint: 0.0.0.0:4317
-                        http:
-                          cors:
-                            allowed_origins:
-                              - http://*
-                              - https://*
-                          endpoint: 0.0.0.0:4318
-                  processors:
-                    memory_limiter:
-                      check_interval: 1s
-                      limit_mib: 2000
-                    filter/devnull-logs:
-                      error_mode: ignore
-                      logs:
-                        log_record:
-                          - 'IsMatch(body, "")'
-                    k8sattributes/general:
-                      auth_type: "serviceAccount"
-                      passthrough: false
-                      extract:
-                        metadata:
-                          - k8s.pod.name
-                          - k8s.pod.uid
-                          - k8s.namespace.name
-                        labels:
-                          - tag_name: dataplane_id
-                            key: platform.tibco.com/dataplane-id
-                            from: pod
-                          - tag_name: workload_type
-                            key: platform.tibco.com/workload-type
-                            from: pod
-                    k8sattributes/general-ns:
-                      auth_type: "serviceAccount"
-                      passthrough: false
-                      filter:
-                        namespace: ${env:app_namespace}
-                      extract:
-                        metadata:
-                          - k8s.pod.name
-                          - k8s.pod.uid
-                          - k8s.namespace.name
-                        labels:
-                          - tag_name: dataplane_id
-                            key: platform.tibco.com/dataplane-id
-                            from: pod
-                          - tag_name: workload_type
-                            key: platform.tibco.com/workload-type
-                            from: pod
-                    batch: {}
-                  exporters:
-                    debug: {}
-                    elasticsearch/log:
-                      endpoints:
-                      - ${env:LOGS_EXPORTER_SVC_ES_ENDPOINT}
-                      logs_index: ${env:LOGS_EXPORTER_SVC_ES_INDEX_NAME}
-                      user: ${env:LOGS_EXPORTER_SVC_ES_USERNAME}
-                      password: ${env:LOGS_EXPORTER_SVC_ES_PASSWORD}
-                      retry:
-                        enabled: false
-                      tls:
-                        insecure: false
-                        insecure_skip_verify: true
-                      headers: ${env:headers_logs_expo_services}
-                    otlphttp/service-logs-export:
-                      endpoint: ${env:LOGS_EXPORTER_SVC_OTLP_URL}
-                      tls:
-                        insecure_skip_verify: true
-                    otlp/service-logs-export:
-                      endpoint: ${env:LOGS_EXPORTER_SVC_OTLP_URL}
-                      tls:
-                        insecure: true
-                        insecure_skip_verify: true
-                    kafka/service-logs-export-auth:
-                      brokers: ${env:LOGS_EXPORTER_SVC_KAFKA_BROKERS}
-                      topic: ${env:LOGS_EXPORTER_SVC_KAFKA_TOPIC}
-                      protocol_version: ${env:LOGS_EXPORTER_SVC_KAFKA_PROTOCOL_VERSION}
-                      auth:
-                        plain_text:
-                          username: ${env:LOGS_EXPORTER_SVC_KAFKA_USERNAME}
-                          password: ${env:LOGS_EXPORTER_SVC_KAFKA_PASSWORD}
-                    kafka/service-logs-export:
-                      brokers: ${env:LOGS_EXPORTER_SVC_KAFKA_BROKERS}
-                      topic: ${env:LOGS_EXPORTER_SVC_KAFKA_TOPIC}
-                      protocol_version: ${env:LOGS_EXPORTER_SVC_KAFKA_PROTOCOL_VERSION}
-                  extensions:
-                    health_check: {}
-                  service:
-                    telemetry:
-                      logs: {}
-                      metrics:
-                        address: :8888
-                    extensions:
-                      - health_check
-                    pipelines:
-                      logs:
-                        exporters: ${env:svc_logs_exporter}
-                        processors: ${env:svc_logs_processor}
-                        receivers: ${env:svc_logs_receiver}
-          flags:
-            install: true
-            createNamespace: false
-            dependencyUpdate: true
-            isDevTesting: true
         - name: jaeger
           namespace: ${NAMESPACE}
           releaseName: jaeger
@@ -1254,7 +1202,8 @@ data:
                   basePath: /o11y/v1/traceproxy/${DATAPLANE-ID}
                   podLabels:
                     networking.platform.tibco.com/kubernetes-api: enable
-                    egress.networking.platform.tibco.com/internet-all: enable
+                    networking.platform.tibco.com/logServer-egress: enable
+                    networking.platform.tibco.com/internet-egress: enable
                   resources:
                     requests:
                       cpu: 200m
@@ -1285,7 +1234,8 @@ data:
                   fullnameOverride: jaeger-collector
                   podLabels:
                     networking.platform.tibco.com/kubernetes-api: enable
-                    egress.networking.platform.tibco.com/internet-all: enable
+                    networking.platform.tibco.com/logServer-egress: enable
+                    networking.platform.tibco.com/internet-egress: enable
                   resources:
                     requests:
                       cpu: 200m
@@ -1326,7 +1276,7 @@ data:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ include "tp-cp-infra-recipes.appName" . }}-o11y-exporter
+  name: {{ include "tp-cp-infra-recipes.appName" . }}-o11y-exporter-{{ randAlphaNum 4 | lower }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "tp-cp-infra-recipes.labels" . | nindent 4 }}
@@ -1366,7 +1316,7 @@ spec:
         - name: RECIPE_TARGET_LOCATION
           value: "/private/tsc/config/capabilities/platform"
         - name: RECIPE_RELEASE_VERSION
-          value: "1.4.0"
+          value: "1.8.0"
         - name: SPACE_SEPARATED_UNSUPPORTED_RECIPE_VERSIONS
           value: ""
         - name: OVERWRITE_RECIPE

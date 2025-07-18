@@ -1,4 +1,4 @@
-# Copyright © 2024. Cloud Software Group, Inc.
+# Copyright © 2025. Cloud Software Group, Inc.
 # This file is subject to the license terms contained
 # in the license file that is distributed with this file.
 #
@@ -26,7 +26,7 @@ spec:
       {{- end }}
       labels:
         {{- include "flogo-utilities.selectorLabels" . | nindent 8 }}
-        egress.networking.platform.tibco.com/internet-web: enable
+        {{- include "flogo-utilities.networkPolicyLabels" . | nindent 8 }}
     spec:
       restartPolicy: Never
       {{- with $.Values.podSecurityContext }}
@@ -107,6 +107,22 @@ spec:
           value: "{{ $name }}"
         - name: FLOGO_CONNECTOR_TAG
           value: "{{ $tag }}"
+        {{- if (include "flogo-utilities.cp-no-proxy" $dot ) }}
+        - name: NO_PROXY
+          value: "{{ include "flogo-utilities.cp-no-proxy" $dot }}"
+        {{- end }}
+        {{- if (include "flogo-utilities.cp-http-proxy" $dot ) }}
+        - name: HTTP_PROXY
+          value: "{{ include "flogo-utilities.cp-http-proxy" $dot }}"
+        {{- end }}
+        {{- if (include "flogo-utilities.cp-https-proxy" $dot ) }}
+        - name: HTTPS_PROXY
+          value: "{{ include "flogo-utilities.cp-https-proxy" $dot }}"
+        {{- end }}
+        {{- if (include "flogo-utilities.container-registry.custom-cert-secret" $dot) }}
+        - name: SSL_CERT_DIR
+          value: "/etc/certs/"
+        {{- end }}
         volumeMounts:
         - mountPath: {{ $.Values.volumes.plugins.mountPath }}
           name: shared-vol
@@ -119,6 +135,12 @@ spec:
         {{- if (include "flogo-utilities.container-registry.secret" $dot) }}
         - mountPath: /tibco/containerregistry
           name: container-registry-secret
+        {{- end }}
+        # mount this secret only if private container registry with custom certs is configured for CP.
+        {{- if (include "flogo-utilities.container-registry.custom-cert-secret" $dot) }}
+        - mountPath: /etc/certs
+          name: container-registry-custom-cert-secret
+          readOnly: true
         {{- end }}
       - name: {{ $name }}-{{ randAlphaNum 4 | lower }}-default
         image: {{ include "flogo-utilities.image.registry" $dot }}{{"/"}}{{ include "flogo-utilities.infra.image.repository" $dot }}{{"/"}}{{ $.Values.debug.image.name }}:{{ $.Values.debug.image.tag }}
@@ -168,6 +190,12 @@ spec:
         name: tmp-vol
       - emptyDir: {}
         name: kaniko-vol
+      {{- if (include "flogo-utilities.container-registry.custom-cert-secret" $dot) }}
+      - name: container-registry-custom-cert-secret
+        secret:
+          defaultMode: 420 # 0644 in octal
+          secretName: {{ include "flogo-utilities.container-registry.custom-cert-secret" $dot }}
+      {{- end }}
       {{- if (include "flogo-utilities.container-registry.secret" $dot) }}
       - name: container-registry-secret
         secret:
