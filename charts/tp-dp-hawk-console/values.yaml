@@ -10,10 +10,10 @@
 resources:
   requests:
     cpu: 200m
-    memory: 1024Mi
+    memory: 2048Mi
   limits:
     cpu: 1000m
-    memory: 3072Mi
+    memory: 2048Mi
 
 # no of replicas
 replicaCount: "1"
@@ -123,7 +123,7 @@ hawkconsole:
   # The number of successive failed probes before indicating lives success.
   livenessSuccessThreshold: 1
   # Configure Heap size and other java options
-  javaOptions: "-Xms1g -Xmx3g"
+  javaOptions: "-Xms1g -Xmx1g"
 
   # Configure log level, Accepted values are ERROR, INFO, DEBUG and TRACE
   # default log mode is INFO

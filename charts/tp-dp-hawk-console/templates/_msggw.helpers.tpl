@@ -117,7 +117,7 @@ job:
       memory: "0.5Gi"
       cpu: "0.1"
     limits:
-      memory: "1Gi"
+      memory: ""0.5Gi"
       cpu: "1"
     {{ end }}
 securityProfile: {{ .Values.securityProfile | default "pss-restrictive" }}

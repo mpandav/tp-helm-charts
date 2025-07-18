@@ -318,11 +318,11 @@ useGOMEMLIMIT: true
 # It is HIGHLY recommended to set resource limits.
 resources:
   requests:
-    cpu: 400m
-    memory: 1024Mi
+    cpu: 200m
+    memory: 512Mi
   limits:
-    cpu: 1000m
-    memory: 2048Mi
+    cpu: 500m
+    memory: 1024Mi
 
 podAnnotations: {}
 

@@ -159,10 +159,10 @@ data:
                 resources:
                   requests:
                     cpu: 100m
-                    memory: 256Mi
+                    memory: 128Mi
                   limits:
                     cpu: 1000m
-                    memory: 1024Mi
+                    memory: 128Mi
                 autoscaling:
                   enabled: true
                   minReplicas: 1
@@ -506,7 +506,7 @@ data:
                     memory: 128Mi
                   limits:
                     cpu: 500m
-                    memory: 1024Mi
+                    memory: 128Mi
                 serviceAccount:
                   create: false
                   name: ${SERVICE-ACCOUNT}
@@ -1210,7 +1210,7 @@ data:
                       memory: 256Mi
                     limits:
                       cpu: 1000m
-                      memory: 1024Mi
+                      memory: 256Mi
                   extraConfigmapMounts:
                     - name: jaeger-config
                       mountPath: /jaeger/config
