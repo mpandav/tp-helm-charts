@@ -64,6 +64,7 @@ jobs:
               echo "Skipping $dir because it declares dependencies"
             fi
           done
+          find .
 
       - name: Run chart-releaser-sub
         uses: helm/chart-releaser-action@v1.7.0
