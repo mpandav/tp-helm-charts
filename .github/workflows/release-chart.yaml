@@ -70,6 +70,7 @@ jobs:
           for d in $(find charts/ -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq); do
             echo "Running 'helm dependency build' in $d"
             helm dependency build "$d"
+          done
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.7.0
