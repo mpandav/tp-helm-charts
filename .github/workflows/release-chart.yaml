@@ -54,10 +54,14 @@ jobs:
 
       - name: Package all subcharts first
         run: |
-          for d in $(find charts/ -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq); do
-            if [ "$d" != "charts" ]; then
-              echo "Packaging $d"
-              helm package "$d" --destination charts/
+          for chart_yaml in $(find charts/ -type f -name 'Chart.yaml'); do
+            dir=$(dirname "$chart_yaml")
+            # Skip charts that declare their own dependencies
+            if ! grep -q '^[[:space:]]*dependencies:' "$chart_yaml"; then
+              echo "Packaging $dir"
+              helm package "$dir" --destination charts/
+            else
+              echo "Skipping $dir because it declares dependencies"
             fi
           done
 
