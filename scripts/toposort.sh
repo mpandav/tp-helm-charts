@@ -10,7 +10,7 @@ for chart_yaml in $(find charts/ -name Chart.yaml); do
   dir=$(dirname "$chart_yaml")
   name=$(yq '.name' "$chart_yaml")
   chart_paths["$name"]=$dir
-  for dep in $(yq '.dependencies[].name // empty' "$chart_yaml"); do
+  for dep in $(yq -r '.dependencies[]?.name' "$chart_yaml"); do
     deps["$name"]+="$dep "
     reverse_deps["$dep"]+="$name "
   done
