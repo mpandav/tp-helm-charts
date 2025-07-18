@@ -55,7 +55,7 @@ jobs:
         run: |
           for d in $(find charts/ -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq); do
             echo "Running 'helm dependency build' in $d"
-            helm dependency build "$d"
+            helm dependency build "$d" || true
           done
 
       - name: Run chart-releaser
