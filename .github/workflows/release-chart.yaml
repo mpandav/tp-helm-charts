@@ -51,16 +51,24 @@ jobs:
             done
           done
 
-      - name: Build subchart dependencies
+      - name: Package all subcharts first
         run: |
           for d in $(find charts/ -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq); do
-            echo "Running 'helm dependency build' in $d"
-            helm dependency build "$d" || true
+            if [ "$d" != "charts" ]; then
+              echo "Packaging $d"
+              helm package "$d" --destination charts/
+            fi
           done
+
+      - name: Build dependencies for top-level chart
+        run: |
+          echo "Running 'helm dependency build' in charts/"
+          helm dependency build charts/
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.7.0
         with:
+          skip_existing: true
           packages_with_index: false
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
