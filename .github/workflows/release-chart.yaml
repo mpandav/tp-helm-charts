@@ -75,19 +75,25 @@ jobs:
           mkdir -p .cr-release-packages
 
           while IFS= read -r chart_dir; do
-            name=$(yq '.name' "$chart_dir/Chart.yaml")
-            version=$(yq '.version' "$chart_dir/Chart.yaml")
+            name=$(yq -r '.name' "$chart_dir/Chart.yaml")
+            version=$(yq -r '.version' "$chart_dir/Chart.yaml")
             tgz_file=".cr-release-packages/${name}-${version}.tgz"
 
             echo "📦 Packaging $name ($version) from $chart_dir"
             helm package "$chart_dir" --destination .cr-release-packages
 
             echo "🚀 Releasing $tgz_file to GitHub Releases"
+            mkdir -p temp-release
+            cp "$tgz_file" temp-release/
+
             cr upload \
-              --package "$tgz_file" \
+              --package-path temp-release \
               --token "$CR_TOKEN" \
               --owner "${{ github.repository_owner }}" \
-              --repo "${{ github.event.repository.name }}"
+              --git-repo "${{ github.event.repository.name }}" \
+              --skip-existing
+
+            rm -rf temp-release
 
             echo "🔄 Refreshing Helm repo index for next chart"
             helm repo update
