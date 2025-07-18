@@ -52,42 +52,44 @@ jobs:
             done
           done
 
-      - name: Package all subcharts first
+      - name: Install chart-releaser (cr)
         run: |
-          for chart_yaml in $(find charts/ -type f -name 'Chart.yaml'); do
-            dir=$(dirname "$chart_yaml")
-            # Skip charts that declare their own dependencies
-            if ! grep -q '^[[:space:]]*dependencies:' "$chart_yaml"; then
-              echo "Packaging $dir"
-              helm package "$dir" --destination .cr-release-packages
-            else
-              echo "Skipping $dir because it declares dependencies"
-            fi
-          done
-          find .
+          curl -sSL https://github.com/helm/chart-releaser/releases/download/v1.7.0/chart-releaser_$(uname -s)_$(uname -m).tar.gz | tar xz
+          sudo mv cr /usr/local/bin
+          cr version
 
-      - name: Run chart-releaser-sub
-        uses: helm/chart-releaser-action@v1.7.0
-        with:
-          skip_existing: true
-          packages_with_index: false
-          charts_dir: .cr-release-packages
-        env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: Build dependencies for top-level chart
+      - name: Install yq (for parsing Chart.yaml)
         run: |
-          helm repo update 
-          for d in $(find charts/ -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq); do
-            echo "Running 'helm dependency build' in $d"
-            helm dependency build "$d"
-          done
+          sudo wget -q https://github.com/mikefarah/yq/releases/download/v4.43.1/yq_linux_amd64 -O /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/yq
+          yq --version
+      - name: Topologically sort charts
+        run: |
+          bash scripts/toposort.sh > sorted-charts.txt
+          cat sorted-charts.txt
 
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.7.0
-        with:
-          skip_existing: true
-          skip_packaging: true
-          packages_with_index: false
+      - name: Package and release charts in order
         env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p .cr-release-packages
+
+          while IFS= read -r chart_dir; do
+            name=$(yq '.name' "$chart_dir/Chart.yaml")
+            version=$(yq '.version' "$chart_dir/Chart.yaml")
+            tgz_file=".cr-release-packages/${name}-${version}.tgz"
+
+            echo "📦 Packaging $name ($version) from $chart_dir"
+            helm package "$chart_dir" --destination .cr-release-packages
+
+            echo "🚀 Releasing $tgz_file to GitHub Releases"
+            cr upload \
+              --package "$tgz_file" \
+              --token "$CR_TOKEN" \
+              --owner "${{ github.repository_owner }}" \
+              --repo "${{ github.event.repository.name }}"
+
+            echo "🔄 Refreshing Helm repo index for next chart"
+            helm repo update
+            sleep 5
+          done < sorted-charts.txt
