@@ -65,6 +65,14 @@ jobs:
             fi
           done
 
+      - name: Run chart-releaser-sub
+        uses: helm/chart-releaser-action@v1.7.0
+        with:
+          skip_existing: true
+          packages_with_index: false
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
       - name: Build dependencies for top-level chart
         run: |
           for d in $(find charts/ -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq); do
