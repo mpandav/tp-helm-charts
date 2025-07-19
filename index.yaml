@@ -6380,6 +6380,15 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/providers-1.2.0/providers-1.2.0.tgz
     version: 1.2.0
+  router-operator:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:02:07.5753021Z"
+    digest: e1ea515cce2fa290e4907ce4f379e9b6e9082a70a382ce31c1c48910402bf7e3
+    name: router-operator
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/router-operator-1.8.0/router-operator-1.8.0.tgz
+    version: 1.8.0
   servicemesh-contrib:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -11928,4 +11937,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:01:58.546463528Z"
+generated: "2025-07-19T08:02:07.575907969Z"
