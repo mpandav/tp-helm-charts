@@ -3317,6 +3317,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/opentelemetry-collector-0.89.2/opentelemetry-collector-0.89.2.tgz
     version: 0.89.2
+  orchestrator:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:02:25.347418266Z"
+    description: A Helm chart for -- Orchestrator
+    digest: d729e0850197d8f79fb22fef847af9bdbeff1bd41ddb829a8bded67894eb86ca
+    name: orchestrator
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/orchestrator-1.8.11/orchestrator-1.8.11.tgz
+    version: 1.8.11
   otel-collector:
   - apiVersion: v2
     appVersion: 0.119.0
@@ -11946,4 +11956,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:02:16.433537597Z"
+generated: "2025-07-19T08:02:25.34810588Z"
