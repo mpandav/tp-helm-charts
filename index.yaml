@@ -1767,6 +1767,32 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/flogoprovisioner-1.2.9/flogoprovisioner-1.2.9.tgz
     version: 1.2.9
+  haproxy:
+  - annotations:
+      artifacthub.io/changes: |
+        - Use Ingress Controller 3.0.1 version for base image
+        - Limit template spec name to 15 characters (#247)
+    apiVersion: v2
+    appVersion: 3.1.7
+    created: "2025-07-19T08:00:55.983700784Z"
+    description: A Helm chart for HAProxy Kubernetes Ingress Controller
+    digest: a5c69c2c8e6bee637b6da2bf9f4ac971cfc61af0b44f0e57a87aee50142c36a4
+    home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
+    icon: https://raw.githubusercontent.com/haproxytech/helm-charts/main/kubernetes-ingress/chart-icon.png
+    keywords:
+    - ingress
+    - haproxy
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - email: dkorunic@haproxy.com
+      name: Dinko Korunic
+    name: haproxy
+    sources:
+    - https://github.com/haproxytech/kubernetes-ingress
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/haproxy-1.44.3/haproxy-1.44.3.tgz
+    version: 1.44.3
   hybrid-proxy:
   - apiVersion: v2
     appVersion: 1.8.0
@@ -11803,4 +11829,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:00:47.120529797Z"
+generated: "2025-07-19T08:00:55.984313568Z"
