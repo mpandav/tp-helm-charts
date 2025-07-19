@@ -10776,6 +10776,24 @@ entries:
     version: 1.2.24
   tp-cp-msg-recipes:
   - apiVersion: v2
+    appVersion: 1.7.0-36
+    created: "2025-07-19T08:03:54.052128337Z"
+    description: TIBCO Platform Control Plane -- Messaging
+    digest: b57a45b9e276769a729cff0bb36954d1d84a66bd8f960d7bcb8cc9812251993e
+    keywords:
+    - tibco-platform
+    - control-plane
+    - messaging
+    - EMS
+    - Pulsar
+    maintainers:
+    - email: tcm@tibco.com
+      name: TIBCO Cloud Messaging Team
+    name: tp-cp-msg-recipes
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-msg-recipes-1.7.19/tp-cp-msg-recipes-1.7.19.tgz
+    version: 1.7.19
+  - apiVersion: v2
     appVersion: 1.4.0-12
     created: "2025-02-06T18:04:17.812688397Z"
     description: TIBCO Platform Control Plane -- Messaging
@@ -12078,4 +12096,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:03:45.107306343Z"
+generated: "2025-07-19T08:03:54.052725011Z"
