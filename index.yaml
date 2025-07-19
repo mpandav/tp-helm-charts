@@ -3306,6 +3306,15 @@ entries:
     version: 10.1.006
   opentelemetry-collector:
   - apiVersion: v2
+    appVersion: 0.119.0
+    created: "2025-07-19T08:05:32.681068314Z"
+    description: OpenTelemetry Collector Helm chart for Kubernetes
+    digest: 11ea29d35013d6ada0e39010826e450245e1cf3ebb411e047e669eaf8e44c82a
+    name: opentelemetry-collector
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/opentelemetry-collector-0.116.4/opentelemetry-collector-0.116.4.tgz
+    version: 0.116.4
+  - apiVersion: v2
     appVersion: 0.115.1
     created: "2025-02-06T18:04:13.90016472Z"
     description: OpenTelemetry Collector Helm chart for Kubernetes
@@ -12241,4 +12250,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:05:23.776067432Z"
+generated: "2025-07-19T08:05:32.681729919Z"
