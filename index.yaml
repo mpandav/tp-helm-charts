@@ -1631,6 +1631,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/finops-web-server-1.8.337/finops-web-server-1.8.337.tgz
     version: 1.8.337
+  flogo-utilities:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:01:31.678426128Z"
+    description: TIBCO CIC Global Provider -- FLOGO Utilities
+    digest: a15233dc0af1efc5a5432826b435ee555bd6068fc2dbaf1c0d939e027ef7d87e
+    name: flogo-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/flogo-utilities-1.8.0/flogo-utilities-1.8.0.tgz
+    version: 1.8.0
   flogoprovisioner:
   - apiVersion: v2
     appVersion: 1.4.0
@@ -11877,4 +11887,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:01:22.73910449Z"
+generated: "2025-07-19T08:01:31.679092162Z"
