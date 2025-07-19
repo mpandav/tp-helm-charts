@@ -6739,6 +6739,41 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/platform-bootstrap-1.2.25/platform-bootstrap-1.2.25.tgz
     version: 1.2.25
+  postgresql:
+  - annotations:
+      category: Database
+    apiVersion: v2
+    appVersion: 14.5.0
+    created: "2025-07-19T09:10:57.038976678Z"
+    dependencies:
+    - name: common
+      repository: file://../common
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: PostgreSQL (Postgres) is an open source object-relational database
+      known for reliability and data integrity. ACID-compliant, it supports foreign
+      keys, joins, views, triggers and stored procedures.
+    digest: 747c731bc5996985be2c5d84c9ede7561bb154348e8d2762dee8e601297986c2
+    home: https://github.com/bitnami/charts/tree/main/bitnami/postgresql
+    icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
+    keywords:
+    - postgresql
+    - postgres
+    - database
+    - sql
+    - replication
+    - cluster
+    maintainers:
+    - name: Bitnami
+      url: https://github.com/bitnami/charts
+    name: postgresql
+    sources:
+    - https://github.com/bitnami/containers/tree/main/bitnami/postgresql
+    - https://www.postgresql.org/
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/postgresql-11.9.13/postgresql-11.9.13.tgz
+    version: 11.9.13
   providers:
   - annotations:
       app.helm.sh/component: control-plane
@@ -12709,4 +12744,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T09:10:39.444783015Z"
+generated: "2025-07-19T09:10:57.03965485Z"
