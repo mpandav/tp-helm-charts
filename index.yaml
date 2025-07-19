@@ -118,6 +118,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/artifactmanager-1.2.9/artifactmanager-1.2.9.tgz
     version: 1.2.9
+  bwce-utilities:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T07:59:35.091485705Z"
+    description: TIBCO CIC Global Provider -- BWCE Utilities
+    digest: 82ccba2cfcbf03607b535969706360b90b1e9ac6aa8dc62a5eb4dc8a9e7dd467
+    name: bwce-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bwce-utilities-1.8.0/bwce-utilities-1.8.0.tgz
+    version: 1.8.0
   bwprovisioner:
   - apiVersion: v2
     appVersion: 1.4.0
@@ -11690,4 +11700,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-07-19T07:59:26.222425953Z"
+generated: "2025-07-19T07:59:35.092228632Z"
