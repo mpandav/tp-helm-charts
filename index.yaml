@@ -1708,6 +1708,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/flogoprovisioner-1.2.9/flogoprovisioner-1.2.9.tgz
     version: 1.2.9
+  hybrid-proxy:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T07:38:54.54961679Z"
+    description: TIBCO Platform cp core bootstrap -- Hybrid Proxy operator
+    digest: d36767695b2fab8d849902f7feead21b77c4b4d66ace4b1c93f36ebbeb58c229
+    name: hybrid-proxy
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/hybrid-proxy-1.8.0/hybrid-proxy-1.8.0.tgz
+    version: 1.8.0
   istio-crd:
   - apiVersion: v1
     appVersion: 1.21.2
@@ -11661,4 +11671,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-06-06T11:48:08.316458056Z"
+generated: "2025-07-19T07:38:54.55022255Z"
