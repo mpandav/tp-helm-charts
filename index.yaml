@@ -2284,6 +2284,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/jaeger-0.72.10/jaeger-0.72.10.tgz
     version: 0.72.10
+  monitoring-service:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:05:50.382949292Z"
+    description: A Helm chart for -- Monitoring service
+    digest: b83a0f966deedabba228176a9339e964bee9228f8b65a2fba460ce7ec389241c
+    name: monitoring-service
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/monitoring-service-1.8.500/monitoring-service-1.8.500.tgz
+    version: 1.8.500
   msg-ems-tp:
   - apiVersion: v2
     appVersion: 10.4.0-73
@@ -12259,4 +12269,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:05:41.467351309Z"
+generated: "2025-07-19T08:05:50.383493378Z"
