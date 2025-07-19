@@ -395,6 +395,21 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/bwprovisioner-1.2.9/bwprovisioner-1.2.9.tgz
     version: 1.2.9
+  compositions:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: compositions
+    apiVersion: v2
+    appVersion: 1.7.0
+    created: "2025-07-19T08:00:20.427131602Z"
+    description: TIBCO Platform Control Plane crossplane composite resource definitions
+      and compositions chart
+    digest: 468f904f575b9d51037452e212436ecab992b3d9c253b4b5966f68b1ed579fce
+    name: compositions
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/compositions-1.7.0/compositions-1.7.0.tgz
+    version: 1.7.0
   configs:
   - annotations:
       app.helm.sh/component: control-plane
@@ -11756,4 +11771,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-07-19T08:00:10.798893122Z"
+generated: "2025-07-19T08:00:20.427747312Z"
