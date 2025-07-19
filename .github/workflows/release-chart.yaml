@@ -110,12 +110,7 @@ jobs:
             git config user.email "actions@github.com"
             git add index.yaml
             git commit -m "Update index.yaml with $name-$version" || echo "No changes to commit"
-            branch_name=$(git symbolic-ref --short HEAD || echo "detached")
-            if [ "$branch_name" != "detached" ]; then
-              git push origin gh-pages
-            else
-              echo "⚠️ Skipping push: not currently on a branch"
-            fi
+            git push origin HEAD:gh-pages
             cd ..
             git worktree remove gh-pages-worktree
 
