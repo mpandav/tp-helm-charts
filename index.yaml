@@ -6443,6 +6443,27 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: platform-bootstrap
     apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T09:34:36.087630752Z"
+    dependencies:
+    - name: tp-cp-bootstrap
+      repository: alias:tibco-platform
+      version: 1.8.10
+    description: TIBCO Platform bootstrap chart
+    digest: 0b099a4cc1d470d026431acc4069cb7409c57dcccc085af676e0613862bac881
+    keywords:
+    - tibco-platform
+    - platform
+    - bootstrap
+    name: platform-bootstrap
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/platform-bootstrap-1.8.0/platform-bootstrap-1.8.0.tgz
+    version: 1.8.0
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: platform-bootstrap
+    apiVersion: v2
     appVersion: 1.4.0
     created: "2025-05-05T09:58:53.72261476Z"
     dependencies:
@@ -13007,4 +13028,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T09:33:42.934383388Z"
+generated: "2025-07-19T09:34:36.088289417Z"
