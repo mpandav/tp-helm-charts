@@ -9180,6 +9180,24 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-infra-recipes
     apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:05:06.02992707Z"
+    description: TIBCO Platform Infrastructure Data Plane recipes
+    digest: f459fe1dc78ef6673ee7911f7427e5cd67044870eeb51940151b015f42f15594
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - recipes
+    name: tp-cp-infra-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-infra-recipes-1.8.16/tp-cp-infra-recipes-1.8.16.tgz
+    version: 1.8.16
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-infra-recipes
+    apiVersion: v2
     appVersion: 1.4.0
     created: "2025-05-05T14:25:45.797419128Z"
     description: TIBCO Platform Infrastructure Data Plane recipes
@@ -12180,4 +12198,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:04:57.004573265Z"
+generated: "2025-07-19T08:05:06.031115538Z"
