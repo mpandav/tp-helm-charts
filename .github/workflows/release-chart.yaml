@@ -93,15 +93,26 @@ jobs:
               --git-repo "${{ github.event.repository.name }}" \
               --skip-existing
 
+            echo "🔄 Preparing gh-pages worktree for index update"
+            git fetch origin gh-pages
+            git worktree add gh-pages-worktree origin/gh-pages
+
+            echo "🧭 Running cr index to update index.yaml"
             cr index \
-            --token "$CR_TOKEN" \
-            --package-path temp-release \
-            --index-path index.yaml \
-            --owner "${{ github.repository_owner }}" \
-            --git-repo "${{ github.event.repository.name }}" \
-            --pages-branch gh-pages \
-            --pages-index-path index.yaml \
-            --push
+              --package-path temp-release \
+              --index-path gh-pages-worktree/index.yaml \
+              --owner "${{ github.repository_owner }}" \
+              --git-repo "${{ github.event.repository.name }}"
+
+            echo "🚀 Committing and pushing updated index.yaml"
+            cd gh-pages-worktree
+            git config user.name "GitHub Actions"
+            git config user.email "actions@github.com"
+            git add index.yaml
+            git commit -m "Update index.yaml with $name-$version"
+            git push origin gh-pages
+            cd ..
+            git worktree remove gh-pages-worktree
 
             rm -rf temp-release
 
