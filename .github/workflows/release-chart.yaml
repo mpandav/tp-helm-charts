@@ -109,7 +109,7 @@ jobs:
             git config user.name "GitHub Actions"
             git config user.email "actions@github.com"
             git add index.yaml
-            git commit -m "Update index.yaml with $name-$version"
+            git commit -m "Update index.yaml with $name-$version" || echo "No changes to commit"
             git push origin gh-pages
             cd ..
             git worktree remove gh-pages-worktree
