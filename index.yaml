@@ -6257,6 +6257,20 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/platform-bootstrap-1.2.25/platform-bootstrap-1.2.25.tgz
     version: 1.2.25
+  providers:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: providers
+    apiVersion: v2
+    appVersion: 1.2.0
+    created: "2025-07-19T07:59:52.744175892Z"
+    description: TIBCO Platform Control Plane crossplane providers chart
+    digest: 1c59423c4bd2466c7f71ced46bcbdee708d54588ae8b0d4e017ff10da1083ae9
+    name: providers
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/providers-1.2.0/providers-1.2.0.tgz
+    version: 1.2.0
   servicemesh-contrib:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -11710,4 +11724,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-07-19T07:59:43.984266557Z"
+generated: "2025-07-19T07:59:52.744877172Z"
