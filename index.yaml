@@ -10356,6 +10356,24 @@ entries:
     version: 1.2.13
   tp-cp-msg-contrib:
   - apiVersion: v2
+    appVersion: 1.7.0-36
+    created: "2025-07-19T08:00:10.798277483Z"
+    description: TIBCO Platform Control Plane -- Messaging
+    digest: fb642356594ce8682461289234ab5080eec10a27123bf082007e43e67069f63a
+    keywords:
+    - tibco-platform
+    - control-plane
+    - messaging
+    - EMS
+    - Pulsar
+    maintainers:
+    - email: tcm@tibco.com
+      name: TIBCO Cloud Messaging Team
+    name: tp-cp-msg-contrib
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-msg-contrib-1.7.19/tp-cp-msg-contrib-1.7.19.tgz
+    version: 1.7.19
+  - apiVersion: v2
     appVersion: 1.4.0-12
     created: "2025-02-06T18:04:17.668069778Z"
     description: TIBCO Platform Control Plane -- Messaging
@@ -11738,4 +11756,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-07-19T08:00:01.751196762Z"
+generated: "2025-07-19T08:00:10.798893122Z"
