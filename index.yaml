@@ -11236,6 +11236,22 @@ entries:
     version: 1.4.20
   tp-cp-o11y:
   - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:09:43.62850524Z"
+    dependencies:
+    - condition: o11y-service.enabled
+      name: o11y-service
+      repository: ""
+      version: 1.8.*
+    description: TIBCO Platform Control Plane -- O11Y Infra
+    digest: 1949b77ec2fdf4e7c1cd1403bf93ce66987f9a3808d1dd67e5be449803a39821
+    keywords:
+    - o11y
+    name: tp-cp-o11y
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-o11y-1.8.6/tp-cp-o11y-1.8.6.tgz
+    version: 1.8.6
+  - apiVersion: v2
     appVersion: 1.4.0
     created: "2025-02-06T18:04:17.940284534Z"
     dependencies:
@@ -12611,4 +12627,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:09:34.724724154Z"
+generated: "2025-07-19T08:09:43.629170091Z"
