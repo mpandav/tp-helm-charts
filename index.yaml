@@ -8846,6 +8846,23 @@ entries:
       app.helm.sh/component: tibco-platform-data-plane
       app.helm.sh/name: tp-cp-hawk-console-recipes
     apiVersion: v2
+    appVersion: 1.7.0
+    created: "2025-07-19T08:01:22.738459816Z"
+    description: TIBCO Platform Hawk Data Plane recipes
+    digest: e9a09b4e15a5d89f54c9549c21481d279accc1650aa155ab47f0174303712ca2
+    keywords:
+    - tibco-platform
+    - infra
+    - recipes
+    name: tp-cp-hawk-console-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-hawk-console-recipes-1.7.19/tp-cp-hawk-console-recipes-1.7.19.tgz
+    version: 1.7.19
+  - annotations:
+      app.helm.sh/component: tibco-platform-data-plane
+      app.helm.sh/name: tp-cp-hawk-console-recipes
+    apiVersion: v2
     appVersion: 1.4.0
     created: "2025-02-06T18:04:16.455773592Z"
     description: TIBCO Platform Hawk Data Plane recipes
@@ -11860,4 +11877,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:01:13.871206287Z"
+generated: "2025-07-19T08:01:22.73910449Z"
