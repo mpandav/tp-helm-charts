@@ -12022,6 +12022,20 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
+  tp-tibtunnel:
+  - apiVersion: v1
+    appVersion: 1.8.0
+    created: "2025-07-19T08:03:18.582084007Z"
+    description: A Helm chart for TIBCO Tibtunnel
+    digest: aa65576dcd34fb4061f571a300aabaca7cb210d2dc749061b9e0b6a3babaee12
+    keywords:
+    - tibtunnel
+    - data-plane
+    - hybrid-connectivity
+    name: tp-tibtunnel
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-tibtunnel-1.8.0/tp-tibtunnel-1.8.0.tgz
+    version: 1.8.0
   user-subscriptions:
   - apiVersion: v2
     appVersion: 1.8.0
@@ -12032,4 +12046,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:03:09.799066578Z"
+generated: "2025-07-19T08:03:18.582711389Z"
