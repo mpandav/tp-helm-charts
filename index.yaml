@@ -414,6 +414,34 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/bwprovisioner-1.2.9/bwprovisioner-1.2.9.tgz
     version: 1.2.9
+  common:
+  - annotations:
+      category: Infrastructure
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 2.13.3
+    created: "2025-07-19T08:05:23.774892078Z"
+    description: A Library Helm Chart for grouping common logic between bitnami charts.
+      This chart is not deployable by itself.
+    digest: ca3b4db368dd32650105b9ce0c7dded34681ec73bf12c08d0a05c3e6816e0b9b
+    home: https://bitnami.com
+    icon: https://bitnami.com/downloads/logos/bitnami-mark.png
+    keywords:
+    - common
+    - helper
+    - template
+    - function
+    - bitnami
+    maintainers:
+    - name: VMware, Inc.
+      url: https://github.com/bitnami/charts
+    name: common
+    sources:
+    - https://github.com/bitnami/charts
+    type: library
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/common-2.13.3/common-2.13.3.tgz
+    version: 2.13.3
   compositions:
   - annotations:
       app.helm.sh/component: control-plane
@@ -12213,4 +12241,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:05:14.890387207Z"
+generated: "2025-07-19T08:05:23.776067432Z"
