@@ -395,6 +395,20 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/bwprovisioner-1.2.9/bwprovisioner-1.2.9.tgz
     version: 1.2.9
+  configs:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: configs
+    apiVersion: v2
+    appVersion: 1.2.0
+    created: "2025-07-19T08:00:01.750533804Z"
+    description: TIBCO Platform Control Plane crossplane provider configs
+    digest: 3a163c0ef05cf11c36ce71bb5f45236dc4ce4b5ba6a41e1a0b1f4d13b7c4aeef
+    name: configs
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/configs-1.2.0/configs-1.2.0.tgz
+    version: 1.2.0
   dp-bw-adapter:
   - apiVersion: v2
     appVersion: 1.4.0
@@ -11724,4 +11738,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-07-19T07:59:52.744877172Z"
+generated: "2025-07-19T08:00:01.751196762Z"
