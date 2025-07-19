@@ -96,9 +96,11 @@ jobs:
             cr index \
             --token "$CR_TOKEN" \
             --package-path temp-release \
+            --index-path index.yaml \
             --owner "${{ github.repository_owner }}" \
             --git-repo "${{ github.event.repository.name }}" \
             --pages-branch gh-pages \
+            --pages-index-path index.yaml \
             --push
 
             rm -rf temp-release
