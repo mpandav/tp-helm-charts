@@ -6542,6 +6542,15 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-developer-hub-1.2.11/tibco-developer-hub-1.2.11.tgz
     version: 1.2.11
+  tp-cp-alerts-service:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:01:58.545836157Z"
+    digest: 20b35ce9effea3b2a18a749344689e4752a1e241210b2e60ddc379266b7a41de
+    name: tp-cp-alerts-service
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-alerts-service-1.8.1/tp-cp-alerts-service-1.8.1.tgz
+    version: 1.8.1
   tp-cp-bootstrap:
   - annotations:
       app.helm.sh/component: control-plane
@@ -11919,4 +11928,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:01:49.758548168Z"
+generated: "2025-07-19T08:01:58.546463528Z"
