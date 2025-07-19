@@ -6666,6 +6666,21 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-developer-hub-1.2.11/tibco-developer-hub-1.2.11.tgz
     version: 1.2.11
+  tp-cp-alertmanager:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:05:14.88976211Z"
+    description: The Alertmanager handles alerts sent by client applications such
+      as the Prometheus server.
+    digest: 1154a7373ebb87909f8ca11815f1d22bd70fc37f3ba9418873191d47ee0976af
+    keywords:
+    - monitoring
+    kubeVersion: '>=1.19.0-0'
+    name: tp-cp-alertmanager
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-alertmanager-1.8.0/tp-cp-alertmanager-1.8.0.tgz
+    version: 1.8.0
   tp-cp-alerts-service:
   - apiVersion: v2
     appVersion: 1.8.0
@@ -12198,4 +12213,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:05:06.031115538Z"
+generated: "2025-07-19T08:05:14.890387207Z"
