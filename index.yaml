@@ -11543,6 +11543,39 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-recipes
     apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T09:10:20.711812545Z"
+    dependencies:
+    - name: tp-cp-infra-recipes
+      repository: alias:tibco-platform
+      version: 1.8.16
+    - name: tp-cp-bwce-recipes
+      repository: alias:tibco-platform
+      version: 1.8.9
+    - name: tp-cp-flogo-recipes
+      repository: alias:tibco-platform
+      version: 1.8.15
+    - name: tp-cp-tibcohub-recipes
+      repository: alias:tibco-platform
+      version: 1.8.6
+    - name: dp-oauth2proxy-recipes
+      repository: alias:tibco-platform
+      version: 1.8.3
+    description: TIBCO Platform recipe chart
+    digest: 513469ba61822830e2bdf3ca86e1da22e92ae9e14abd7e3c3074320fb699db73
+    keywords:
+    - tibco-platform
+    - platform
+    - recipes
+    name: tp-cp-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-recipes-1.8.37/tp-cp-recipes-1.8.37.tgz
+    version: 1.8.37
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-recipes
+    apiVersion: v2
     appVersion: 1.4.0
     created: "2025-05-05T14:28:20.430305986Z"
     dependencies:
@@ -12652,4 +12685,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:09:52.559145919Z"
+generated: "2025-07-19T09:10:20.712559406Z"
