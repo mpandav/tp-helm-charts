@@ -93,19 +93,17 @@ jobs:
               --git-repo "${{ github.event.repository.name }}" \
               --skip-existing
 
+            cr index \
+            --token "$CR_TOKEN" \
+            --package-path temp-release \
+            --owner "${{ github.repository_owner }}" \
+            --git-repo "${{ github.event.repository.name }}" \
+            --pages-branch gh-pages \
+            --push
+
             rm -rf temp-release
 
             echo "🔄 Refreshing Helm repo index for next chart"
             helm repo update
             sleep 5
           done < sorted-charts.txt
-      - name: Update index.yaml on gh-pages
-        env:
-          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cr index \
-            --package-path .cr-release-packages \
-            --owner "${{ github.repository_owner }}" \
-            --git-repo "${{ github.event.repository.name }}" \
-            --pages-branch gh-pages \
-            --push
