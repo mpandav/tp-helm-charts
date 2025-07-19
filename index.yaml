@@ -1553,6 +1553,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/dp-oauth2proxy-recipes-1.2.7/dp-oauth2proxy-recipes-1.2.7.tgz
     version: 1.2.7
+  fileserver:
+  - apiVersion: v2
+    appVersion: 1.7.0
+    created: "2025-07-19T07:59:26.22180339Z"
+    description: TIBCO CIC Global Provider AWS -- File Server
+    digest: 00cd119bb045fae7353f055376ea203d3d352fb8a24c9a42eda7ccbb5577c9ad
+    name: fileserver
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/fileserver-1.7.0/fileserver-1.7.0.tgz
+    version: 1.7.0
   flogoprovisioner:
   - apiVersion: v2
     appVersion: 1.4.0
@@ -11680,4 +11690,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-07-19T07:59:17.329675614Z"
+generated: "2025-07-19T07:59:26.222425953Z"
