@@ -7075,6 +7075,45 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-bootstrap
     apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T09:13:00.794513663Z"
+    dependencies:
+    - condition: hybrid-proxy.enabled
+      name: hybrid-proxy
+      repository: ""
+      version: 1.8.*
+    - condition: resource-set-operator.enabled
+      name: resource-set-operator
+      repository: ""
+      version: 1.8.*
+    - condition: router-operator.enabled
+      name: router-operator
+      repository: ""
+      version: 1.8.*
+    - condition: compute-services.enabled
+      name: compute-services
+      repository: ""
+      version: 1.8.*
+    - condition: otel-collector.enabled
+      name: otel-collector
+      repository: ""
+      version: 0.116.*
+    description: TIBCO Platform Control Plane bootstrap chart
+    digest: 5d3b41b00505b8b5ad0e2aff1c94742267f5ceaa0d03066b010f9892fb49d7c8
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - bootstrap
+    name: tp-cp-bootstrap
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-bootstrap-1.8.10/tp-cp-bootstrap-1.8.10.tgz
+    version: 1.8.10
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-bootstrap
+    apiVersion: v2
     appVersion: 1.4.0
     created: "2025-05-05T09:57:38.527277389Z"
     dependencies:
@@ -12886,4 +12925,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T09:12:43.033228862Z"
+generated: "2025-07-19T09:13:00.795172299Z"
