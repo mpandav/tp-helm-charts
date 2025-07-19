@@ -1963,6 +1963,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/hybrid-proxy-1.8.0/hybrid-proxy-1.8.0.tgz
     version: 1.8.0
+  identity-management:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:06:17.282752045Z"
+    description: A Helm Chart for TIBCO Platform Control Plane -- Identity Management
+    digest: 0e25866232057ab97b00436246dc14102d6bec0b1f420f8d2d938554e98f549f
+    name: identity-management
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/identity-management-1.8.2/identity-management-1.8.2.tgz
+    version: 1.8.2
   istio-crd:
   - apiVersion: v1
     appVersion: 1.21.2
@@ -12291,4 +12301,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:06:08.248529711Z"
+generated: "2025-07-19T08:06:17.283401237Z"
