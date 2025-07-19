@@ -8450,6 +8450,22 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-flogo-recipes
     apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:02:51.90445447Z"
+    description: TIBCO Platform Flogo Data Plane recipes
+    digest: 7a164af2845452c922830be90eb3472f5288903329cde676d4680162fb2410e7
+    keywords:
+    - tibco-platform
+    - control-plane
+    name: tp-cp-flogo-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-flogo-recipes-1.8.15/tp-cp-flogo-recipes-1.8.15.tgz
+    version: 1.8.15
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-flogo-recipes
+    apiVersion: v2
     appVersion: 1.4.0
     created: "2025-02-06T18:04:15.981637719Z"
     description: TIBCO Platform Flogo Data Plane recipes
@@ -11989,4 +12005,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:02:43.013425485Z"
+generated: "2025-07-19T08:02:51.905051646Z"
