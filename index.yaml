@@ -3239,6 +3239,17 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/opentelemetry-collector-0.89.2/opentelemetry-collector-0.89.2.tgz
     version: 0.89.2
+  otel-collector:
+  - apiVersion: v2
+    appVersion: 0.119.0
+    created: "2025-07-19T08:00:47.11998473Z"
+    description: OpenTelemetry Collector Helm chart for Kubernetes
+    digest: 3c4cfae5677d558cb6723f9a9f4e1928dc4dee27e3f3d528379100acaffb5c19
+    name: otel-collector
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/otel-collector-0.116.3/otel-collector-0.116.3.tgz
+    version: 0.116.3
   platform-addon-eventprocessing:
   - annotations:
       app.helm.sh/component: control-plane
@@ -11792,4 +11803,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:00:38.18198036Z"
+generated: "2025-07-19T08:00:47.120529797Z"
