@@ -80,6 +80,7 @@ jobs:
             tgz_file=".cr-release-packages/${name}-${version}.tgz"
 
             echo "📦 Packaging $name ($version) from $chart_dir"
+            helm dependency build $chart_dir
             helm package "$chart_dir" --destination .cr-release-packages
 
             echo "🚀 Releasing $tgz_file to GitHub Releases"
