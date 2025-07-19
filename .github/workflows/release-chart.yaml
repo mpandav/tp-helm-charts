@@ -113,6 +113,7 @@ jobs:
             git commit -m "Update index.yaml with $name-$version" || echo "No changes to commit"
             git push origin HEAD:gh-pages
             cd ..
+            INDEX_HASH=$(sha256sum gh-pages-worktree/index.yaml | awk '{print $1}')
             git worktree remove gh-pages-worktree
 
             rm -rf temp-release
