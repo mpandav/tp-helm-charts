@@ -8102,6 +8102,15 @@ entries:
     version: 1.2.372
   tp-cp-core-ops:
   - apiVersion: v1
+    appVersion: 1.8.0
+    created: "2025-07-19T07:59:17.329054236Z"
+    description: TIBCO Platform Control Plane -- Bundle
+    digest: ba9fd7504e3e3c6e954471e35af427ba0fd18edc9b4c5e84307ff7532bc9ce4a
+    name: tp-cp-core-ops
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-ops-1.8.43/tp-cp-core-ops-1.8.43.tgz
+    version: 1.8.43
+  - apiVersion: v1
     appVersion: 1.4.0
     created: "2025-02-06T18:04:15.620687385Z"
     description: TIBCO Platform Control Plane -- Bundle
@@ -11671,4 +11680,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-07-19T07:38:54.55022255Z"
+generated: "2025-07-19T07:59:17.329675614Z"
