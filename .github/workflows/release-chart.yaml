@@ -118,6 +118,17 @@ jobs:
             rm -rf temp-release
 
             echo "🔄 Refreshing Helm repo index for next chart"
+            REPO_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/index.yaml"
+            echo "⏳ Waiting for GitHub Pages to publish updated index.yaml..."
+            for i in {1..30}; do
+              REMOTE_HASH=$(curl -sL "$REPO_URL" | sha256sum | awk '{print $1}')
+              if [ "$REMOTE_HASH" = "$INDEX_HASH" ]; then
+                echo "✅ GitHub Pages has published the updated index.yaml"
+                break
+              fi
+              echo "…still waiting (attempt $i)"
+              sleep 5
+            done
             helm repo update
             sleep 5
           done < sorted-charts.txt
