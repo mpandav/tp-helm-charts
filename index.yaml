@@ -8237,6 +8237,17 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-ops-1.2.7819/tp-cp-core-ops-1.2.7819.tgz
     version: 1.2.7819
+  tp-cp-data-plane:
+  - apiVersion: v2
+    appVersion: 1.4.0
+    created: "2025-07-19T08:00:38.181346516Z"
+    description: A Helm chart registering Data Plane on TIBCO Platform Control Plane
+    digest: 26d13a74573a1c3fc5f8468a410a098266e8cfb23cce5d28b66674c7b9aaafdb
+    name: tp-cp-data-plane
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-data-plane-1.4.1/tp-cp-data-plane-1.4.1.tgz
+    version: 1.4.1
   tp-cp-eventprocessing-be:
   - apiVersion: v2
     appVersion: 1.4.0
@@ -11781,4 +11792,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:00:29.318090125Z"
+generated: "2025-07-19T08:00:38.18198036Z"
