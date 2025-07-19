@@ -2426,6 +2426,15 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/msg-pulsar-tp-1.2.24/msg-pulsar-tp-1.2.24.tgz
     version: 1.2.24
+  o11y-service:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:04:12.090153433Z"
+    digest: e95e72d615991a40e6a96818199874e4a699122caa2f4bb5802d3f69010b7252
+    name: o11y-service
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/o11y-service-1.8.7/o11y-service-1.8.7.tgz
+    version: 1.8.7
   o11yservice:
   - apiVersion: v2
     appVersion: 1.4.0
@@ -12106,4 +12115,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:04:03.035180322Z"
+generated: "2025-07-19T08:04:12.090793418Z"
