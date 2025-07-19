@@ -1630,6 +1630,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/finops-otel-collector-1.7.15/finops-otel-collector-1.7.15.tgz
     version: 1.7.15
+  finops-service:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:03:00.838739043Z"
+    description: A Helm chart for -- Finops service
+    digest: d5310851728a0599dc1ad3467ebfa5af94ae48d698c4959a838f3bd064e3e461
+    name: finops-service
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/finops-service-1.8.130/finops-service-1.8.130.tgz
+    version: 1.8.130
   finops-web-server:
   - apiVersion: v1
     appVersion: 1.8.0
@@ -12005,4 +12015,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:02:51.905051646Z"
+generated: "2025-07-19T08:03:00.839421106Z"
