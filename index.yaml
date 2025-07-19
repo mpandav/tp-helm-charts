@@ -11771,4 +11771,14 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-07-19T08:00:20.427747312Z"
+  user-subscriptions:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:00:29.317453907Z"
+    description: A Helm chart for -- User Subscriptions
+    digest: 979d6396f2880fb1924c0804a25b01b068083a490d5d02ce588430acb7dc9919
+    name: user-subscriptions
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
+    version: 1.8.6
+generated: "2025-07-19T08:00:29.318090125Z"
