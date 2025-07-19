@@ -3635,6 +3635,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/otel-collector-0.116.3/otel-collector-0.116.3.tgz
     version: 0.116.3
+  pengine:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:07:56.000617565Z"
+    description: A Helm Chart for TIBCO Platform Control Plane Permissions Engine
+    digest: 54cbd92699b548daf4c3dbd2bd9a87d1a71b7c78a3a84275e2e910caa94cd126
+    name: pengine
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/pengine-1.8.3/pengine-1.8.3.tgz
+    version: 1.8.3
   platform-addon-eventprocessing:
   - annotations:
       app.helm.sh/component: control-plane
@@ -12455,4 +12465,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:07:47.098315406Z"
+generated: "2025-07-19T08:07:56.001263531Z"
