@@ -6949,6 +6949,30 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-alertmanager-1.8.0/tp-cp-alertmanager-1.8.0.tgz
     version: 1.8.0
+  tp-cp-alerts:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-alerts
+    apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T09:10:39.444173922Z"
+    dependencies:
+    - name: tp-cp-alertmanager
+      repository: alias:tibco-platform
+      version: 1.8.0
+    - name: tp-cp-alerts-service
+      repository: alias:tibco-platform
+      version: 1.8.1
+    description: TIBCO Platform chart for alerts services
+    digest: 0959fd315cb238525e9a1941c471da95f433d80e589aa772f1c46eb90120b16f
+    keywords:
+    - tibco-platform
+    - platform
+    name: tp-cp-alerts
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-alerts-1.8.2/tp-cp-alerts-1.8.2.tgz
+    version: 1.8.2
   tp-cp-alerts-service:
   - apiVersion: v2
     appVersion: 1.8.0
@@ -12685,4 +12709,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T09:10:20.712559406Z"
+generated: "2025-07-19T09:10:39.444783015Z"
