@@ -546,6 +546,39 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/cronjobs-1.8.2/cronjobs-1.8.2.tgz
     version: 1.8.2
+  crossplane-components:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: "crossplane components charts"
+    apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T09:12:07.570454344Z"
+    dependencies:
+    - condition: providers.enabled
+      name: providers
+      repository: file://charts/providers
+      version: 1.2.0
+    - condition: configs.enabled
+      name: configs
+      repository: file://charts/configs
+      version: 1.2.0
+    - condition: compositions.enabled
+      name: compositions
+      repository: file://charts/compositions
+      version: 1.7.0
+    - condition: claims.enabled
+      name: claims
+      repository: file://charts/claims
+      version: 1.8.2
+    description: crossplane-charts are used to install crossplane, providers, provider-configs,
+      compositions and claims
+    digest: edce42014ddd14179b12342239247fbca71c2020f1290ccb3576c47fcb1b433f
+    name: crossplane-components
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/crossplane-components-1.8.2/crossplane-components-1.8.2.tgz
+    version: 1.8.2
   dp-bw-adapter:
   - apiVersion: v2
     appVersion: 1.8.0
@@ -12795,4 +12828,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T09:11:49.868059625Z"
+generated: "2025-07-19T09:12:07.571044712Z"
