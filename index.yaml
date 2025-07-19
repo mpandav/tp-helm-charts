@@ -1573,6 +1573,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/fileserver-1.7.0/fileserver-1.7.0.tgz
     version: 1.7.0
+  finops-web-server:
+  - apiVersion: v1
+    appVersion: 1.8.0
+    created: "2025-07-19T07:59:43.983642461Z"
+    description: A Helm chart for -- Finops WebServer
+    digest: 7e40bfe182e9643ccf3c4cac55961cf1a23ab4a07f01caf8b8e20e3f46a8fdaa
+    name: finops-web-server
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/finops-web-server-1.8.337/finops-web-server-1.8.337.tgz
+    version: 1.8.337
   flogoprovisioner:
   - apiVersion: v2
     appVersion: 1.4.0
@@ -11700,4 +11710,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.2.118/tp-dp-monitor-agent-1.2.118.tgz
     version: 1.2.118
-generated: "2025-07-19T07:59:35.092228632Z"
+generated: "2025-07-19T07:59:43.984266557Z"
