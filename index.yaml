@@ -410,6 +410,15 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/compositions-1.7.0/compositions-1.7.0.tgz
     version: 1.7.0
+  compute-services:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:02:16.43298754Z"
+    digest: cfcf728759f2bb7a6dda187eea4f443688d59b70d088d6c41aebb14a29d11c27
+    name: compute-services
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/compute-services-1.8.0/compute-services-1.8.0.tgz
+    version: 1.8.0
   configs:
   - annotations:
       app.helm.sh/component: control-plane
@@ -11937,4 +11946,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:02:07.575907969Z"
+generated: "2025-07-19T08:02:16.433537597Z"
