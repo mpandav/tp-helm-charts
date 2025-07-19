@@ -2419,6 +2419,24 @@ entries:
     version: 1.2.24
   msg-pulsar-tp:
   - apiVersion: v2
+    appVersion: 3.0.2-41
+    created: "2025-07-19T08:06:26.195692717Z"
+    description: Data-plane provisioning chart for Pulsar server group
+    digest: 9cb86d4cbac6cad9271ab8785012a4941949e445b2cc78f72f44fcd7c2232495
+    keywords:
+    - tibco-platform
+    - data-plane
+    - messaging
+    - Quasar
+    - Pulsar
+    maintainers:
+    - email: tcm@tibco.com
+      name: TIBCO Cloud Messaging Team
+    name: msg-pulsar-tp
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/msg-pulsar-tp-1.7.19/msg-pulsar-tp-1.7.19.tgz
+    version: 1.7.19
+  - apiVersion: v2
     appVersion: 3.0.2-36
     created: "2025-02-06T18:04:13.447158858Z"
     description: Data-plane provisioning chart for Pulsar server group
@@ -12301,4 +12319,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:06:17.283401237Z"
+generated: "2025-07-19T08:06:26.19628312Z"
