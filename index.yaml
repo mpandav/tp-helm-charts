@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   artifactmanager:
   - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:03:27.388115551Z"
+    description: A Helm chart for Artifact Manager
+    digest: a742937b8f442c5b676314f99be937314295c938d06a10b5aa9ffe4776051278
+    name: artifactmanager
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/artifactmanager-1.8.0/artifactmanager-1.8.0.tgz
+    version: 1.8.0
+  - apiVersion: v2
     appVersion: 1.4.0
     created: "2025-02-07T20:38:58.513715077Z"
     description: A Helm chart for Artifact Manager
@@ -12046,4 +12055,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:03:18.582711389Z"
+generated: "2025-07-19T08:03:27.388755235Z"
