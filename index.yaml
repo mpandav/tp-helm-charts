@@ -127,6 +127,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/artifactmanager-1.2.9/artifactmanager-1.2.9.tgz
     version: 1.2.9
+  be-webserver:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:04:03.034381841Z"
+    description: TIBCO Platform Control Plane - BE - WebServer
+    digest: d7a7d21765ad114ee7acd569fce02da15741c5b80a208c1ce5dba3a5859744a1
+    name: be-webserver
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/be-webserver-1.8.1/be-webserver-1.8.1.tgz
+    version: 1.8.1
   bwce-utilities:
   - apiVersion: v2
     appVersion: 1.8.0
@@ -12096,4 +12106,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:03:54.052725011Z"
+generated: "2025-07-19T08:04:03.035180322Z"
