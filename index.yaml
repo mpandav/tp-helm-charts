@@ -7507,6 +7507,20 @@ entries:
     version: 1.2.14
   tp-cp-bwce-utilities:
   - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:09:08.019581951Z"
+    dependencies:
+    - condition: bwce-utilities.enabled
+      name: bwce-utilities
+      repository: ""
+      version: 1.8.*
+    description: TIBCO Platform Control Plane -- BWCE Utilities
+    digest: d86eb6006f710930abc550c32f0c87f1201b27bdf2084fb646f8cd037b07932b
+    name: tp-cp-bwce-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-bwce-utilities-1.8.4/tp-cp-bwce-utilities-1.8.4.tgz
+    version: 1.8.4
+  - apiVersion: v2
     appVersion: 1.4.0
     created: "2025-02-06T18:04:14.998341858Z"
     dependencies:
@@ -12550,4 +12564,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:08:59.063706216Z"
+generated: "2025-07-19T08:09:08.02021333Z"
