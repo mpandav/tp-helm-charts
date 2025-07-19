@@ -12055,4 +12055,14 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.8.6/user-subscriptions-1.8.6.tgz
     version: 1.8.6
-generated: "2025-07-19T08:03:27.388755235Z"
+  web-server:
+  - apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:03:36.284212891Z"
+    description: A Helm chart for -- WebServer
+    digest: 4155ac8696a1ea6f15b78fec10894b42f5604aa2056450dfb3e543ae4c0add5b
+    name: web-server
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
+    version: 1.8.21
+generated: "2025-07-19T08:03:36.284855331Z"
