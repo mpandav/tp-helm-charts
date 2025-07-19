@@ -438,6 +438,20 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/bwprovisioner-1.2.9/bwprovisioner-1.2.9.tgz
     version: 1.2.9
+  claims:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: claims
+    apiVersion: v2
+    appVersion: 1.8.0
+    created: "2025-07-19T08:07:29.108685703Z"
+    description: TIBCO Platform Control Plane crossplane claims chart
+    digest: 5dc0d56ead1ef1b8da014297030cd559814ba7fc53249551c8a231eeb6f03d6c
+    name: claims
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/claims-1.8.2/claims-1.8.2.tgz
+    version: 1.8.2
   common:
   - annotations:
       category: Infrastructure
@@ -12412,4 +12426,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-07-19T08:07:20.136181925Z"
+generated: "2025-07-19T08:07:29.109397492Z"
