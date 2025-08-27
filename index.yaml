@@ -13337,6 +13337,18 @@ entries:
     version: 1.2.118
   tp-provisioner-agent:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:13:52.43533393Z"
+    description: A Helm chart for TIBCO Provisioner Agent
+    digest: fdf8b8bb2edc30e6bee2811318d35c726887f87bf62599ed736c4fda0add2f0f
+    keywords:
+    - provisioner-agent
+    - data-plane
+    name: tp-provisioner-agent
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-provisioner-agent-1.9.0/tp-provisioner-agent-1.9.0.tgz
+    version: 1.9.0
+  - apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:03:45.106682638Z"
     description: A Helm chart for TIBCO Provisioner Agent
@@ -13413,4 +13425,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:12:19.779071487Z"
+generated: "2025-08-27T07:13:52.435992383Z"
