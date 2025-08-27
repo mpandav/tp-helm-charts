@@ -12351,6 +12351,18 @@ entries:
     version: 1.8.9
   tp-cp-proxy:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:38:04.42431098Z"
+    description: A Helm chart for Control Plane Proxy
+    digest: 3c20d3cfc5762d1e78c395227c40a073b0fe21c9dcc4707de4d17faed41d83c8
+    keywords:
+    - cp-proxy
+    - data-plane
+    name: tp-cp-proxy
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-proxy-1.9.1/tp-cp-proxy-1.9.1.tgz
+    version: 1.9.1
+  - apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:08:04.945293029Z"
     description: A Helm chart for Control Plane Proxy
@@ -13724,4 +13736,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:37:12.415178078Z"
+generated: "2025-08-27T07:38:04.425054195Z"
