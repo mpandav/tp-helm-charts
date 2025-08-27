@@ -186,6 +186,20 @@ entries:
     version: 1.8.0
   bwprovisioner:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:29:30.063271671Z"
+    description: TIBCO Platform Dataplane Capabilty -- BW Provisioner
+    digest: 66c352e227f03b8d2de52af6c8c9fa271a6f6613851f6ea62b26e34e05788f45
+    home: https://github.com/tibco/tp-iapp-bw-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: bwprovisioner
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bwprovisioner-1.9.1/bwprovisioner-1.9.1.tgz
+    version: 1.9.1
+  - apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:06:35.16161985Z"
     description: TIBCO Platform Dataplane Capabilty -- BW Provisioner
@@ -13596,4 +13610,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:28:43.406338451Z"
+generated: "2025-08-27T07:29:30.064988752Z"
