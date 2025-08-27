@@ -506,6 +506,14 @@ entries:
     version: 1.7.0
   compute-services:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:05:31.032881877Z"
+    digest: cb0ea9cbbada0a93194fe35efd3b380f3110eb37e046cb64965198c505147017
+    name: compute-services
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/compute-services-1.9.0/compute-services-1.9.0.tgz
+    version: 1.9.0
+  - apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:02:16.43298754Z"
     digest: cfcf728759f2bb7a6dda187eea4f443688d59b70d088d6c41aebb14a29d11c27
@@ -13299,4 +13307,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:04:49.392743603Z"
+generated: "2025-08-27T07:05:31.033602702Z"
