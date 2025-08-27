@@ -9825,6 +9825,20 @@ entries:
     version: 1.2.20
   tp-cp-flogo-utilities:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:45:41.623750741Z"
+    dependencies:
+    - condition: flogo-utilities.enabled
+      name: flogo-utilities
+      repository: ""
+      version: 1.9.*
+    description: TIBCO Platform Control Plane -- FLOGO Utilities
+    digest: b7fdc8ec3b598d635b2ca3f80af951e8e298c54f1c9afedc724df26765a2828f
+    name: tp-cp-flogo-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-flogo-utilities-1.9.8/tp-cp-flogo-utilities-1.9.8.tgz
+    version: 1.9.8
+  - apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:09:16.918082838Z"
     dependencies:
@@ -13830,4 +13844,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:44:52.504091279Z"
+generated: "2025-08-27T07:45:41.624450078Z"
