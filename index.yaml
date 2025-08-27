@@ -12309,6 +12309,22 @@ entries:
     version: 1.2.12
   tp-cp-prometheus:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:35:28.354854971Z"
+    description: TIBCO Platform Control Plane - Hawk Infra Bundle
+    digest: c438e13c0a31136e15b2c4447fecd2d943fa7825250e56a8a377118084e22b9b
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    keywords:
+    - tibco-platform
+    - control-plane
+    - hawk
+    maintainers:
+    - name: TIBCO Cloud Hawk Team
+    name: tp-cp-prometheus
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-prometheus-1.9.8/tp-cp-prometheus-1.9.8.tgz
+    version: 1.9.8
+  - apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:07:38.074488327Z"
     description: TIBCO Platform Control Plane - Hawk Infra Bundle
@@ -13687,4 +13703,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:34:36.302470462Z"
+generated: "2025-08-27T07:35:28.35583546Z"
