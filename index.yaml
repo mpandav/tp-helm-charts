@@ -13426,6 +13426,18 @@ entries:
     version: 1.2.13
   tp-dp-hawk-console:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:36:20.47660016Z"
+    description: A Helm chart for deploying the tp-dp-hawk-console service
+    digest: 29dc8accf9ec2c944f8e392d7e82bdfba61da774bb3236088f0935149a5f7f0a
+    keywords:
+    - hawk-console
+    - tp-msg-gateway
+    name: tp-dp-hawk-console
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-hawk-console-1.9.28/tp-dp-hawk-console-1.9.28.tgz
+    version: 1.9.28
+  - apiVersion: v2
     appVersion: 1.7.0
     created: "2025-07-19T08:07:47.097655755Z"
     description: A Helm chart for deploying the tp-dp-hawk-console service
@@ -13703,4 +13715,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:35:28.35583546Z"
+generated: "2025-08-27T07:36:20.478171612Z"
