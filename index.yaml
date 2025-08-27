@@ -2737,6 +2737,18 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/msg-ems-tp-1.2.24/msg-ems-tp-1.2.24.tgz
     version: 1.2.24
+  msg-gateway-tp:
+  - apiVersion: v2
+    appVersion: 10.4.0-82
+    created: "2025-08-27T07:16:48.733470361Z"
+    description: A Helm chart for deploying msg-gateway in K8DPs
+    digest: 31618c8be1233c4c3a16f9cfe8d4e032d346aaf6daec1d80eb9ec364c3d8c7ef
+    keywords:
+    - tp-msg-gateway
+    name: msg-gateway-tp
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/msg-gateway-tp-1.9.28/msg-gateway-tp-1.9.28.tgz
+    version: 1.9.28
   msg-pulsar-tp:
   - apiVersion: v2
     appVersion: 3.0.2-41
@@ -13452,4 +13464,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:15:57.266505699Z"
+generated: "2025-08-27T07:16:48.734128962Z"
