@@ -35,6 +35,7 @@ while ((${#queue[@]})); do
 done
 
 # Output chart paths in order
+echo "charts/jaeger"
 for chart in "${result[@]}"; do
   echo "${chart_paths[$chart]}"
 done
