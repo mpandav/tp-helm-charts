@@ -1848,6 +1848,15 @@ entries:
     version: 1.2.7
   fileserver:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T06:53:49.863831275Z"
+    description: TIBCO CIC Global Provider AWS -- File Server
+    digest: a69fdfd5f319dfa31129157695cc16c30e44ed7e79dd117cf43a4273a521fd8f
+    name: fileserver
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/fileserver-1.9.0/fileserver-1.9.0.tgz
+    version: 1.9.0
+  - apiVersion: v2
     appVersion: 1.7.0
     created: "2025-07-19T07:59:26.22180339Z"
     description: TIBCO CIC Global Provider AWS -- File Server
@@ -13117,4 +13126,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T06:52:32.514288852Z"
+generated: "2025-08-27T06:53:49.864459619Z"
