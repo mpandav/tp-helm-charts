@@ -1697,6 +1697,23 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: dp-oauth2proxy-recipes
     apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:10:25.192759114Z"
+    description: TIBCO Platform OAuth2 Proxy Data Plane recipes
+    digest: cea00cea64c0ba914bf04db7903b869a4297f6cf8b7421be544458c68d972727
+    keywords:
+    - tibco-platform
+    - control-plane
+    - recipes
+    name: dp-oauth2proxy-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-oauth2proxy-recipes-1.9.1/dp-oauth2proxy-recipes-1.9.1.tgz
+    version: 1.9.1
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: dp-oauth2proxy-recipes
+    apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:03:09.798306308Z"
     description: TIBCO Platform OAuth2 Proxy Data Plane recipes
@@ -13374,4 +13391,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:09:38.022335033Z"
+generated: "2025-08-27T07:10:25.193471178Z"
