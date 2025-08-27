@@ -8034,6 +8034,24 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-configuration
     apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:02:33.28738691Z"
+    description: TIBCO Platform Control Plane Configuration chart
+    digest: cd512684ce7774748b8ca904600dd5f739e1e728960ffc6979019ed9737900ab
+    keywords:
+    - tibco-platform
+    - control-plane
+    - infra
+    - configuration
+    name: tp-cp-configuration
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-configuration-1.9.0/tp-cp-configuration-1.9.0.tgz
+    version: 1.9.0
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-configuration
+    apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:01:40.705353599Z"
     description: TIBCO Platform Control Plane Configuration chart
@@ -13251,4 +13269,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:01:46.334243337Z"
+generated: "2025-08-27T07:02:33.288011738Z"
