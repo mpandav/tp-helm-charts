@@ -2584,6 +2584,23 @@ entries:
     version: 1.8.500
   msg-ems-tp:
   - apiVersion: v2
+    appVersion: 10.4.0-82
+    created: "2025-08-27T07:07:15.57326637Z"
+    description: Data-plane provisioning chart for EMS server group
+    digest: e1078911c8b5129c44b8366cb69e83d136fbf27858c7b072002437a5f0261804
+    keywords:
+    - tibco-platform
+    - data-plane
+    - messaging
+    - EMS
+    maintainers:
+    - email: tcm@tibco.com
+      name: TIBCO Cloud Messaging Team
+    name: msg-ems-tp
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/msg-ems-tp-1.9.28/msg-ems-tp-1.9.28.tgz
+    version: 1.9.28
+  - apiVersion: v2
     appVersion: 10.4.0-73
     created: "2025-07-19T08:02:34.210685145Z"
     description: Data-plane provisioning chart for EMS server group
@@ -13316,4 +13333,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:06:28.747253332Z"
+generated: "2025-08-27T07:07:15.573940538Z"
