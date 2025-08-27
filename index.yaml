@@ -7367,6 +7367,20 @@ entries:
     version: 1.2.11
   tp-cp-alertmanager:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:23:26.515557652Z"
+    description: The Alertmanager handles alerts sent by client applications such
+      as the Prometheus server.
+    digest: ad2c196cf1596d532b90ac92c8154f5070e6e2151df59232cbd52c9508e42187
+    keywords:
+    - monitoring
+    kubeVersion: '>=1.19.0-0'
+    name: tp-cp-alertmanager
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-alertmanager-1.9.0/tp-cp-alertmanager-1.9.0.tgz
+    version: 1.9.0
+  - apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:05:14.88976211Z"
     description: The Alertmanager handles alerts sent by client applications such
@@ -13517,4 +13531,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:22:29.530932456Z"
+generated: "2025-08-27T07:23:26.516298133Z"
