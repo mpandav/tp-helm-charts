@@ -4268,6 +4268,84 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: platform-base
     apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:58:35.02315654Z"
+    dependencies:
+    - condition: tp-cp-o11y.enabled
+      name: tp-cp-o11y
+      repository: ""
+      version: 1.9.*
+    - name: tp-cp-configuration
+      repository: ""
+      version: 1.9.*
+    - name: tp-cp-recipes
+      repository: alias:tibco-platform
+      version: 1.9.19
+    - name: tp-cp-core
+      repository: ""
+      version: 1.9.*
+    - name: tp-cp-core-ops
+      repository: ""
+      version: 1.9.*
+    - name: tp-cp-core-finops
+      repository: ""
+      version: 1.9.577
+    - condition: tp-cp-integration.enabled
+      name: tp-cp-integration
+      repository: alias:tibco-platform
+      tags:
+      - integration
+      version: 1.9.25
+    - condition: tp-cp-tibcohub-contrib.enabled
+      name: tp-cp-tibcohub-contrib
+      repository: alias:tibco-platform
+      version: 1.8.4
+    - condition: tp-cp-msg-contrib.enabled
+      name: tp-cp-msg-contrib
+      repository: alias:tibco-platform
+      version: 1.9.28
+    - condition: tp-cp-msg-recipes.enabled
+      name: tp-cp-msg-recipes
+      repository: alias:tibco-platform
+      version: 1.9.28
+    - condition: tp-cp-hawk.enabled
+      name: tp-cp-hawk
+      repository: alias:tibco-platform
+      version: 1.9.28
+    - condition: tp-cp-hawk-recipes.enabled
+      name: tp-cp-hawk-console-recipes
+      repository: alias:tibco-platform
+      version: 1.9.28
+    - name: tp-cp-cli
+      repository: ""
+      version: 1.0.0
+    - name: tp-cp-alertmanager
+      repository: ""
+      version: 1.9.*
+    - name: tp-cp-alerts-service
+      repository: ""
+      version: 1.9.*
+    - name: tp-cp-prometheus
+      repository: ""
+      version: 1.9.8
+    - name: dp-oauth2proxy-recipes
+      repository: ""
+      version: 1.9.*
+    description: TIBCO Platform base chart
+    digest: 49cb96b6c074f419a035c8af71e41f486a807fc4b5b87df3f217a7a7e8b92cc3
+    keywords:
+    - tibco-platform
+    - platform
+    - base
+    name: platform-base
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/platform-base-1.9.0/platform-base-1.9.0.tgz
+    version: 1.9.0
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: platform-base
+    apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T09:35:33.283525141Z"
     dependencies:
@@ -14131,4 +14209,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:57:42.928858706Z"
+generated: "2025-08-27T07:58:35.023813657Z"
