@@ -7293,6 +7293,14 @@ entries:
     version: 1.8.2
   tp-cp-alerts-service:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:04:02.407210579Z"
+    digest: d8feb232770213799128457e9c0be892496ea6edb31a417d631af2bf162e8afa
+    name: tp-cp-alerts-service
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-alerts-service-1.9.1/tp-cp-alerts-service-1.9.1.tgz
+    version: 1.9.1
+  - apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:01:58.545836157Z"
     digest: 20b35ce9effea3b2a18a749344689e4752a1e241210b2e60ddc379266b7a41de
@@ -13283,4 +13291,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:03:15.777968216Z"
+generated: "2025-08-27T07:04:02.407945444Z"
