@@ -12640,6 +12640,33 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-recipes
     apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:48:40.972657194Z"
+    dependencies:
+    - name: tp-cp-bwce-recipes
+      repository: alias:tibco-platform
+      version: 1.9.5
+    - name: tp-cp-flogo-recipes
+      repository: alias:tibco-platform
+      version: 1.9.11
+    - name: tp-cp-tibcohub-recipes
+      repository: alias:tibco-platform
+      version: 1.9.4
+    description: TIBCO Platform recipe chart
+    digest: fbade0ff91baea54afc53191e7250027fb8fb963a76a25d03b2fdf26ae7fb5f9
+    keywords:
+    - tibco-platform
+    - platform
+    - recipes
+    name: tp-cp-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-recipes-1.9.19/tp-cp-recipes-1.9.19.tgz
+    version: 1.9.19
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-recipes
+    apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T09:10:20.711812545Z"
     dependencies:
@@ -13877,4 +13904,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:47:40.599640316Z"
+generated: "2025-08-27T07:48:40.973410542Z"
