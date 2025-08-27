@@ -2051,6 +2051,15 @@ entries:
     version: 1.8.0
   flogo-webserver:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:32:00.551277014Z"
+    description: TIBCO Platform Control Plane - Flogo - WebServer
+    digest: 01d773b9d6c4eec7214bf8ff6956de7242ae53489e9d520102c1f97474cc41d9
+    name: flogo-webserver
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/flogo-webserver-1.9.0/flogo-webserver-1.9.0.tgz
+    version: 1.9.0
+  - apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:06:53.01979118Z"
     description: TIBCO Platform Control Plane - Flogo - WebServer
@@ -13619,4 +13628,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:30:17.374489009Z"
+generated: "2025-08-27T07:32:00.552097407Z"
