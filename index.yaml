@@ -2633,6 +2633,15 @@ entries:
     version: 0.72.10
   monitoring-service:
   - apiVersion: v2
+    appVersion: 1.9.0
+    created: "2025-08-27T07:25:19.627729537Z"
+    description: A Helm chart for -- Monitoring service
+    digest: 607364fb1c191b770adb1b515a18f8027a78687829fd3a90dab647a51273821c
+    name: monitoring-service
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/monitoring-service-1.9.464/monitoring-service-1.9.464.tgz
+    version: 1.9.464
+  - apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:05:50.382949292Z"
     description: A Helm chart for -- Monitoring service
@@ -13540,4 +13549,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-27T07:24:23.568984761Z"
+generated: "2025-08-27T07:25:19.628440144Z"
