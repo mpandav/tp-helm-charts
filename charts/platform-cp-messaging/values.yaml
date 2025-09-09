@@ -42,7 +42,7 @@ recipes:
 resources:
   requests:
     cpu: 150m
-    memory: 150Mi
+    memory: 4096Mi
   limits:
     cpu: "2"
     memory: 4096Mi
