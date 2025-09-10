@@ -908,6 +908,15 @@ entries:
     version: 1.4.3
   dp-bwce-mon:
   - apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T19:39:21.355137878Z"
+    description: TIBCO Platform Dataplane Capabilty -- BWCE Monitoring
+    digest: 8d1894e49fdaaaa5ef5bb6ec2bce6577271ed6fcaadcfad2482cded2ccf095a2
+    name: dp-bwce-mon
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-bwce-mon-1.10.1/dp-bwce-mon-1.10.1.tgz
+    version: 1.10.1
+  - apiVersion: v2
     appVersion: 1.9.0
     created: "2025-08-27T07:33:07.752398221Z"
     description: TIBCO Platform Dataplane Capabilty -- BWCE Monitoring
@@ -14781,4 +14790,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:38:37.800527002Z"
+generated: "2025-09-10T19:39:21.356530868Z"
