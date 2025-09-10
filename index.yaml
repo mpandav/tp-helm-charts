@@ -2731,6 +2731,26 @@ entries:
   jaeger:
   - apiVersion: v2
     appVersion: 1.66.0
+    created: "2025-09-10T19:34:21.435045703Z"
+    description: A Jaeger Helm chart for Kubernetes
+    digest: a6f88fa0266247ef816f652a6296323e11ff0218633b870aedc8bd4be7a8f478
+    home: https://jaegertracing.io
+    icon: https://camo.githubusercontent.com/afa87494e0753b4b1f5719a2f35aa5263859dffb/687474703a2f2f6a61656765722e72656164746865646f63732e696f2f656e2f6c61746573742f696d616765732f6a61656765722d766563746f722e737667
+    keywords:
+    - jaeger
+    - opentracing
+    - tracing
+    - instrumentation
+    kubeVersion: '>= 1.21-0'
+    name: jaeger
+    sources:
+    - https://hub.docker.com/u/jaegertracing/
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/jaeger-0.72.39/jaeger-0.72.39.tgz
+    version: 0.72.39
+  - apiVersion: v2
+    appVersion: 1.66.0
     created: "2025-08-27T12:05:45.836415551Z"
     dependencies:
     - condition: provisionDataStore.cassandra
@@ -14696,4 +14716,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:33:36.717388962Z"
+generated: "2025-09-10T19:34:21.435766934Z"
