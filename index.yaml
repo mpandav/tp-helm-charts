@@ -11262,6 +11262,16 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-hawk-infra-querynode-1.7.19/tp-cp-hawk-infra-querynode-1.7.19.tgz
     version: 1.7.19
+  tp-cp-infra:
+  - apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T19:41:04.489228855Z"
+    description: TIBCO Platform Control Plane Infra chart
+    digest: fe6e11aa400cea7828d3fe42788c95e56dc71d62c2b12e1e5a8afd083287ae28
+    name: tp-cp-infra
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-infra-1.10.0/tp-cp-infra-1.10.0.tgz
+    version: 1.10.0
   tp-cp-infra-recipes:
   - annotations:
       app.helm.sh/component: control-plane
@@ -14830,4 +14840,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:39:59.330352555Z"
+generated: "2025-09-10T19:41:04.489960976Z"
