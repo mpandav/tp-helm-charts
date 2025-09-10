@@ -7932,6 +7932,24 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/platform-bootstrap-1.2.25/platform-bootstrap-1.2.25.tgz
     version: 1.2.25
+  platform-cp-messaging:
+  - apiVersion: v2
+    appVersion: 1.10.0-34
+    created: "2025-09-10T19:44:47.491698387Z"
+    description: TIBCO Platform Control Plane -- Messaging
+    digest: d3593979619c468f11446d825fa55677004563a7eda5276024d8dc7fcc9808f9
+    keywords:
+    - tibco-platform
+    - control-plane
+    - messaging
+    - EMS
+    maintainers:
+    - email: tcm@tibco.com
+      name: TIBCO Cloud Messaging Team
+    name: platform-cp-messaging
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/platform-cp-messaging-1.10.8/platform-cp-messaging-1.10.8.tgz
+    version: 1.10.8
   postgresql:
   - annotations:
       category: Database
@@ -14886,4 +14904,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:44:04.316447575Z"
+generated: "2025-09-10T19:44:47.493421692Z"
