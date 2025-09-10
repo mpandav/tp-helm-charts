@@ -4492,6 +4492,22 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/oauth2-proxy-10.1.006/oauth2-proxy-10.1.006.tgz
     version: 10.1.006
+  on-premises-third-party:
+  - apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T20:00:00.574504177Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: file://charts/postgresql
+      version: 15.5.38
+    description: A Helm chart for Kubernetes
+    digest: acff08395160e1fb4fa4c2ea218db521e1c34a17d95da4e9072b64fa8aa5bd2c
+    name: on-premises-third-party
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/on-premises-third-party-1.10.1/on-premises-third-party-1.10.1.tgz
+    version: 1.10.1
   opentelemetry-collector:
   - apiVersion: v2
     appVersion: 0.119.0
@@ -15264,4 +15280,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:59:16.73099934Z"
+generated: "2025-09-10T20:00:00.57519413Z"
