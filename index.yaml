@@ -2196,6 +2196,15 @@ entries:
     version: 1.7.15
   finops-service:
   - apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T19:23:38.737085777Z"
+    description: A Helm chart for -- Finops service
+    digest: 62a80732ddd31164cf02ea1efab77a0b873cdd2a39736097460a55ea9348586d
+    name: finops-service
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/finops-service-1.10.137/finops-service-1.10.137.tgz
+    version: 1.10.137
+  - apiVersion: v2
     appVersion: 1.9.0
     created: "2025-08-27T07:09:38.021622339Z"
     description: A Helm chart for -- Finops service
@@ -14538,4 +14547,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:23:00.495984629Z"
+generated: "2025-09-10T19:23:38.737853155Z"
