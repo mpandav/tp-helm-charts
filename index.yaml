@@ -157,6 +157,15 @@ entries:
     version: 1.8.1
   bw-webserver:
   - apiVersion: v1
+    appVersion: 1.10.0
+    created: "2025-09-10T19:34:59.693608499Z"
+    description: TIBCO Platform Control Plane - BWCE, BW6 and BW5 - WebServer
+    digest: 5592fe416240a8406b51b831326a93135d2bda6787c018924400c3290f9f0582
+    name: bw-webserver
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bw-webserver-1.10.0/bw-webserver-1.10.0.tgz
+    version: 1.10.0
+  - apiVersion: v1
     appVersion: 1.9.0
     created: "2025-08-27T07:27:09.267867467Z"
     description: TIBCO Platform Control Plane - BWCE, BW6 and BW5 - WebServer
@@ -14716,4 +14725,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:34:21.435766934Z"
+generated: "2025-09-10T19:34:59.694650632Z"
