@@ -2720,6 +2720,15 @@ entries:
     version: 1.8.2
   identity-provider:
   - apiVersion: v1
+    appVersion: 1.10.0
+    created: "2025-09-10T19:46:14.729962244Z"
+    description: A Helm Chart for TIBCO Platform Control Plane -- Identity Provider
+    digest: 08ebee23b98d3947567ed712afe532d534d25526d3f7f901dec904ed5cc97a96
+    name: identity-provider
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/identity-provider-1.10.7/identity-provider-1.10.7.tgz
+    version: 1.10.7
+  - apiVersion: v1
     appVersion: 1.9.0
     created: "2025-08-27T07:39:10.766843632Z"
     description: A Helm Chart for TIBCO Platform Control Plane -- Identity Provider
@@ -14914,4 +14923,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:45:31.21924875Z"
+generated: "2025-09-10T19:46:14.730743858Z"
