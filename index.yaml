@@ -10098,6 +10098,25 @@ entries:
     version: 1.2.7819
   tp-cp-core-finops:
   - apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T19:54:10.59250162Z"
+    dependencies:
+    - name: monitoring-service
+      repository: ""
+      version: 1.10.467
+    - name: finops-service
+      repository: ""
+      version: 1.10.137
+    - name: finops-otel-collector
+      repository: ""
+      version: 1.10.18
+    description: A Helm chart for -- tp-cp-core-finops
+    digest: de1a8e3cb073bd2b44e59a7a685dbc43d20ff864d96d36b1348f1d91f77a4c18
+    name: tp-cp-core-finops
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-finops-1.10.583/tp-cp-core-finops-1.10.583.tgz
+    version: 1.10.583
+  - apiVersion: v2
     appVersion: 1.9.0
     created: "2025-08-27T07:49:52.46996564Z"
     dependencies:
@@ -15066,4 +15085,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:53:17.909800117Z"
+generated: "2025-09-10T19:54:10.593284156Z"
