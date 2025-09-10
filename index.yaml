@@ -550,6 +550,19 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: claims
     apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T19:41:53.033144197Z"
+    description: TIBCO Platform Control Plane crossplane claims chart
+    digest: 0bcdcd95b48a6fcb79ee5d25c53c4d1a0a342d006f484a84e2900b7cee49514a
+    name: claims
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/claims-1.10.0/claims-1.10.0.tgz
+    version: 1.10.0
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: claims
+    apiVersion: v2
     appVersion: 1.8.0
     created: "2025-07-19T08:07:29.108685703Z"
     description: TIBCO Platform Control Plane crossplane claims chart
@@ -14840,4 +14853,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:41:04.489960976Z"
+generated: "2025-09-10T19:41:53.034177313Z"
