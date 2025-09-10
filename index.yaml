@@ -10493,6 +10493,20 @@ entries:
     version: 1.4.1
   tp-cp-eventprocessing-be:
   - apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T19:51:49.213889855Z"
+    dependencies:
+    - condition: be-webserver.enabled
+      name: be-webserver
+      repository: ""
+      version: 1.10.*
+    description: TIBCO Platform Control Plane -- BE Addon
+    digest: 3db893dcd1c725fb7022555c86669e614fb35da2733ac70f3eb898d2444df46c
+    name: tp-cp-eventprocessing-be
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-eventprocessing-be-1.10.1/tp-cp-eventprocessing-be-1.10.1.tgz
+    version: 1.10.1
+  - apiVersion: v2
     appVersion: 1.9.0
     created: "2025-08-27T07:47:40.598901Z"
     dependencies:
@@ -15010,4 +15024,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:51:05.487434207Z"
+generated: "2025-09-10T19:51:49.214726723Z"
