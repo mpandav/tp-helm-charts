@@ -908,6 +908,13 @@ data:
                     networking.platform.tibco.com/prometheus: enable
                     networking.platform.tibco.com/internet-egress: enable
                     networking.platform.tibco.com/cluster-egress: enable
+                  resources:
+                    limits:
+                      cpu: 500m
+                      memory: 512Mi
+                    requests:
+                      cpu: 256m
+                      memory: 512Mi
                 query:
                   fullnameOverride: jaeger-query
                   podLabels:

@@ -73,7 +73,7 @@ data:
                   livenessInitialDelaySeconds: 15
                   livenessPeriodSeconds: 15
                   livenessTimeoutSeconds: 10
-                  javaOptions: "-Xms1g -Xmx3g"
+                  javaOptions: "-Xms1g -Xmx1g"
                   subscription:
                     interval:
                       bw5: 60000
@@ -86,10 +86,10 @@ data:
                 resources:
                   requests:
                     cpu: 200m
-                    memory: 1024Mi
+                    memory: 2048Mi
                   limits:
                     cpu: 1000m
-                    memory: 3072Mi                
+                    memory: 2048Mi                
           flags:
             install: true
             createNamespace: false

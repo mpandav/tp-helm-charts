@@ -104,6 +104,13 @@ data:
                       className: ${INGRESS_CLASS_NAME}
                       pathPrefix: ${INGRESS_PATH_PREFIX}
                       fqdn: ${INGRESS_FQDN}
+                resources:
+                  requests:
+                    cpu: "2"
+                    memory: 4Gi
+                  limits:
+                    cpu: "4"
+                    memory: 4Gi
           flags:
             install: true
             createNamespace: false

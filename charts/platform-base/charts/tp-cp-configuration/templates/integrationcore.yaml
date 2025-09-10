@@ -72,6 +72,13 @@ data:
                       resources:
                         requests:
                           storage: 20Gi
+                resources:
+                  requests:
+                    cpu: 50m
+                    memory: 512Mi
+                  limits:
+                    cpu: "2"
+                    memory: 700Mi
           flags:
             install: true
             createNamespace: false
