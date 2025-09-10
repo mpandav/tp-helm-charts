@@ -2623,6 +2623,15 @@ entries:
     version: 1.8.0
   identity-management:
   - apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T19:35:42.980806942Z"
+    description: A Helm Chart for TIBCO Platform Control Plane -- Identity Management
+    digest: 707ccca05192124af40cd991f6ca31a43b4a2eef47c182221c4e5851eb539d8f
+    name: identity-management
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/identity-management-1.10.4/identity-management-1.10.4.tgz
+    version: 1.10.4
+  - apiVersion: v2
     appVersion: 1.9.0
     created: "2025-08-27T07:27:56.469072166Z"
     description: A Helm Chart for TIBCO Platform Control Plane -- Identity Management
@@ -14725,4 +14734,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:34:59.694650632Z"
+generated: "2025-09-10T19:35:42.98222903Z"
