@@ -4301,6 +4301,15 @@ entries:
     version: 0.89.2
   orchestrator:
   - apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T19:20:55.1086779Z"
+    description: A Helm chart for -- Orchestrator
+    digest: 1971980790f3de6fc77ae4618817ecc869acc4d8dd60ed0f99be67ae9136f6c5
+    name: orchestrator
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/orchestrator-1.10.20/orchestrator-1.10.20.tgz
+    version: 1.10.20
+  - apiVersion: v2
     appVersion: 1.9.0
     created: "2025-08-27T07:06:28.746505446Z"
     description: A Helm chart for -- Orchestrator
@@ -14480,4 +14489,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:20:06.569926361Z"
+generated: "2025-09-10T19:20:55.109348276Z"
