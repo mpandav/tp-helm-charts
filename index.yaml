@@ -535,6 +535,20 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: compositions
     apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T19:12:55.782979667Z"
+    description: TIBCO Platform Control Plane crossplane composite resource definitions
+      and compositions chart
+    digest: ec6a134756e5ca1b40ef01ec78093e03cdf3d8aa0ddfabc07a1aa1ce2c47e0e7
+    name: compositions
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/compositions-1.10.0/compositions-1.10.0.tgz
+    version: 1.10.0
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: compositions
+    apiVersion: v2
     appVersion: 1.7.0
     created: "2025-07-19T08:00:20.427131602Z"
     description: TIBCO Platform Control Plane crossplane composite resource definitions
@@ -14349,4 +14363,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:11:42.546689762Z"
+generated: "2025-09-10T19:12:55.783667796Z"
