@@ -2456,6 +2456,15 @@ entries:
     version: 1.44.3
   hybrid-proxy:
   - apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T19:10:03.285489767Z"
+    description: TIBCO Platform cp core bootstrap -- Hybrid Proxy operator
+    digest: 16ab029d6523aac9739487830223c3488d525341f0a12d3f069a18bc5b5a4bbb
+    name: hybrid-proxy
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/hybrid-proxy-1.10.0/hybrid-proxy-1.10.0.tgz
+    version: 1.10.0
+  - apiVersion: v2
     appVersion: 1.9.0
     created: "2025-08-27T06:51:50.778998494Z"
     description: TIBCO Platform cp core bootstrap -- Hybrid Proxy operator
@@ -14322,4 +14331,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-08-29T06:16:10.755488001Z"
+generated: "2025-09-10T19:10:03.286193592Z"
