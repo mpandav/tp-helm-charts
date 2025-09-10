@@ -8012,6 +8012,18 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-alerts-service-1.8.1/tp-cp-alerts-service-1.8.1.tgz
     version: 1.8.1
+  tp-cp-auditsafe:
+  - apiVersion: v2
+    appVersion: 1.10.0
+    created: "2025-09-10T19:20:06.569122655Z"
+    description: Platform AuditSafe chart
+    digest: 58025b3a6b85c98c3cdf6a9d8896b5026661dfbe9247e95359c9d21e22ceb709
+    keywords:
+    - auditsafe
+    name: tp-cp-auditsafe
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-auditsafe-1.10.8/tp-cp-auditsafe-1.10.8.tgz
+    version: 1.10.8
   tp-cp-bootstrap:
   - annotations:
       app.helm.sh/component: control-plane
@@ -14468,4 +14480,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:19:16.533139305Z"
+generated: "2025-09-10T19:20:06.569926361Z"
