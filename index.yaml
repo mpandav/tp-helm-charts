@@ -2142,6 +2142,24 @@ entries:
   finops-otel-collector:
   - apiVersion: v2
     appVersion: 0.119.0
+    created: "2025-09-10T19:14:47.16435278Z"
+    description: OpenTelemetry Collector Helm chart for Kubernetes
+    digest: 8f7da08e8f5cf1944d21f4399a577e16fdec6ad4dddf801973544e25567ff460
+    home: https://opentelemetry.io/
+    icon: https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png
+    maintainers:
+    - name: dmitryax
+    - name: TylerHelmuth
+    name: finops-otel-collector
+    sources:
+    - https://github.com/open-telemetry/opentelemetry-collector
+    - https://github.com/open-telemetry/opentelemetry-collector-contrib
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/finops-otel-collector-1.10.18/finops-otel-collector-1.10.18.tgz
+    version: 1.10.18
+  - apiVersion: v2
+    appVersion: 0.119.0
     created: "2025-08-27T06:58:38.401329768Z"
     description: OpenTelemetry Collector Helm chart for Kubernetes
     digest: fe4b8da9ac43f770375fff50be8710ddbd475a9b7c31d69089ac1ac039a35f89
@@ -14372,4 +14390,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T19:13:39.2274695Z"
+generated: "2025-09-10T19:14:47.166086879Z"
