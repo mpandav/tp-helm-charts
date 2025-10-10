@@ -22,6 +22,7 @@ jobs:
       contents: write
       packages: write
     env:
+      CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       CHART_NAME: ${{ inputs.chart_name }}
       CHART_VERSION: ${{ inputs.chart_version }}
@@ -126,8 +127,6 @@ jobs:
           fi
 
       - name: Upload chart artifact
-        env:
-          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
           release_name="${CHART_NAME}-${CHART_VERSION}"
@@ -139,7 +138,23 @@ jobs:
             --release-name-template "{{ .Name }}-{{ .Version }}" \
             --token "$CR_TOKEN" \
             --owner "${{ github.repository_owner }}" \
-            --git-repo "${{ github.event.repository.name }}"
+            --git-repo "${{ github.event.repository.name }}" \
+            --skip-existing
+
+      - name: Verify release availability
+        run: |
+          set -euo pipefail
+          release_name="${CHART_NAME}-${CHART_VERSION}"
+          for i in {1..12}; do
+            if gh release view "$release_name" >/dev/null 2>&1; then
+              echo "Release $release_name is available."
+              exit 0
+            fi
+            echo "Waiting for release $release_name to become available (attempt $i)..."
+            sleep 5
+          done
+          echo "Release $release_name not available after waiting." >&2
+          exit 1
 
       - name: Update Helm repo index
         run: |
@@ -151,7 +166,9 @@ jobs:
             --package-path temp-release \
             --index-path gh-pages-worktree/index.yaml \
             --owner "${{ github.repository_owner }}" \
-            --git-repo "${{ github.event.repository.name }}"
+            --git-repo "${{ github.event.repository.name }}" \
+            --token "$CR_TOKEN" \
+            --release-name-template "{{ .Name }}-{{ .Version }}"
 
           pushd gh-pages-worktree >/dev/null
           git config user.name "GitHub Actions"
