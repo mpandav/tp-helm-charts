@@ -100,7 +100,7 @@ jobs:
         run: |
           set -euo pipefail
           chart_dir="${{ steps.locate.outputs.chart_dir }}"
-          yq -i ".version = env.CHART_VERSION" "$chart_dir/Chart.yaml"
+          yq -i ".version = strenv(CHART_VERSION)" "$chart_dir/Chart.yaml"
           echo "Updated $chart_dir/Chart.yaml to version $CHART_VERSION"
 
       - name: Build chart dependencies
