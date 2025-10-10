@@ -577,6 +577,33 @@ entries:
       category: Infrastructure
       licenses: Apache-2.0
     apiVersion: v2
+    appVersion: 2.23.0
+    created: "2025-10-10T13:35:14.06461102Z"
+    description: A Library Helm Chart for grouping common logic between bitnami charts.
+      This chart is not deployable by itself.
+    digest: af3a63958c829f148d4000cdce4c6804faf7495ee38cb9d6d0c919550c7d1099
+    home: https://bitnami.com
+    icon: https://bitnami.com/downloads/logos/bitnami-mark.png
+    keywords:
+    - common
+    - helper
+    - template
+    - function
+    - bitnami
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: common
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/common
+    type: library
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/common-2.23.0/common-2.23.0.tgz
+    version: 2.23.0
+  - annotations:
+      category: Infrastructure
+      licenses: Apache-2.0
+    apiVersion: v2
     appVersion: 2.13.3
     created: "2025-07-19T08:05:23.774892078Z"
     description: A Library Helm Chart for grouping common logic between bitnami charts.
@@ -15422,4 +15449,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-09-10T20:02:45.073662959Z"
+generated: "2025-10-10T13:35:14.066289833Z"
