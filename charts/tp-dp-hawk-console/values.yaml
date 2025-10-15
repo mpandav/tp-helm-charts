@@ -87,6 +87,8 @@ ingress:
 hawkconsole:
   hawkData:
     volClaimTemplateName: hawk-console-data
+    useExisting: true
+    existingClaimName: hawk-console-data
     subPath: hawk/hawkconsole
     emsCertSubPath: hawk/emscerts
     pvcStorageSize: 2Gi
