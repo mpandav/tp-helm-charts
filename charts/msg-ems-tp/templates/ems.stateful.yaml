@@ -332,7 +332,7 @@ spec:
               emptyDir: {}
             - name: license-vol
               secret:
-                secretName: "{{ $emsParams.ems.license.secretName }}"
+                secretName: "{{ .Values.ems.license.secretName }}"
                 optional: true
             dnsPolicy: ClusterFirst
             restartPolicy: Always
