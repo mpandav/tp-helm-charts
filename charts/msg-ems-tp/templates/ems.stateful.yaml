@@ -152,6 +152,9 @@ spec:
                 protocol: TCP
               {{ include "msg.dp.security.container" $emsParams | nindent 14 }}
               volumeMounts:
+              - name: license-vol
+                mountPath: /licenses
+                readOnly: true
               - mountPath: /boot
                 name: scripts-vol
               - mountPath: /boot-certs
@@ -327,6 +330,10 @@ spec:
             {{ end }}
             - name: tmp-vol
               emptyDir: {}
+            - name: license-vol
+              secret:
+                secretName: "{{ $emsParams.ems.license.secretName }}"
+                optional: true
             dnsPolicy: ClusterFirst
             restartPolicy: Always
             schedulerName: default-scheduler
