@@ -103,12 +103,12 @@ msggw:
   hawk: 
     volName: hawk
     storageType: sharedPvc
-    storageName: "{{ .Values.hawkconsole.hawkData.existingClaimName hawk-console-data-tp-dp-hawk-console-0 }}"
+    storageName: {{ .Values.hawkconsole.hawkData.existingClaimName | default hawk-console-data-tp-dp-hawk-console-0 | quote }}
     subPath: "."
   logs: 
     volName: logs
     storageType: sharedPvc
-    storageName: "{{ .Values.hawkconsole.hawkData.existingClaimName hawk-console-data-tp-dp-hawk-console-0 }}"
+    storageName: {{ .Values.hawkconsole.hawkData.existingClaimName | default hawk-console-data-tp-dp-hawk-console-0 | quote }}
     subPath: "msg/logs"
   lbHost: "alternateNlbNameHere"
   resources:

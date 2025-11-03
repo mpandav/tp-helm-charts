@@ -63,6 +63,13 @@ data:
                   bwadapter:
                     image:
                       tag: 47
+                resources:
+                  requests:
+                    cpu: 100m
+                    memory: 256Mi
+                  limits:
+                    cpu: "0.5"
+                    memory: 256Mi
           flags:
             install: true
             createNamespace: false
