@@ -181,9 +181,7 @@ spec:
 {{- end }}
       volumes:
         - name: podlogs
-          hostPath:
-            path: /var/log/pods
-            type: Directory
+          emptyDir: {}
         - name: config-volume
           configMap:
             name: {{ include "tp-dp-hawk-console.consts.appName" . }}-fluentbit-config
