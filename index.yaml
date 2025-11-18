@@ -14108,6 +14108,20 @@ entries:
     version: 1.2.5
   tp-cp-integration-flogo:
   - apiVersion: v2
+    appVersion: 1.11.0
+    created: "2025-11-18T09:14:56.890535465Z"
+    dependencies:
+    - condition: flogo-webserver.enabled
+      name: flogo-webserver
+      repository: ""
+      version: 1.11.*
+    description: TIBCO Platform Control Plane -- Integration for Flogo
+    digest: d240739eeca73392140b7be667b06ab0b8553fcda68c9ece25717695f35e1dfe
+    name: tp-cp-integration-flogo
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-flogo-1.11.11/tp-cp-integration-flogo-1.11.11.tgz
+    version: 1.11.11
+  - apiVersion: v2
     appVersion: 1.10.0
     created: "2025-09-10T19:55:37.860748014Z"
     dependencies:
@@ -16346,4 +16360,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T09:14:07.379459619Z"
+generated: "2025-11-18T09:14:56.891473605Z"
