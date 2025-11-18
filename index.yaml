@@ -2467,6 +2467,15 @@ entries:
     version: 1.8.337
   flogo-utilities:
   - apiVersion: v2
+    appVersion: 1.11.0
+    created: "2025-11-18T08:29:28.339151275Z"
+    description: TIBCO CIC Global Provider -- FLOGO Utilities
+    digest: 721ab27469ba60d066c98b4631f1ecdf3fb066f76d27a6202237436f740eb86e
+    name: flogo-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/flogo-utilities-1.11.0/flogo-utilities-1.11.0.tgz
+    version: 1.11.0
+  - apiVersion: v2
     appVersion: 1.10.0
     created: "2025-09-10T19:17:50.341144981Z"
     description: TIBCO CIC Global Provider -- FLOGO Utilities
@@ -15604,4 +15613,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T08:28:39.232159551Z"
+generated: "2025-11-18T08:29:28.339882437Z"
