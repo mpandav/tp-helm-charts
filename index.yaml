@@ -8739,6 +8739,24 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/servicemesh-contrib-1.0.1/servicemesh-contrib-1.0.1.tgz
     version: 1.0.1
+  tibco-cp-messaging:
+  - apiVersion: v2
+    appVersion: 1.11.0-41
+    created: "2025-11-18T09:05:02.77412204Z"
+    description: TIBCO Platform Control Plane -- Messaging
+    digest: 6692c5625812bcdad3eccc4bedf058342d6949eedbd64eb8a7be3c425c4167a7
+    keywords:
+    - tibco-platform
+    - control-plane
+    - messaging
+    - EMS
+    maintainers:
+    - email: tcm@tibco.com
+      name: TIBCO Cloud Messaging Team
+    name: tibco-cp-messaging
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-messaging-1.11.15/tibco-cp-messaging-1.11.15.tgz
+    version: 1.11.15
   tibco-developer-hub:
   - apiVersion: v2
     appVersion: 1.10.0
@@ -16147,4 +16165,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T09:04:13.616285293Z"
+generated: "2025-11-18T09:05:02.775117089Z"
