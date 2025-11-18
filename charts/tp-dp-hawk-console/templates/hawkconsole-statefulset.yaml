@@ -32,7 +32,7 @@ spec:
       {{- end }}
       containers:
       - name: {{ include "tp-dp-hawk-console.consts.appName" . }}
-        image: {{ include "tp-dp-hawk-console.image.registry" .}}{{"/"}}{{ include "tp-dp-hawk-console.image.repository" .}}{{"/"}}{{ .Values.image.name }}:{{ .Values.image.tag }}
+        image: {{ include "tp-dp-hawk-console.image.registry" .}}{{"/"}}{{ include "tp-dp-hawk-console.image.repository" .}}{{"/"}}{{ .Values.image.name }}:{{ .Values.image.imageTag }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         {{- if .Values.securityContext.dpHawkConsole }}
         securityContext:

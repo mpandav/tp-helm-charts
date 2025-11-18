@@ -222,6 +222,7 @@ note: expects a $emsParams as its argument
 {{- define "ems.std.labels" }}
 release: "{{ .dp.release }}"
 tib-dp-app: msg-ems-ftl
+tib-msgdp-mm-version: "1.11.0-0"
 tib-msg-group-name: "{{ .ems.name }}"
 tib-msg-ems-name: "{{ .ems.name }}"
 tib-msg-ems-sizing: "{{ .ems.sizing }}"
