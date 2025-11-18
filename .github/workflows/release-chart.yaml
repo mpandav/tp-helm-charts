@@ -7,6 +7,7 @@ on:
       - 'releases/**'
     paths:
       - 'charts/**'
+  workflow_dispatch:
 
 jobs:
   release:
@@ -33,7 +34,7 @@ jobs:
 
       - name: Add dependency chart repos
         run: |      
-          helm repo add tibco-platform https://tibcosoftware.github.io/tp-helm-charts/
+          helm repo add tibco-platform https://mpandav.github.io/tp-helm-charts/
 
       - name: Add third party dependency chart repositories
         run: |
@@ -51,17 +52,84 @@ jobs:
             done
           done
 
-      - name: Build subchart dependencies
+      - name: Install chart-releaser (cr)
         run: |
-          for d in $(find charts/ -type f -name 'Chart.yaml' | sed -r 's|/[^/]+$||' | sort | uniq); do
-            echo "Running 'helm dependency build' in $d"
-            helm dependency build "$d"
-          done
+          curl -sSL https://github.com/helm/chart-releaser/releases/download/v1.7.0/chart-releaser_1.7.0_linux_amd64.tar.gz| tar xz
+          sudo mv cr /usr/local/bin
+          cr version
 
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.7.0
-        with:
-          skip_existing: true
-          packages_with_index: false
+      - name: Install yq (for parsing Chart.yaml)
+        run: |
+          sudo wget -q https://github.com/mikefarah/yq/releases/download/v4.43.1/yq_linux_amd64 -O /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/yq
+          yq --version
+      - name: Topologically sort charts
+        run: |
+          bash scripts/toposort.sh > sorted-charts.txt
+          cat sorted-charts.txt
+
+      - name: Package and release charts in order
         env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p .cr-release-packages
+
+          while IFS= read -r chart_dir; do
+            name=$(yq -r '.name' "$chart_dir/Chart.yaml")
+            version=$(yq -r '.version' "$chart_dir/Chart.yaml")
+            tgz_file=".cr-release-packages/${name}-${version}.tgz"
+
+            echo "📦 Packaging $name ($version) from $chart_dir"
+            helm dependency build $chart_dir
+            helm package "$chart_dir" --destination .cr-release-packages
+
+            echo "🚀 Releasing $tgz_file to GitHub Releases"
+            mkdir -p temp-release
+            cp "$tgz_file" temp-release/
+
+            cr upload \
+              --package-path temp-release \
+              --token "$CR_TOKEN" \
+              --owner "${{ github.repository_owner }}" \
+              --git-repo "${{ github.event.repository.name }}" \
+              --skip-existing
+
+            echo "🔄 Preparing gh-pages worktree for index update"
+            git fetch origin gh-pages
+            git worktree add gh-pages-worktree origin/gh-pages
+
+            echo "🧭 Running cr index to update index.yaml"
+            cr index \
+              --package-path temp-release \
+              --index-path gh-pages-worktree/index.yaml \
+              --owner "${{ github.repository_owner }}" \
+              --git-repo "${{ github.event.repository.name }}"
+
+            echo "🚀 Committing and pushing updated index.yaml"
+            cd gh-pages-worktree
+            git config user.name "GitHub Actions"
+            git config user.email "actions@github.com"
+            git add index.yaml
+            git commit -m "Update index.yaml with $name-$version" || echo "No changes to commit"
+            git push origin HEAD:gh-pages
+            cd ..
+            INDEX_HASH=$(sha256sum gh-pages-worktree/index.yaml | awk '{print $1}')
+            git worktree remove gh-pages-worktree
+
+            rm -rf temp-release
+
+            echo "🔄 Refreshing Helm repo index for next chart"
+            REPO_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/index.yaml"
+            echo "⏳ Waiting for GitHub Pages to publish updated index.yaml..."
+            for i in {1..30}; do
+              REMOTE_HASH=$(curl -sL "$REPO_URL" | sha256sum | awk '{print $1}')
+              if [ "$REMOTE_HASH" = "$INDEX_HASH" ]; then
+                echo "✅ GitHub Pages has published the updated index.yaml"
+                break
+              fi
+              echo "…still waiting (attempt $i)"
+              sleep 5
+            done
+            helm repo update
+            sleep 5
+          done < sorted-charts.txt

@@ -113,6 +113,22 @@ data:
                 #  - ${SECRETS_NAME}
               postgresql:
                 enabled: true
+                primary:
+                  resources:
+                    limits:
+                      cpu: 500m
+                      memory: 512Mi
+                    requests:
+                      memory: 512Mi
+                      cpu: 200m
+              appInit:
+                resources:
+                  limits:
+                    cpu: 30m
+                    memory: 50Mi
+                  requests:
+                    cpu: 10m
+                    memory: 50Mi
               ingress:
                 enabled: true
                 className: ${INGRESS_CLASSNAME}

@@ -75,6 +75,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
 {{- define "dp-core-infrastructure.validate" -}}
+{{- if not .Values.skipValidate }}
 {{- $ns_name := .Release.Namespace }}
 {{- $ns := (lookup "v1" "Namespace" "" $ns_name) }}
 {{- if $ns }}
@@ -98,5 +99,6 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 {{- else }}
 {{/* no op is ns does not exists. We expect the ns to be already present. We have this to avoid helm templating issue*/}}
+{{- end }}
 {{- end }}
 {{- end }}

@@ -192,6 +192,11 @@ spec:
           emptyDir: {}
         - name: tmpfs-2
           emptyDir: {}
+      {{- if .Values.hawkconsole.hawkData.useExisting }}
+        - name: {{ .Values.hawkconsole.hawkData.volClaimTemplateName }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.hawkconsole.hawkData.existingClaimName }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -208,6 +213,7 @@ spec:
       imagePullSecrets:
         - name: {{ .Values.global.cp.containerRegistry.secret }} {{/* optional imagePullSecret for private repo. no op if secret does not exist */}}
       {{- end }}
+{{- if not .Values.hawkconsole.hawkData.useExisting }}
   volumeClaimTemplates:
     - metadata:
         name: {{ .Values.hawkconsole.hawkData.volClaimTemplateName }}
@@ -218,3 +224,4 @@ spec:
         resources:
           requests:
             storage: {{ .Values.hawkconsole.hawkData.pvcStorageSize }}
+{{- end }}
