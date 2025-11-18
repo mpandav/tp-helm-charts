@@ -1556,6 +1556,25 @@ entries:
     version: 1.2.27
   dp-core-infrastructure:
   - apiVersion: v2
+    appVersion: 1.11.0
+    created: "2025-11-18T09:09:48.579619564Z"
+    dependencies:
+    - condition: tibtunnel.enabled
+      name: tp-tibtunnel
+      repository: ""
+      version: 1.11.*
+    - condition: tp-provisioner-agent.enabled
+      name: tp-provisioner-agent
+      repository: ""
+      version: 1.11.*
+    description: A Helm chart for Data Plane Infrastructure
+    digest: 5a3e8d5ab2a67c511763ffcd995a587091e56176102a8959a8f17e3ef2d3f6f2
+    name: dp-core-infrastructure
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-core-infrastructure-1.11.4/dp-core-infrastructure-1.11.4.tgz
+    version: 1.11.4
+  - apiVersion: v2
     appVersion: 1.10.0
     created: "2025-09-10T19:51:05.486674544Z"
     dependencies:
@@ -16245,4 +16264,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T09:09:04.218530213Z"
+generated: "2025-11-18T09:09:48.580648606Z"
