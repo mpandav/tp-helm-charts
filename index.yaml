@@ -8718,6 +8718,17 @@ entries:
     version: 1.8.1
   tp-cp-auditsafe:
   - apiVersion: v2
+    appVersion: 1.11.0
+    created: "2025-11-18T08:32:29.04033695Z"
+    description: Platform AuditSafe chart
+    digest: 0886b684d85d1bf23e0a01cf746379157602b56ef8cc88fb21c4bddfbdd114b7
+    keywords:
+    - auditsafe
+    name: tp-cp-auditsafe
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-auditsafe-1.11.12/tp-cp-auditsafe-1.11.12.tgz
+    version: 1.11.12
+  - apiVersion: v2
     appVersion: 1.10.0
     created: "2025-09-10T19:20:06.569122655Z"
     description: Platform AuditSafe chart
@@ -15653,4 +15664,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T08:31:45.39381761Z"
+generated: "2025-11-18T08:32:29.041161189Z"
