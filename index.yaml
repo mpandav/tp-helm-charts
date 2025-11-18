@@ -9625,6 +9625,20 @@ entries:
     version: 1.2.27
   tp-cp-bw5ce-utilities:
   - apiVersion: v2
+    appVersion: 1.11.0
+    created: "2025-11-18T09:12:17.879454023Z"
+    dependencies:
+    - condition: bw5ce-utilities.enabled
+      name: bw5ce-utilities
+      repository: ""
+      version: 1.11.*
+    description: TIBCO Platform Control Plane -- BW5 containers Utilities
+    digest: c916cfd436eebdc5561d05b5aa3173ab82253ac1fa41c5c7b09c1a7105500ae0
+    name: tp-cp-bw5ce-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-bw5ce-utilities-1.11.5/tp-cp-bw5ce-utilities-1.11.5.tgz
+    version: 1.11.5
+  - apiVersion: v2
     appVersion: 1.10.0
     created: "2025-09-10T19:53:17.908396848Z"
     dependencies:
@@ -16305,4 +16319,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T09:11:28.554791793Z"
+generated: "2025-11-18T09:12:17.880223186Z"
