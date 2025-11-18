@@ -9872,6 +9872,16 @@ entries:
     version: 1.2.11
   tp-cp-cli:
   - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2025-11-18T09:04:13.615256783Z"
+    description: A Helm chart for TIBCO Platform CLI
+    digest: 21e11deefe77498b4c134ec36e468df9d0bec7d9ab5410539d75cc570103d3f8
+    name: tp-cp-cli
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-cli-1.2.0/tp-cp-cli-1.2.0.tgz
+    version: 1.2.0
+  - apiVersion: v2
     appVersion: 1.1.0
     created: "2025-09-10T19:47:03.333781224Z"
     description: A Helm chart for TIBCO Platform CLI
@@ -16137,4 +16147,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T09:03:04.272984185Z"
+generated: "2025-11-18T09:04:13.616285293Z"
