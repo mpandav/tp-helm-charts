@@ -57,6 +57,13 @@ data:
             - content: |
                 image:
                   tag: {{ .Values.capabilities.monitorAgent.tag | quote }}
+                resources:
+                  requests:
+                    cpu: 100m
+                    memory: 256Mi
+                  limits:
+                    cpu: 200m
+                    memory: 256Mi
           flags:
             install: true
             createNamespace: false
