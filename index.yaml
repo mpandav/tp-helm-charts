@@ -12247,6 +12247,15 @@ entries:
     version: 1.7.19
   tp-cp-infra:
   - apiVersion: v2
+    appVersion: 1.11.0
+    created: "2025-11-18T08:58:01.601916407Z"
+    description: TIBCO Platform Control Plane Infra chart
+    digest: 22099f08253e691c57e5fefb567ee05fbc66ae34a7f6b55245e28e793ce9d231
+    name: tp-cp-infra
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-infra-1.11.0/tp-cp-infra-1.11.0.tgz
+    version: 1.11.0
+  - apiVersion: v2
     appVersion: 1.10.0
     created: "2025-09-10T19:41:04.489228855Z"
     description: TIBCO Platform Control Plane Infra chart
@@ -16060,4 +16069,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T08:57:12.421617074Z"
+generated: "2025-11-18T08:58:01.602882931Z"
