@@ -12793,6 +12793,47 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-integration
     apiVersion: v2
+    appVersion: 1.11.0
+    created: "2025-11-18T09:20:15.970708995Z"
+    dependencies:
+    - name: tp-cp-integration-common
+      repository: alias:tibco-platform
+      version: 1.9.1
+    - condition: tp-cp-integration-bw.enabled
+      name: tp-cp-integration-bw
+      repository: alias:tibco-platform
+      version: 1.11.12
+    - condition: tp-cp-integration-flogo.enabled
+      name: tp-cp-integration-flogo
+      repository: alias:tibco-platform
+      version: 1.11.11
+    - condition: tp-cp-bwce-utilities.enabled
+      name: tp-cp-bwce-utilities
+      repository: alias:tibco-platform
+      version: 1.11.5
+    - condition: tp-cp-bw5ce-utilities.enabled
+      name: tp-cp-bw5ce-utilities
+      repository: alias:tibco-platform
+      version: 1.11.5
+    - condition: tp-cp-flogo-utilities.enabled
+      name: tp-cp-flogo-utilities
+      repository: alias:tibco-platform
+      version: 1.11.11
+    description: TIBCO Platform Integration chart
+    digest: 9f56db2791e65c8c5c305b66fe48e55d215eb0e65ac631e91ff8477947e5b6da
+    keywords:
+    - tibco-platform
+    - platform
+    - integration
+    name: tp-cp-integration
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-1.11.30/tp-cp-integration-1.11.30.tgz
+    version: 1.11.30
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-integration
+    apiVersion: v2
     appVersion: 1.10.0
     created: "2025-09-10T20:01:54.036767918Z"
     dependencies:
@@ -16499,4 +16540,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T09:19:08.4991407Z"
+generated: "2025-11-18T09:20:15.971580039Z"
