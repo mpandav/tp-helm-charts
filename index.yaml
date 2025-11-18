@@ -3516,6 +3516,17 @@ entries:
     version: 1.2.24
   msg-gateway-tp:
   - apiVersion: v2
+    appVersion: 10.4.0-92
+    created: "2025-11-18T08:41:11.90928138Z"
+    description: A Helm chart for deploying msg-gateway in K8DPs
+    digest: 6a7f43f4b8cf66f8e690854a1acd395e7abb84c801e2f4b04f77521ab246582d
+    keywords:
+    - tp-msg-gateway
+    name: msg-gateway-tp
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/msg-gateway-tp-1.11.15/msg-gateway-tp-1.11.15.tgz
+    version: 1.11.15
+  - apiVersion: v2
     appVersion: 10.4.0-85
     created: "2025-09-10T19:28:01.558706729Z"
     description: A Helm chart for deploying msg-gateway in K8DPs
@@ -15791,4 +15802,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T08:40:17.546248861Z"
+generated: "2025-11-18T08:41:11.910095668Z"
