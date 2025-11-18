@@ -13753,6 +13753,20 @@ entries:
     version: 1.2.36
   tp-cp-integration-bw:
   - apiVersion: v2
+    appVersion: 1.11.0
+    created: "2025-11-18T09:14:07.378528812Z"
+    dependencies:
+    - condition: bw-webserver.enabled
+      name: bw-webserver
+      repository: ""
+      version: 1.11.*
+    description: TIBCO Platform Control Plane -- Integration for BWCE, BW6 and BW5
+    digest: 72ce60e172b78736f88971e5409e116771c277cf556a659c820e77150d28864a
+    name: tp-cp-integration-bw
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-bw-1.11.12/tp-cp-integration-bw-1.11.12.tgz
+    version: 1.11.12
+  - apiVersion: v2
     appVersion: 1.10.0
     created: "2025-09-10T19:54:54.445741003Z"
     dependencies:
@@ -16332,4 +16346,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T09:13:18.112110447Z"
+generated: "2025-11-18T09:14:07.379459619Z"
