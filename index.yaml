@@ -8667,6 +8667,15 @@ entries:
     version: 1.2.0
   resource-set-operator:
   - apiVersion: v2
+    appVersion: 1.11.0
+    created: "2025-11-18T09:05:53.797187154Z"
+    description: TIBCO Platform cp core bootstrap  -- Resource Set Operator
+    digest: 7969979f1c33cb2f897af51b8a7184faecfb7257c1a341552f461ebfbf3fe566
+    name: resource-set-operator
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/resource-set-operator-1.11.1/resource-set-operator-1.11.1.tgz
+    version: 1.11.1
+  - apiVersion: v2
     appVersion: 1.10.0
     created: "2025-09-10T19:47:58.148215971Z"
     description: TIBCO Platform cp core bootstrap  -- Resource Set Operator
@@ -16165,4 +16174,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-18T09:05:02.775117089Z"
+generated: "2025-11-18T09:05:53.798124395Z"
