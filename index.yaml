@@ -147,6 +147,15 @@ entries:
     version: 1.2.9
   be-webserver:
   - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-19T13:17:18.201651345Z"
+    description: TIBCO Platform Control Plane - BE - WebServer
+    digest: 26440d3e84065601612bd506b764179c86a4e71292a7a3368e41f0c70b02ca82
+    name: be-webserver
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/be-webserver-1.12.2/be-webserver-1.12.2.tgz
+    version: 1.12.2
+  - apiVersion: v2
     appVersion: 1.11.0
     created: "2025-11-18T08:40:17.545352159Z"
     description: TIBCO Platform Control Plane - BE - WebServer
@@ -16872,4 +16881,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-19T13:16:27.468927074Z"
+generated: "2025-11-19T13:17:18.202640027Z"
