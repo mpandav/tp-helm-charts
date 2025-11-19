@@ -8525,6 +8525,42 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: platform-bootstrap
     apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-19T14:05:46.617797475Z"
+    dependencies:
+    - condition: hybrid-proxy.enabled
+      name: hybrid-proxy
+      repository: ""
+      version: 1.12.*
+    - condition: resource-set-operator.enabled
+      name: resource-set-operator
+      repository: ""
+      version: 1.12.*
+    - condition: router-operator.enabled
+      name: router-operator
+      repository: ""
+      version: 1.12.*
+    - condition: otel-collector.enabled
+      name: otel-collector
+      repository: ""
+      version: 0.116.*
+    description: TIBCO Platform bootstrap chart
+    digest: 26568ab7524a1c4cc4903175f73b6602708058130391b23f0311ee1f838f892f
+    keywords:
+    - tibco-platform
+    - platform
+    - bootstrap
+    - control-plane
+    - infra
+    name: platform-bootstrap
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/platform-bootstrap-1.12.0/platform-bootstrap-1.12.0.tgz
+    version: 1.12.0
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: platform-bootstrap
+    apiVersion: v2
     appVersion: 1.11.0
     created: "2025-11-18T09:17:37.546754073Z"
     dependencies:
@@ -17412,4 +17448,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-19T14:04:24.542264302Z"
+generated: "2025-11-19T14:05:46.618800204Z"
