@@ -152,9 +152,6 @@ spec:
                 protocol: TCP
               {{ include "msg.dp.security.container" $emsParams | nindent 14 }}
               volumeMounts:
-              - name: license-vol
-                mountPath: /licenses
-                readOnly: true
               - mountPath: /boot
                 name: scripts-vol
               - mountPath: /boot-activation/license-file.bin
@@ -349,10 +346,6 @@ spec:
             {{ end }}
             - name: tmp-vol
               emptyDir: {}
-            - name: license-vol
-              secret:
-                secretName: "{{ .Values.ems.license.secretName }}"
-                optional: true
             dnsPolicy: ClusterFirst
             restartPolicy: Always
             schedulerName: default-scheduler
