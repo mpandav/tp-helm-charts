@@ -4036,6 +4036,15 @@ entries:
     version: 1.8.7
   o11yservice:
   - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-19T13:23:50.646419939Z"
+    description: A helm chart for o11y service
+    digest: 06fce31351e02c6decfcbe433b86de0056702aac43391cd4814b84f79f96ae40
+    name: o11yservice
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/o11yservice-1.12.10/o11yservice-1.12.10.tgz
+    version: 1.12.10
+  - apiVersion: v2
     appVersion: 1.11.0
     created: "2025-11-18T08:47:32.687808154Z"
     description: A helm chart for o11y service
@@ -16964,4 +16973,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-19T13:22:47.035098885Z"
+generated: "2025-11-19T13:23:50.647524057Z"
