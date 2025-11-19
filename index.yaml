@@ -2399,6 +2399,16 @@ entries:
     version: 1.2.17
   dp-flogo-app:
   - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-19T13:32:17.40821695Z"
+    description: Helm chart for Flogo application
+    digest: efd8a92e45a5bae255f417f88ad3584834a977d2c4ce76b81a9d7a0892a76947
+    name: dp-flogo-app
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-flogo-app-1.12.3/dp-flogo-app-1.12.3.tgz
+    version: 1.12.3
+  - apiVersion: v2
     appVersion: 1.11.0
     created: "2025-11-18T08:57:12.419902748Z"
     description: Helm chart for Flogo application
@@ -17066,4 +17076,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-19T13:30:50.993944157Z"
+generated: "2025-11-19T13:32:17.409242963Z"
