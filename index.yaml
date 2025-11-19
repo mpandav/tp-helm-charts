@@ -9925,6 +9925,22 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-bwce-recipes
     apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-19T13:11:46.100466733Z"
+    description: TIBCO Platform BusinessWorks Data Plane recipes
+    digest: 29771fdbd53664d81727ca191e51588cfced21e6b5102f630eeff527eb81c5db
+    keywords:
+    - tibco-platform
+    - control-plane
+    name: tp-cp-bwce-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-bwce-recipes-1.12.18/tp-cp-bwce-recipes-1.12.18.tgz
+    version: 1.12.18
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-bwce-recipes
+    apiVersion: v2
     appVersion: 1.11.0
     created: "2025-11-18T08:34:46.180949969Z"
     description: TIBCO Platform BusinessWorks Data Plane recipes
@@ -16780,4 +16796,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-19T13:11:02.147540555Z"
+generated: "2025-11-19T13:11:46.101364076Z"
