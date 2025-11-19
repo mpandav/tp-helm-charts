@@ -52,5 +52,5 @@ ems:
   tcpEnable: true
   opsEnable: false
   ftl_spin: disabled
-  license:
-    secretName: "tibcolicense"
+  activationSecretKey: "adidastibco_ANY.bin"
+  activationSecret: "tibcolicense"
