@@ -16816,6 +16816,15 @@ entries:
     version: 1.8.6
   web-server:
   - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-19T13:15:38.215230659Z"
+    description: A Helm chart for -- WebServer
+    digest: 3301526ff57abc32d5d37b8142950a5c738b542ce537ccb1e92aa8dca8e68d68
+    name: web-server
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.12.9/web-server-1.12.9.tgz
+    version: 1.12.9
+  - apiVersion: v2
     appVersion: 1.11.0
     created: "2025-11-18T08:38:42.621152286Z"
     description: A Helm chart for -- WebServer
@@ -16851,4 +16860,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-19T13:14:54.163127551Z"
+generated: "2025-11-19T13:15:38.216340069Z"
