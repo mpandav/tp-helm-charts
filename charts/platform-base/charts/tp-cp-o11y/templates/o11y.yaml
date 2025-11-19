@@ -78,6 +78,16 @@ data:
           repository:
             chartMuseum:
               host: ${HELM_REPO}
+          values:
+            - content: |
+
+                resources:
+                  requests:
+                    cpu: 100m
+                    memory: 512Mi
+                  limits:
+                    cpu: 500m
+                    memory: 512Mi
           flags:
             install: true
             createNamespace: false
@@ -129,6 +139,13 @@ data:
                   networking.platform.tibco.com/logServer-egress: enable
                   networking.platform.tibco.com/internet-egress: enable
                   networking.platform.tibco.com/cluster-egress: enable
+                resources:
+                  requests:
+                    cpu: 100m
+                    memory: 256Mi
+                  limits:
+                    cpu: 1000m
+                    memory: 256Mi
                 serviceAccount:
                   create: false
                   annotations: {}
@@ -345,7 +362,7 @@ data:
                     memory: 512Mi
                   limits:
                     cpu: 1000m
-                    memory: 1024Mi
+                    memory: 512Mi
                 serviceAccount:
                   create: false
                   name: ${SERVICE-ACCOUNT}
@@ -896,6 +913,13 @@ data:
                     networking.platform.tibco.com/prometheus: enable
                     networking.platform.tibco.com/internet-egress: enable
                     networking.platform.tibco.com/cluster-egress: enable
+                  resources:
+                    limits:
+                      cpu: 500m
+                      memory: 512Mi
+                    requests:
+                      cpu: 256m
+                      memory: 512Mi
                 query:
                   fullnameOverride: jaeger-query
                   podLabels:

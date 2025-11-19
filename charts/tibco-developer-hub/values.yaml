@@ -406,7 +406,7 @@ postgresql:
       readOnlyRootFilesystem: true
       runAsNonRoot: true
       runAsUser: 1001
-      runAsGroup: 0   # see https://github.com/bitnami/charts/issues/13985#issuecomment-1411654273
+#      runAsGroup: 0   # see https://github.com/bitnami/charts/issues/13985#issuecomment-1411654273
       allowPrivilegeEscalation: false
       capabilities:
         drop:
