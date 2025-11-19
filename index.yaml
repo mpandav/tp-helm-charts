@@ -12632,6 +12632,18 @@ entries:
     version: 1.7.19
   tp-cp-hawk-infra-querynode:
   - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-19T13:04:49.089400561Z"
+    description: TIBCO Platform Control Plane - Hawk Infra Query Node
+    digest: e9bdfb9026186d715a5236297472385de07aff7cbf760b614c556c6c90153ef1
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - name: TIBCO Cloud Hawk Team
+    name: tp-cp-hawk-infra-querynode
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-hawk-infra-querynode-1.12.9/tp-cp-hawk-infra-querynode-1.12.9.tgz
+    version: 1.12.9
+  - apiVersion: v2
     appVersion: 1.11.0
     created: "2025-11-18T08:28:00.420664166Z"
     description: TIBCO Platform Control Plane - Hawk Infra Query Node
@@ -16665,4 +16677,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-19T13:03:53.279071979Z"
+generated: "2025-11-19T13:04:49.090420701Z"
