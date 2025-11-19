@@ -5178,6 +5178,21 @@ entries:
     version: 10.1.006
   on-premises-third-party:
   - apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-19T14:09:21.932117321Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: file://charts/postgresql
+      version: 15.5.38
+    description: A Helm chart for Kubernetes
+    digest: 5e08ad5ddbb7713b10899ca691184839bbfb53768450079d626d4a5b28bbe9dc
+    name: on-premises-third-party
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/on-premises-third-party-1.12.1/on-premises-third-party-1.12.1.tgz
+    version: 1.12.1
+  - apiVersion: v2
     appVersion: 1.10.0
     created: "2025-09-10T20:00:00.574504177Z"
     dependencies:
@@ -17494,4 +17509,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-19T14:08:32.315967112Z"
+generated: "2025-11-19T14:09:21.933049937Z"
