@@ -16238,6 +16238,26 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: tp-cp-tibcohub-recipes
     apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-19T13:20:24.611020407Z"
+    description: TIBCO Developer Hub Data Plane Recipes
+    digest: 81277257f40b11a3d965f43262b3fe07751941d83a8b344a79d920435af2a627
+    home: https://github.com/tibco/tp-dev-hub.git
+    keywords:
+    - tibco-platform
+    - control-plane
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO CIC Compute Dev Team
+    name: tp-cp-tibcohub-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-tibcohub-recipes-1.12.10/tp-cp-tibcohub-recipes-1.12.10.tgz
+    version: 1.12.10
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tp-cp-tibcohub-recipes
+    apiVersion: v2
     appVersion: 1.11.0
     created: "2025-11-18T08:43:29.604791742Z"
     description: TIBCO Developer Hub Data Plane Recipes
@@ -16916,4 +16936,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-19T13:19:40.526915271Z"
+generated: "2025-11-19T13:20:24.611913558Z"
