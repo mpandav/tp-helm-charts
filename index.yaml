@@ -9276,6 +9276,32 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/servicemesh-contrib-1.0.1/servicemesh-contrib-1.0.1.tgz
     version: 1.0.1
+  tibco-cp-addon-eventprocessing:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: tibco-cp-addon-eventprocessing
+    apiVersion: v2
+    appVersion: 1.12.0
+    created: "2025-11-19T14:06:41.422040115Z"
+    dependencies:
+    - condition: tp-cp-eventprocessing-be.enabled
+      name: tp-cp-eventprocessing-be
+      repository: ""
+      tags:
+      - be
+      version: 1.12.*
+    description: TIBCO Platform chart for BE addon
+    digest: 4d7b0f55c0b9d80fe6e3674cc2876c3207c4538ac6ccebba12769c75603000ec
+    keywords:
+    - tibco-platform
+    - platform
+    - eventprocessing
+    - addon
+    name: tibco-cp-addon-eventprocessing
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-addon-eventprocessing-1.12.0/tibco-cp-addon-eventprocessing-1.12.0.tgz
+    version: 1.12.0
   tibco-cp-hawk:
   - apiVersion: v2
     appVersion: 1.12.0
@@ -17448,4 +17474,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2025-11-19T14:05:46.618800204Z"
+generated: "2025-11-19T14:06:41.422982912Z"
