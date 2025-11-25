@@ -71,6 +71,14 @@ files:
           values:
             - content: |
                 gwVersion: "10.4.0-9"
+                msggw:
+                  resources:
+                    requests:
+                      memory: "1Gi"
+                      cpu: "500m"
+                    limits:
+                      memory: "1Gi"
+                      cpu: "2000m"
           flags:
             install: true
             createNamespace: false
