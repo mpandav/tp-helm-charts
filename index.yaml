@@ -17674,6 +17674,19 @@ entries:
     version: 1.8.0
   tp-tibtunnel:
   - apiVersion: v1
+    appVersion: 1.13.0
+    created: "2026-01-28T13:53:04.436677863Z"
+    description: A Helm chart for TIBCO Tibtunnel
+    digest: 2836920d19d096006351404a8ac80f5bd713b33a7f668bc44428b5af01634224
+    keywords:
+    - tibtunnel
+    - data-plane
+    - hybrid-connectivity
+    name: tp-tibtunnel
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-tibtunnel-1.13.0/tp-tibtunnel-1.13.0.tgz
+    version: 1.13.0
+  - apiVersion: v1
     appVersion: 1.12.0
     created: "2025-11-19T13:14:04.965130723Z"
     description: A Helm chart for TIBCO Tibtunnel
@@ -17839,4 +17852,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T13:52:14.885515336Z"
+generated: "2026-01-28T13:53:04.437767059Z"
