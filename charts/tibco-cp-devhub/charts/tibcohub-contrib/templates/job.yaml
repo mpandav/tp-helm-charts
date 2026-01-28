@@ -1,0 +1,121 @@
+# Copyright © 2025. Cloud Software Group, Inc.
+# This file is subject to the license terms contained
+# in the license file that is distributed with this file.
+
+{{- $targetTag := (.Values.tibcoHub.image).tag | required ".Values.tibcoHub.image.tag is required." }}
+{{- $dot := . }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: capability-contribution-{{ .Values.capability.name }}-{{ randAlphaNum 4 | lower }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "tibcohub-contrib.labels" . | nindent 4 }}
+spec:
+  backoffLimit: 2
+  ttlSecondsAfterFinished: 3600 # wait for 1 hour before deleting the pod and job
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "tibcohub-contrib.selectorLabels" . | nindent 8 }}
+        {{- include "tibcohub-contrib.networkPolicyLabels" . | nindent 8 }}
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      restartPolicy: Never
+      # serviceAccountName: {{ include "tibcohub-contrib.service-account-name" . }}
+      {{- if .Values.podSecurityContext}}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- end}}
+      containers:
+      - name: container-image-extractor
+        image: {{ include "tibcohub-contrib.image.registry" $dot }}{{"/"}}{{ include "tibcohub-contrib.infra.image.repository" $dot }}{{"/"}}{{ $.Values.image.name }}:{{ $.Values.image.tag }}
+        imagePullPolicy: Always
+        {{- with $.Values.probes.startupProbe }}
+        startupProbe:
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- with $.Values.securityContext }}
+        securityContext:
+        {{- toYaml $.Values.securityContext | nindent 10 }}
+        {{- end }}
+        {{- if eq (include "tibcohub-contrib.enableResourceConstraints" $dot ) "true" }}
+        resources:
+        {{- toYaml $.Values.scripts.resources | nindent 10 }}
+        {{- end }}
+        env:
+        - name: DOCKER_REGISTRY
+          value: {{ include "tibcohub-contrib.image.registry" .}}           # docker registry where source image is present
+        - name: SOURCE_DOCKER_IMAGE
+          value: "{{ include "tibcohub-contrib.image.registry" $dot }}{{"/"}}{{ include "tibcohub-contrib.tibcohub.image.repository" $dot }}{{"/"}}{{ .Values.tibcoHub.image.name }}:{{ .Values.tibcoHub.image.tag }}"
+        - name: IMAGE_TEMP_DIR
+          value: "/tmp/tmp-{{ .Values.capability.name }}" # temporary directory to be used by container-image-extractor for downloading and extracting docker image
+        - name: SOURCE_DIRS 
+          value: {{ .Values.source.directory | quote }}               # directory in SOURCE_DOCKER_IMAGE which needs to be copied to TARGET_DIRS 
+        - name: TARGET_DIRS
+          value: {{ .Values.target.directory | quote }}         # directory in CP EFS  
+        - name: LOG_LEVEL
+          value: debug
+        - name: CLEAN_UP_TARGET_DIRS
+          value: "true"
+        {{- if (include "tibcohub-contrib.cp-no-proxy" $dot ) }}
+        - name: NO_PROXY
+          value: "{{ include "tibcohub-contrib.cp-no-proxy" $dot }}"
+        {{- end }}
+        {{- if (include "tibcohub-contrib.cp-http-proxy" $dot ) }}
+        - name: HTTP_PROXY
+          value: "{{ include "tibcohub-contrib.cp-http-proxy" $dot }}"
+        {{- end }}
+        {{- if (include "tibcohub-contrib.cp-https-proxy" $dot ) }}
+        - name: HTTPS_PROXY
+          value: "{{ include "tibcohub-contrib.cp-https-proxy" $dot }}"
+        {{- end }}
+        {{- if (include "tibcohub-contrib.container-registry.custom-cert-secret" $dot) }}
+        - name: SSL_CERT_DIR
+          value: "/etc/certs/"
+        {{- end }}
+        volumeMounts:
+        - mountPath: /efs
+          name: store-vol
+          subPath: tsc/contributors
+        - mountPath: /tmp
+          name: temp
+        - name: kaniko-vol
+          mountPath: /kaniko/.docker
+# mount this secret only if private container registry is configured for CP.
+{{- if (include "tibcohub-contrib.container-registry.secret" .) }}
+        - mountPath: /tibco/containerregistry
+          name: container-registry-secret
+{{- end }}
+# mount this secret only if private container registry with custom certs is configured for CP.
+{{- if (include "tibcohub-contrib.container-registry.custom-cert-secret" $dot) }}
+        - mountPath: /etc/certs
+          name: container-registry-custom-cert-secret
+          readOnly: true
+{{- end }}
+      volumes:
+        - name: temp
+          emptyDir: {}
+        - name: store-vol
+          persistentVolumeClaim:
+            claimName: {{ include "tibcohub-contrib.pvc-name" . }}
+        - emptyDir: {}
+          name: kaniko-vol
+{{- if (include "tibcohub-contrib.container-registry.custom-cert-secret" $dot) }}
+        - name: container-registry-custom-cert-secret
+          secret:
+            defaultMode: 420
+            secretName: {{ include "tibcohub-contrib.container-registry.custom-cert-secret" $dot }}
+{{- end }}
+{{- if (include "tibcohub-contrib.container-registry.secret" .) }}
+        - name: container-registry-secret
+          secret:
+            secretName: {{ include "tibcohub-contrib.container-registry.secret" . }}
+      imagePullSecrets:
+        - name: {{ include "tibcohub-contrib.container-registry.secret" . }}
+{{- end }}
