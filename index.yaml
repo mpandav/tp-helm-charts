@@ -2853,6 +2853,23 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/finops-web-server-1.8.337/finops-web-server-1.8.337.tgz
     version: 1.8.337
+  flogo-recipes:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: flogo-recipes
+    apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T13:56:15.819063655Z"
+    description: Flogo data plane recipes
+    digest: 0305646bf4bb3abcd062c22af75416674d72753094a62c10e9c41f0a98ab141e
+    keywords:
+    - tibco-platform
+    - control-plane
+    name: flogo-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/flogo-recipes-1.13.0/flogo-recipes-1.13.0.tgz
+    version: 1.13.0
   flogo-utilities:
   - apiVersion: v2
     appVersion: 1.13.0
@@ -17891,4 +17908,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T13:55:31.434207147Z"
+generated: "2026-01-28T13:56:15.820148201Z"
