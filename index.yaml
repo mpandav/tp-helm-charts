@@ -10074,6 +10074,17 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-developer-hub-1.2.11/tibco-developer-hub-1.2.11.tgz
     version: 1.2.11
+  tibcohub-contrib:
+  - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:19:22.651562095Z"
+    description: A Helm chart for TIBCO Hub CP contribution
+    digest: 93b861d95e5613c0bc4b3a00d19b71b3df78414649117bef38320bab31873d94
+    name: tibcohub-contrib
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibcohub-contrib-1.13.2/tibcohub-contrib-1.13.2.tgz
+    version: 1.13.2
   tibcohub-recipes:
   - annotations:
       app.helm.sh/component: control-plane
@@ -18215,4 +18226,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:18:37.382767937Z"
+generated: "2026-01-28T14:19:22.652636633Z"
