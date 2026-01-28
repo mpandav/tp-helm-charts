@@ -1116,6 +1116,16 @@ entries:
     version: 1.3.10
   dp-bw5ce-app:
   - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T13:59:31.531372207Z"
+    description: A Helm chart for BW5 Containers application
+    digest: 6b2c811174941e9828e8b484b4a532fe9681b4af2163ee34e730bd6b9d8d2ee4
+    name: dp-bw5ce-app
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-bw5ce-app-1.13.3/dp-bw5ce-app-1.13.3.tgz
+    version: 1.13.3
+  - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-11-19T13:18:46.272196249Z"
     description: A Helm chart for BW5 Containers application
@@ -17948,4 +17958,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T13:58:46.945155448Z"
+generated: "2026-01-28T13:59:31.533108819Z"
