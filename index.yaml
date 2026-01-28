@@ -9766,6 +9766,27 @@ entries:
     version: 1.12.0
   tibco-cp-hawk:
   - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:23:07.522504666Z"
+    dependencies:
+    - condition: tp-cp-hawk-infra-querynode.enabled
+      name: tp-cp-hawk-infra-querynode
+      repository: ""
+      version: 1.13.15
+    description: TIBCO Platform Control Plane - Hawk Infra Bundle
+    digest: f2499112d2e7816e7a24102fc5fa18d4d4868b259b51ae9e486fbdec9069c6dd
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    keywords:
+    - tibco-platform
+    - control-plane
+    - hawk
+    maintainers:
+    - name: TIBCO Cloud Hawk Team
+    name: tibco-cp-hawk
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-hawk-1.13.15/tibco-cp-hawk-1.13.15.tgz
+    version: 1.13.15
+  - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-11-19T13:50:57.464849174Z"
     dependencies:
@@ -18266,4 +18287,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:22:20.696195544Z"
+generated: "2026-01-28T14:23:07.524301934Z"
