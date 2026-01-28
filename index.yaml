@@ -3163,6 +3163,33 @@ entries:
     version: 1.2.9
   haproxy:
   - annotations:
+      artifacthub.io/changes: |-
+        - Use Ingress Controller 3.1.14 version for base image
+        - Fix crdjob helm hook annotation (#313)
+        - Add helm hook annotations to crdjob (#312)
+        - Make initContainers templateable (#311)
+    apiVersion: v2
+    appVersion: 3.1.14
+    created: "2026-01-28T13:45:23.717250567Z"
+    description: A Helm chart for HAProxy Kubernetes Ingress Controller
+    digest: f6204e76259005ceb05533ce75d87c3b7d9039633d3222a1f43cd48262a31e46
+    home: https://github.com/haproxytech/helm-charts/tree/main/kubernetes-ingress
+    icon: https://raw.githubusercontent.com/haproxytech/helm-charts/main/kubernetes-ingress/chart-icon.png
+    keywords:
+    - ingress
+    - haproxy
+    kubeVersion: '>=1.23.0-0'
+    maintainers:
+    - email: dkorunic@haproxy.com
+      name: Dinko Korunic
+    name: haproxy
+    sources:
+    - https://github.com/haproxytech/kubernetes-ingress
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/haproxy-1.46.0/haproxy-1.46.0.tgz
+    version: 1.46.0
+  - annotations:
       artifacthub.io/changes: |
         - Use Ingress Controller 3.0.1 version for base image
         - Limit template spec name to 15 characters (#247)
@@ -17706,4 +17733,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T13:44:43.79907334Z"
+generated: "2026-01-28T13:45:23.71827422Z"
