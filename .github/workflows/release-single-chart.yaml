@@ -1,0 +1,197 @@
+name: Release Single Helm Chart
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: Branch to checkout for packaging
+        required: true
+        default: main
+      chart_name:
+        description: Helm chart name (value from Chart.yaml)
+        required: true
+      chart_version:
+        description: Helm chart version to release
+        required: true
+
+jobs:
+  release:
+    name: Package and Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    env:
+      CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      CHART_NAME: ${{ inputs.chart_name }}
+      CHART_VERSION: ${{ inputs.chart_version }}
+    steps:
+      - name: Checkout target branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.target_branch }}
+          fetch-depth: 0
+
+      - name: Configure Git identity
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: 3.17.1
+
+      - name: Install chart-releaser (cr)
+        run: |
+          curl -sSL https://github.com/helm/chart-releaser/releases/download/v1.7.0/chart-releaser_1.7.0_linux_amd64.tar.gz | tar xz
+          sudo mv cr /usr/local/bin
+          cr version
+
+      - name: Install yq
+        run: |
+          sudo wget -q https://github.com/mikefarah/yq/releases/download/v4.43.1/yq_linux_amd64 -O /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/yq
+          yq --version
+
+      - name: Locate chart directory
+        id: locate
+        run: |
+          set -euo pipefail
+          chart_dir=""
+          while IFS= read -r -d '' chart_file; do
+            chart_name=$(yq -r '.name' "$chart_file")
+            if [[ "$chart_name" == "$CHART_NAME" ]]; then
+              chart_dir=$(dirname "$chart_file")
+              break
+            fi
+          done < <(find charts -type f -name 'Chart.yaml' -print0)
+
+          if [[ -z "$chart_dir" ]]; then
+            echo "Unable to locate chart named $CHART_NAME" >&2
+            exit 1
+          fi
+
+          echo "chart_dir=$chart_dir" >> "$GITHUB_OUTPUT"
+
+      - name: Add required chart repositories
+        run: |
+          set -euo pipefail
+          chart_dir="${{ steps.locate.outputs.chart_dir }}"
+          helm repo add tibco-platform https://mpandav.github.io/tp-helm-charts/ --force-update
+
+          yq -r '.dependencies[]? | select(.repository != null) | "\(.alias // .name) \(.repository)"' "$chart_dir/Chart.yaml" \
+            | while read -r repo_name repo_url; do
+                if [[ "$repo_url" == file://* || "$repo_url" == unpacked || -z "$repo_url" ]]; then
+                  echo "Skipping local dependency: $repo_name ($repo_url)"
+                  continue
+                fi
+                if [[ "$repo_url" =~ ^https?:// ]]; then
+                  echo "Adding dependency repo $repo_name -> $repo_url"
+                  helm repo add "$repo_name" "$repo_url" --force-update
+                else
+                  echo "Unknown repository format for $repo_name: $repo_url"
+                fi
+              done
+
+          helm repo update
+
+      - name: Update chart version
+        run: |
+          set -euo pipefail
+          chart_dir="${{ steps.locate.outputs.chart_dir }}"
+          yq -i ".version = strenv(CHART_VERSION)" "$chart_dir/Chart.yaml"
+          echo "Updated $chart_dir/Chart.yaml to version $CHART_VERSION"
+
+      - name: Build chart dependencies
+        run: |
+          set -euo pipefail
+          chart_dir="${{ steps.locate.outputs.chart_dir }}"
+          helm dependency build "$chart_dir"
+
+      - name: Package chart
+        run: |
+          set -euo pipefail
+          chart_dir="${{ steps.locate.outputs.chart_dir }}"
+          mkdir -p .cr-release-packages
+          helm package "$chart_dir" --version "$CHART_VERSION" --destination .cr-release-packages
+
+      - name: Prepare release
+        run: |
+          set -euo pipefail
+          release_name="${CHART_NAME}-${CHART_VERSION}"
+          if gh release view "$release_name" >/dev/null 2>&1; then
+            echo "Existing release $release_name found; deleting to allow override."
+            gh release delete "$release_name" --cleanup-tag --yes
+          fi
+          git tag -d "$release_name" >/dev/null 2>&1 || true
+
+      - name: Upload chart artifact
+        run: |
+          set -euo pipefail
+          release_name="${CHART_NAME}-${CHART_VERSION}"
+          mkdir -p temp-release
+          cp ".cr-release-packages/${CHART_NAME}-${CHART_VERSION}.tgz" temp-release/
+
+          cr upload \
+            --package-path temp-release \
+            --release-name-template "{{ .Name }}-{{ .Version }}" \
+            --token "$CR_TOKEN" \
+            --owner "${{ github.repository_owner }}" \
+            --git-repo "${{ github.event.repository.name }}"
+
+      - name: Verify release availability
+        run: |
+          set -euo pipefail
+          release_name="${CHART_NAME}-${CHART_VERSION}"
+          for i in {1..12}; do
+            if gh release view "$release_name" >/dev/null 2>&1; then
+              echo "Release $release_name is available."
+              exit 0
+            fi
+            echo "Waiting for release $release_name to become available (attempt $i)..."
+            sleep 5
+          done
+          echo "Release $release_name not available after waiting." >&2
+          exit 1
+
+      - name: Update Helm repo index
+        run: |
+          set -euo pipefail
+          git fetch origin gh-pages
+          git worktree add gh-pages-worktree origin/gh-pages
+
+          cr index \
+            --package-path temp-release \
+            --index-path gh-pages-worktree/index.yaml \
+            --owner "${{ github.repository_owner }}" \
+            --git-repo "${{ github.event.repository.name }}" \
+            --token "$CR_TOKEN" \
+            --release-name-template "{{ .Name }}-{{ .Version }}"
+
+          pushd gh-pages-worktree >/dev/null
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add index.yaml
+          git commit -m "Update index.yaml with ${CHART_NAME}-${CHART_VERSION}" || echo "No changes to commit"
+          git push origin HEAD:gh-pages
+          popd >/dev/null
+
+          INDEX_HASH=$(sha256sum gh-pages-worktree/index.yaml | awk '{print $1}')
+          git worktree remove gh-pages-worktree
+
+          rm -rf temp-release
+
+          REPO_URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/index.yaml"
+          echo "Waiting for GitHub Pages to publish updated index.yaml..."
+          for i in {1..30}; do
+            REMOTE_HASH=$(curl -sL "$REPO_URL" | sha256sum | awk '{print $1}')
+            if [[ "$REMOTE_HASH" == "$INDEX_HASH" ]]; then
+              echo "GitHub Pages has published the updated index.yaml"
+              break
+            fi
+            sleep 5
+          done
+
+          helm repo update
