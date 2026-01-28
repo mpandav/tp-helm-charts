@@ -1017,6 +1017,20 @@ entries:
     version: 1.8.2
   dp-bw-adapter:
   - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:00:32.083428902Z"
+    description: TIBCO Platform Bare-metal Dataplane Capabilty -- BW Adapter
+    digest: 8f50756f24dbe5f591d34c08eecbae6f742c883962f10eb23b2254c723c883f3
+    home: https://github.com/tibco/tp-iapp-bw-adapter.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: dp-bw-adapter
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-bw-adapter-1.13.3/dp-bw-adapter-1.13.3.tgz
+    version: 1.13.3
+  - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-11-19T13:19:40.525992193Z"
     description: TIBCO Platform Bare-metal Dataplane Capabilty -- BW Adapter
@@ -17958,4 +17972,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T13:59:31.533108819Z"
+generated: "2026-01-28T14:00:32.085380799Z"
