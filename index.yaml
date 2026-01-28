@@ -317,6 +317,20 @@ entries:
     version: 1.10.0
   bw5provisioner:
   - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:09:28.231501169Z"
+    description: TIBCO Platform Dataplane Capabilty -- BW5 Provisioner
+    digest: 2bc06a5053f51bacb42b2e58780fb19813702e10d896be80ebc6ccda47cb7559
+    home: https://github.com/tibco/tp-iapp-bw5-provisioner.git
+    icon: https://pbs.twimg.com/profile_images/1064638558110007296/K6HqaXwh_400x400.jpg
+    maintainers:
+    - email: compute-dev@tibco.com
+      name: TIBCO Platform Dev Team
+    name: bw5provisioner
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bw5provisioner-1.13.4/bw5provisioner-1.13.4.tgz
+    version: 1.13.4
+  - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-11-19T13:28:38.820089701Z"
     description: TIBCO Platform Dataplane Capabilty -- BW5 Provisioner
@@ -18081,4 +18095,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:08:42.113500347Z"
+generated: "2026-01-28T14:09:28.233218017Z"
