@@ -17276,6 +17276,17 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-hawk-console-1.3.21/tp-dp-hawk-console-1.3.21.tgz
     version: 1.3.21
+  tp-dp-license-file:
+  - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T13:42:45.067991503Z"
+    description: Helm chart to provision a shared license Secret (one per DP namespace)
+    digest: 4420b56634d20f6a3bb096b8f3e2f271d05763197320627f51b719cb9e21a89c
+    name: tp-dp-license-file
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-license-file-1.13.0/tp-dp-license-file-1.13.0.tgz
+    version: 1.13.0
   tp-dp-monitor-agent:
   - apiVersion: v2
     appVersion: 1.12.0
@@ -17676,4 +17687,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T13:42:06.011017636Z"
+generated: "2026-01-28T13:42:45.069078114Z"
