@@ -9800,6 +9800,23 @@ entries:
     version: 1.11.15
   tibco-cp-messaging:
   - apiVersion: v2
+    appVersion: 1.13.0-14
+    created: "2026-01-28T14:20:07.556696292Z"
+    description: TIBCO Platform Control Plane -- Messaging
+    digest: 4cf862912a0b07bb81ac1b0a47b65d3c6eb180d28f578239f4226e215a9d3098
+    keywords:
+    - tibco-platform
+    - control-plane
+    - messaging
+    - EMS
+    maintainers:
+    - email: tcm@tibco.com
+      name: TIBCO Cloud Messaging Team
+    name: tibco-cp-messaging
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-messaging-1.13.15/tibco-cp-messaging-1.13.15.tgz
+    version: 1.13.15
+  - apiVersion: v2
     appVersion: 1.12.0-13
     created: "2025-11-19T13:46:18.422144877Z"
     description: TIBCO Platform Control Plane -- Messaging
@@ -18226,4 +18243,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:19:22.652636633Z"
+generated: "2026-01-28T14:20:07.55785724Z"
