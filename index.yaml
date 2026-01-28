@@ -17541,6 +17541,15 @@ entries:
     version: 1.13.0
   tp-dp-monitor-agent:
   - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:02:08.728202087Z"
+    description: A Helm chart for deploying the tp-dp-monitor-agent service
+    digest: 3de79fa3347774c9b62eb42a801e6b196d300f8b7887d3d00727dbd9940ceff8
+    name: tp-dp-monitor-agent
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-dp-monitor-agent-1.13.216/tp-dp-monitor-agent-1.13.216.tgz
+    version: 1.13.216
+  - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-11-19T13:21:57.98483942Z"
     description: A Helm chart for deploying the tp-dp-monitor-agent service
@@ -17982,4 +17991,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:01:22.419728182Z"
+generated: "2026-01-28T14:02:08.730540901Z"
