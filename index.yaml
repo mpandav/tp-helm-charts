@@ -9783,6 +9783,33 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-addon-eventprocessing-1.12.0/tibco-cp-addon-eventprocessing-1.12.0.tgz
     version: 1.12.0
+  tibco-cp-bw:
+  - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:25:49.159339925Z"
+    dependencies:
+    - condition: bw-recipes.enabled
+      name: bw-recipes
+      repository: ""
+      version: 1.13.*
+    - condition: bw-webserver.enabled
+      name: bw-webserver
+      repository: ""
+      version: 1.13.*
+    - condition: bwce-utilities.enabled
+      name: bwce-utilities
+      repository: ""
+      version: 1.13.*
+    - condition: bw5ce-utilities.enabled
+      name: bw5ce-utilities
+      repository: ""
+      version: 1.13.*
+    description: TIBCO Controlplane chart for BW Capability
+    digest: 1d4c8fc04937fc9f20d6e08dbf902834d8890561598895aa2684b61f5632121f
+    name: tibco-cp-bw
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-bw-1.13.0/tibco-cp-bw-1.13.0.tgz
+    version: 1.13.0
   tibco-cp-hawk:
   - apiVersion: v2
     appVersion: 1.13.0
@@ -18319,4 +18346,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:25:00.141784697Z"
+generated: "2026-01-28T14:25:49.160393765Z"
