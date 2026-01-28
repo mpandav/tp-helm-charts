@@ -3038,6 +3038,21 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/flogo-utilities-1.8.0/flogo-utilities-1.8.0.tgz
     version: 1.8.0
   flogo-webserver:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: flogo-webserver
+    apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:10:59.184853238Z"
+    description: Flogo webserver
+    digest: 02f0c1abefcfeec681d99e2ecdd818e6937a9230f0f85e39ebe813af3b4de152
+    keywords:
+    - tibco-platform
+    - control-plane
+    name: flogo-webserver
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/flogo-webserver-1.13.0/flogo-webserver-1.13.0.tgz
+    version: 1.13.0
   - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-11-19T13:30:01.677765929Z"
@@ -18104,4 +18119,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:10:14.087382795Z"
+generated: "2026-01-28T14:10:59.185974694Z"
