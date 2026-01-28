@@ -17597,6 +17597,15 @@ entries:
     version: 1.8.0
   user-subscriptions:
   - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T13:43:50.618377938Z"
+    description: A Helm chart for -- User Subscriptions
+    digest: 211d2579ea176cf0d5d544fa89aedfd8697820e57ab512e62b53f3837cedf409
+    name: user-subscriptions
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/user-subscriptions-1.13.1/user-subscriptions-1.13.1.tgz
+    version: 1.13.1
+  - apiVersion: v2
     appVersion: 1.11.0
     created: "2025-11-18T08:25:18.613226991Z"
     description: A Helm chart for -- User Subscriptions
@@ -17687,4 +17696,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T13:42:45.069078114Z"
+generated: "2026-01-28T13:43:50.619668279Z"
