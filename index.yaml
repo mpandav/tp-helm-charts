@@ -11568,6 +11568,44 @@ entries:
     version: 1.2.17
   tp-cp-core:
   - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:27:46.755897324Z"
+    dependencies:
+    - condition: web-server.enabled
+      name: web-server
+      repository: ""
+      version: 1.13.*
+    - condition: orchestrator.enabled
+      name: orchestrator
+      repository: ""
+      version: 1.13.*
+    - condition: user-subscriptions.enabled
+      name: user-subscriptions
+      repository: ""
+      version: 1.13.*
+    - condition: cronjobs.enabled
+      name: cronjobs
+      repository: ""
+      version: 1.13.*
+    - condition: identity-management.enabled
+      name: identity-management
+      repository: ""
+      version: 1.13.*
+    - condition: identity-provider.enabled
+      name: identity-provider
+      repository: ""
+      version: 1.13.*
+    - condition: pengine.enabled
+      name: pengine
+      repository: ""
+      version: 1.13.*
+    description: A Helm chart for -- tp-cp-core
+    digest: 59a077b914923d8424fe080cd1042752627b013053a75fab7416d343a1aad463
+    name: tp-cp-core
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-core-1.13.5/tp-cp-core-1.13.5.tgz
+    version: 1.13.5
+  - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-11-19T14:04:24.540308294Z"
     dependencies:
@@ -18369,4 +18407,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:26:38.915828536Z"
+generated: "2026-01-28T14:27:46.756900379Z"
