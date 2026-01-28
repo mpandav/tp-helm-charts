@@ -218,6 +218,21 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/bw-recipes-1.13.0/bw-recipes-1.13.0.tgz
     version: 1.13.0
   bw-webserver:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: bw-webserver
+    apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:07:06.945231061Z"
+    description: BW webserver for TIBCO Platform
+    digest: c67cef3f6475310580601195bb05929785e35d9edba4afae819629b55adba49a
+    keywords:
+    - tibco-platform
+    - control-plane
+    name: bw-webserver
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bw-webserver-1.13.0/bw-webserver-1.13.0.tgz
+    version: 1.13.0
   - apiVersion: v1
     appVersion: 1.12.0
     created: "2025-11-19T13:26:14.339775442Z"
@@ -18043,4 +18058,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:06:14.990772009Z"
+generated: "2026-01-28T14:07:06.946298325Z"
