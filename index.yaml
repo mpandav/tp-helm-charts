@@ -9810,6 +9810,25 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-bw-1.13.0/tibco-cp-bw-1.13.0.tgz
     version: 1.13.0
+  tibco-cp-devhub:
+  - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:28:37.291330364Z"
+    dependencies:
+    - condition: tibcohub-recipes.enabled
+      name: tibcohub-recipes
+      repository: ""
+      version: 1.13.*
+    - condition: tibcohub-contrib.enabled
+      name: tibcohub-contrib
+      repository: ""
+      version: 1.13.*
+    description: TIBCO Platform base for Developer Hub Capability
+    digest: 7f553ec410cdf3ce92caa06329ae7e899bb6fbf7bcb84df1b4f5b0b3ac999340
+    name: tibco-cp-devhub
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-devhub-1.13.0/tibco-cp-devhub-1.13.0.tgz
+    version: 1.13.0
   tibco-cp-flogo:
   - apiVersion: v2
     appVersion: 1.13.0
@@ -18407,4 +18426,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:27:46.756900379Z"
+generated: "2026-01-28T14:28:37.292504728Z"
