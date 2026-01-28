@@ -15569,6 +15569,20 @@ entries:
     version: 1.2.21
   tp-cp-integration-common:
   - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:22:20.695055253Z"
+    dependencies:
+    - condition: fileserver.enabled
+      name: fileserver
+      repository: ""
+      version: 1.13.*
+    description: TIBCO Platform integration prerequesites
+    digest: 24f53120f72ae5c2436641c9c304eed90b44423cd2212b4f19320cf84bf3af69
+    name: tp-cp-integration-common
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-integration-common-1.13.0/tp-cp-integration-common-1.13.0.tgz
+    version: 1.13.0
+  - apiVersion: v2
     appVersion: 1.9.0
     created: "2025-08-27T07:43:07.750373058Z"
     dependencies:
@@ -18252,4 +18266,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:21:35.384759731Z"
+generated: "2026-01-28T14:22:20.696195544Z"
