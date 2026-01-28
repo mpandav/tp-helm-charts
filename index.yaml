@@ -9810,6 +9810,29 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-bw-1.13.0/tibco-cp-bw-1.13.0.tgz
     version: 1.13.0
+  tibco-cp-flogo:
+  - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T14:26:38.914784294Z"
+    dependencies:
+    - condition: flogo-recipes.enabled
+      name: flogo-recipes
+      repository: ""
+      version: 1.13.*
+    - condition: flogo-webserver.enabled
+      name: flogo-webserver
+      repository: ""
+      version: 1.13.*
+    - condition: flogo-utilities.enabled
+      name: flogo-utilities
+      repository: ""
+      version: 1.13.*
+    description: TIBCO Controlplane chart for FLOGO Capability
+    digest: 5fad54cea441f7008067c1b1056bd9ba40b83a765ad118f78b0e420db8271039
+    name: tibco-cp-flogo
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-flogo-1.13.0/tibco-cp-flogo-1.13.0.tgz
+    version: 1.13.0
   tibco-cp-hawk:
   - apiVersion: v2
     appVersion: 1.13.0
@@ -18346,4 +18369,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T14:25:49.160393765Z"
+generated: "2026-01-28T14:26:38.915828536Z"
