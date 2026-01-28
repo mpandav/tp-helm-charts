@@ -2846,6 +2846,15 @@ entries:
     version: 1.8.337
   flogo-utilities:
   - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T13:47:42.949348776Z"
+    description: Flogo buildtype, connectors and VSCode extension
+    digest: 8b82c993e34c0333c8b32604d03af1295b207287dbbd2d62723821641b75e7c5
+    name: flogo-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/flogo-utilities-1.13.0/flogo-utilities-1.13.0.tgz
+    version: 1.13.0
+  - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-11-19T13:06:17.083053961Z"
     description: TIBCO CIC Global Provider -- FLOGO Utilities
@@ -17753,4 +17762,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T13:46:58.306303269Z"
+generated: "2026-01-28T13:47:42.950484288Z"
