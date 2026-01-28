@@ -310,6 +310,16 @@ entries:
     version: 1.10.1
   bwce-utilities:
   - apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T13:42:06.009740178Z"
+    description: TIBCO BWCE Utilities chart for buildtype, connectors and download
+      card extraction
+    digest: 63cf2b23da9c3c1dbb0b8191b6640b0f490e50d383b6635c64223738b98f74b9
+    name: bwce-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bwce-utilities-1.13.0/bwce-utilities-1.13.0.tgz
+    version: 1.13.0
+  - apiVersion: v2
     appVersion: 1.12.0
     created: "2025-11-19T13:01:12.156019226Z"
     description: TIBCO CIC Global Provider -- BWCE Utilities
@@ -17666,4 +17676,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T13:41:16.57889709Z"
+generated: "2026-01-28T13:42:06.011017636Z"
