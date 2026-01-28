@@ -2707,6 +2707,22 @@ entries:
     - https://github.com/mpandav/tp-helm-charts/releases/download/dp-oauth2proxy-recipes-1.2.7/dp-oauth2proxy-recipes-1.2.7.tgz
     version: 1.2.7
   fileserver:
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: fileserver
+    apiVersion: v2
+    appVersion: 1.13.0
+    created: "2026-01-28T13:41:16.577852387Z"
+    description: Integration fileserver
+    digest: 46ae256968d60c35f14d61ece21e3e7895383ee06a4ae428b7b0cbb7a6033cf8
+    keywords:
+    - tibco-platform
+    - control-plane
+    name: fileserver
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/fileserver-1.13.0/fileserver-1.13.0.tgz
+    version: 1.13.0
   - apiVersion: v2
     appVersion: 1.9.0
     created: "2025-08-27T06:53:49.863831275Z"
@@ -17650,4 +17666,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-28T13:40:31.429389644Z"
+generated: "2026-01-28T13:41:16.57889709Z"
