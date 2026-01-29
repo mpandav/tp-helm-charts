@@ -9759,6 +9759,14 @@ entries:
     version: 1.8.0
   router-operator:
   - apiVersion: v2
+    appVersion: 1.14.2
+    created: "2026-01-29T09:12:03.238416064Z"
+    digest: 79df002a3dfcbeceeb3c126c79b4fd595e55311d9f21fa47c0683757771e662f
+    name: router-operator
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/router-operator-1.14.0/router-operator-1.14.0.tgz
+    version: 1.14.0
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T13:50:01.271035394Z"
     digest: 2db367d8cf8851a273d95507b3d22e27b801ac0de6cc51aad100ddd9ac96a117
@@ -18625,4 +18633,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:11:20.146413279Z"
+generated: "2026-01-29T09:12:03.240295344Z"
