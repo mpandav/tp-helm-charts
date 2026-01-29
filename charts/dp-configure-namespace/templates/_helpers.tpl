@@ -124,6 +124,7 @@ platform.tibco.com/dataplane-id: {{ .Values.global.tibco.dataPlaneId }}
 
 {{/* Verify platform label for the release namespace.*/}}
 {{- define "dp-configure-namespace.validate-namespace" -}}
+{{- if not .Values.skipValidate }}
 {{- $ns_name := .Release.Namespace -}}
 {{- $ns := (lookup "v1" "Namespace" "" $ns_name) -}}
 {{- if $ns -}}
@@ -140,5 +141,6 @@ platform.tibco.com/dataplane-id: {{ .Values.global.tibco.dataPlaneId }}
 {{- end -}}
 {{- else -}}
 {{/* no op is ns does not exists. We expect the ns to be already present. We have this to avoid helm templating issue*/}}
+{{- end -}}
 {{- end -}}
 {{- end -}}
