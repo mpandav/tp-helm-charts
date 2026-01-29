@@ -1841,6 +1841,26 @@ entries:
     version: 1.2.1
   dp-configure-namespace:
   - apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:44:31.07541143Z"
+    dependencies:
+    - condition: config.enabled
+      name: config
+      repository: ""
+      version: 1.9.*
+    - condition: haproxy.enabled
+      name: haproxy
+      repository: ""
+      version: 1.46.0
+    description: A Helm chart for creating service account, cluster-role, cluster-role-binding,
+      role-binding & network-policies
+    digest: e7d9992815d04af1809eeb9002426329d0eebce8d23bee836f896b1d63bdf343
+    name: dp-configure-namespace
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/dp-configure-namespace-1.14.1/dp-configure-namespace-1.14.1.tgz
+    version: 1.14.1
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T14:29:27.601600527Z"
     dependencies:
@@ -19151,4 +19171,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:43:45.232429908Z"
+generated: "2026-01-29T09:44:31.076583296Z"
