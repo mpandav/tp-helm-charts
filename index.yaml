@@ -247,6 +247,21 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: bw-webserver
     apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:26:18.016199611Z"
+    description: BW webserver for TIBCO Platform
+    digest: 2c5d661a5d0202c9e1de011adbea8057817af61d1a2d64cfcafc125cb5105a70
+    keywords:
+    - tibco-platform
+    - control-plane
+    name: bw-webserver
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bw-webserver-1.14.0/bw-webserver-1.14.0.tgz
+    version: 1.14.0
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: bw-webserver
+    apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T14:07:06.945231061Z"
     description: BW webserver for TIBCO Platform
@@ -18829,4 +18844,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:25:23.203180511Z"
+generated: "2026-01-29T09:26:18.018579591Z"
