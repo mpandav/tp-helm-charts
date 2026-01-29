@@ -16358,6 +16358,14 @@ entries:
     version: 1.4.20
   tp-cp-o11y:
   - apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:08:22.235461256Z"
+    digest: 5823fc3db58f88c4b6a22e18f78b572c5374469f2c49e980e18accabb8e682e1
+    name: tp-cp-o11y
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-o11y-1.14.7/tp-cp-o11y-1.14.7.tgz
+    version: 1.14.7
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T13:46:13.649455499Z"
     digest: 4ee9b5f539c60f4d034546abda4511eb2e9a28ab9eca0b1b2048df8cf1734dd5
@@ -18564,4 +18572,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:07:15.144760943Z"
+generated: "2026-01-29T09:08:22.236716488Z"
