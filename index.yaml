@@ -10216,6 +10216,24 @@ entries:
     version: 1.13.0
   tibco-cp-devhub:
   - apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:43:45.231399596Z"
+    dependencies:
+    - condition: tibcohub-recipes.enabled
+      name: tibcohub-recipes
+      repository: ""
+      version: 1.14.*
+    - condition: tibcohub-contrib.enabled
+      name: tibcohub-contrib
+      repository: ""
+      version: 1.14.*
+    description: TIBCO Platform base for Developer Hub Capability
+    digest: 4a99c9c8bfb562250878b237e0b0f90b629bbfe9079433409c2527634e254228
+    name: tibco-cp-devhub
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-devhub-1.14.0/tibco-cp-devhub-1.14.0.tgz
+    version: 1.14.0
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T14:28:37.291330364Z"
     dependencies:
@@ -19133,4 +19151,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:42:56.453643785Z"
+generated: "2026-01-29T09:43:45.232429908Z"
