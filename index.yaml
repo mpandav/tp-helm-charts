@@ -3052,6 +3052,15 @@ entries:
     version: 1.13.0
   flogo-utilities:
   - apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:09:53.63599981Z"
+    description: Flogo buildtype, connectors and VSCode extension
+    digest: 69c92931d881f3fa0518c2d3deb23df600074a6098ce61ddb34fc3b1d111fe43
+    name: flogo-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/flogo-utilities-1.14.0/flogo-utilities-1.14.0.tgz
+    version: 1.14.0
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T13:47:42.949348776Z"
     description: Flogo buildtype, connectors and VSCode extension
@@ -18584,4 +18593,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:09:10.538611752Z"
+generated: "2026-01-29T09:09:53.636961574Z"
