@@ -6025,6 +6025,15 @@ entries:
     version: 0.116.3
   pengine:
   - apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:34:08.26083709Z"
+    description: A Helm Chart for TIBCO Platform Control Plane Permissions Engine
+    digest: b169ed61937b30102720fb3c437392e44be225fb08f9bbda1eebd74981429558
+    name: pengine
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/pengine-1.14.0/pengine-1.14.0.tgz
+    version: 1.14.0
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T14:16:21.398634526Z"
     description: A Helm Chart for TIBCO Platform Control Plane Permissions Engine
@@ -18945,4 +18954,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:33:17.989861672Z"
+generated: "2026-01-29T09:34:08.262036468Z"
