@@ -305,6 +305,15 @@ entries:
     version: 1.8.0
   bw5ce-utilities:
   - apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:22:12.794263683Z"
+    description: TIBCO CIC Global Provider -- BW5CE Utilities
+    digest: 6297a6c054f42849c6ca0de1954473354d91dc7887127eaa071804484c6e9454
+    name: bw5ce-utilities
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bw5ce-utilities-1.14.0/bw5ce-utilities-1.14.0.tgz
+    version: 1.14.0
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T14:02:48.115856703Z"
     description: TIBCO CIC Global Provider -- BW5CE Utilities
@@ -18777,4 +18786,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:21:29.592080003Z"
+generated: "2026-01-29T09:22:12.795284518Z"
