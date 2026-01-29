@@ -10163,6 +10163,32 @@ entries:
     version: 1.13.0
   tibco-cp-bw:
   - apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:41:14.183386382Z"
+    dependencies:
+    - condition: bw-recipes.enabled
+      name: bw-recipes
+      repository: ""
+      version: 1.14.*
+    - condition: bw-webserver.enabled
+      name: bw-webserver
+      repository: ""
+      version: 1.14.*
+    - condition: bwce-utilities.enabled
+      name: bwce-utilities
+      repository: ""
+      version: 1.14.*
+    - condition: bw5ce-utilities.enabled
+      name: bw5ce-utilities
+      repository: ""
+      version: 1.14.*
+    description: TIBCO Controlplane chart for BW Capability
+    digest: 7247f1e9e398fa6a953a00685904b0d3515f3fa0b97e7831434d41979123ae59
+    name: tibco-cp-bw
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-cp-bw-1.14.0/tibco-cp-bw-1.14.0.tgz
+    version: 1.14.0
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T14:25:49.159339925Z"
     dependencies:
@@ -19047,4 +19073,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:40:19.967430099Z"
+generated: "2026-01-29T09:41:14.184672512Z"
