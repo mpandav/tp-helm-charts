@@ -10455,6 +10455,26 @@ entries:
     version: 1.11.15
   tibco-developer-hub:
   - apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:45:30.354564178Z"
+    dependencies:
+    - name: common
+      repository: ""
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: ""
+      version: 11.x.x
+    description: A Helm chart for TIBCO® Developer Hub
+    digest: b2742c960cda75b51ddda11d19067873baf57e690f23c99aab4922b3fa7bb4f1
+    name: tibco-developer-hub
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibco-developer-hub-1.14.5/tibco-developer-hub-1.14.5.tgz
+    version: 1.14.5
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T14:30:31.478575681Z"
     dependencies:
@@ -19171,4 +19191,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:44:31.076583296Z"
+generated: "2026-01-29T09:45:30.35565358Z"
