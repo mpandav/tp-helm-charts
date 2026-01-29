@@ -214,6 +214,22 @@ entries:
       app.helm.sh/component: control-plane
       app.helm.sh/name: bw-recipes
     apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:18:14.050393452Z"
+    description: TIBCO Controlplane BusinessWorks Data Plane recipes
+    digest: 6c2c3ee224fead77f3f3ae8984bc650551b9483cdd4387f55f5f7914259cb994
+    keywords:
+    - tibco-platform
+    - control-plane
+    name: bw-recipes
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/bw-recipes-1.14.0/bw-recipes-1.14.0.tgz
+    version: 1.14.0
+  - annotations:
+      app.helm.sh/component: control-plane
+      app.helm.sh/name: bw-recipes
+    apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T13:57:11.401695854Z"
     description: TIBCO Controlplane BusinessWorks Data Plane recipes
@@ -18720,4 +18736,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:17:28.587956687Z"
+generated: "2026-01-29T09:18:14.051558426Z"
