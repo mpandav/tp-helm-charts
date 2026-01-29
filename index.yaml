@@ -1045,6 +1045,15 @@ entries:
     version: 1.2.0
   cronjobs:
   - apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:29:13.901592503Z"
+    description: A Helm chart for -- Cron Jobs
+    digest: f34acf90cc1ea2dfa6f85cfdfe141d4b2075ade33939d86c8f45e0c7d1e0bd2f
+    name: cronjobs
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/cronjobs-1.14.0/cronjobs-1.14.0.tgz
+    version: 1.14.0
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T14:10:14.085681318Z"
     description: A Helm chart for -- Cron Jobs
@@ -18881,4 +18890,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:28:25.717704699Z"
+generated: "2026-01-29T09:29:13.903490715Z"
