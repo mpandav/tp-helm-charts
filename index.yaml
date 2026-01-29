@@ -10581,6 +10581,16 @@ entries:
     version: 1.2.11
   tibcohub-contrib:
   - apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:36:37.73669818Z"
+    description: A Helm chart for TIBCO Hub CP contribution
+    digest: ddd310ba6637d0573b016703efc3f33e633dd50d2f940cca629bcf7de1b7db94
+    name: tibcohub-contrib
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tibcohub-contrib-1.14.1/tibcohub-contrib-1.14.1.tgz
+    version: 1.14.1
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T14:19:22.651562095Z"
     description: A Helm chart for TIBCO Hub CP contribution
@@ -18975,4 +18985,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:35:38.457322017Z"
+generated: "2026-01-29T09:36:37.739063373Z"
