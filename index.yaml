@@ -17792,6 +17792,17 @@ entries:
     version: 1.2.13
   tp-cp-subscription:
   - apiVersion: v2
+    appVersion: 1.14.0
+    created: "2026-01-29T09:25:23.202104824Z"
+    description: A Helm chart for provision subscription on TIBCO Platform Control
+      Plane
+    digest: 8de67462f624e106509ac84ccdda4fdd5c56e0c506c8a1509ba90ca16318c754
+    name: tp-cp-subscription
+    type: application
+    urls:
+    - https://github.com/mpandav/tp-helm-charts/releases/download/tp-cp-subscription-1.14.0/tp-cp-subscription-1.14.0.tgz
+    version: 1.14.0
+  - apiVersion: v2
     appVersion: 1.13.0
     created: "2026-01-28T14:06:14.989728138Z"
     description: A Helm chart for provision subscription on TIBCO Platform Control
@@ -18818,4 +18829,4 @@ entries:
     urls:
     - https://github.com/mpandav/tp-helm-charts/releases/download/web-server-1.8.21/web-server-1.8.21.tgz
     version: 1.8.21
-generated: "2026-01-29T09:24:39.863656117Z"
+generated: "2026-01-29T09:25:23.203180511Z"
